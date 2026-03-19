@@ -1,0 +1,1714 @@
+{
+  "datasetInfo": {
+    "title": "Nonviolent Change Tactics",
+    "description": "A comprehensive collection of 165 tactical patterns for nonviolent social change, categorized by action type and historical context.",
+    "recordCount": 165,
+    "primaryFields": [
+      {
+        "field": "id",
+        "type": "integer",
+        "description": "Unique identifier for each pattern."
+      },
+      {
+        "field": "name",
+        "type": "string",
+        "description": "Descriptive name of the nonviolent tactic."
+      },
+      {
+        "field": "country",
+        "type": "string",
+        "description": "Primary geographical context of the provided example."
+      },
+      {
+        "field": "type",
+        "type": "string",
+        "description": "Broad categorization of the action pattern."
+      },
+      {
+        "field": "description",
+        "type": "string",
+        "description": "Detailed explanation of the tactic featuring a historical case study."
+      },
+      {
+        "field": "c",
+        "type": "integer",
+        "description": "Complexity/Cost score (1-10 scale)."
+      },
+      {
+        "field": "s",
+        "type": "integer",
+        "description": "Scale/Scope score (1-10 scale)."
+      },
+      {
+        "field": "t",
+        "type": "integer",
+        "description": "Time/Tactical Impact score (1-10 scale)."
+      }
+    ],
+    "categories": [
+      "Protest, Persuasion, and Symbolic Action",
+      "Social and Economic Noncooperation",
+      "Administrative and Political Disobedience",
+      "Nonviolent Intervention and Disruption",
+      "Constructive Programs and Alternative Systems",
+      "Dual Power and Systemic Transformation",
+      "Art, Public Space, and Urban Hacking",
+      "Ecology and Local Infrastructure",
+      "Alternative Economies and Mutual Aid",
+      "Dialogue, Education, and Community Weaving",
+      "Everyday Defiance and Protective Action"
+    ]
+  },
+  "change-patterns": [
+    {
+      "id": 1,
+      "name": "Public Testimonies",
+      "country": "South Africa",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Truth and Reconciliation Commission: Victims of apartheid publicly sharing their traumas to force national reckoning.",
+      "c": 4,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 2,
+      "name": "Community Deputations",
+      "country": "India",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "The Salt March: Gandhi sending a formal letter/delegation to the Viceroy before the march began.",
+      "c": 5,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 3,
+      "name": "Door-to-Door Petitions",
+      "country": "UK",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Chartist Movement: Working-class activists gathering millions of signatures in the 1830s to demand voting rights.",
+      "c": 2,
+      "s": 3,
+      "t": 5
+    },
+    {
+      "id": 4,
+      "name": "Targeted Leafleting",
+      "country": "Germany",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "The White Rose: Students risking their lives to distribute anti-Nazi leaflets at the University of Munich.",
+      "c": 3,
+      "s": 2,
+      "t": 3
+    },
+    {
+      "id": 5,
+      "name": "Mock Awards",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Billionaires for Bush: Satirical street theater group giving fake \"awards\" to politicians to highlight corporate lobbying.",
+      "c": 4,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 6,
+      "name": "Neighborhood Picketing",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Delano Grape Strike: Farmworkers picketing outside local grocery stores to inform consumers of labor abuses.",
+      "c": 6,
+      "s": 3,
+      "t": 4
+    },
+    {
+      "id": 7,
+      "name": "Wearable Symbols",
+      "country": "Argentina",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Madres de Plaza de Mayo: Mothers wearing white headscarves while protesting the \"disappearance\" of their children.",
+      "c": 1,
+      "s": 1,
+      "t": 1
+    },
+    {
+      "id": 8,
+      "name": "Protest Disrobings",
+      "country": "Liberia",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Women of Liberia Mass Action: Leymah Gbowee and others threatening to strip naked to shame warlords into peace talks.",
+      "c": 8,
+      "s": 2,
+      "t": 1
+    },
+    {
+      "id": 9,
+      "name": "Destruction of Property",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Draft Card Burnings: Anti-Vietnam War activists publicly burning their conscription cards.",
+      "c": 7,
+      "s": 2,
+      "t": 1
+    },
+    {
+      "id": 10,
+      "name": "Synchronized Lighting",
+      "country": "Chile",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Cacerolazos: Flickering house lights alongside banging pots to signal neighborhood defiance of the Pinochet curfew.",
+      "c": 1,
+      "s": 2,
+      "t": 2
+    },
+    {
+      "id": 11,
+      "name": "Washable Paint",
+      "country": "Chile",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Las Tesis: Feminist collectives using paint and chalk on streets to demarcate zones before their synchronized protests.",
+      "c": 3,
+      "s": 2,
+      "t": 1
+    },
+    {
+      "id": 12,
+      "name": "Street Renaming",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Black Lives Matter Plaza: Activists (and eventually the city) renaming the street leading to the White House.",
+      "c": 6,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 13,
+      "name": "Community Vigils",
+      "country": "East Germany",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Monday Demonstrations: Peaceful, candlelit gatherings at St. Nicholas Church that grew into mass resistance.",
+      "c": 2,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 14,
+      "name": "Guerrilla Theater",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Bread and Puppet Theater: Using massive, handmade puppets in public squares to protest war and capitalism.",
+      "c": 4,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 15,
+      "name": "Disruptive Choirs",
+      "country": "Estonia",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Singing Revolution: Hundreds of thousands gathering to sing banned national hymns to defy Soviet occupation.",
+      "c": 6,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 16,
+      "name": "Neighborhood Marches",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Selma to Montgomery: A localized, regional march that visually demonstrated the geographic scale of disenfranchisement.",
+      "c": 5,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 17,
+      "name": "Community Teach-ins",
+      "country": "USA",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "University of Michigan Teach-ins: Faculty and students taking over halls to educate locals on the Vietnam War.",
+      "c": 2,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 18,
+      "name": "Banners & Street Art",
+      "country": "Canada",
+      "type": "Protest, Persuasion, and Symbolic Action",
+      "description": "Greenpeace Bridge Drops: Hanging massive environmental protest banners from highly visible local infrastructure.",
+      "c": 5,
+      "s": 5,
+      "t": 2
+    },
+    {
+      "id": 19,
+      "name": "Hyper-Local Boycotts",
+      "country": "USA",
+      "type": "Social and Economic Noncooperation",
+      "description": "Montgomery Bus Boycott: A 381-day localized refusal to ride segregated city buses, crippling the local transit economy.",
+      "c": 3,
+      "s": 4,
+      "t": 6
+    },
+    {
+      "id": 20,
+      "name": "Producers' Boycotts",
+      "country": "Ghana",
+      "type": "Social and Economic Noncooperation",
+      "description": "Cocoa Hold-Ups: Local farmers refusing to sell cocoa beans to British corporate monopolies until prices were fair.",
+      "c": 4,
+      "s": 5,
+      "t": 7
+    },
+    {
+      "id": 21,
+      "name": "Rent Strikes",
+      "country": "UK",
+      "type": "Social and Economic Noncooperation",
+      "description": "Glasgow Rent Strikes: Mary Barbour leading working-class women to refuse rent payments to exploitative landlords during WWI.",
+      "c": 8,
+      "s": 8,
+      "t": 9
+    },
+    {
+      "id": 22,
+      "name": "Social Ostracism",
+      "country": "Ireland",
+      "type": "Social and Economic Noncooperation",
+      "description": "Captain Boycott: The original namesake; local Irish tenants entirely shunning an abusive English land agent.",
+      "c": 6,
+      "s": 3,
+      "t": 5
+    },
+    {
+      "id": 23,
+      "name": "Local Student Walkouts",
+      "country": "South Africa",
+      "type": "Social and Economic Noncooperation",
+      "description": "Soweto Uprising: Thousands of Black students walking out of schools to protest the forced use of Afrikaans.",
+      "c": 6,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 24,
+      "name": "Resignation from Boards",
+      "country": "Finland",
+      "type": "Social and Economic Noncooperation",
+      "description": "Finnish Senate Resignations: Mass administrative resignations to protest the \"Russification\" policies of the Tsar.",
+      "c": 5,
+      "s": 2,
+      "t": 1
+    },
+    {
+      "id": 25,
+      "name": "Neighborhood Stay-at-Homes",
+      "country": "Cameroon",
+      "type": "Social and Economic Noncooperation",
+      "description": "\"Ghost Town\" Protests: Anglophone regions shutting down entirely, with residents refusing to leave homes on specific days.",
+      "c": 4,
+      "s": 5,
+      "t": 2
+    },
+    {
+      "id": 26,
+      "name": "Sanctuary Spaces",
+      "country": "USA/Central America",
+      "type": "Social and Economic Noncooperation",
+      "description": "Sanctuary Movement: Local churches openly sheltering Salvadoran and Guatemalan refugees from deportation.",
+      "c": 9,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 27,
+      "name": "Merchants' General Strikes",
+      "country": "India",
+      "type": "Social and Economic Noncooperation",
+      "description": "Hartal: A mass closure of all local shops and businesses, a tactic heavily utilized by Gandhi against British rule.",
+      "c": 6,
+      "s": 7,
+      "t": 3
+    },
+    {
+      "id": 28,
+      "name": "Refusal to Pay Fees",
+      "country": "UK",
+      "type": "Social and Economic Noncooperation",
+      "description": "Poll Tax Rebellion: Millions of citizens refusing to pay Margaret Thatcher's localized, flat-rate community charge.",
+      "c": 7,
+      "s": 5,
+      "t": 6
+    },
+    {
+      "id": 29,
+      "name": "Community Divestment",
+      "country": "USA/South Africa",
+      "type": "Social and Economic Noncooperation",
+      "description": "Apartheid Divestment: Local university students forcing their boards to pull funds from banks dealing with South Africa.",
+      "c": 4,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 30,
+      "name": "Boycott of Local Elections",
+      "country": "Kosovo/Serbia",
+      "type": "Administrative and Political Disobedience",
+      "description": "Kosovo Albanian Boycotts: Albanians entirely boycotting Serbian state elections in the 1990s to delegitimize the regime.",
+      "c": 3,
+      "s": 4,
+      "t": 5
+    },
+    {
+      "id": 31,
+      "name": "Refusing Local Agencies",
+      "country": "Mexico",
+      "type": "Administrative and Political Disobedience",
+      "description": "Zapatista Autonomy: Indigenous communities openly refusing to use state courts or schools, relying solely on their own.",
+      "c": 5,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 32,
+      "name": "Ignoring Appointments",
+      "country": "Norway",
+      "type": "Administrative and Political Disobedience",
+      "description": "Norwegian Teachers' Strike: Teachers refusing to implement Nazi curriculum or acknowledge fascist schoolboard appointees.",
+      "c": 6,
+      "s": 5,
+      "t": 7
+    },
+    {
+      "id": 33,
+      "name": "Malicious Compliance",
+      "country": "Italy/UK",
+      "type": "Administrative and Political Disobedience",
+      "description": "Work-to-Rule: Railway workers doing their jobs so exactly by the safety manual that trains are massively delayed.",
+      "c": 4,
+      "s": 4,
+      "t": 4
+    },
+    {
+      "id": 34,
+      "name": "Nonobedience Without Supervision",
+      "country": "Global",
+      "type": "Administrative and Political Disobedience",
+      "description": "Everyday Resistance: Enslaved people or oppressed workers deliberately working slowly the moment the overseer looked away.",
+      "c": 3,
+      "s": 2,
+      "t": 3
+    },
+    {
+      "id": 35,
+      "name": "Open Violation of Ordinances",
+      "country": "Global/USA",
+      "type": "Administrative and Political Disobedience",
+      "description": "Food Not Bombs: Activists openly defying municipal bans on feeding unhoused people in public parks.",
+      "c": 8,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 36,
+      "name": "Refusal to Disperse",
+      "country": "China",
+      "type": "Administrative and Political Disobedience",
+      "description": "Tiananmen Square: Students refusing to leave the plaza despite repeated, escalating warnings from the military.",
+      "c": 9,
+      "s": 5,
+      "t": 2
+    },
+    {
+      "id": 37,
+      "name": "Hiding Targeted Neighbors",
+      "country": "USA",
+      "type": "Administrative and Political Disobedience",
+      "description": "The Underground Railroad: A decentralized network of safe houses hiding enslaved people escaping to the North.",
+      "c": 10,
+      "s": 9,
+      "t": 8
+    },
+    {
+      "id": 38,
+      "name": "Turning in Fake Documents",
+      "country": "Belgium",
+      "type": "Administrative and Political Disobedience",
+      "description": "Belgian Forgery Rings: Resistance members flooding the Nazi bureaucracy with fake IDs to protect Jewish neighbors.",
+      "c": 6,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 39,
+      "name": "The Sit-in",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Greensboro Sit-ins: Black college students sitting at segregated Woolworth's lunch counters and refusing to move.",
+      "c": 9,
+      "s": 6,
+      "t": 3
+    },
+    {
+      "id": 40,
+      "name": "The Stand-in",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Stand-ins at Movie Theaters: Civil rights activists standing in ticket lines of segregated theaters to block business.",
+      "c": 8,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 41,
+      "name": "The Ride-in",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Freedom Riders: Activists riding interstate buses into the segregated South to challenge non-enforcement of civil rights laws.",
+      "c": 8,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 42,
+      "name": "The Read-in / Pray-in",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Tougaloo Nine: Black students entering a segregated public library in Mississippi and quietly reading books.",
+      "c": 7,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 43,
+      "name": "Physical Obstruction",
+      "country": "India",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Chipko Movement: Rural villagers physically hugging trees to prevent commercial loggers from cutting down local forests.",
+      "c": 10,
+      "s": 7,
+      "t": 4
+    },
+    {
+      "id": 44,
+      "name": "Guerrilla Land Occupation",
+      "country": "Brazil",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Landless Workers' Movement / MST: Mass, unauthorized occupations of unused agricultural land by poor families.",
+      "c": 9,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 45,
+      "name": "Overloading Facilities",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Jail-No-Bail: Civil rights activists intentionally filling local jails to capacity to overwhelm the municipality's budget.",
+      "c": 6,
+      "s": 6,
+      "t": 3
+    },
+    {
+      "id": 46,
+      "name": "Administrative Squatting",
+      "country": "USA",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Dakota Access Pipeline Protests: Water protectors occupying administrative offices of the Army Corps of Engineers.",
+      "c": 8,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 47,
+      "name": "Flash Mobs",
+      "country": "UK",
+      "type": "Nonviolent Intervention and Disruption",
+      "description": "Fossil Free Protests: Activists suddenly performing dramatic \"die-ins\" in the halls of the British Museum to protest oil sponsorships.",
+      "c": 4,
+      "s": 5,
+      "t": 2
+    },
+    {
+      "id": 48,
+      "name": "Parallel Neighborhood Watches",
+      "country": "USA",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Community Alert Patrol: Preceding the Black Panthers, locals in Watts organized unarmed patrols to monitor police activity and ensure neighborhood safety.",
+      "c": 5,
+      "s": 7,
+      "t": 9
+    },
+    {
+      "id": 49,
+      "name": "Local Time Banks",
+      "country": "Japan",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Fureai Kippu: A decentralized system where people earn \"time credits\" by caring for the elderly, which they can save for their own future care or transfer to relatives.",
+      "c": 2,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 50,
+      "name": "Mutual Aid Pantries",
+      "country": "Global/USA",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "COVID-19 Community Fridges: Decentralized, citizen-plugged-in refrigerators on sidewalks that provided 24/7 free food when government aid stalled.",
+      "c": 2,
+      "s": 4,
+      "t": 7
+    },
+    {
+      "id": 51,
+      "name": "Community Assemblies",
+      "country": "Argentina",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Asambleas Barriales: Following the 2001 economic collapse, neighbors formed direct-democracy street assemblies to manage local resources and mutual aid.",
+      "c": 3,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 52,
+      "name": "Tactical Urbanism",
+      "country": "Colombia",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Ciclov\u00eda: Originally a grassroots takeover of Bogot\u00e1's streets by cyclists, forcing the city to officially ban cars on major roads every Sunday.",
+      "c": 6,
+      "s": 5,
+      "t": 4
+    },
+    {
+      "id": 53,
+      "name": "Local Skill-Shares",
+      "country": "Greece",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Greek Solidarity Clinics: Following the 2008 financial crash, unemployed doctors and citizens pooled medical skills and supplies to treat uninsured locals for free.",
+      "c": 1,
+      "s": 5,
+      "t": 4
+    },
+    {
+      "id": 54,
+      "name": "Alternative Media",
+      "country": "Soviet Union",
+      "type": "Constructive Programs and Alternative Systems",
+      "description": "Samizdat: The decentralized, clandestine copying and distribution of banned literature and news by everyday citizens to bypass state censorship.",
+      "c": 3,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 55,
+      "name": "Public Hunger Strikes",
+      "country": "USA",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Farmworker Fasts: Cesar Chavez famously fasting for 25 days to recommit the UFW to nonviolence and morally compel growers to negotiate.",
+      "c": 9,
+      "s": 8,
+      "t": 8
+    },
+    {
+      "id": 56,
+      "name": "Autonomous Encampments",
+      "country": "France",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "ZAD de Notre-Dame-des-Landes: A decade-long \"Zone to Defend\" where activists occupied farmland to stop an airport, building a functional, self-governing village.",
+      "c": 10,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 57,
+      "name": "Targeted Blockades",
+      "country": "Canada",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Fairy Creek Blockade: Indigenous land defenders and allies creating complex road blockades and lock-ons to halt old-growth logging on Vancouver Island.",
+      "c": 10,
+      "s": 7,
+      "t": 5
+    },
+    {
+      "id": 58,
+      "name": "Independent Audits",
+      "country": "India",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "MKSS Social Audits: Peasant workers holding public hearings to read aloud official wage records, exposing mass corruption and demanding stolen funds back.",
+      "c": 6,
+      "s": 8,
+      "t": 7
+    },
+    {
+      "id": 59,
+      "name": "Refusal of Enforcement",
+      "country": "Israel",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Refuseniks: Soldiers and reservists publicly refusing to serve in the occupied territories, citing systemic human rights abuses.",
+      "c": 8,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 60,
+      "name": "Alternative Economies",
+      "country": "Venezuela",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Cecosesola: A massive network of working-class cooperatives that bypasses state and corporate systems to provide affordable food and healthcare to hundreds of thousands.",
+      "c": 3,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 61,
+      "name": "Occupation of Power",
+      "country": "Taiwan",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Sunflower Student Movement: Students nonviolently occupying the national legislature for 23 days to halt a secretive trade pact with China.",
+      "c": 9,
+      "s": 7,
+      "t": 6
+    },
+    {
+      "id": 62,
+      "name": "Restorative Justice",
+      "country": "USA",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Navajo Peacemaking Courts: Indigenous revitalization of community-led dispute resolution focused on healing and restitution rather than state-sanctioned punishment.",
+      "c": 4,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 63,
+      "name": "Symbolic Reparations",
+      "country": "USA",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Shuumi Land Tax: Non-Indigenous residents in the Bay Area voluntarily paying a \"tax\" to the Sogorea Te' Land Trust to support the return of Indigenous land.",
+      "c": 6,
+      "s": 7,
+      "t": 9
+    },
+    {
+      "id": 64,
+      "name": "Resistance Training",
+      "country": "Serbia",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Otpor!: A youth movement that systematically trained thousands of citizens in nonviolent resistance tactics, ultimately toppling Slobodan Milo\u0161evi\u0107.",
+      "c": 3,
+      "s": 8,
+      "t": 6
+    },
+    {
+      "id": 65,
+      "name": "Networked Alliances",
+      "country": "Poland",
+      "type": "Dual Power and Systemic Transformation",
+      "description": "Solidarity: A decentralized trade union that linked localized factory strikes into a massive, parallel societal network that the Soviet bloc couldn't dismantle.",
+      "c": 4,
+      "s": 8,
+      "t": 9
+    },
+    {
+      "id": 66,
+      "name": "Yarn Bombing",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Knitta Please: Originating in Texas, knitters covering cold urban infrastructure (poles, buses) to reclaim sterile, corporatized public space for community art.",
+      "c": 2,
+      "s": 4,
+      "t": 4
+    },
+    {
+      "id": 67,
+      "name": "Pop-up Poetry",
+      "country": "Egypt",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Tahrir Square Spoken Word: Poets performing impromptu verses amidst the 2011 revolution to articulate the crowd's demands and maintain morale.",
+      "c": 3,
+      "s": 5,
+      "t": 2
+    },
+    {
+      "id": 68,
+      "name": "Shadow Protests",
+      "country": "Argentina",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "El Siluetazo: Protesters tracing life-sized human outlines on paper and plastering them on walls to represent the thousands \"disappeared\" by the junta.",
+      "c": 6,
+      "s": 3,
+      "t": 3
+    },
+    {
+      "id": 69,
+      "name": "Noise Parades (Cacerolazo)",
+      "country": "Iceland",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Pots and Pans Protests: Following the 2008 financial crash, citizens banged cookware outside parliament continuously until the government resigned.",
+      "c": 4,
+      "s": 2,
+      "t": 2
+    },
+    {
+      "id": 70,
+      "name": "Culture Jams",
+      "country": "Canada",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Adbusters: Activists altering corporate billboards and advertisements to reveal the environmental or social damage caused by the brands.",
+      "c": 6,
+      "s": 5,
+      "t": 4
+    },
+    {
+      "id": 71,
+      "name": "Guerrilla Gardening",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Green Guerrillas: Residents in 1970s NYC throwing seed bombs over fences and taking over abandoned, trash-filled lots to create community gardens.",
+      "c": 5,
+      "s": 4,
+      "t": 6
+    },
+    {
+      "id": 72,
+      "name": "Seed Bombing",
+      "country": "Japan",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Masanobu Fukuoka's Methods: The pioneer of natural farming used clay seed balls to re-vegetate desertified land without tilling or heavy machinery.",
+      "c": 2,
+      "s": 3,
+      "t": 3
+    },
+    {
+      "id": 73,
+      "name": "Pavement Galleries",
+      "country": "Italy",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Madonnari Tradition: The historical practice of street chalk art, frequently adapted by modern activists to bypass exclusive galleries and elite messaging.",
+      "c": 3,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 74,
+      "name": "Craftivism",
+      "country": "Chile",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Arpilleras: Women sewing scraps of clothing into vibrant, patchwork tapestries that secretly depicted the human rights abuses of the Pinochet regime.",
+      "c": 3,
+      "s": 6,
+      "t": 7
+    },
+    {
+      "id": 75,
+      "name": "Projection Bombing",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "The Illuminator: Activists projecting the \"99%\" Bat-Signal onto the Verizon building during Occupy Wall Street, bypassing physical access restrictions.",
+      "c": 5,
+      "s": 7,
+      "t": 4
+    },
+    {
+      "id": 76,
+      "name": "Protest Origami",
+      "country": "Japan",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Sadako's Cranes: A young Hiroshima victim folding 1,000 paper cranes, cementing the origami crane as a global, grassroots symbol of nuclear disarmament.",
+      "c": 2,
+      "s": 3,
+      "t": 5
+    },
+    {
+      "id": 77,
+      "name": "Traveling Zines",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Riot Grrrl Movement: Hand-photocopied, decentralized mini-magazines passed hand-to-hand to build a feminist punk counterculture bypassing mainstream media.",
+      "c": 2,
+      "s": 4,
+      "t": 5
+    },
+    {
+      "id": 78,
+      "name": "Reclaimed Monuments",
+      "country": "UK",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Edward Colston Statue: Protesters toppling a slaver's statue and artists secretly replacing it overnight with a statue of a Black Lives Matter protester.",
+      "c": 8,
+      "s": 6,
+      "t": 3
+    },
+    {
+      "id": 79,
+      "name": "Local Subvertising",
+      "country": "France",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Brandalism: Activists using fake utility keys to unlock bus stop ad cases across Paris during COP21, replacing 600 corporate ads with climate art.",
+      "c": 7,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 80,
+      "name": "Mourning Ribbons",
+      "country": "Global",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "White Ribbons for Peace: A decentralized, low-barrier way for neighborhoods to display solidarity against local or state violence.",
+      "c": 1,
+      "s": 1,
+      "t": 1
+    },
+    {
+      "id": 81,
+      "name": "Pop-up Bike Lanes",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "SF Transformation Action Group: Anonymous locals gluing traffic cones to the street overnight to force the city to protect cyclists from traffic.",
+      "c": 6,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 82,
+      "name": "Crosswalk Painting",
+      "country": "Global",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Crosswalk Collectives: Frustrated pedestrians painting high-visibility zebra crossings at dangerous intersections where the city refuses to act.",
+      "c": 6,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 83,
+      "name": "Parklet Creation",
+      "country": "ing",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "PARK Day (USA): Feeding a parking meter and unrolling turf, a bench, and a potted plant to prove the space is better used for people than idle cars.",
+      "c": 4,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 84,
+      "name": "Unofficial Wayfinding",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Walk [Your City]: A resident printing and hanging signs saying \"It's a 5-minute walk to the library,\" increasing local foot traffic and community connection.",
+      "c": 3,
+      "s": 3,
+      "t": 3
+    },
+    {
+      "id": 85,
+      "name": "De-paving Parties",
+      "country": "USA",
+      "type": "Art, Public Space, and Urban Hacking",
+      "description": "Depave Portland: Community groups bringing sledgehammers to unneeded parking lots to break up asphalt and restore the earth's natural water absorption.",
+      "c": 6,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 86,
+      "name": "Neighborhood Composting",
+      "country": "Cuba",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Havana's Organop\u00f3nicos: Following the Soviet collapse, neighborhoods collectively turned vacant lots into organic farms and compost hubs to survive the food crisis.",
+      "c": 2,
+      "s": 5,
+      "t": 7
+    },
+    {
+      "id": 87,
+      "name": "Tool Libraries",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Berkeley Tool Lending Library: Starting out of a garage, a community pooled resources so neighbors didn't have to individually buy expensive tools.",
+      "c": 2,
+      "s": 5,
+      "t": 8
+    },
+    {
+      "id": 88,
+      "name": "Tree Sitting",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Julia Butterfly Hill: Living in a 1,000-year-old redwood tree named Luna for 738 days to successfully prevent Pacific Lumber from clear-cutting the area.",
+      "c": 9,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 89,
+      "name": "Water Testing",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Flint Citizen Science: Ignored by local government, residents partnered with independent scientists to test and prove the toxicity of their own municipal water.",
+      "c": 5,
+      "s": 7,
+      "t": 6
+    },
+    {
+      "id": 90,
+      "name": "Human Chain for Safe Passage",
+      "country": "Netherlands",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Stop de Kindermoord: In the 1970s, parents blockaded streets and formed human chains to protect kids from cars, leading to modern Dutch cycling infrastructure.",
+      "c": 7,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 91,
+      "name": "Open-Air Living Rooms",
+      "country": "UK",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Reclaim the Streets: Activists hijacking major roads, blocking cars with tripods, and throwing massive, impromptu street parties with couches and sound systems.",
+      "c": 7,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 92,
+      "name": "Pothole Planting",
+      "country": "UK",
+      "type": "Ecology and Local Infrastructure",
+      "description": "The Pothole Gardener: Planting miniature gardens inside neglected municipal potholes to draw media attention to crumbling local infrastructure.",
+      "c": 3,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 93,
+      "name": "Energy Co-ops",
+      "country": "Germany",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Sch\u00f6nau Power Grid: After Chernobyl, local parents raised funds, formed a co-op, and successfully bought their town's energy grid to force a switch to renewables.",
+      "c": 4,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 94,
+      "name": "\"Take a Seat\" Campaigns",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "William Whyte's Studies: Activists putting out unauthorized folding chairs in sterile corporate plazas to reclaim them as public gathering spaces.",
+      "c": 3,
+      "s": 2,
+      "t": 2
+    },
+    {
+      "id": 95,
+      "name": "Guerrilla Lighting",
+      "country": "Global",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Nightwalks: Women's groups installing temporary, battery-powered lights in dark alleys to highlight the city's failure to provide safe infrastructure.",
+      "c": 4,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 96,
+      "name": "Reclaiming Vacant Lots",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "People's Park: Thousands of Berkeley residents turning a muddy, university-owned lot into a community park, defending it heavily against police reclamation.",
+      "c": 9,
+      "s": 6,
+      "t": 7
+    },
+    {
+      "id": 97,
+      "name": "Rainwater Catchment",
+      "country": "India",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Rajendra Singh's Johads: A grassroots effort organizing villages to build traditional earthen dams, bringing rivers back to life and bypassing state water mismanagement.",
+      "c": 3,
+      "s": 7,
+      "t": 9
+    },
+    {
+      "id": 98,
+      "name": "Foraging Maps",
+      "country": "Global",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Falling Fruit: A massive, open-source collaborative map created by locals pointing out edible fruits and nuts growing in public urban spaces.",
+      "c": 2,
+      "s": 4,
+      "t": 5
+    },
+    {
+      "id": 99,
+      "name": "Cooling Centers",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Chicago Heat Wave Mutual Aid: When the city failed, localized networks of neighbors checking on the elderly and opening basements saved hundreds of lives.",
+      "c": 2,
+      "s": 3,
+      "t": 3
+    },
+    {
+      "id": 100,
+      "name": "Walking School Buses",
+      "country": "Australia",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Safe Routes to School: Parents organizing walking convoys to get kids to school safely, directly reducing car dependency and protesting dangerous road design.",
+      "c": 3,
+      "s": 4,
+      "t": 6
+    },
+    {
+      "id": 101,
+      "name": "Clean-Air Monitoring",
+      "country": "Taiwan",
+      "type": "Ecology and Local Infrastructure",
+      "description": "AirBox Project: Citizens deploying cheap, open-source air sensors to bypass state data and prove local industrial pollution levels.",
+      "c": 3,
+      "s": 7,
+      "t": 6
+    },
+    {
+      "id": 102,
+      "name": "Gleaning Networks",
+      "country": "France",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Les Glaneurs: A historical, decentralized practice (protected by old laws) where the poor harvest leftover crops from commercial fields, reborn today as mutual aid.",
+      "c": 4,
+      "s": 4,
+      "t": 5
+    },
+    {
+      "id": 103,
+      "name": "Crop Swaps",
+      "country": "USA",
+      "type": "Ecology and Local Infrastructure",
+      "description": "LA Crop Swap: Neighbors exchanging surplus backyard lemons, avocados, and herbs to reduce dependency on corporate grocery chains.",
+      "c": 1,
+      "s": 3,
+      "t": 4
+    },
+    {
+      "id": 104,
+      "name": "Anti-Hostile Architecture",
+      "country": "UK",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Space, Not Spikes: Activists placing mattresses and mini-libraries over metal spikes installed by luxury apartments to deter unhoused people from sleeping.",
+      "c": 7,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 105,
+      "name": "Flash Mob Cleaning",
+      "country": "Global",
+      "type": "Ecology and Local Infrastructure",
+      "description": "Trashero / #TrashTag: Mass crowds coordinating online to suddenly converge on heavily polluted local beaches or parks, clearing them in hours.",
+      "c": 2,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 106,
+      "name": "Free Stores",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "The Diggers: An anarchist improv group in 1960s San Francisco running entirely free stores to prototype a post-capitalist society.",
+      "c": 4,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 107,
+      "name": "Really Really Free Markets",
+      "country": "Global",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Anti-Globalization Movement: Hosting festival-like days in public parks where goods, food, and haircuts are shared with no money or barter allowed.",
+      "c": 3,
+      "s": 5,
+      "t": 5
+    },
+    {
+      "id": 108,
+      "name": "Seed Libraries",
+      "country": "India",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Navdanya: Vandana Shiva\u2019s network creating community seed banks to protect local biodiversity from corporate patents (like Monsanto).",
+      "c": 3,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 109,
+      "name": "Neighborhood Carpools",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Montgomery Dispatch System: To sustain the bus boycott, Black churches organized a highly complex, free alternative transit system with dispatchers and routing.",
+      "c": 6,
+      "s": 8,
+      "t": 9
+    },
+    {
+      "id": 110,
+      "name": "Local Currency / Scrip",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Ithaca Hours: A widely used local currency in upstate New York that kept wealth circulating strictly within local businesses and local workers.",
+      "c": 3,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 111,
+      "name": "Pay-What-You-Can Cafes",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "SAME Caf\u00e9: Restaurants operating without set prices, where patrons pay by donating money or washing dishes for an hour.",
+      "c": 2,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 112,
+      "name": "Local Debt Jubilees",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Rolling Jubilee: Activists crowdfunding to buy local medical or student debt for pennies on the dollar on the secondary market, and then legally canceling it.",
+      "c": 4,
+      "s": 7,
+      "t": 7
+    },
+    {
+      "id": 113,
+      "name": "Skill Auctions (LETS)",
+      "country": "Canada/UK",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Local Exchange Trading Systems: A mutual credit system where a plumber fixes a leak in exchange for credits they use to get a haircut locally.",
+      "c": 2,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 114,
+      "name": "Neighborhood Bulk Buying",
+      "country": "Japan",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Seikatsu Club: Housewives pooling money to buy wholesale, direct from farmers to bypass high retail prices and demand pesticide-free food.",
+      "c": 2,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 115,
+      "name": "Worker Co-op Incubation",
+      "country": "Spain",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Mondragon Corporation: Starting with a single small parish in the Basque region, locals built the world's largest federation of worker-owned co-ops.",
+      "c": 3,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 116,
+      "name": "Community Land Trusts",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "New Communities Inc.: Born from the Civil Rights movement, Black farmers collectively buying land to remove it from speculative markets permanently.",
+      "c": 5,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 117,
+      "name": "Repair Cafes",
+      "country": "Netherlands",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Amsterdam Repair Caf\u00e9: Local tinkerers gathering to fix neighbors' broken toasters and clothes for free to fight planned obsolescence.",
+      "c": 1,
+      "s": 7,
+      "t": 4
+    },
+    {
+      "id": 118,
+      "name": "Childcare Co-ops",
+      "country": "UK",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Socialist Creches: Women\u2019s liberation groups in the 1970s organizing shared, rotating childcare to free each other up for work or activism.",
+      "c": 2,
+      "s": 6,
+      "t": 7
+    },
+    {
+      "id": 119,
+      "name": "Rent Parties",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Harlem Renaissance: Black tenants hosting jazz and dance parties with a small entry fee to cover extortionate, discriminatory rents in 1920s New York.",
+      "c": 3,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 120,
+      "name": "Free Laundromat Days",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Laundry Love: Mutual aid groups buying out a local laundromat\u2019s machines for an evening so low-income neighbors can wash clothes for free.",
+      "c": 2,
+      "s": 4,
+      "t": 4
+    },
+    {
+      "id": 121,
+      "name": "Solidarity Deliveries",
+      "country": "Global",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "COVID-19 Mutual Aid: Neighborhood WhatsApp groups rapidly self-organizing to deliver groceries and prescriptions to immunocompromised locals.",
+      "c": 2,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 122,
+      "name": "Street Pantries",
+      "country": "USA",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Little Free Pantries: Evolving from \"Little Free Libraries,\" these are small, unmonitored wooden boxes on posts providing 24/7 non-perishable food.",
+      "c": 2,
+      "s": 3,
+      "t": 4
+    },
+    {
+      "id": 123,
+      "name": "Community Fridges",
+      "country": "Germany",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Foodsharing.de \"Fairteiler\": Installing public refrigerators where individuals and bakeries drop off surplus food to prevent waste and feed neighbors.",
+      "c": 3,
+      "s": 5,
+      "t": 7
+    },
+    {
+      "id": 124,
+      "name": "\"Pay It Forward\" Chains",
+      "country": "Italy",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Caff\u00e8 Sospeso: The Neapolitan working-class tradition of paying for two coffees\u2014one for yourself, and a \"suspended\" one for the next person who can't afford it.",
+      "c": 1,
+      "s": 1,
+      "t": 1
+    },
+    {
+      "id": 125,
+      "name": "Squatter Support Networks",
+      "country": "Germany",
+      "type": "Alternative Economies and Mutual Aid",
+      "description": "Hafenstra\u00dfe: Neighborhoods forming deep logistical networks to deliver food, barricade materials, and legal aid to radical housing squats in Hamburg.",
+      "c": 8,
+      "s": 7,
+      "t": 9
+    },
+    {
+      "id": 126,
+      "name": "Pavement Chalk Debates",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Occupy Wall Street: Activists writing prompts on the pavement and leaving chalk, sparking spontaneous, hours-long political debates among strangers.",
+      "c": 3,
+      "s": 3,
+      "t": 2
+    },
+    {
+      "id": 127,
+      "name": "\"Ask Me Anything\" Booths",
+      "country": "Denmark",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "The Human Library: Creating pop-up events where \"books\" are actual marginalized people (e.g., a refugee) whom locals can \"borrow\" for an honest 30-minute chat.",
+      "c": 3,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 128,
+      "name": "Community Archives",
+      "country": "Palestine/Lebanon",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Palestine Oral History Project: Grassroots archiving of elder memories to preserve village histories deliberately erased by the state.",
+      "c": 4,
+      "s": 7,
+      "t": 9
+    },
+    {
+      "id": 129,
+      "name": "Invisible Theater",
+      "country": "Brazil",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Theater of the Oppressed: Augusto Boal's method of actors staging a fake argument about inequality on a real subway to pull actual commuters into the debate.",
+      "c": 5,
+      "s": 8,
+      "t": 4
+    },
+    {
+      "id": 130,
+      "name": "Banned Book Read-Alouds",
+      "country": "Iran",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Reading Lolita in Tehran: Secret, localized book clubs of women gathering to read western literature strictly banned by the state.",
+      "c": 8,
+      "s": 4,
+      "t": 6
+    },
+    {
+      "id": 131,
+      "name": "Neighborhood Office Hours",
+      "country": "Syria",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Rojava Communes: Local, rotating delegates sitting in neighborhood centers weekly, accessible to anyone to resolve community disputes directly.",
+      "c": 2,
+      "s": 5,
+      "t": 8
+    },
+    {
+      "id": 132,
+      "name": "Citizen Audits",
+      "country": "Brazil",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Participatory Budgeting: Starting in Porto Alegre, citizens organizing to painstakingly track municipal funds and democratically decide how the city budget is spent.",
+      "c": 5,
+      "s": 8,
+      "t": 9
+    },
+    {
+      "id": 133,
+      "name": "Open Mic Grievances",
+      "country": "UK",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Speakers' Corner: The historic area in London's Hyde Park where anyone can set up a soapbox and speak their mind on local or global issues without permit.",
+      "c": 3,
+      "s": 4,
+      "t": 2
+    },
+    {
+      "id": 134,
+      "name": "Letter-Writing Parties",
+      "country": "Global",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Write for Rights: Combining the administrative pressure of mass mail to officials with the social bonding of a neighborhood potluck.",
+      "c": 2,
+      "s": 3,
+      "t": 3
+    },
+    {
+      "id": 135,
+      "name": "Language Swaps",
+      "country": "Catalonia",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Voluntariat per la Llengua: Pairing native Catalan speakers with newcomers in cafes to informally teach the language and integrate them into local culture.",
+      "c": 1,
+      "s": 3,
+      "t": 5
+    },
+    {
+      "id": 136,
+      "name": "Walk-and-Talks",
+      "country": "Global",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Jane\u2019s Walks: Citizen-led walking tours honoring urbanist Jane Jacobs, focused on observing local gentrification, architecture, and community needs.",
+      "c": 2,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 137,
+      "name": "Empty Chair at the Table",
+      "country": "Global",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Climate Change Negotiations: Activists forcing a physical, empty chair to remain at a panel to represent marginalized voices, future generations, or political prisoners.",
+      "c": 4,
+      "s": 3,
+      "t": 1
+    },
+    {
+      "id": 138,
+      "name": "Whistleblower Networks",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Pentagon Papers Defense: Local networks passing the hat and providing social cover for Daniel Ellsberg and others leaking classified corruption.",
+      "c": 7,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 139,
+      "name": "Bumper Sticker Campaigns",
+      "country": "South Africa",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "End Conscription Campaign: The massive, localized distribution of anti-apartheid draft-dodging stickers that visibly overwhelmed state censors.",
+      "c": 4,
+      "s": 3,
+      "t": 4
+    },
+    {
+      "id": 140,
+      "name": "\"Adopt-a-Politician\"",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Indivisible: Small local groups assigning members to meticulously track and publicize every single local town hall, vote, and donor of a specific representative.",
+      "c": 5,
+      "s": 5,
+      "t": 8
+    },
+    {
+      "id": 141,
+      "name": "Community Fact-Checking",
+      "country": "Taiwan",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "g0v: Civic hackers rapidly building open-source tools to fact-check government claims and local media misinformation in real-time.",
+      "c": 4,
+      "s": 9,
+      "t": 7
+    },
+    {
+      "id": 142,
+      "name": "Reverse Town Halls",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "March for Our Lives: High school students hosting forums where they set the agenda, and politicians were invited only if they agreed to sit and listen.",
+      "c": 6,
+      "s": 7,
+      "t": 5
+    },
+    {
+      "id": 143,
+      "name": "Intergenerational Dialogues",
+      "country": "Rwanda",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Gacaca Courts: Post-genocide community gatherings led by elders, prioritizing localized truth-telling and restorative dialogue over formal state tribunals.",
+      "c": 3,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 144,
+      "name": "Community Syllabi",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "#StandingRockSyllabus: Activists compiling and distributing reading lists of Indigenous history so supporters could educate themselves on the deep context of the pipeline fight.",
+      "c": 2,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 145,
+      "name": "Potluck Assemblies",
+      "country": "USA",
+      "type": "Dialogue, Education, and Community Weaving",
+      "description": "Free Breakfast for Children: The Black Panther Party using the provisioning of food as a central hub to politically educate and organize the neighborhood.",
+      "c": 5,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 146,
+      "name": "Disruption of Evictions",
+      "country": "Spain",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Plataforma de Afectados por la Hipoteca / PAH: Neighbors forming impenetrable human blockades at the doors of foreclosed homes to stop bank evictions.",
+      "c": 9,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 147,
+      "name": "Cop-Watching Patrols",
+      "country": "USA",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Berkeley Copwatch: Unarmed citizens legally carrying cameras, systematically following police patrols to deter brutality and document arrests.",
+      "c": 8,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 148,
+      "name": "Sanctuary Businesses",
+      "country": "UK",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Safe Havens: Local storefronts putting a specific decal in their window, training staff to provide emergency refuge for individuals fleeing street harassment.",
+      "c": 4,
+      "s": 4,
+      "t": 6
+    },
+    {
+      "id": 149,
+      "name": "Noise Blockades",
+      "country": "Germany",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Anti-Fascist Sound Systems: Activists setting up massive concert speakers to entirely drown out Neo-Nazi rallies in town squares with techno or classical music.",
+      "c": 7,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 150,
+      "name": "Banners on Refuse",
+      "country": "Italy",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Naples Garbage Crisis: Citizens protesting mafia-linked waste mismanagement by turning uncollected trash heaps into barricades and protest art canvases.",
+      "c": 6,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 151,
+      "name": "Infrastructure Watch",
+      "country": "Kenya",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Map Kibera: Residents of a massive slum taking GPS devices to map their own neighborhood, forcing the government to acknowledge the need for water and clinics.",
+      "c": 4,
+      "s": 7,
+      "t": 8
+    },
+    {
+      "id": 152,
+      "name": "Silent Processions",
+      "country": "USA",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Silent Parade of 1917: 10,000 Black Americans marching down 5th Avenue in total silence to protest lynchings and racial violence, an incredibly eerie and powerful tactic.",
+      "c": 5,
+      "s": 5,
+      "t": 4
+    },
+    {
+      "id": 153,
+      "name": "Community Mesh Networks",
+      "country": "Spain",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Guifi.net: A bottom-up, citizen-driven open telecommunications network serving tens of thousands, bypassing corporate internet monopolies entirely.",
+      "c": 4,
+      "s": 9,
+      "t": 10
+    },
+    {
+      "id": 154,
+      "name": "Local Pirate Radio",
+      "country": "France",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Radio Libre: In the 1970s, activists set up illegal, low-power FM transmitters in apartments to broadcast anti-capitalist news and evade state monopolies.",
+      "c": 6,
+      "s": 8,
+      "t": 7
+    },
+    {
+      "id": 155,
+      "name": "Neighborhood Podcasts",
+      "country": "Brazil",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Voz das Comunidades: Favelas producing their own grassroots journalism via podcasts and apps to counter the demonizing narratives of mainstream, state-aligned media.",
+      "c": 4,
+      "s": 6,
+      "t": 8
+    },
+    {
+      "id": 156,
+      "name": "Distributed Wi-Fi",
+      "country": "Cuba",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "SNET / Street Network: Gamers and locals stringing ethernet cables across rooftops to build a massive, illegal intranet to share media and chat, bypassing the state firewall.",
+      "c": 7,
+      "s": 8,
+      "t": 10
+    },
+    {
+      "id": 157,
+      "name": "QR Code Bombing",
+      "country": "Hong Kong",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Anti-Extradition Protests: Protesters plastering the city with QR codes linking to secure communications, mutual aid funds, and boycott lists.",
+      "c": 5,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 158,
+      "name": "Geo-Fenced Blasts",
+      "country": "Hong Kong/China",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "AirDrop Protests: Activists using Apple AirDrop on subways to anonymously mass-send uncensored news flyers to the phones of everyday commuters.",
+      "c": 5,
+      "s": 7,
+      "t": 2
+    },
+    {
+      "id": 159,
+      "name": "Counter-Mapping",
+      "country": "Indonesia",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Indigenous Land Mapping: Local tribes using drones and GPS to map their ancestral forests, using the data to legally block corporate palm oil concessions.",
+      "c": 6,
+      "s": 8,
+      "t": 9
+    },
+    {
+      "id": 160,
+      "name": "Sousveillance",
+      "country": "USA",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Darnella Frazier: The organized or spontaneous act of citizens recording state authority from the \"bottom up,\" as seen in the recording of George Floyd's murder.",
+      "c": 8,
+      "s": 4,
+      "t": 1
+    },
+    {
+      "id": 161,
+      "name": "Unofficial \"Blue Plaques\"",
+      "country": "UK",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Guerilla Commemoration: Activists putting up official-looking historical markers on buildings to honor overlooked working-class rebels or tragic events.",
+      "c": 5,
+      "s": 5,
+      "t": 3
+    },
+    {
+      "id": 162,
+      "name": "Coordinated Sick-Outs",
+      "country": "USA",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "West Virginia Teachers: \"Blue Flu,\" where massive numbers of local public workers all call in sick on the same day to paralyze a system without declaring an illegal strike.",
+      "c": 7,
+      "s": 6,
+      "t": 4
+    },
+    {
+      "id": 163,
+      "name": "Jury Nullification",
+      "country": "USA",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "FIJA Activists: Handing out flyers outside courthouses to educate potential jurors on their absolute right to return a \"Not Guilty\" verdict if they believe a law is unjust.",
+      "c": 6,
+      "s": 6,
+      "t": 5
+    },
+    {
+      "id": 164,
+      "name": "Over-Compliance",
+      "country": "Palestine",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Checkpoint Gridlock: Workers moving through restrictive security checkpoints following every minor rule so thoroughly and slowly that the system backs up for miles.",
+      "c": 7,
+      "s": 4,
+      "t": 3
+    },
+    {
+      "id": 165,
+      "name": "Protective Accompaniment",
+      "country": "Colombia",
+      "type": "Everyday Defiance and Protective Action",
+      "description": "Peace Brigades International: High-visibility volunteers physically walking alongside threatened union leaders or activists as living, international bodyguards.",
+      "c": 10,
+      "s": 8,
+      "t": 9
+    }
+  ]
+}
