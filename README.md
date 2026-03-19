@@ -7,6 +7,7 @@ The Changemappers open data repository provides datasets, frameworks, and struct
 ## License
 
 This repository is licensed under Creative Commons **CC-BY-SA 4.0**.
+
 https://creativecommons.org/licenses/by-sa/4.0/deed.en
 
 You are free to:
