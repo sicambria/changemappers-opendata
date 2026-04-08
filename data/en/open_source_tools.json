@@ -1,0 +1,434 @@
+[
+  {
+    "name": "Logseq",
+    "category": "Knowledge_Research",
+    "url": "https://logseq.com",
+    "purpose": "Note-taking & Knowledge Management",
+    "platform": "Cross-platform (Windows, macOS, Linux, iOS, Android)",
+    "description": "A privacy-first, open-source knowledge base that works on top of local plain-text Markdown and Org-mode files.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Joplin",
+    "category": "Knowledge_Research",
+    "url": "https://joplinapp.org",
+    "purpose": "Note-taking",
+    "platform": "Cross-platform",
+    "description": "An open-source note-taking and to-do application, which can handle a large number of notes organized into notebooks.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Zettlr",
+    "category": "Knowledge_Research",
+    "url": "https://www.zettlr.com",
+    "purpose": "Markdown Editing & Zettelkasten",
+    "platform": "Cross-platform",
+    "description": "A Markdown editor aimed at academics and researchers, featuring Zettelkasten support and citation management.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "QOwnNotes",
+    "category": "Knowledge_Research",
+    "url": "https://www.qownnotes.org",
+    "purpose": "Plain-text File Notepad",
+    "platform": "Cross-platform",
+    "description": "A plain-text file notepad and todo-list manager with Markdown support and Nextcloud integration.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Standard Notes",
+    "category": "Knowledge_Research",
+    "url": "https://standardnotes.com",
+    "purpose": "Encrypted Note-taking",
+    "platform": "Cross-platform",
+    "description": "A simple and private notes app that features end-to-end encryption.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Anytype",
+    "category": "Knowledge_Research",
+    "url": "https://anytype.io",
+    "purpose": "Local-first Knowledge Base",
+    "platform": "Cross-platform",
+    "description": "A local-first, peer-to-peer personal knowledge base and productivity app built on a graph structure.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Gnote",
+    "category": "Knowledge_Research",
+    "url": "https://wiki.gnome.org/Apps/Gnote",
+    "purpose": "Note-taking",
+    "platform": "Linux",
+    "description": "A desktop note-taking application for Linux, ported from Tomboy to C++.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Tomboy",
+    "category": "Knowledge_Research",
+    "url": "https://github.com/tomboy-notes/tomboy",
+    "purpose": "Note-taking",
+    "platform": "Cross-platform (Legacy)",
+    "description": "A desktop note-taking app using a wiki-style linking system.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "CherryTree",
+    "category": "Knowledge_Research",
+    "url": "https://www.giuspen.net/cherrytree",
+    "purpose": "Hierarchical Note-taking",
+    "platform": "Cross-platform",
+    "description": "A hierarchical note-taking application, featuring rich text formatting and syntax highlighting.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Trilium Notes",
+    "category": "Knowledge_Research",
+    "url": "https://github.com/zadam/trilium",
+    "purpose": "Hierarchical Note-taking",
+    "platform": "Cross-platform",
+    "description": "A hierarchical note-taking application with a focus on building large personal knowledge bases.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "Zim Wiki",
+    "category": "Knowledge_Research",
+    "url": "https://zim-wiki.org",
+    "purpose": "Desktop Wiki",
+    "platform": "Cross-platform",
+    "description": "A graphical text editor used to maintain a collection of locally stored wiki pages.",
+    "ease_of_use": "Easy to Moderate"
+  },
+  {
+    "name": "Obsidian",
+    "category": "Knowledge_Research",
+    "url": "https://obsidian.md",
+    "purpose": "Knowledge Base",
+    "platform": "Cross-platform",
+    "description": "A powerful knowledge base that works on top of a local folder of plain text Markdown files. (Note: Free but proprietary, with open ecosystem).",
+    "ease_of_use": "Moderate to Advanced"
+  },
+  {
+    "name": "Org-mode",
+    "category": "Knowledge_Research",
+    "url": "https://orgmode.org",
+    "purpose": "Task Management & Note-taking",
+    "platform": "Cross-platform (via Emacs)",
+    "description": "A comprehensive document formatting, organizing, and maintaining system integrated within the Emacs editor.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "Foam",
+    "category": "Knowledge_Research",
+    "url": "https://foambubble.github.io/foam",
+    "purpose": "Knowledge Management",
+    "platform": "Cross-platform (via VS Code)",
+    "description": "A personal knowledge management and sharing system inspired by Roam Research, built as an extension for VS Code.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Markor",
+    "category": "Knowledge_Research",
+    "url": "https://github.com/gsantner/markor",
+    "purpose": "Text Editor",
+    "platform": "Android",
+    "description": "A lightweight Markdown and todo.txt text editor specifically designed for Android.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "NotallyX",
+    "category": "Knowledge_Research",
+    "url": "https://github.com/OmGodse/NotallyX",
+    "purpose": "Note-taking",
+    "platform": "Android",
+    "description": "A minimalistic, visually appealing, open-source note-taking app for Android.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "SilentNotes",
+    "category": "Knowledge_Research",
+    "url": "https://www.martinstoeckli.ch/silentnotes",
+    "purpose": "Note-taking",
+    "platform": "Windows, Android",
+    "description": "A privacy-focused note-taking app that supports end-to-end encryption and syncs between devices.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Quillpad",
+    "category": "Knowledge_Research",
+    "url": "https://github.com/quillpad/quillpad",
+    "purpose": "Note-taking",
+    "platform": "Android",
+    "description": "A beautifully designed note-taking app for Android, heavily inspired by Google Keep.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "KeePassXC",
+    "category": "Privacy_Security",
+    "url": "https://keepassxc.org",
+    "purpose": "Password Management",
+    "platform": "Cross-platform",
+    "description": "A community-driven, cross-platform port of the Windows application 'KeePass Password Safe'.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "KeePassDX",
+    "category": "Privacy_Security",
+    "url": "https://github.com/Kunzisoft/KeePassDX",
+    "purpose": "Password Management",
+    "platform": "Android",
+    "description": "An open-source password manager for Android that is fully compatible with KeePass files.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Bitwarden",
+    "category": "Privacy_Security",
+    "url": "https://bitwarden.com",
+    "purpose": "Password Management",
+    "platform": "Cross-platform",
+    "description": "A popular, open-source password management solution that syncs across all devices via the cloud or self-hosting.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "VeraCrypt",
+    "category": "Privacy_Security",
+    "url": "https://veracrypt.fr",
+    "purpose": "Disk Encryption",
+    "platform": "Cross-platform",
+    "description": "A free, open-source disk encryption software for Windows, Mac OSX, and Linux.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "Cryptomator",
+    "category": "Privacy_Security",
+    "url": "https://cryptomator.org",
+    "purpose": "Cloud File Encryption",
+    "platform": "Cross-platform",
+    "description": "Free client-side encryption tailored for protecting files stored in public cloud services.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "OpenKeychain",
+    "category": "Privacy_Security",
+    "url": "https://www.openkeychain.org",
+    "purpose": "Encryption (PGP)",
+    "platform": "Android",
+    "description": "An OpenPGP implementation for Android, allowing the encryption and decryption of emails and files.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "GnuPG",
+    "category": "Privacy_Security",
+    "url": "https://gnupg.org",
+    "purpose": "Encryption (PGP)",
+    "platform": "Cross-platform",
+    "description": "A complete, free command-line implementation of the OpenPGP standard for secure communication.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "OnionShare",
+    "category": "Privacy_Security",
+    "url": "https://onionshare.org",
+    "purpose": "Anonymous File Sharing",
+    "platform": "Cross-platform",
+    "description": "An open-source tool that securely and anonymously shares files, hosts websites, and chats using the Tor network.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Tails OS",
+    "category": "Privacy_Security",
+    "url": "https://tails.net",
+    "purpose": "Anonymous Operating System",
+    "platform": "PC (Live USB)",
+    "description": "A portable, live operating system designed to protect against surveillance and censorship, routing traffic through Tor.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "DroidStealth",
+    "category": "Privacy_Security",
+    "url": "https://github.com/droidstealth/droidstealth",
+    "purpose": "Privacy Protection",
+    "platform": "Android",
+    "description": "An open-source Android application aimed at managing permissions and enhancing overall user privacy.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Orbot",
+    "category": "Privacy_Security",
+    "url": "https://guardianproject.info/apps/org.torproject.android",
+    "purpose": "Traffic Routing (Tor)",
+    "platform": "Android, iOS",
+    "description": "A free proxy app that empowers other mobile apps to use the internet more securely via the Tor network.",
+    "ease_of_use": "Easy to Moderate"
+  },
+  {
+    "name": "Tor Browser",
+    "category": "Privacy_Security",
+    "url": "https://www.torproject.org",
+    "purpose": "Anonymous Web Browsing",
+    "platform": "Cross-platform",
+    "description": "A heavily modified web browser that anonymizes web traffic by routing it through the decentralized Tor network.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "MAT2",
+    "category": "Privacy_Security",
+    "url": "https://0xacab.org/jvoisin/mat2",
+    "purpose": "Metadata Removal",
+    "platform": "Linux",
+    "description": "A command-line metadata removal tool supporting a wide array of commonly used image, audio, and document formats.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "BleachBit",
+    "category": "Privacy_Security",
+    "url": "https://www.bleachbit.org",
+    "purpose": "System Cleaner",
+    "platform": "Windows, Linux",
+    "description": "A free cache cleaner, privacy guard, and system optimizer designed to free up disk space.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "SecureDrop Workstation",
+    "category": "Privacy_Security",
+    "url": "https://securedrop.org",
+    "purpose": "Whistleblower Platform",
+    "platform": "Tails OS",
+    "description": "An open-source whistleblower submission system that media organizations use to securely accept documents.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "ExifTool",
+    "category": "Privacy_Security",
+    "url": "https://exiftool.org",
+    "purpose": "Metadata Manipulation",
+    "platform": "Cross-platform",
+    "description": "A comprehensive command-line application for reading, writing, and editing meta information across various file types.",
+    "ease_of_use": "Advanced"
+  },
+  {
+    "name": "Etherpad",
+    "category": "Collaboration",
+    "url": "https://etherpad.org",
+    "purpose": "Collaborative Text Editing",
+    "platform": "Web (Self-hosted)",
+    "description": "A highly customizable open-source online editor providing collaborative, real-time rich-text editing.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "CryptPad",
+    "category": "Collaboration",
+    "url": "https://cryptpad.org",
+    "purpose": "Collaborative Office Suite",
+    "platform": "Web",
+    "description": "A private-by-design, end-to-end encrypted alternative to popular office tools and collaborative cloud services.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Nextcloud Client",
+    "category": "Collaboration",
+    "url": "https://nextcloud.com",
+    "purpose": "File Sync & Collaboration",
+    "platform": "Cross-platform",
+    "description": "Desktop and mobile clients used to interface with Nextcloud, a self-hosted, open-source cloud productivity platform.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Syncthing",
+    "category": "Collaboration",
+    "url": "https://syncthing.net",
+    "purpose": "Peer-to-Peer File Synchronization",
+    "platform": "Cross-platform",
+    "description": "A continuous file synchronization program that securely syncs files between two or more devices in real-time without a central server.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Delta Chat",
+    "category": "Collaboration",
+    "url": "https://delta.chat",
+    "purpose": "Messaging",
+    "platform": "Cross-platform",
+    "description": "A chat app that works like traditional messengers but operates over the existing, decentralized email server network.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Matrix",
+    "category": "Collaboration",
+    "url": "https://matrix.org",
+    "purpose": "Decentralized Communication",
+    "platform": "Protocol / Cross-platform clients",
+    "description": "An open standard and protocol for secure, decentralized, real-time communication and chat.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Jitsi Meet",
+    "category": "Collaboration",
+    "url": "https://jitsi.org",
+    "purpose": "Video Conferencing",
+    "platform": "Cross-platform / Web",
+    "description": "A set of open-source projects that allows you to easily build and deploy secure video conferencing solutions without requiring accounts.",
+    "ease_of_use": "Easy"
+  },
+  {
+    "name": "Mumble",
+    "category": "Collaboration",
+    "url": "https://www.mumble.info",
+    "purpose": "Voice Chat",
+    "platform": "Cross-platform",
+    "description": "A free, open-source, low-latency, and high-quality voice chat application primarily intended for gamers and teams.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Rocket.Chat",
+    "category": "Collaboration",
+    "url": "https://www.rocket.chat",
+    "purpose": "Team Collaboration",
+    "platform": "Cross-platform",
+    "description": "An open-source, fully customizable enterprise communications platform designed as a Slack alternative.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Zulip",
+    "category": "Collaboration",
+    "url": "https://zulip.com",
+    "purpose": "Team Collaboration",
+    "platform": "Cross-platform",
+    "description": "An open-source team chat app that uniquely organizes conversations using topic-based threading.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Mattermost",
+    "category": "Collaboration",
+    "url": "https://mattermost.com",
+    "purpose": "Team Collaboration",
+    "platform": "Cross-platform",
+    "description": "An open-source, self-hostable online chat service offering messaging, file sharing, search, and deep integrations.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Tox",
+    "category": "Collaboration",
+    "url": "https://tox.chat",
+    "purpose": "Peer-to-Peer Messaging",
+    "platform": "Cross-platform",
+    "description": "A decentralized, peer-to-peer instant-messaging and video-calling protocol that offers end-to-end encryption without central servers.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Briar",
+    "category": "Collaboration",
+    "url": "https://briarproject.org",
+    "purpose": "Peer-to-Peer Messaging",
+    "platform": "Android, Linux",
+    "description": "A messaging app designed for activists and journalists that syncs via Bluetooth, Wi-Fi, or Tor, bypassing central servers entirely.",
+    "ease_of_use": "Moderate"
+  },
+  {
+    "name": "Session Messenger",
+    "category": "Collaboration",
+    "url": "https://getsession.org",
+    "purpose": "Anonymous Messaging",
+    "platform": "Cross-platform",
+    "description": "An end-to-end encrypted messenger that minimizes metadata collection and routes messages through an onion-routing network.",
+    "ease_of_use": "Easy"
+  }
+]

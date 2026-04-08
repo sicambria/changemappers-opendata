@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grassroots Intervention Strategies for Systemic Change</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore nonviolent grassroots intervention strategies and patterns. Discover how communities create social, structural, and paradigm change without coercion.">
+    <meta name="keywords" content="grassroots, intervention, nonviolent direct action, community organizing, mutual aid, social change, paradigm change, changemappers">
+    <meta name="author" content="ChangeMappers">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Grassroots Intervention Strategies & Patterns">
+    <meta property="og:description" content="An interactive analysis of nonviolent grassroots intervention patterns. Discover pathways to systemic change.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://changemappers.org/">
+    <meta property="og:site_name" content="ChangeMappers">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #faf9f6;
+            color: #2d3748;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 60vh;
+            max-height: 500px;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 40vh;
+            }
+        }
+        .nav-btn.active {
+            background-color: #ede8e4;
+            border-left-width: 4px;
+            border-color: #c05621;
+            font-weight: 600;
+        }
+        .tab-btn.active {
+            border-bottom-width: 2px;
+            border-color: #c05621;
+            color: #c05621;
+            font-weight: 600;
+        }
+        .hidden-content {
+            display: none;
+        }
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Chosen Palette: Warm Neutrals & Terracotta (Background: #faf9f6, Text: #2d3748, Accent: #c05621, UI elements: #ede8e4, #e2e8f0) -->
+<!-- Application Structure Plan: The SPA uses a dashboard and interactive explorer architecture. It begins with a macro-level analytical view (Bubble Chart) to map the landscape of techniques based on resource intensity, scale of impact, and time to effect. This is followed by a split-pane 'Deep Dive Explorer' allowing users to quickly navigate between the 11 techniques without page reloads, comparing mechanisms, strengths, and contexts. Finally, a tabbed 'Synthesis' section provides temporal pathways for change. This structure was chosen to move the user from a high-level conceptual understanding down to granular, practical tactics, and then back up to strategic temporal planning. -->
+<!-- Visualization & Content Choices: 
+1. Bubble Chart (Chart.js): Maps 11 techniques. X=Resource Needs, Y=Level of Change, Size=Speed. Justification: Allows immediate visual comparison of diverse strategies on a single plane without overwhelming text. 
+2. Split-Pane Explorer (HTML/JS): Sidebar nav + detail pane. Justification: Best for consuming dense, structured data (definitions, examples, mechanisms) across multiple categories without endless scrolling.
+3. Tabbed Synthesis (HTML/JS): Temporal horizons (Short, Medium, Long). Justification: Organizes complex concluding analysis into digestible, chronologically logical steps. NO SVG/Mermaid used. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="bg-[#ede8e4] py-12 px-6 border-b border-gray-300">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 tracking-tight">Catalysts of Change: Grassroots Patterns</h1>
+            <p class="text-xl text-gray-600 max-w-3xl leading-relaxed">
+                An interactive exploration of nonviolent grassroots intervention patterns and techniques. Discover how ordinary people, local groups, and civil society actors orchestrate social, policy, structural, and paradigm shifts without coercion.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-10 space-y-16">
+
+        <section id="controls" class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-2">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="flex-1">
+                    <label class="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Full Text Search</label>
+                    <input type="text" id="searchInput" placeholder="Search patterns, mechanisms, examples..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#c05621] outline-none transition-shadow text-gray-700">
+                </div>
+                <div class="flex-2">
+                    <label class="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Filter by Target Level of Change</label>
+                    <div class="flex flex-wrap gap-2 mb-3" id="levelFilters">
+                        <!-- Checkboxes populated by JS -->
+                    </div>
+                    <div class="flex items-center gap-4 text-sm bg-gray-50 px-3 py-2 rounded-lg border border-gray-200 w-fit">
+                        <span class="font-bold text-gray-600 uppercase text-xs">Logic Mode:</span>
+                        <label class="flex items-center gap-1 cursor-pointer hover:text-[#c05621] transition-colors"><input type="radio" name="logicMode" value="OR" checked class="accent-[#c05621]"> OR</label>
+                        <label class="flex items-center gap-1 cursor-pointer hover:text-[#c05621] transition-colors" title="Matches ALL selected criteria"><input type="radio" name="logicMode" value="AND" class="accent-[#c05621]"> AND</label>
+                        <label class="flex items-center gap-1 cursor-pointer hover:text-[#c05621] transition-colors" title="Exclusive OR (Odd parity match)"><input type="radio" name="logicMode" value="XOR" class="accent-[#c05621]"> XOR</label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technique-explorer" class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-8 pb-4 border-b border-gray-100">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Pattern Deep Dive</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Select an intervention pattern from the menu below to explore its mechanics, real-world applications, strengths, and the specific conditions required for it to effectively drive change from the grassroots up to the institutional level.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row min-h-[600px]">
+                <div class="w-full md:w-1/3 bg-gray-50 border-r border-gray-200 overflow-y-auto" style="max-height: 700px;" id="technique-list">
+                </div>
+
+                <div class="w-full md:w-2/3 p-6 md:p-8 bg-white overflow-y-auto fade-in" id="technique-details">
+                    <div class="flex items-center justify-center h-full text-gray-400 text-lg">
+                        Select a technique from the sidebar to view details.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="synthesis-pathways" class="bg-gray-800 text-white p-8 md:p-10 rounded-xl shadow-lg">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4">Synthesis: Pathways for Transformation</h2>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    Systemic change is rarely the result of a single technique. It requires sequencing strategies across different time horizons. Explore how grassroots movements transition from immediate disruption to long-term paradigm shifts.
+                </p>
+            </div>
+
+            <div class="flex border-b border-gray-600 mb-6">
+                <button class="tab-btn active px-4 py-2 text-lg mr-4 pb-3 transition-colors duration-200 hover:text-[#c05621]" onclick="switchTab('short-term')">Short-Term Horizon</button>
+                <button class="tab-btn px-4 py-2 text-lg mr-4 pb-3 text-gray-400 transition-colors duration-200 hover:text-[#c05621]" onclick="switchTab('medium-term')">Medium-Term Horizon</button>
+                <button class="tab-btn px-4 py-2 text-lg pb-3 text-gray-400 transition-colors duration-200 hover:text-[#c05621]" onclick="switchTab('long-term')">Long-Term Horizon</button>
+            </div>
+
+            <div id="short-term" class="tab-content fade-in">
+                <h3 class="text-2xl font-semibold mb-3 text-[#e2e8f0]">Disruption, Survival, and Visibility (0-2 Years)</h3>
+                <p class="text-gray-300 mb-4 leading-relaxed">In the immediate term, movements must survive, raise awareness, and halt acute harms. The focus is on mobilizing individuals and shifting immediate local dynamics.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Lead Techniques:</strong> Mutual Aid (MA), Nonviolent Direct Action (NVDA), Narrative & Media Influence (NMI).</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Strategic Goal:</strong> Create urgency, bypass bureaucratic blockages, and ensure the physical/economic survival of marginalized communities.</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Scaling Mechanism:</strong> Viral replication. A successful local direct action or mutual aid pod is copied by other communities facing similar issues.</div></li>
+                </ul>
+            </div>
+
+            <div id="medium-term" class="tab-content hidden-content fade-in">
+                <h3 class="text-2xl font-semibold mb-3 text-[#e2e8f0]">Power Building and Policy Shifts (2-5 Years)</h3>
+                <p class="text-gray-300 mb-4 leading-relaxed">As visibility grows, energy must be channeled into sustained pressure and institutional reform. Spontaneous mobilization transitions into structured organizing.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Lead Techniques:</strong> Community Organizing (CO), Strategic Campaigning (SC), Boycott/Divestment (BDP), Coalition Building (CB).</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Strategic Goal:</strong> Win specific policy demands, alter corporate/institutional behavior, and build formal networks capable of sustained negotiation.</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Scaling Mechanism:</strong> Aggregation and Alliance. Local groups form regional coalitions, pooling resources to target higher-level leverage points (e.g., state legislatures, corporate headquarters).</div></li>
+                </ul>
+            </div>
+
+            <div id="long-term" class="tab-content hidden-content fade-in">
+                <h3 class="text-2xl font-semibold mb-3 text-[#e2e8f0]">Structural and Paradigm Transformation (5-10+ Years)</h3>
+                <p class="text-gray-300 mb-4 leading-relaxed">The ultimate goal is replacing the underlying logic and architecture of the system, moving beyond reactive policy wins to proactive, democratic governance.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Lead Techniques:</strong> Local Institution Building (LIB), Participatory Democracy (PD), Civic Education (CE), Policy Advocacy (PA).</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Strategic Goal:</strong> Shift cultural common sense (hegemony) and embed community power into permanent, alternative institutions and state frameworks.</div></li>
+                    <li class="flex items-start"><span class="text-[#c05621] font-bold mr-2">↳</span> <div><strong>Scaling Mechanism:</strong> Institutionalization. Pilot programs (e.g., participatory budgeting) become codified into law; alternative institutions scale to compete with mainstream equivalents.</div></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="landscape-view" class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">The Strategic Landscape</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    This visualization maps <span id="patternCount" class="font-bold text-[#c05621]">50</span> core nonviolent intervention techniques and patterns. It compares them across three dimensions: the level of systemic change they target (Vertical Axis), the typical resource intensity required for execution (Horizontal Axis), and the relative speed of visible impact (Bubble Size). Hover over the bubbles to preview the core mechanism of each technique. Use the filters above to dynamically explore combinations.
+                </p>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="strategyChart"></canvas>
+            </div>
+            
+            <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+                <span class="flex items-center"><span class="w-3 h-3 rounded-full bg-[#c05621] opacity-70 mr-2"></span> Rapid Impact</span>
+                <span class="flex items-center"><span class="w-5 h-5 rounded-full bg-[#c05621] opacity-70 mr-2"></span> Gradual Impact</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-100 py-10 mt-12 text-center text-gray-600 text-sm">
+        <div class="max-w-4xl mx-auto px-6 space-y-4">
+            <p class="font-semibold text-gray-700 text-base">Interactive Analysis Report: Nonviolent Grassroots Intervention Patterns</p>
+            <p>
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" class="hover:text-[#c05621] transition-colors underline decoration-gray-300 underline-offset-2">
+                    This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC-BY-SA 4.0).
+                </a>
+            </p>
+            <p class="text-base pt-2">
+                Explore more patterns and connect with the movement at 
+                <a href="https://changemappers.org/" target="_blank" class="font-bold text-[#c05621] hover:underline decoration-2 underline-offset-2">
+                    changemappers.org
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const techniquesData = [
+            // Original 11
+            { id: "tech-co", abbr: "CO", name: "Community Organizing", definition: "Bringing people together to act in shared self-interest and build relational power.", example: "United Farm Workers organizing laborers.", mechanism: "Transforms individual grievances into collective relational power.", levelOfChange: "Community, Institutional", successFactors: "Deep listening, indigenous leadership, winnable demands.", risks: "Burnout, hyper-localization.", scaling: "Federated networks.", strengths: "Builds deep, resilient capacity.", weaknesses: "Slow, resource-intensive.", bestContext: "Shared identities/geographies facing specific injustices.", chartX: 4.5, chartY: 2, chartR: 15 },
+            { id: "tech-ma", abbr: "MA", name: "Mutual Aid", definition: "Voluntary, reciprocal exchange of resources based on solidarity.", example: "Black Panther Free Breakfast Program.", mechanism: "Meets survival needs while exposing state failures.", levelOfChange: "Individual, Community", successFactors: "Horizontal structure, anti-charity philosophy.", risks: "Co-optation, burnout.", scaling: "Horizontal proliferation.", strengths: "Immediate relief, builds trust.", weaknesses: "Limited macro-policy impact.", bestContext: "Crises or marginalized communities.", chartX: 2, chartY: 1.5, chartR: 30 },
+            { id: "tech-nvda", abbr: "NVDA", name: "Nonviolent Direct Action", definition: "Strategic physical presence to disrupt injustice without violence.", example: "Greensboro sit-ins.", mechanism: "Creates an unignorable crisis.", levelOfChange: "Policy, Structural", successFactors: "Training, clear demands, nonviolent discipline.", risks: "State repression, alienation.", scaling: "Viral replication via media.", strengths: "Highly visible, shifts Overton window.", weaknesses: "Can be episodic.", bestContext: "Blocked traditional channels.", chartX: 3, chartY: 4, chartR: 35 },
+            { id: "tech-bdp", abbr: "BDP", name: "Boycott & Divestment", definition: "Coordinated economic withdrawal to force change.", example: "Anti-Apartheid divestment.", mechanism: "Hits the financial bottom line.", levelOfChange: "Institutional, Policy", successFactors: "Mass participation, institutional buy-in.", risks: "Blowback on workers.", scaling: "Global networks.", strengths: "Decentralized participation.", weaknesses: "Takes time to build mass.", bestContext: "Brand-sensitive targets.", chartX: 3.5, chartY: 3.5, chartR: 20 },
+            { id: "tech-sc", abbr: "SC", name: "Strategic Campaigning", definition: "Planned activities toward a specific goal in a timeframe.", example: "Marriage Equality campaigns.", mechanism: "Focuses diffuse energy onto a target.", levelOfChange: "Policy", successFactors: "Clear win, power mapping.", risks: "Over-pragmatism.", scaling: "Sequential victories.", strengths: "Focused, builds momentum.", weaknesses: "Requires centralized strategy.", bestContext: "Issue is ripe for resolution.", chartX: 4, chartY: 3, chartR: 25 },
+            { id: "tech-nmi", abbr: "NMI", name: "Narrative Influence", definition: "Using storytelling and media to shift cultural assumptions.", example: "#MeToo reframing power dynamics.", mechanism: "Changes 'cultural common sense'.", levelOfChange: "Paradigm", successFactors: "Authenticity, emotional resonance.", risks: "Slacktivism, co-optation.", scaling: "Digital amplification.", strengths: "Rapid opinion shifts.", weaknesses: "Ephemeral without organizing.", bestContext: "Issues with deep stigma.", chartX: 2.5, chartY: 5, chartR: 40 },
+            { id: "tech-cb", abbr: "CB", name: "Coalition Building", definition: "Alliances between groups to amplify power.", example: "Chicago Freedom Movement.", mechanism: "Aggregates power, demonstrates broad support.", levelOfChange: "Institutional, Structural", successFactors: "Clear terms, shared values.", risks: "Lowest-common-denominator politics.", scaling: "Federating local into national.", strengths: "Massive resource amplification.", weaknesses: "Slow decision-making.", bestContext: "Facing massive opposition.", chartX: 4.5, chartY: 3.5, chartR: 15 },
+            { id: "tech-pd", abbr: "PD", name: "Participatory Democracy", definition: "Direct citizen input into decisions.", example: "Participatory Budgeting.", mechanism: "Redistributes institutional power directly.", levelOfChange: "Institutional, Structural", successFactors: "Binding commitments, transparency.", risks: "Tokenism, elite capture.", scaling: "Institutionalizing processes.", strengths: "Deeply democratic.", weaknesses: "Requires willing partners.", bestContext: "Municipal level.", chartX: 5, chartY: 4, chartR: 15 },
+            { id: "tech-ce", abbr: "CE", name: "Civic Education", definition: "Pedagogy connecting personal struggles to systemic forces.", example: "Freire's critical literacy.", mechanism: "Breaks internalized oppression.", levelOfChange: "Individual, Paradigm", successFactors: "Dialogue-based, actionable.", risks: "Purely academic.", scaling: "Train-the-trainer models.", strengths: "Creates grounded base.", weaknesses: "Long-term process.", bestContext: "Early movement building.", chartX: 3, chartY: 4.5, chartR: 15 },
+            { id: "tech-lib", abbr: "LIB", name: "Local Institution Building", definition: "Creating independent, prefigurative institutions.", example: "Worker cooperatives.", mechanism: "Builds dual power.", levelOfChange: "Community, Structural", successFactors: "Solid operational models.", risks: "Market assimilation.", scaling: "Solidarity economy networks.", strengths: "Provides material benefits.", weaknesses: "Requires high technical skill.", bestContext: "State/market failure.", chartX: 5, chartY: 4.5, chartR: 10 },
+            { id: "tech-pa", abbr: "PA", name: "Policy Advocacy", definition: "Lobbying driven by impacted communities.", example: "Moms Demand Action.", mechanism: "Translates street heat into codified law.", levelOfChange: "Policy", successFactors: "Technical expertise + grassroots power.", risks: "Co-optation by establishment.", scaling: "Model legislation.", strengths: "Locks in gains legally.", weaknesses: "Navigates complex bureaucracy.", bestContext: "Movement needs to prevent rollback.", chartX: 3.5, chartY: 3, chartR: 20 },
+            
+            // The 9 recently added
+            { id: "tech-la", abbr: "LA", name: "Labor Action & Strikes", definition: "Coordinated withdrawal of labor.", example: "WV Teachers' Strike.", mechanism: "Directly targets economic engines.", levelOfChange: "Institutional, Structural", successFactors: "High participation, strike funds.", risks: "Retaliation, income loss.", scaling: "Sympathy/General strikes.", strengths: "Immediate structural leverage.", weaknesses: "Massive participant risk.", bestContext: "Workers have leverage over choke points.", chartX: 5, chartY: 4.2, chartR: 35 },
+            { id: "tech-oscp", abbr: "OSCP", name: "Open Source Commons", definition: "Building/distributing resources freely to bypass monopolies.", example: "Wikipedia, Open Source Ecology.", mechanism: "Renders oppressive monopolies obsolete.", levelOfChange: "Structural, Paradigm", successFactors: "Community governance, open licenses.", risks: "Corporate co-optation.", scaling: "Hyper-scalable globally.", strengths: "Prefigurative, highly resilient.", weaknesses: "Requires technical literacy.", bestContext: "Information domains dominated by corporations.", chartX: 3, chartY: 4.8, chartR: 20 },
+            { id: "tech-tj", abbr: "TJ", name: "Transformative Justice", definition: "Community-led accountability replacing police.", example: "Community accountability circles.", mechanism: "Shifts from punishment to root-cause healing.", levelOfChange: "Community, Paradigm", successFactors: "Deep trust, emotional intelligence.", risks: "Process failure, exhaustion.", scaling: "Cultural shift and training.", strengths: "Breaks cycles of violence.", weaknesses: "Extremely slow per case.", bestContext: "Tight-knit or marginalized communities.", chartX: 4, chartY: 4.8, chartR: 15 },
+            { id: "tech-wil", abbr: "WIL", name: "Whistleblowing", definition: "Exposing hidden documents from bottom up.", example: "Pentagon Papers, Copwatch.", mechanism: "Breaks information asymmetry.", levelOfChange: "Policy, Institutional", successFactors: "Secure channels, media partnerships.", risks: "Extreme personal risk.", scaling: "OSINT networks.", strengths: "Instantly shifts narratives.", weaknesses: "Reactive, relies on access.", bestContext: "Massive institutional corruption.", chartX: 2, chartY: 3.8, chartR: 30 },
+            { id: "tech-sl", abbr: "SL", name: "Strategic Litigation", definition: "Using courts for sweeping precedent.", example: "Brown v. Board of Education.", mechanism: "Leverages state's legal architecture.", levelOfChange: "Policy, Structural", successFactors: "Excellent legal teams, broad movement backing.", risks: "Negative precedents.", scaling: "National Supreme Court wins.", strengths: "Binding, enforceable change.", weaknesses: "Extremely slow and elite-driven.", bestContext: "Laws are clearly unconstitutional.", chartX: 6, chartY: 3, chartR: 15 },
+            { id: "tech-drs", abbr: "DRS", name: "Debt & Rent Strikes", definition: "Collective refusal to pay exploitative debts.", example: "Student debt strikes.", mechanism: "Turns individual shame into collective financial leverage.", levelOfChange: "Institutional, Structural", successFactors: "Critical mass, legal defense.", risks: "Eviction, credit destruction.", scaling: "Aggregating debt portfolios.", strengths: "Directly attacks financialized capitalism.", weaknesses: "Immense bravery required.", bestContext: "Economic crises, hyper-inflation.", chartX: 4, chartY: 4.5, chartR: 30 },
+            { id: "tech-hdr", abbr: "HDR", name: "Digital Resistance", definition: "Using cyber tactics to protect/disrupt.", example: "Encrypted organizing tools, DDoS protests.", mechanism: "Exploits reliance on digital infrastructure.", levelOfChange: "Institutional, Paradigm", successFactors: "Technical skill, OpSec.", risks: "Severe criminal prosecution.", scaling: "Inherently scalable digitally.", strengths: "Asymmetric disruption.", weaknesses: "Disconnected from physical organizing.", bestContext: "Heavily surveilled regimes.", chartX: 3, chartY: 3.5, chartR: 25 },
+            { id: "tech-cba", abbr: "CBA", name: "Artivism & Culture", definition: "Merging art with activism to subvert narratives.", example: "Pussy Riot.", mechanism: "Bypasses logic to hit emotional truth.", levelOfChange: "Paradigm", successFactors: "Creativity, emotional resonance.", risks: "Dismissed as frivolous.", scaling: "Memetics, cultural osmosis.", strengths: "Reaches apolitical audiences.", weaknesses: "Hard to translate to policy.", bestContext: "Deep stigma or state propaganda.", chartX: 2, chartY: 5, chartR: 25 },
+            { id: "tech-bpi", abbr: "BPI", name: "Blockadia", definition: "Sustained physical occupation to protect space.", example: "Standing Rock (NoDAPL).", mechanism: "Increases friction until project abandonment.", levelOfChange: "Institutional, Policy", successFactors: "Logistics, indigenous leadership.", risks: "Violent clearance.", scaling: "Solidarity actions targeting financiers.", strengths: "Tangible goal, builds community.", weaknesses: "Defensive, high endurance needed.", bestContext: "Last-stand scenarios against infrastructure.", chartX: 5, chartY: 3.8, chartR: 35 },
+
+            // 30 Brand New Patterns
+            { id: "tech-sit", abbr: "SIT", name: "Sit-Ins & Occupations", definition: "Taking physical control of a contested or symbolic space and refusing to leave.", example: "Student occupations of university administration buildings.", mechanism: "Halts normal operations and forces authorities to negotiate or use visible force.", levelOfChange: "Institutional, Policy", successFactors: "Mass numbers, logistical supply lines.", risks: "Arrest, physical removal.", scaling: "Inspires parallel occupations.", strengths: "Highly disruptive.", weaknesses: "Difficult to sustain indefinitely.", bestContext: "Targeting specific administrative hubs.", chartX: 4, chartY: 3.5, chartR: 30 },
+            { id: "tech-tin", abbr: "TIN", name: "Teach-Ins", definition: "Uninterrupted, public educational forums, often held in disrupted spaces.", example: "Anti-Vietnam War teach-ins on campuses.", mechanism: "Combines disruption with mass political education.", levelOfChange: "Individual, Community", successFactors: "Engaging speakers, open participation.", risks: "Preaching to the choir.", scaling: "Can be broadcast globally.", strengths: "Rapidly educates a mobilized base.", weaknesses: "Less immediate policy impact.", bestContext: "When public understanding of an issue is low.", chartX: 2.5, chartY: 1.5, chartR: 20 },
+            { id: "tech-tr", abbr: "TR", name: "Tax Resistance", definition: "Refusal to pay taxes to a government funding war or unjust policies.", example: "War tax resistance movements.", mechanism: "Directly starves the state machinery of resources.", levelOfChange: "Structural", successFactors: "Massive scale, legal defense funds.", risks: "Asset seizure, imprisonment.", scaling: "Requires widespread coordination.", strengths: "Ultimate withdrawal of consent.", weaknesses: "Easily isolated if numbers are small.", bestContext: "Unpopular wars or universally despised policies.", chartX: 5.5, chartY: 4, chartR: 15 },
+            { id: "tech-wtr", abbr: "WTR", name: "Work-to-Rule", definition: "Workers doing no more than the exact minimum required by rules, slowing down production.", example: "Air traffic controllers strictly following safety protocols to delay flights.", mechanism: "Malicious compliance that breaks systems relying on informal worker goodwill.", levelOfChange: "Institutional", successFactors: "Total union discipline.", risks: "Retaliation disguised as performance review.", scaling: "Sector-wide slowdowns.", strengths: "Technically legal, highly disruptive.", weaknesses: "Requires an organized workplace.", bestContext: "When outright strikes are illegal.", chartX: 3.5, chartY: 3, chartR: 25 },
+            { id: "tech-gg", abbr: "GG", name: "Guerilla Gardening", definition: "Cultivating land that organizers do not legally own, transforming blighted spaces.", example: "Planting community gardens in abandoned urban lots.", mechanism: "Prefigurative reclamation of the commons.", levelOfChange: "Community, Paradigm", successFactors: "Community defense of the plot.", risks: "Bulldozing by authorities.", scaling: "Spreads neighborhood by neighborhood.", strengths: "Beautifies and provides food.", weaknesses: "Vulnerable to property law.", bestContext: "Urban decay and food deserts.", chartX: 2.5, chartY: 2, chartR: 15 },
+            { id: "tech-ampr", abbr: "AMPR", name: "Alternative Media & Pirate Radio", definition: "Creating independent broadcast networks to bypass state or corporate media.", example: "Zapatista pirate radio stations.", mechanism: "Breaks media monopolies to distribute truth and organizing logistics.", levelOfChange: "Community, Structural", successFactors: "Technical ingenuity, secure locations.", risks: "Equipment seizure, jamming.", scaling: "Digital streaming integration.", strengths: "Direct communication with the base.", weaknesses: "Constant cat-and-mouse with regulators.", bestContext: "Authoritarian regimes or rural isolation.", chartX: 3.5, chartY: 4.2, chartR: 20 },
+            { id: "tech-eb", abbr: "EB", name: "Election Boycott", definition: "Mass organized refusal to participate in rigged or illegitimate elections.", example: "Boycotts of sham referendums in autocracies.", mechanism: "Denies the regime the mandate of democratic legitimacy.", levelOfChange: "Institutional, Paradigm", successFactors: "Visible emptiness at polling stations.", risks: "Ensures the opposition takes total control.", scaling: "National coordination.", strengths: "Exposes the farce of the system.", weaknesses: "Surrenders institutional power.", bestContext: "When participation validates a dictatorship.", chartX: 4.5, chartY: 4, chartR: 30 },
+            { id: "tech-hs", abbr: "HS", name: "Hunger Strike", definition: "Voluntary fasting to exert immense moral pressure on authorities.", example: "Irish republican prisoners; climate activists.", mechanism: "Weaponizes the state's responsibility for the striker's life.", levelOfChange: "Policy", successFactors: "High public profile, absolute resolve.", risks: "Death, permanent organ damage, forced feeding.", scaling: "Relay strikes or mass fasts.", strengths: "Ultimate demonstration of commitment.", weaknesses: "Can be ignored by ruthless opponents.", bestContext: "Prisons or desperate last-resort scenarios.", chartX: 2, chartY: 3, chartR: 20 },
+            { id: "tech-pmd", abbr: "PMD", name: "Mass Declarations", definition: "Public, signed pledges of non-compliance or demand.", example: "Manifesto of the 343 (abortion rights in France).", mechanism: "Provides safety in numbers for admitting 'crimes' or holding controversial views.", levelOfChange: "Policy, Paradigm", successFactors: "High-profile initial signers.", risks: "Creating a target list for authorities.", scaling: "Viral online petitions.", strengths: "Breaks social taboos quickly.", weaknesses: "Low commitment threshold.", bestContext: "Normalizing heavily stigmatized issues.", chartX: 1.5, chartY: 3.5, chartR: 35 },
+            { id: "tech-mesp", abbr: "MESP", name: "Shadow Parliaments", definition: "Holding parallel democratic processes to contrast with corrupted official ones.", example: "Hong Kong's unofficial primary elections.", mechanism: "Highlights the democratic deficit and builds a mandate for alternative leadership.", levelOfChange: "Institutional, Paradigm", successFactors: "High turnout, secure voting tech.", risks: "Treason or sedition charges.", scaling: "Can evolve into actual dual power.", strengths: "Proves democratic desire.", weaknesses: "Purely symbolic without enforcement.", bestContext: "When official democratic avenues are closed.", chartX: 5, chartY: 4.5, chartR: 20 },
+            { id: "tech-wo", abbr: "WO", name: "Walkouts", definition: "Sudden, coordinated exit from a workplace, school, or institution.", example: "Global Climate Strike student walkouts.", mechanism: "Brief, high-visibility disruption and demonstration of numbers.", levelOfChange: "Institutional", successFactors: "Element of surprise, massive coordination.", risks: "Suspension or docking of pay.", scaling: "Global simultaneous scheduling.", strengths: "Easy entry-level direct action.", weaknesses: "Impact is often fleeting.", bestContext: "Schools and highly structured environments.", chartX: 2.5, chartY: 2.5, chartR: 40 },
+            { id: "tech-fm", abbr: "FM", name: "Flash Mobs", definition: "Sudden assembly in a public place for a brief, coordinated action, followed by rapid dispersal.", example: "Choral protests in shopping malls.", mechanism: "Exploits the element of surprise for viral media capture.", levelOfChange: "Community, Paradigm", successFactors: "Strict timing, encrypted planning.", risks: "Easily commodified.", scaling: "Replicable choreography globally.", strengths: "Highly engaging, difficult to police.", weaknesses: "Often seen as purely performative.", bestContext: "Heavily policed public squares.", chartX: 1.5, chartY: 2, chartR: 45 },
+            { id: "tech-dc", abbr: "DC", name: "Divestment Campaigns", definition: "Pressuring institutions to sell off assets tied to harmful industries.", example: "Fossil fuel divestment at universities.", mechanism: "Removes social license and increases cost of capital for bad actors.", levelOfChange: "Institutional, Structural", successFactors: "Targeting institutional boards/endowments.", risks: "Fiduciary duty laws blocking action.", scaling: "Trillions of dollars globally.", strengths: "Tangible financial impact.", weaknesses: "Slow administrative process.", bestContext: "Universities, pension funds, churches.", chartX: 4, chartY: 4, chartR: 15 },
+            { id: "tech-cco", abbr: "CCO", name: "Corporate Camp-outs", definition: "Sustained physical occupation outside corporate headquarters or shareholder meetings.", example: "Occupy Wall Street.", mechanism: "Brings the physical reality of abstract corporate harm to the executives' doorstep.", levelOfChange: "Institutional", successFactors: "Media optics, stamina.", risks: "Private security violence.", scaling: "Franchising the tactic (Occupy everywhere).", strengths: "Forces executives to face the public.", weaknesses: "Vulnerable to weather and police.", bestContext: "Faceless corporate actors.", chartX: 3.5, chartY: 2.5, chartR: 25 },
+            { id: "tech-sf", abbr: "SF", name: "Fraternization", definition: "Direct, empathetic engagement with the agents of repression (e.g., police/soldiers) to induce defection.", example: "Otpor activists offering flowers to Serbian police.", mechanism: "Breaks the psychological barrier between enforcer and citizen.", levelOfChange: "Individual", successFactors: "Extreme nonviolent discipline, emotional intelligence.", risks: "Naivety leading to brutalization.", scaling: "Can trigger cascading defections.", strengths: "Can neutralize the state's monopoly on violence.", weaknesses: "Requires immense courage.", bestContext: "Regime change scenarios where military loyalty wavers.", chartX: 2, chartY: 1, chartR: 30 },
+            { id: "tech-scs", abbr: "SCS", name: "Sanctuary Spaces", definition: "Declaring a space off-limits to specific state enforcement, providing refuge.", example: "Churches providing sanctuary to undocumented immigrants.", mechanism: "Leverages the moral authority of a space against the legal authority of the state.", levelOfChange: "Community, Policy", successFactors: "Strong moral backing, network of support.", risks: "State raiding the sacred space.", scaling: "Sanctuary Cities.", strengths: "Directly saves lives.", weaknesses: "Creates isolated pockets of safety.", bestContext: "Targeting unjust immigration or fugitive laws.", chartX: 4, chartY: 3.5, chartR: 15 },
+            { id: "tech-cd", abbr: "CD", name: "Civil Disobedience", definition: "The open, peaceful violation of a law to protest its injustice.", example: "Rosa Parks refusing to give up her seat.", mechanism: "Forces the state to arrest normal citizens, exposing the law's cruelty.", levelOfChange: "Policy", successFactors: "Willingness to go to jail, legal strategy.", risks: "Criminal records, long sentences.", scaling: "Overfilling the jails.", strengths: "Ultimate moral clarity.", weaknesses: "High personal cost.", bestContext: "Unjust, clearly defined local/state laws.", chartX: 3, chartY: 3, chartR: 20 },
+            { id: "tech-gs", abbr: "GS", name: "General Strike", definition: "Cross-sector strike involving a critical mass of the entire workforce.", example: "Indian farmers/laborers general strikes.", mechanism: "Brings the entire economy to a halt.", levelOfChange: "Structural, Paradigm", successFactors: "Massive inter-union solidarity.", risks: "Societal collapse, extreme state violence.", scaling: "The ultimate scale of labor action.", strengths: "The most powerful nonviolent weapon.", weaknesses: "Incredibly difficult to organize.", bestContext: "Moments of massive national crisis.", chartX: 6, chartY: 5, chartR: 10 },
+            { id: "tech-rs", abbr: "RS", name: "Reverse Strike", definition: "Undertaking unauthorized public works to highlight government neglect.", example: "Filling potholes or building community centers without permits.", mechanism: "Shames the state by doing their job better.", levelOfChange: "Community, Paradigm", successFactors: "Visible public benefit.", risks: "Fines for unauthorized construction.", scaling: "Inspires civic DIY networks.", strengths: "Prefigurative and highly popular.", weaknesses: "Relies on volunteer labor and materials.", bestContext: "Extreme municipal neglect.", chartX: 3, chartY: 3.5, chartR: 25 },
+            { id: "tech-oas", abbr: "OAS", name: "Overloading Systems", definition: "Flooding administrative systems with legitimate requests or paperwork to freeze operations.", example: "Mass filing of FOIA requests or contesting every minor ticket.", mechanism: "Uses the bureaucracy's own rules against it.", levelOfChange: "Institutional", successFactors: "Automated or highly coordinated submission.", risks: "Backlash against 'frivolous' actions.", scaling: "Bots and digital aggregation.", strengths: "Low physical risk.", weaknesses: "Can delay legitimate public services.", bestContext: "Highly bureaucratic, automated power structures.", chartX: 2.5, chartY: 3, chartR: 35 },
+            { id: "tech-gt", abbr: "GT", name: "Guerilla Theater", definition: "Surprise theatrical performances in public spaces to satirize power.", example: "Billionaires for Bush.", mechanism: "Uses humor and absurdity to break through political apathy.", levelOfChange: "Paradigm", successFactors: "High production value, quick execution.", risks: "Misinterpretation by the public.", scaling: "Viral videos.", strengths: "Entertaining and memeable.", weaknesses: "Fleeting impact.", bestContext: "Overly serious or hypocritical political events.", chartX: 2, chartY: 4.5, chartR: 30 },
+            { id: "tech-actb", abbr: "ACTB", name: "Alternative Currencies", definition: "Creating local or digital currencies and time banks to bypass the dominant financial system.", example: "Bristol Pound, mutual credit networks.", mechanism: "Keeps wealth within the community and values un-monetized labor.", levelOfChange: "Structural, Paradigm", successFactors: "Widespread local business adoption.", risks: "Regulatory crackdown, lack of liquidity.", scaling: "Inter-linking local exchanges.", strengths: "Insulates against macroeconomic shocks.", weaknesses: "Hard to reach critical mass.", bestContext: "Economic depressions or localized economies.", chartX: 5, chartY: 5, chartR: 10 },
+            { id: "tech-cmr", abbr: "CMR", name: "Mass Resignations", definition: "Coordinated quitting by skilled workers or officials to protest ethical violations.", example: "State Dept officials resigning over war policies.", mechanism: "Strips the institution of its operational brain trust.", levelOfChange: "Institutional, Policy", successFactors: "High-level participants.", risks: "Loss of insider influence.", scaling: "Sector-wide walkouts.", strengths: "Severe reputational damage to the target.", weaknesses: "Participants easily replaced over time.", bestContext: "Institutions requiring highly specialized complicity.", chartX: 4.5, chartY: 3, chartR: 15 },
+            { id: "tech-soe", abbr: "SOE", name: "Social Ostracism", definition: "Total social boycott of individuals responsible for atrocities.", example: "Refusing to serve, speak to, or acknowledge enforcers.", mechanism: "Imposes massive psychological costs on perpetrators.", levelOfChange: "Individual, Community", successFactors: "Absolute community solidarity.", risks: "Can devolve into vigilantism or target innocents.", scaling: "Cultural norms.", strengths: "Requires zero money.", weaknesses: "Only works in tight-knit communities.", bestContext: "Small towns or insular communities facing occupation.", chartX: 1.5, chartY: 1.5, chartR: 25 },
+            { id: "tech-bds", abbr: "BDS", name: "Subvertising", definition: "Altering corporate billboards and advertisements to convey anti-capitalist or activist messages.", example: "Adbusters culture jamming.", mechanism: "Hijacks corporate visual space to broadcast dissent.", levelOfChange: "Paradigm", successFactors: "Clever design matching the original ad.", risks: "Arrest for vandalism.", scaling: "Global meme formats.", strengths: "High visibility, reclaims the mental environment.", weaknesses: "Easily removed.", bestContext: "Hyper-commercialized urban environments.", chartX: 2, chartY: 4, chartR: 35 },
+            { id: "tech-pe", abbr: "PE", name: "Protest Emigration", definition: "Mass, highly visible exodus from a regime to protest its conditions.", example: "East Germans fleeing through Hungary in 1989.", mechanism: "Brain drains the state and creates an international crisis.", levelOfChange: "Structural", successFactors: "Open borders nearby.", risks: "Becoming permanent refugees.", scaling: "Hundreds of thousands moving.", strengths: "Ultimate vote of no confidence.", weaknesses: "Leaves the homeland to the oppressors.", bestContext: "Closed autocracies.", chartX: 6, chartY: 4.5, chartR: 15 },
+            { id: "tech-dj", abbr: "DJ", name: "Rolling Jubilees", definition: "Raising funds to buy distressed debt on the secondary market and legally abolishing it.", example: "RIP Medical Debt operations.", mechanism: "Uses the mechanics of debt trading for mass liberation.", levelOfChange: "Structural, Paradigm", successFactors: "Fundraising capacity.", risks: "Treats symptoms rather than root financial rules.", scaling: "Millions of dollars of debt cleared for pennies.", strengths: "Immediate, life-changing impact for debtors.", weaknesses: "Doesn't stop new debt creation.", bestContext: "Predatory medical or student debt markets.", chartX: 4, chartY: 4.8, chartR: 20 },
+            { id: "tech-hc", abbr: "HC", name: "Human Chains", definition: "Thousands linking arms to connect geographic points or surround buildings.", example: "The Baltic Way (2 million people).", mechanism: "Massive visual demonstration of unity and scale.", levelOfChange: "Community, Paradigm", successFactors: "Flawless logistics, radio coordination.", risks: "Vulnerable to police breaking the chain.", scaling: "Spanning entire countries.", strengths: "Incredible media optics, low risk per person.", weaknesses: "Mostly symbolic.", bestContext: "Independence movements or massive solidarity drives.", chartX: 3, chartY: 2.5, chartR: 45 },
+            { id: "tech-hsg", abbr: "HSG", name: "Civic Hackathons", definition: "Rapid, collaborative coding events to build tools that solve civic problems or expose data.", example: "vTaiwan digital democracy tools.", mechanism: "Harnesses tech talent to build public infrastructure bypassing slow government tech.", levelOfChange: "Institutional", successFactors: "Open data access, skilled devs.", risks: "Tech solutionism (ignoring social realities).", scaling: "Open source repositories.", strengths: "Creates highly useful, permanent tools.", weaknesses: "Excludes non-technical organizers.", bestContext: "Data transparency and bureaucratic inefficiency.", chartX: 3.5, chartY: 3.5, chartR: 20 },
+            { id: "tech-ep", abbr: "EP", name: "Ethical Purchasing", definition: "Organized channeling of consumer funds only toward cooperatives or ethical businesses.", example: "Fair Trade movement, Buy Black campaigns.", mechanism: "Builds the economic power of alternative institutions.", levelOfChange: "Institutional", successFactors: "Clear certification standards.", risks: "Greenwashing by massive corporations.", scaling: "Global supply chain shifts.", strengths: "Positive reinforcement rather than just boycott.", weaknesses: "Usually requires consumer privilege (higher costs).", bestContext: "Building solidarity economies.", chartX: 2.5, chartY: 3, chartR: 25 }
+        ];
+
+        let strategyChart;
+        let activeLogicMode = 'OR';
+        
+        const allLevels = ["Individual", "Community", "Institutional", "Policy", "Structural", "Paradigm"];
+
+        function initChart(dataToRender) {
+            const ctx = document.getElementById('strategyChart').getContext('2d');
+            
+            if (strategyChart) {
+                strategyChart.destroy();
+            }
+
+            const chartData = dataToRender.map(t => ({
+                id: t.abbr, 
+                x: t.chartX, 
+                y: t.chartY, 
+                r: t.chartR, 
+                label: t.name, 
+                mechanism: t.mechanism
+            }));
+            
+            strategyChart = new Chart(ctx, {
+                type: 'bubble',
+                data: {
+                    datasets: [{
+                        label: 'Intervention Techniques',
+                        data: chartData,
+                        backgroundColor: 'rgba(192, 86, 33, 0.6)',
+                        borderColor: 'rgba(192, 86, 33, 1)',
+                        borderWidth: 1,
+                        hoverBackgroundColor: 'rgba(192, 86, 33, 0.9)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const point = context.raw;
+                                    return [
+                                        point.label + ' (' + point.id + ')',
+                                        'Mechanism: ' + point.mechanism
+                                    ];
+                                }
+                            },
+                            backgroundColor: 'rgba(45, 55, 72, 0.9)',
+                            titleFont: { size: 14 },
+                            bodyFont: { size: 13 },
+                            padding: 12
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: { display: true, text: 'Resource & Coordination Intensity (Low → High)', font: { size: 14, weight: 'bold' } },
+                            min: 1, max: 6.5,
+                            ticks: { display: false },
+                            grid: { color: '#edf2f7' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Level of Change (Individual → Paradigm)', font: { size: 14, weight: 'bold' } },
+                            min: 0.5, max: 5.5,
+                            ticks: { display: false },
+                            grid: { color: '#edf2f7' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function renderLevelFilters() {
+            const container = document.getElementById('levelFilters');
+            allLevels.forEach(level => {
+                const label = document.createElement('label');
+                label.className = 'flex items-center gap-1 bg-white px-3 py-1 rounded-full border border-gray-300 text-sm cursor-pointer hover:bg-gray-50 transition-colors shadow-sm';
+                label.innerHTML = `<input type="checkbox" value="${level}" class="accent-[#c05621] level-checkbox" onchange="applyFilters()"> ${level}`;
+                container.appendChild(label);
+            });
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const checkedBoxes = Array.from(document.querySelectorAll('.level-checkbox:checked')).map(cb => cb.value);
+            activeLogicMode = document.querySelector('input[name="logicMode"]:checked').value;
+
+            const filteredData = techniquesData.filter(tech => {
+                // 1. Full Text Search
+                const textMatch = !searchTerm || 
+                    tech.name.toLowerCase().includes(searchTerm) || 
+                    tech.definition.toLowerCase().includes(searchTerm) || 
+                    tech.mechanism.toLowerCase().includes(searchTerm) || 
+                    tech.abbr.toLowerCase().includes(searchTerm) ||
+                    tech.example.toLowerCase().includes(searchTerm);
+
+                if (!textMatch) return false;
+
+                // 2. Complex Level Filtering
+                if (checkedBoxes.length === 0) return true;
+
+                const techLevels = tech.levelOfChange.split(', ').map(s => s.trim());
+                const matchCount = checkedBoxes.filter(l => techLevels.includes(l)).length;
+
+                if (activeLogicMode === 'OR') {
+                    return matchCount > 0;
+                } else if (activeLogicMode === 'AND') {
+                    return matchCount === checkedBoxes.length;
+                } else if (activeLogicMode === 'XOR') {
+                    // Mathematical XOR: Odd parity (true if exactly 1 match or an odd number of matches)
+                    return (matchCount % 2) !== 0; 
+                }
+                return true;
+            });
+
+            document.getElementById('patternCount').innerText = filteredData.length;
+            initChart(filteredData);
+            renderTechniqueList(filteredData);
+            
+            if (filteredData.length > 0) {
+                loadTechnique(filteredData[0].abbr, filteredData);
+            } else {
+                document.getElementById('technique-details').innerHTML = '<div class="flex items-center justify-center h-full text-gray-400 text-lg">No patterns match your filter criteria.</div>';
+            }
+        }
+
+        function renderTechniqueList(dataToRender) {
+            const listContainer = document.getElementById('technique-list');
+            listContainer.innerHTML = '';
+
+            dataToRender.forEach((tech) => {
+                const btn = document.createElement('button');
+                btn.className = 'nav-btn w-full text-left px-6 py-4 border-b border-gray-200 hover:bg-gray-100 transition-colors duration-150 flex items-center justify-between';
+                btn.id = `btn-${tech.abbr}`;
+                btn.onclick = () => loadTechnique(tech.abbr, dataToRender);
+                
+                btn.innerHTML = `
+                    <div>
+                        <span class="font-bold text-gray-800 block">${tech.abbr}</span>
+                        <span class="text-sm text-gray-600">${tech.name}</span>
+                    </div>
+                    <span class="text-gray-400 text-xl">›</span>
+                `;
+                listContainer.appendChild(btn);
+            });
+        }
+
+        function loadTechnique(abbr, dataset = techniquesData) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${abbr}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const tech = dataset.find(t => t.abbr === abbr);
+            if (!tech) return;
+
+            const detailContainer = document.getElementById('technique-details');
+            
+            detailContainer.classList.remove('fade-in');
+            void detailContainer.offsetWidth; 
+            detailContainer.classList.add('fade-in');
+
+            detailContainer.innerHTML = `
+                <div class="mb-2 inline-block px-3 py-1 bg-[#ede8e4] text-[#c05621] rounded-full text-xs font-bold tracking-wide uppercase">
+                    ${tech.levelOfChange}
+                </div>
+                <h3 class="text-3xl font-bold text-gray-800 mb-6">${tech.name} <span class="text-gray-400 font-light">(${tech.abbr})</span></h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-2">Definition</h4>
+                        <p class="text-lg text-gray-800 leading-relaxed">${tech.definition}</p>
+                    </div>
+                    
+                    <div class="bg-[#faf9f6] p-4 rounded-lg border-l-4 border-[#c05621]">
+                        <h4 class="text-sm uppercase tracking-wider text-[#c05621] font-bold mb-1">Real-World Example</h4>
+                        <p class="text-gray-700 italic">${tech.example}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-2">Mechanism of Change</h4>
+                            <p class="text-gray-700 leading-relaxed">${tech.mechanism}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-2">Ideal Context</h4>
+                            <p class="text-gray-700 leading-relaxed">${tech.bestContext}</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+                        <div>
+                            <h4 class="text-sm uppercase tracking-wider text-green-600 font-bold mb-2 flex items-center">✓ Strengths</h4>
+                            <p class="text-gray-700 leading-relaxed">${tech.strengths}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm uppercase tracking-wider text-red-500 font-bold mb-2 flex items-center">✗ Weaknesses & Risks</h4>
+                            <p class="text-gray-700 leading-relaxed mb-2">${tech.weaknesses}</p>
+                            <p class="text-gray-600 text-sm border-l-2 border-red-200 pl-2"><strong>Risk:</strong> ${tech.risks}</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-100">
+                        <h4 class="text-sm uppercase tracking-wider text-gray-500 font-bold mb-2">Scaling Mechanism</h4>
+                        <p class="text-gray-700 leading-relaxed bg-gray-50 p-3 rounded">${tech.scaling}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-[#c05621]');
+                btn.classList.add('text-gray-400');
+            });
+            event.target.classList.add('active', 'text-[#c05621]');
+            event.target.classList.remove('text-gray-400');
+
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden-content');
+            });
+            
+            const activeContent = document.getElementById(tabId);
+            activeContent.classList.remove('hidden-content');
+            
+            activeContent.classList.remove('fade-in');
+            void activeContent.offsetWidth; 
+            activeContent.classList.add('fade-in');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLevelFilters();
+            
+            // Add listener to search input
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+            // Add listeners to radio buttons
+            document.querySelectorAll('input[name="logicMode"]').forEach(radio => {
+                radio.addEventListener('change', applyFilters);
+            });
+
+            // Initial render
+            initChart(techniquesData);
+            renderTechniqueList(techniquesData);
+            loadTechnique(techniquesData[0].abbr, techniquesData); 
+        });
+    </script>
+</body>
+</html>
