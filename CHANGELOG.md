@@ -9,6 +9,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-04-08
+
+### Added
+
+#### Bulk Import/Export Tools
+- Python CLI tool (`scripts/bulk_io.py`) for format conversion
+- Support for JSON, CSV, GraphML, and Neo4j formats
+- Export entities and relationships to multiple formats simultaneously
+- Import from CSV and JSON formats
+- Format conversion between all supported formats
+- Graph statistics and information commands
+
+#### Advanced WebGL Visualizer
+- Three.js-based visualization for 10,000+ nodes
+- WebGL rendering with octree-optimized force simulation
+- Interactive controls for force strength, link distance, node size, and repulsion
+- Mouse drag rotation and zoom navigation
+- Color-coded nodes by entity type
+- Real-time FPS counter and node/edge statistics
+- Load custom JSON graphs or sample data
+- Dynamic legend showing node type distribution
+
+#### Simple D3.js Visualizer
+- Force-directed graph visualization with D3.js v7
+- Drag-and-drop JSON file loading
+- Instant load with no server required
+- Interactive node dragging and zoom/pan controls
+- Adjustable link distance, charge strength, and node size
+- Tooltip showing node details on hover
+- Color-coded nodes by type with legend
+- Sample data loading for testing
+
+---
+
 ## [1.0.0] - 2024-01-15
 
 ### Added
@@ -72,6 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Description |
 |---------|------|-------------|
+| 1.1.0 | 2026-04-08 | Bulk import/export tools, WebGL and D3.js visualizers |
 | 1.0.0 | 2024-01-15 | Initial release with ontology, documentation, and archetype frameworks |
 
 ---
@@ -88,10 +123,6 @@ The following are planned for future releases:
 - Geographic data for key regions
 
 ### [1.2.0] - Planned
-- Search and query API
-- Data quality dashboard
-- Automated data validation CI/CD
-- Bulk import tools
 
 ### [2.0.0] - Planned
 - Graph database integration
