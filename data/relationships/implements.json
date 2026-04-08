@@ -1,0 +1,94 @@
+{
+  "relationship_type": "implements",
+  "description": "Initiative applies or uses a Pattern/Methodology",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "city-wide",
+        "duration_months": 13
+      },
+      "confidence": 0.94,
+      "source_reference": "Montgomery Bus Boycott implemented Hyper-Local Boycotts pattern #19 with sophisticated carpool system"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "p2a3t4t5-e6r7-8901-cdef-234567890abc",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "national",
+        "duration_months": 360
+      },
+      "confidence": 0.92,
+      "source_reference": "Green Belt Movement implemented Guerrilla Gardening pattern #71 - planting 50+ million trees"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "p3a4t5t6-e7r8-9012-defa-345678901bcd",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "national",
+        "duration_months": 60
+      },
+      "confidence": 0.95,
+      "source_reference": "Delano Grape Strike implemented Neighborhood Picketing #6 and Producers' Boycotts #20"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "p4a5t6t7-e8r9-0123-efab-456789012cde",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "national",
+        "duration_months": 24
+      },
+      "confidence": 0.93,
+      "source_reference": "Women of Liberia implemented The Sit-in #39 and Physical Obstruction #43"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "p5a6t7t8-e9r0-1234-fabc-567890123def",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "national",
+        "duration_months": 120
+      },
+      "confidence": 0.96,
+      "source_reference": "Solidarity implemented Networked Campaign Alliances #65 and Alternative Economies #60"
+    },
+    {
+      "source_id": "i6n7i8t9-i0a1-2345-abcd-ef1234567890",
+      "target_id": "p6a7t8t9-e0r1-2345-abcd-ef1234567890",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "city-wide",
+        "duration_months": 6
+      },
+      "confidence": 0.91,
+      "source_reference": "Glasgow Rent Strikes implemented Rent Strikes #21 and Disruption of Evictions #146"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "p7a8t9t0-e1r2-3456-bcde-f12345678901",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "regional",
+        "duration_months": 372
+      },
+      "confidence": 0.88,
+      "source_reference": "Zapatista Autonomous Municipalities implemented Community Assemblies #51 and Alternative Economies #60"
+    },
+    {
+      "source_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "target_id": "p8a9t0t1-e2r3-4567-cdef-123456789012",
+      "properties": {
+        "implementation_quality": "high",
+        "scale": "national",
+        "duration_months": 1
+      },
+      "confidence": 0.97,
+      "source_reference": "Salt March implemented Neighborhood Marches #16 and Open Violation of Ordinances #35"
+    }
+  ]
+}

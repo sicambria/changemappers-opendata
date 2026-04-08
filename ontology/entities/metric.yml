@@ -1,0 +1,243 @@
+id: metric
+name: Metric
+description: A quantified measure that tracks specific aspects of change initiatives, projects, or outcomes.
+category: measurement
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the metric
+    - name: name
+      type: string
+      required: true
+      description: Name of the metric
+    - name: description
+      type: string
+      required: true
+      description: Description of what the metric measures
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the metric
+      enum_values:
+        - performance
+        - process
+        - output
+        - efficiency
+        - quality
+        - coverage
+    - name: value
+      type: number
+      required: false
+      description: Current measured value
+    - name: unit
+      type: string
+      required: true
+      description: Unit of measurement
+    - name: target
+      type: number
+      required: false
+      description: Target value
+    - name: baseline
+      type: number
+      required: false
+      description: Baseline value
+    - name: trend
+      type: enum
+      required: false
+      description: Direction of change
+      enum_values:
+        - improving
+        - stable
+        - declining
+    - name: data_source
+      type: string
+      required: false
+      description: Source of metric data
+    - name: collection_method
+      type: string
+      required: false
+      description: How data is collected
+    - name: frequency
+      type: enum
+      required: false
+      description: Collection frequency
+      enum_values:
+        - realtime
+        - daily
+        - weekly
+        - monthly
+        - quarterly
+        - annually
+    - name: project_id
+      type: string
+      required: false
+      description: Related project
+    - name: indicator_id
+      type: string
+      required: false
+      description: Related indicator
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where metric applies
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: project
+    type: measures
+    description: Metric measures project
+  - entity: indicator
+    type: supports
+    description: Metric supports indicator
+  - entity: domain
+    type: applies_to
+    description: Metric applies to domains
+examples:
+  - id: metric_001
+    name: Solar Installation Capacity
+    description: Total installed solar capacity in kilowatts.
+    type: output
+    value: 500
+    unit: kW
+    target: 500
+    baseline: 0
+    trend: improving
+    data_source: Installation records
+    collection_method: Project completion reports
+    frequency: quarterly
+    project_id: proj_001
+    indicator_id: ind_001
+    domain_ids:
+      - dom_energy
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: metric_002
+    name: Households Subscribed
+    description: Number of households subscribed to community solar.
+    type: coverage
+    value: 100
+    unit: households
+    target: 100
+    baseline: 0
+    trend: improving
+    data_source: Subscription database
+    frequency: monthly
+    project_id: proj_001
+    indicator_id: ind_001
+    domain_ids:
+      - dom_energy
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: metric_003
+    name: Training Completion Rate
+    description: Percentage of trainees completing certification program.
+    type: performance
+    value: 85
+    unit: percent
+    target: 90
+    baseline: 0
+    trend: improving
+    frequency: quarterly
+    project_id: proj_002
+    indicator_id: ind_002
+    domain_ids:
+      - dom_energy
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: metric_004
+    name: Food Distribution Volume
+    description: Pounds of food distributed monthly.
+    type: output
+    value: 400
+    unit: pounds per month
+    target: 500
+    baseline: 100
+    trend: improving
+    frequency: monthly
+    project_id: proj_005
+    indicator_id: ind_003
+    domain_ids:
+      - dom_food_systems
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: metric_005
+    name: Trees Planted
+    description: Number of trees planted in riparian restoration.
+    type: output
+    value: 2500
+    unit: trees
+    target: 5000
+    baseline: 0
+    trend: improving
+    frequency: quarterly
+    project_id: proj_007
+    indicator_id: ind_004
+    domain_ids:
+      - dom_ecosystem_restoration
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: metric_006
+    name: Land Stewardship Acres
+    description: Acres under Indigenous stewardship management.
+    type: coverage
+    value: 500
+    unit: acres
+    target: 1000
+    baseline: 0
+    trend: improving
+    frequency: annually
+    project_id: proj_008
+    indicator_id: ind_005
+    domain_ids:
+      - dom_land_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: metric_007
+    name: Curriculum Adoption Rate
+    description: Number of schools adopting curriculum per quarter.
+    type: process
+    value: 15
+    unit: schools per quarter
+    target: 20
+    baseline: 0
+    trend: improving
+    frequency: quarterly
+    project_id: proj_006
+    indicator_id: ind_006
+    domain_ids:
+      - dom_climate_justice
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - metric_types
+  - metric_domains
+  - metric_frequency
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/metric
+  provenance: ChangeMappers Ontology Project

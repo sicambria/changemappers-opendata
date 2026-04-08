@@ -1,0 +1,232 @@
+id: indicator
+name: Indicator
+description: A measurement criterion used to assess progress toward outcomes and impacts.
+category: measurement
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the indicator
+    - name: name
+      type: string
+      required: true
+      description: Name of the indicator
+    - name: description
+      type: string
+      required: true
+      description: Description of what the indicator measures
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the indicator
+      enum_values:
+        - quantitative
+        - qualitative
+        - process
+        - outcome
+        - impact
+    - name: measurement_method
+      type: string
+      required: false
+      description: How the indicator is measured
+    - name: unit
+      type: string
+      required: false
+      description: Unit of measurement
+    - name: frequency
+      type: enum
+      required: false
+      description: Measurement frequency
+      enum_values:
+        - continuous
+        - daily
+        - weekly
+        - monthly
+        - quarterly
+        - annually
+    - name: target_value
+      type: number
+      required: false
+      description: Target value for the indicator
+    - name: baseline_value
+      type: number
+      required: false
+      description: Baseline value at start
+    - name: current_value
+      type: number
+      required: false
+      description: Most recent measured value
+    - name: outcome_ids
+      type: array[string]
+      required: false
+      description: Outcomes this indicator measures
+    - name: impact_ids
+      type: array[string]
+      required: false
+      description: Impacts this indicator measures
+    - name: dataset_ids
+      type: array[string]
+      required: false
+      description: Datasets providing indicator data
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where this indicator applies
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: outcome
+    type: measures
+    description: Indicator measures outcomes
+  - entity: impact
+    type: measures
+    description: Indicator measures impacts
+  - entity: dataset
+    type: uses
+    description: Indicator uses datasets
+  - entity: metric
+    type: informs
+    description: Indicator informs metrics
+examples:
+  - id: ind_001
+    name: Household Energy Cost Reduction
+    description: Percentage reduction in energy costs for participating households.
+    type: quantitative
+    measurement_method: Utility bill comparison
+    unit: percent reduction
+    frequency: annually
+    target_value: 50
+    baseline_value: 0
+    current_value: 45
+    outcome_ids:
+      - outcome_001
+    domain_ids:
+      - dom_energy
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: ind_002
+    name: Certified Solar Installers
+    description: Number of community members with solar installation certification.
+    type: quantitative
+    measurement_method: Certification records
+    unit: number of certified installers
+    frequency: quarterly
+    target_value: 50
+    baseline_value: 0
+    current_value: 35
+    outcome_ids:
+      - outcome_002
+    domain_ids:
+      - dom_energy
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: ind_003
+    name: Food Production Volume
+    description: Pounds of food produced by urban farm network annually.
+    type: quantitative
+    measurement_method: Harvest records
+    unit: pounds
+    frequency: annually
+    target_value: 10000
+    baseline_value: 1000
+    current_value: 5000
+    outcome_ids:
+      - outcome_004
+    domain_ids:
+      - dom_food_systems
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: ind_004
+    name: Riparian Acres Restored
+    description: Acres of riparian habitat restored and planted.
+    type: quantitative
+    measurement_method: GPS mapping and field surveys
+    unit: acres
+    frequency: annually
+    target_value: 50
+    baseline_value: 0
+    current_value: 35
+    outcome_ids:
+      - outcome_006
+    domain_ids:
+      - dom_ecosystem_restoration
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: ind_005
+    name: Land Acres Returned
+    description: Acres of land returned to Indigenous stewardship.
+    type: quantitative
+    measurement_method: Land records
+    unit: acres
+    frequency: annually
+    target_value: 1000
+    baseline_value: 0
+    current_value: 500
+    outcome_ids:
+      - outcome_007
+    domain_ids:
+      - dom_land_justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: ind_006
+    name: Schools Adopting Curriculum
+    description: Number of K-12 schools adopting climate justice curriculum.
+    type: quantitative
+    measurement_method: School district reports
+    unit: number of schools
+    frequency: quarterly
+    target_value: 200
+    baseline_value: 0
+    current_value: 50
+    outcome_ids:
+      - outcome_005
+    domain_ids:
+      - dom_climate_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: ind_007
+    name: Community Food Security
+    description: Qualitative assessment of community food security.
+    type: qualitative
+    measurement_method: Community survey
+    frequency: annually
+    outcome_ids:
+      - outcome_004
+    impact_ids:
+      - impact_003
+    domain_ids:
+      - dom_food_systems
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - indicator_types
+  - indicator_domains
+  - measurement_frequency
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/indicator
+  provenance: ChangeMappers Ontology Project

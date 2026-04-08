@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/utilities/relationship.schema.json",
+  "title": "Relationship Schema",
+  "description": "Base relationship schema for linking entities in ChangeMappers datasets",
+  "definitions": {
+    "entityReference": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the entity"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of the entity (e.g., 'person', 'organization', 'location')"
+        },
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "URL-friendly slug identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the entity"
+        }
+      },
+      "required": ["id", "type"],
+      "additionalProperties": false,
+      "description": "Reference to an entity in a relationship"
+    },
+    "relationshipType": {
+      "type": "string",
+      "description": "Type of relationship between entities",
+      "examples": [
+        "works_for",
+        "located_in",
+        "subsidiary_of",
+        "board_member_of",
+        "investor_in",
+        "partner_of",
+        "supplier_to",
+        "customer_of",
+        "owns",
+        "related_to"
+      ]
+    },
+    "properties": {
+      "type": "object",
+      "description": "Additional properties specific to the relationship type",
+      "additionalProperties": true
+    }
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the relationship"
+    },
+    "source": {
+      "$ref": "#/definitions/entityReference",
+      "description": "Source entity in the relationship"
+    },
+    "target": {
+      "$ref": "#/definitions/entityReference",
+      "description": "Target entity in the relationship"
+    },
+    "relationship_type": {
+      "$ref": "#/definitions/relationshipType"
+    },
+    "properties": {
+      "$ref": "#/definitions/properties"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score for this relationship (0-1)"
+    },
+    "source_reference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["official", "news", "research", "social", "government", "ngo", "corporate", "other"]
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["type", "name"],
+      "description": "Source of the relationship information"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the relationship became valid"
+    },
+    "valid_to": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the relationship ceased to be valid"
+    },
+    "is_current": {
+      "type": "boolean",
+      "description": "Whether the relationship is currently active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when this record was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when this record was last updated"
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Identifier of the user or process that created this record"
+    },
+    "updated_by": {
+      "type": "string",
+      "description": "Identifier of the user or process that last updated this record"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Version number of this relationship record"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or comments about the relationship"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing the relationship"
+    }
+  },
+  "required": ["id", "source", "target", "relationship_type"],
+  "additionalProperties": true
+}

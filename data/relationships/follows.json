@@ -1,0 +1,61 @@
+{
+  "relationship_type": "follows",
+  "description": "Entity comes after another Entity in sequence",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "l1e2g3i4-s5l6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "outcome",
+        "time_gap": "months",
+        "causality": "direct"
+      },
+      "confidence": 0.95,
+      "source_reference": "Montgomery Bus Boycott followed by Supreme Court desegregation ruling"
+    },
+    {
+      "source_id": "e1v2e3n4-t5f6-7890-abcd-ef1234567890",
+      "target_id": "p1o2l3i4-c5y6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "policy_change",
+        "time_gap": "years",
+        "causality": "pressure_induced"
+      },
+      "confidence": 0.88,
+      "source_reference": "Poll Tax Rebellion followed by tax abolition and Thatcher resignation"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "u1n2i3o4-n5c6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "recognition",
+        "time_gap": "years",
+        "causality": "negotiated"
+      },
+      "confidence": 0.92,
+      "source_reference": "Delano Grape Strike followed by union contract recognition"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "p1e2a3c4-e5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "conflict_resolution",
+        "time_gap": "months",
+        "causality": "facilitated"
+      },
+      "confidence": 0.90,
+      "source_reference": "Women of Liberia action followed by peace agreement"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "d1e2m3o4-c5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "transition",
+        "time_gap": "years",
+        "causality": "negotiated"
+      },
+      "confidence": 0.93,
+      "source_reference": "Solidarity movement followed by democratic elections in Poland"
+    }
+  ]
+}

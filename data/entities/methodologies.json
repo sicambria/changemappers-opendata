@@ -1,0 +1,87 @@
+{
+  "dataset_info": {
+    "name": "Methodologies",
+    "description": "Systematic methods and processes for implementing regenerative development and systemic change.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 5,
+    "schema": "https://changemappers.org/schemas/entities/methodology.schema.json"
+  },
+  "records": [
+    {
+      "id": "me1t2h3o4-d5o6-7890-abcd-ef1234567890",
+      "slug": "holistic-management",
+      "name": "Holistic Management",
+      "description": "A decision-making framework for managing land, livestock, and human resources regeneratively. Focuses on ecosystem processes and planned grazing for soil health.",
+      "category": "Land Management",
+      "origin_organization": "Savory Institute",
+      "key_processes": ["Holistic Context", "Ecosystem Processes", "Decision Making", "Planned Grazing", "Financial Planning"],
+      "application_areas": ["agriculture", "ranching", "land-restoration"],
+      "related_methodologies": ["me2t3h4o5-d6o7-8901-bcde-f12345678901"],
+      "resources": ["https://savory.global"],
+      "tags": ["holistic-management", "grazing", "soil-health", "decision-making"],
+      "created_at": "2026-01-10T08:00:00Z",
+      "updated_at": "2026-04-01T14:00:00Z"
+    },
+    {
+      "id": "me2t3h4o5-d6o7-8901-bcde-f12345678901",
+      "slug": "keyline-design",
+      "name": "Keyline Design",
+      "description": "A land planning methodology for water harvesting and soil development. Uses landscape geometry to optimize water distribution and build fertile topsoil.",
+      "category": "Water Management",
+      "origin_organization": "P.A. Yeomans",
+      "key_processes": ["Keyline Cultivation", "Water Harvesting", "Soil Building", "Land Planning"],
+      "application_areas": ["farming", "land-restoration", "water-management"],
+      "related_methodologies": ["me1t2h3o4-d5o6-7890-abcd-ef1234567890", "me3t4h5o6-d7o8-9012-cdef-123456789012"],
+      "resources": [],
+      "tags": ["keyline", "water-harvesting", "soil-building", "land-planning"],
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-04-02T10:30:00Z"
+    },
+    {
+      "id": "me3t4h5o6-d7o8-9012-cdef-123456789012",
+      "slug": "restorative-circles",
+      "name": "Restorative Circles",
+      "description": "A community process for addressing conflict and harm through dialogue, accountability, and collective healing. Centers affected parties in determining outcomes.",
+      "category": "Conflict Resolution",
+      "origin_organization": "Dominic Barter",
+      "key_processes": ["Circle Formation", "Story Sharing", "Dialogue Facilitation", "Action Planning", "Community Integration"],
+      "application_areas": ["justice-systems", "community-conflict", "organizational-healing"],
+      "related_methodologies": ["me4t5h6o7-d8o9-0123-def0-123456789012"],
+      "resources": ["https://restorativecircles.org"],
+      "tags": ["restorative-justice", "circles", "conflict-resolution", "healing"],
+      "created_at": "2026-01-15T10:00:00Z",
+      "updated_at": "2026-04-03T11:00:00Z"
+    },
+    {
+      "id": "me4t5h6o7-d8o9-0123-def0-123456789012",
+      "slug": "sociocracy",
+      "name": "Sociocracy",
+      "description": "A governance system based on consent decision-making and circular organization structures. Enables distributed authority while maintaining organizational coherence.",
+      "category": "Governance",
+      "origin_organization": "Sociocracy Movement",
+      "key_processes": ["Consent Decision-Making", "Circle Structure", "Feedback Loops", "Role Selection", "Policy Development"],
+      "application_areas": ["organizations", "communities", "governance"],
+      "related_methodologies": ["me3t4h5o6-d7o8-9012-cdef-123456789012", "me5t6h7o8-d9o0-1234-ef01-234567890123"],
+      "resources": ["https://sociocracyforall.org"],
+      "tags": ["governance", "consent", "circles", "self-organization"],
+      "created_at": "2026-01-18T11:00:00Z",
+      "updated_at": "2026-04-04T12:00:00Z"
+    },
+    {
+      "id": "me5t6h7o8-d9o0-1234-ef01-234567890123",
+      "slug": "participatory-action-research",
+      "name": "Participatory Action Research (PAR)",
+      "description": "A collaborative research methodology that involves participants as co-researchers. Emphasizes knowledge production that directly benefits communities and drives social change.",
+      "category": "Research",
+      "origin_organization": "Various",
+      "key_processes": ["Problem Identification", "Co-Design", "Data Collection", "Analysis", "Action", "Reflection"],
+      "application_areas": ["community-development", "social-change", "organizational-learning"],
+      "related_methodologies": ["me4t5h6o7-d8o9-0123-def0-123456789012"],
+      "resources": [],
+      "tags": ["participatory", "action-research", "community-based", "co-creation"],
+      "created_at": "2026-01-20T12:00:00Z",
+      "updated_at": "2026-04-05T13:00:00Z"
+    }
+  ]
+}

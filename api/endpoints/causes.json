@@ -1,0 +1,443 @@
+{
+  "endpoint": "/causes",
+  "path": "/v1/causes",
+  "httpMethods": ["GET", "POST", "PUT", "DELETE"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "Unique cause identifier"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Search by cause name (partial match)"
+        },
+        "category": {
+          "type": "string",
+          "required": false,
+          "enum": ["environment", "social_justice", "economic", "health", "education", "governance", "culture", "infrastructure"],
+          "description": "Filter by category"
+        },
+        "parent_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by parent cause ID (for hierarchical causes)"
+        },
+        "sdg": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by UN Sustainable Development Goal reference"
+        },
+        "urgency": {
+          "type": "string",
+          "required": false,
+          "enum": ["critical", "high", "medium", "low"],
+          "description": "Filter by urgency level"
+        },
+        "scope": {
+          "type": "string",
+          "required": false,
+          "enum": ["local", "regional", "national", "global"],
+          "description": "Filter by scope"
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        },
+        "offset": {
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0
+        },
+        "sort": {
+          "type": "string",
+          "required": false,
+          "enum": ["name", "urgency", "created_at", "updated_at"],
+          "default": "name"
+        },
+        "order": {
+          "type": "string",
+          "required": false,
+          "enum": ["asc", "desc"],
+          "default": "asc"
+        },
+        "include_children": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Include child causes in response"
+        }
+      }
+    },
+    "POST": {
+      "body": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "required": false,
+          "maxLength": 10000
+        },
+        "category": {
+          "type": "string",
+          "required": true,
+          "enum": ["environment", "social_justice", "economic", "health", "education", "governance", "culture", "infrastructure"]
+        },
+        "parent_id": {
+          "type": "string",
+          "required": false,
+          "description": "Parent cause ID for hierarchical causes"
+        },
+        "sdg": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Array of UN Sustainable Development Goal references (e.g., 'SDG1', 'SDG13')"
+        },
+        "urgency": {
+          "type": "string",
+          "required": false,
+          "enum": ["critical", "high", "medium", "low"],
+          "default": "medium"
+        },
+        "scope": {
+          "type": "string",
+          "required": false,
+          "enum": ["local", "regional", "national", "global"],
+          "default": "regional"
+        },
+        "location": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string" },
+            "region": { "type": "string" }
+          }
+        },
+        "indicators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "unit": { "type": "string" },
+              "baseline": { "type": "number" },
+              "target": { "type": "number" }
+            }
+          },
+          "required": false
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "metadata": {
+          "type": "object",
+          "required": false
+        }
+      }
+    },
+    "PUT": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "body": {
+        "name": { "type": "string", "required": false },
+        "description": { "type": "string", "required": false },
+        "category": { "type": "string", "required": false },
+        "parent_id": { "type": "string", "required": false },
+        "sdg": { "type": "array", "items": "string", "required": false },
+        "urgency": { "type": "string", "required": false },
+        "scope": { "type": "string", "required": false },
+        "location": { "type": "object", "required": false },
+        "indicators": { "type": "array", "required": false },
+        "tags": { "type": "array", "items": "string", "required": false },
+        "metadata": { "type": "object", "required": false }
+      }
+    },
+    "DELETE": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "GET": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Cause"
+            }
+          },
+          "pagination": {
+            "$ref": "#/definitions/Pagination"
+          }
+        }
+      },
+      "definitions": {
+        "Cause": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "category": { "type": "string" },
+            "parent_id": { "type": "string" },
+            "parent_name": { "type": "string" },
+            "children": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Cause"
+              },
+              "description": "Child causes (only included if include_children=true)"
+            },
+            "sdg": { "type": "array", "items": { "type": "string" } },
+            "urgency": { "type": "string" },
+            "scope": { "type": "string" },
+            "location": {
+              "type": "object",
+              "properties": {
+                "city": { "type": "string" },
+                "country": { "type": "string" },
+                "region": { "type": "string" }
+              }
+            },
+            "indicators": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" },
+                  "unit": { "type": "string" },
+                  "baseline": { "type": "number" },
+                  "current": { "type": "number" },
+                  "target": { "type": "number" }
+                }
+              }
+            },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "metadata": { "type": "object" },
+            "relationships": {
+              "type": "object",
+              "properties": {
+                "initiatives": { "type": "integer" },
+                "organizations": { "type": "integer" },
+                "patterns": { "type": "integer" },
+                "stories": { "type": "integer" }
+              }
+            },
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" }
+          }
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "limit": { "type": "integer" },
+            "offset": { "type": "integer" },
+            "has_more": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "POST": {
+      "success": {
+        "$ref": "#/definitions/Cause"
+      }
+    },
+    "PUT": {
+      "success": {
+        "$ref": "#/definitions/Cause"
+      }
+    },
+    "DELETE": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "list_causes": "?limit=20&sort=name&order=asc",
+        "filter_by_category": "?category=environment",
+        "filter_by_urgency": "?urgency=critical",
+        "filter_by_sdg": "?sdg=SDG13",
+        "filter_by_parent": "?parent_id=cause_abc123&include_children=true",
+        "filter_by_scope": "?scope=global"
+      },
+      "POST": {
+        "create_cause": {
+          "name": "Climate Change Mitigation",
+          "description": "Addressing the causes and impacts of climate change through mitigation strategies",
+          "category": "environment",
+          "sdg": ["SDG13"],
+          "urgency": "critical",
+          "scope": "global",
+          "indicators": [
+            {
+              "name": "Carbon Emissions Reduction",
+              "description": "Annual CO2 emissions in metric tons",
+              "unit": "metric tons CO2",
+              "baseline": 50000,
+              "target": 25000
+            },
+            {
+              "name": "Renewable Energy Adoption",
+              "description": "Percentage of energy from renewable sources",
+              "unit": "percentage",
+              "baseline": 25,
+              "target": 75
+            }
+          ],
+          "tags": ["climate", "emissions", "renewable", "global-warming"]
+        }
+      },
+      "PUT": {
+        "update_cause": {
+          "id": "cause_xyz789",
+          "urgency": "critical",
+          "indicators": [
+            {
+              "name": "Carbon Emissions Reduction",
+              "current": 45000,
+              "target": 25000
+            }
+          ]
+        }
+      }
+    },
+    "response": {
+      "GET": {
+        "success": {
+          "data": [
+            {
+              "id": "cause_xyz789",
+              "name": "Climate Change Mitigation",
+              "description": "Addressing the causes and impacts of climate change through mitigation strategies",
+              "category": "environment",
+              "parent_id": null,
+              "parent_name": null,
+              "sdg": ["SDG13"],
+              "urgency": "critical",
+              "scope": "global",
+              "location": null,
+              "indicators": [
+                {
+                  "name": "Carbon Emissions Reduction",
+                  "description": "Annual CO2 emissions in metric tons",
+                  "unit": "metric tons CO2",
+                  "baseline": 50000,
+                  "current": 45000,
+                  "target": 25000
+                }
+              ],
+              "tags": ["climate", "emissions", "renewable", "global-warming"],
+              "metadata": {},
+              "relationships": {
+                "initiatives": 45,
+                "organizations": 23,
+                "patterns": 12,
+                "stories": 34
+              },
+              "created_at": "2024-01-10T08:00:00Z",
+              "updated_at": "2024-06-15T12:30:00Z"
+            }
+          ],
+          "pagination": {
+            "total": 156,
+            "limit": 20,
+            "offset": 0,
+            "has_more": true
+          }
+        }
+      },
+      "POST": {
+        "success": {
+          "id": "cause_new123",
+          "name": "Climate Change Mitigation",
+          "description": "Addressing the causes and impacts of climate change",
+          "category": "environment",
+          "urgency": "critical",
+          "scope": "global",
+          "created_at": "2024-06-20T16:00:00Z",
+          "updated_at": "2024-06-20T16:00:00Z"
+        }
+      },
+      "DELETE": {
+        "success": {
+          "message": "Cause deleted successfully",
+          "id": "cause_xyz789"
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid request parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "403": {
+      "code": "FORBIDDEN",
+      "description": "Insufficient permissions"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Cause not found"
+    },
+    "409": {
+      "code": "CONFLICT",
+      "description": "Cause with this name already exists"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Validation error"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    }
+  }
+}

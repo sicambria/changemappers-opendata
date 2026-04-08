@@ -1,0 +1,102 @@
+{
+  "dataset_info": {
+    "name": "Indicators",
+    "description": "Measurable indicators for tracking progress and measuring impact.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 6,
+    "schema": "https://changemappers.org/schemas/entities/indicator.schema.json"
+  },
+  "records": [
+    {
+      "id": "in1d2i3c4-a5t6-7890-abcd-ef1234567890",
+      "slug": "water-quality-index",
+      "name": "Water Quality Index (WQI)",
+      "description": "Composite indicator measuring overall water quality based on physical, chemical, and biological parameters including pH, dissolved oxygen, turbidity, and contaminant levels.",
+      "type": "quantitative",
+      "unit": "index score (0-100)",
+      "measurement_frequency": "monthly",
+      "related_causes": ["c1a2u3s4-e5f6-7890-abcd-ef1234567890"],
+      "related_metrics": ["im1m2e3t4-r5i6-7890-abcd-ef1234567890"],
+      "data_sources": ["Community monitoring stations", "Laboratory analysis"],
+      "tags": ["water-quality", "environmental", "monitoring", "composite-index"],
+      "created_at": "2026-01-10T08:00:00Z",
+      "updated_at": "2026-04-01T14:00:00Z"
+    },
+    {
+      "id": "in2d3i4c5-a6t7-8901-bcde-f12345678901",
+      "slug": "soil-moisture-content",
+      "name": "Soil Moisture Content",
+      "description": "Measurement of water content in soil, indicating water retention capacity and drought resilience of agricultural lands.",
+      "type": "quantitative",
+      "unit": "percentage",
+      "measurement_frequency": "weekly",
+      "related_causes": ["c2a3u4s5-e6f7-8901-bcde-f12345678901"],
+      "related_metrics": ["im2m3e4t5-r6i7-8901-bcde-f12345678901"],
+      "data_sources": ["Soil sensors", "Field measurements"],
+      "tags": ["soil-moisture", "agriculture", "resilience", "quantitative"],
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-04-02T10:30:00Z"
+    },
+    {
+      "id": "in3d4i5c6-a7t8-9012-cdef-123456789012",
+      "slug": "local-food-percentage",
+      "name": "Local Food Consumption Percentage",
+      "description": "Percentage of household food consumption sourced from local and regional producers, indicating food system localization and sovereignty.",
+      "type": "quantitative",
+      "unit": "percentage",
+      "measurement_frequency": "annual",
+      "related_causes": ["c4a5u6s7-e8f9-9012-cdef-123456789012"],
+      "related_metrics": ["im3m4e5t6-r7i8-9012-cdef-123456789012"],
+      "data_sources": ["Consumer surveys", "Hub sales data"],
+      "tags": ["local-food", "food-sovereignty", "consumption", "quantitative"],
+      "created_at": "2026-01-15T10:00:00Z",
+      "updated_at": "2026-04-03T11:00:00Z"
+    },
+    {
+      "id": "in4d5i6c7-a8t9-0123-def0-123456789012",
+      "slug": "knowledge-resource-usage",
+      "name": "Knowledge Resource Usage",
+      "description": "Number of users accessing and utilizing open knowledge resources, indicating knowledge transfer and replication potential.",
+      "type": "quantitative",
+      "unit": "users/downloads",
+      "measurement_frequency": "monthly",
+      "related_causes": ["c9a0u1s2-e3f4-4567-0123-567890123456"],
+      "related_metrics": ["im4m5e6t7-r8i9-0123-def0-123456789012"],
+      "data_sources": ["Platform analytics", "Download tracking"],
+      "tags": ["knowledge", "open-access", "usage", "quantitative"],
+      "created_at": "2026-01-18T11:00:00Z",
+      "updated_at": "2026-04-04T12:00:00Z"
+    },
+    {
+      "id": "in5d6i7c8-a9t0-1234-ef01-234567890123",
+      "slug": "conflict-resolution-rate",
+      "name": "Conflict Resolution Rate",
+      "description": "Percentage of community conflicts successfully resolved through restorative practices, indicating community healing capacity.",
+      "type": "quantitative",
+      "unit": "percentage",
+      "measurement_frequency": "quarterly",
+      "related_causes": ["c6a7u8s9-e0f1-1234-ef01-234567890123"],
+      "related_metrics": ["im5m6e7t8-r9i0-1234-ef01-234567890123"],
+      "data_sources": ["Facilitator reports", "Community surveys"],
+      "tags": ["conflict-resolution", "restorative-justice", "healing", "quantitative"],
+      "created_at": "2026-01-20T12:00:00Z",
+      "updated_at": "2026-04-05T13:00:00Z"
+    },
+    {
+      "id": "in6d7i8c9-a0t1-2345-f012-345678901234",
+      "slug": "divested-capital-amount",
+      "name": "Divested Capital Amount",
+      "description": "Total value of investment capital divested from fossil fuels by committed institutions, indicating economic shift.",
+      "type": "quantitative",
+      "unit": "currency (USD)",
+      "measurement_frequency": "annual",
+      "related_causes": ["c3a4u5s6-e7f8-8901-bcde-f12345678901", "c7a8u9s0-e1f2-2345-f012-345678901234"],
+      "related_metrics": ["im6m7e8t9-r0i1-2345-f012-345678901234"],
+      "data_sources": ["Institutional reports", "Campaign tracking"],
+      "tags": ["divestment", "capital", "economic", "quantitative"],
+      "created_at": "2026-01-22T13:00:00Z",
+      "updated_at": "2026-04-06T14:00:00Z"
+    }
+  ]
+}

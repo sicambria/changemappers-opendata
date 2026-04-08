@@ -1,0 +1,112 @@
+id: derives_from
+name: Derives From
+description: An Entity is sourced, originated, or derived from another Entity. This captures lineage, origins, and evolutionary relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Initiative
+  - Pattern
+  - Methodology
+  - Organization
+  - Knowledge
+
+allowed_to:
+  - Initiative
+  - Pattern
+  - Methodology
+  - Organization
+  - Knowledge
+
+properties:
+  derivation_type:
+    type: string
+    description: How it derived (adaptation, inspiration, evolution, fork)
+    required: false
+  modifications:
+    type: array
+    description: What was modified from the source
+    required: false
+  derivation_date:
+    type: date
+    description: When the derivation occurred
+    required: false
+  attribution:
+    type: string
+    description: How the source is credited
+    required: false
+
+cardinality: many-to-one
+
+inverse: derived_into
+
+examples:
+  - from: XRYouth
+    to: ExtinctionRebellion
+    properties:
+      derivation_type: adaptation
+      modifications: ["youth_focused", "school_strike_integration"]
+      derivation_date: "2019-02-01"
+      attribution: acknowledged_founding_movement
+    confidence: 0.95
+    source: https://changemappers.org/initiatives/xr-youth
+
+  - from: ParticipatoryBudgetingYouth
+    to: ParticipatoryBudgeting
+    properties:
+      derivation_type: adaptation
+      modifications: ["youth_voting", "school_focus"]
+      attribution: credited_original_model
+    confidence: 0.91
+    source: https://changemappers.org/patterns/pb-youth
+
+  - from: MondragonCooperative
+    to: RochdalePrinciples
+    properties:
+      derivation_type: evolution
+      derivation_date: "1956-01-01"
+      modifications: ["regional_integration", "industrial_focus"]
+      attribution: principles_acknowledged
+    confidence: 0.88
+    source: https://changemappers.org/organizations/mondragon
+
+  - from: CommunityLandTrustUrban
+    to: CommunityLandTrustRural
+    properties:
+      derivation_type: adaptation
+      modifications: ["urban_context", "housing_focus"]
+      derivation_date: "1980-01-01"
+    confidence: 0.90
+    source: https://changemappers.org/patterns/clt-urban
+
+  - from: TimeBankingDigital
+    to: TimeBanking
+    properties:
+      derivation_type: evolution
+      modifications: ["digital_platform", "mobile_app"]
+      derivation_date: "2010-01-01"
+    confidence: 0.87
+    source: https://changemappers.org/patterns/timebanking-digital
+
+  - from: RestorativeCircles
+    to: RestorativeJustice
+    properties:
+      derivation_type: adaptation
+      modifications: ["community_facilitation", "circle_process"]
+      attribution: rooted_in_indigenous_practice
+    confidence: 0.92
+    source: https://changemappers.org/patterns/restorative-circles
+
+  - from: ChangeMappersOntology
+    to: SchemaOrg
+    properties:
+      derivation_type: inspiration
+      modifications: ["social_change_domain", "relationship_focus"]
+      attribution: structural_inspiration_acknowledged
+    confidence: 0.85
+    source: https://changemappers.org
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

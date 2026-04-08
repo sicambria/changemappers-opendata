@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/metric.schema.json",
+  "title": "Metric",
+  "description": "A specific measurement or calculation derived from data to track performance or progress.",
+  "type": "object",
+  "required": ["id", "slug", "name", "value_type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the metric",
+      "example": "550e8400-e29b-41d4-a716-446655440031"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "carbon-emissions-reduced"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the metric",
+      "example": "Carbon Emissions Reduced"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the metric"
+    },
+    "value_type": {
+      "type": "string",
+      "enum": ["number", "percentage", "ratio", "currency", "count", "score", "index"],
+      "description": "Type of value",
+      "example": "number"
+    },
+    "value": {
+      "type": "number",
+      "description": "Current value"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement",
+      "example": "tons CO2e"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Currency code if monetary"
+    },
+    "calculation_method": {
+      "type": "string",
+      "description": "How the metric is calculated"
+    },
+    "formula": {
+      "type": "string",
+      "description": "Formula if calculated"
+    },
+    "data_sources": {
+      "type": "array",
+      "description": "Data sources used",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "indicator": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related indicator"
+    },
+    "measurements": {
+      "type": "array",
+      "description": "Historical measurements",
+      "items": {
+        "type": "object",
+        "required": ["value", "date"],
+        "additionalProperties": false,
+        "properties": {
+          "value": { "type": "number" },
+          "date": { "type": "string", "format": "date" },
+          "source": { "type": "string" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "trend": {
+      "type": "string",
+      "enum": ["increasing", "decreasing", "stable", "volatile", "unknown"],
+      "description": "Current trend"
+    },
+    "change_percentage": {
+      "type": "number",
+      "description": "Percentage change from previous period"
+    },
+    "period": {
+      "type": "string",
+      "description": "Reporting period"
+    },
+    "comparison_period": {
+      "type": "string",
+      "description": "Period for comparison"
+    },
+    "target": {
+      "type": "object",
+      "description": "Target information",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "date": { "type": "string", "format": "date" },
+        "percentage_progress": { "type": "number" }
+      }
+    },
+    "benchmark": {
+      "type": "object",
+      "description": "Benchmark information",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "source": { "type": "string" },
+        "percentile": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "confidence_interval": {
+      "type": "object",
+      "description": "Confidence interval",
+      "additionalProperties": false,
+      "properties": {
+        "lower": { "type": "number" },
+        "upper": { "type": "number" },
+        "confidence_level": { "type": "number" }
+      }
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "estimated"],
+      "description": "Data quality"
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Limitations",
+      "items": { "type": "string" }
+    },
+    "related_metrics": {
+      "type": "array",
+      "description": "Related metrics",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related initiative"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related project"
+    },
+    "outcome": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related outcome"
+    },
+    "impact": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related impact"
+    },
+    "visualization": {
+      "type": "object",
+      "description": "Visualization preferences",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string", "enum": ["line", "bar", "gauge", "number", "pie"] },
+        "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

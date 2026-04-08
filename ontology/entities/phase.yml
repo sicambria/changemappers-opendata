@@ -1,0 +1,255 @@
+id: phase
+name: Phase
+description: A stage in a change process, project lifecycle, or initiative development.
+category: process
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the phase
+    - name: name
+      type: string
+      required: true
+      description: Name of the phase
+    - name: description
+      type: string
+      required: true
+      description: Description of the phase
+    - name: type
+      type: enum
+      required: true
+      description: Classification of phase type
+      enum_values:
+        - project
+        - initiative
+        - movement
+        - transition
+        - organizational
+    - name: sequence
+      type: integer
+      required: true
+      description: Order in sequence
+    - name: previous_phase_id
+      type: string
+      required: false
+      description: Previous phase in sequence
+    - name: next_phase_id
+      type: string
+      required: false
+      description: Next phase in sequence
+    - name: characteristics
+      type: array[string]
+      required: false
+      description: Key characteristics of this phase
+    - name: activities
+      type: array[string]
+      required: false
+      description: Typical activities in this phase
+    - name: deliverables
+      type: array[string]
+      required: false
+      description: Typical deliverables
+    - name: duration_guidance
+      type: string
+      required: false
+      description: Guidance on typical duration
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: project
+    type: stage_of
+    description: Phase is stage of projects
+  - entity: timeline
+    type: structured_by
+    description: Phase structures timelines
+  - entity: transition
+    type: structures
+    description: Phase structures transitions
+examples:
+  - id: phase_planning
+    name: Planning
+    description: Initial phase of project development including design and preparation.
+    type: project
+    sequence: 1
+    next_phase_id: phase_development
+    characteristics:
+      - High uncertainty
+      - Design work
+      - Stakeholder engagement
+    activities:
+      - Needs assessment
+      - Stakeholder engagement
+      - Project design
+      - Resource planning
+    deliverables:
+      - Project plan
+      - Budget
+      - Timeline
+    duration_guidance: 1-6 months
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: phase_development
+    name: Development
+    description: Phase of developing project components and preparing for implementation.
+    type: project
+    sequence: 2
+    previous_phase_id: phase_planning
+    next_phase_id: phase_implementation
+    characteristics:
+      - Resource mobilization
+      - Partnership building
+      - Capacity development
+    activities:
+      - Partnership development
+      - Resource mobilization
+      - Capacity building
+      - Pilot testing
+    deliverables:
+      - Partnerships
+      - Funding secured
+      - Team ready
+    duration_guidance: 3-12 months
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: phase_implementation
+    name: Implementation
+    description: Phase of executing project activities and delivering outputs.
+    type: project
+    sequence: 3
+    previous_phase_id: phase_development
+    next_phase_id: phase_evaluation
+    characteristics:
+      - Active execution
+      - Progress monitoring
+      - Adaptive management
+    activities:
+      - Execute activities
+      - Monitor progress
+      - Adjust as needed
+      - Engage stakeholders
+    deliverables:
+      - Project outputs
+      - Progress reports
+      - Stakeholder updates
+    duration_guidance: Variable
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: phase_evaluation
+    name: Evaluation
+    description: Phase of assessing project outcomes and capturing lessons.
+    type: project
+    sequence: 4
+    previous_phase_id: phase_implementation
+    next_phase_id: phase_sustainability
+    characteristics:
+      - Outcome assessment
+      - Learning capture
+      - Documentation
+    activities:
+      - Assess outcomes
+      - Document lessons
+      - Share findings
+      - Plan sustainability
+    deliverables:
+      - Evaluation report
+      - Lessons learned
+      - Recommendations
+    duration_guidance: 1-3 months
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: phase_emergence
+    name: Emergence
+    description: Early phase of movement or initiative formation.
+    type: initiative
+    sequence: 1
+    next_phase_id: phase_growth
+    characteristics:
+      - Idea development
+      - Initial organizing
+      - Vision formation
+    activities:
+      - Build initial group
+      - Develop vision
+      - Map landscape
+      - Identify opportunities
+    deliverables:
+      - Core group
+      - Vision statement
+      - Initial strategy
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: phase_growth
+    name: Growth
+    description: Phase of expansion and building momentum.
+    type: initiative
+    sequence: 2
+    previous_phase_id: phase_emergence
+    next_phase_id: phase_scaling
+    characteristics:
+      - Expansion
+      - Organizational development
+      - Relationship building
+    activities:
+      - Expand membership
+      - Build infrastructure
+      - Develop leadership
+      - Execute campaigns
+    deliverables:
+      - Growing base
+      - Stronger organization
+      - Campaign wins
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: phase_scaling
+    name: Scaling
+    description: Phase of deepening and broadening impact.
+    type: initiative
+    sequence: 3
+    previous_phase_id: phase_growth
+    characteristics:
+      - Systemic change
+      - Replication
+      - Policy influence
+    activities:
+      - Scale successful models
+      - Influence policy
+      - Build movements
+      - Transfer knowledge
+    deliverables:
+      - Broader impact
+      - Policy wins
+      - Movement growth
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - phase_types
+  - phase_sequences
+  - phase_characteristics
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/phase
+  provenance: ChangeMappers Ontology Project

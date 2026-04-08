@@ -1,0 +1,453 @@
+{
+  "endpoint": "/patterns",
+  "path": "/v1/patterns",
+  "httpMethods": ["GET", "POST", "PUT", "DELETE"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "Unique pattern identifier"
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "description": "Search by pattern name (partial match)"
+        },
+        "category": {
+          "type": "string",
+          "required": false,
+          "enum": ["organizational", "tactical", "strategic", "communication", "funding", "governance", "mobilization", "coalition_building"],
+          "description": "Filter by pattern category"
+        },
+        "effectiveness": {
+          "type": "string",
+          "required": false,
+          "enum": ["proven", "promising", "experimental"],
+          "description": "Filter by effectiveness rating"
+        },
+        "context": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by context (e.g., 'urban', 'rural', 'online')"
+        },
+        "cause_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by related cause ID"
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        },
+        "offset": {
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0
+        },
+        "sort": {
+          "type": "string",
+          "required": false,
+          "enum": ["name", "effectiveness", "usage_count", "created_at", "updated_at"],
+          "default": "name"
+        },
+        "order": {
+          "type": "string",
+          "required": false,
+          "enum": ["asc", "desc"],
+          "default": "asc"
+        }
+      }
+    },
+    "POST": {
+      "body": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "maxLength": 10000
+        },
+        "category": {
+          "type": "string",
+          "required": true,
+          "enum": ["organizational", "tactical", "strategic", "communication", "funding", "governance", "mobilization", "coalition_building"]
+        },
+        "problem": {
+          "type": "string",
+          "required": true,
+          "description": "The problem this pattern addresses"
+        },
+        "solution": {
+          "type": "string",
+          "required": true,
+          "description": "The solution approach this pattern provides"
+        },
+        "effectiveness": {
+          "type": "string",
+          "required": false,
+          "enum": ["proven", "promising", "experimental"],
+          "default": "experimental"
+        },
+        "contexts": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Contexts where this pattern is applicable"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Prerequisites for implementing this pattern"
+        },
+        "risks": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Potential risks or challenges"
+        },
+        "related_patterns": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "IDs of related patterns"
+        },
+        "cause_ids": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "IDs of causes this pattern addresses"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": { "type": "string" },
+              "url": { "type": "string" },
+              "description": { "type": "string" },
+              "type": { "type": "string", "enum": ["case_study", "research", "testimonial", "documentation"] }
+            }
+          },
+          "required": false
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "metadata": {
+          "type": "object",
+          "required": false
+        }
+      }
+    },
+    "PUT": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "body": {
+        "name": { "type": "string", "required": false },
+        "description": { "type": "string", "required": false },
+        "category": { "type": "string", "required": false },
+        "problem": { "type": "string", "required": false },
+        "solution": { "type": "string", "required": false },
+        "effectiveness": { "type": "string", "required": false },
+        "contexts": { "type": "array", "items": "string", "required": false },
+        "prerequisites": { "type": "array", "items": "string", "required": false },
+        "risks": { "type": "array", "items": "string", "required": false },
+        "related_patterns": { "type": "array", "items": "string", "required": false },
+        "cause_ids": { "type": "array", "items": "string", "required": false },
+        "evidence": { "type": "array", "required": false },
+        "tags": { "type": "array", "items": "string", "required": false },
+        "metadata": { "type": "object", "required": false }
+      }
+    },
+    "DELETE": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "GET": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Pattern"
+            }
+          },
+          "pagination": {
+            "$ref": "#/definitions/Pagination"
+          }
+        }
+      },
+      "definitions": {
+        "Pattern": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "category": { "type": "string" },
+            "problem": { "type": "string" },
+            "solution": { "type": "string" },
+            "effectiveness": { "type": "string" },
+            "contexts": { "type": "array", "items": { "type": "string" } },
+            "prerequisites": { "type": "array", "items": { "type": "string" } },
+            "risks": { "type": "array", "items": { "type": "string" } },
+            "related_patterns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "name": { "type": "string" },
+                  "relationship": { "type": "string" }
+                }
+              }
+            },
+            "causes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "name": { "type": "string" }
+                }
+              }
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": { "type": "string" },
+                  "url": { "type": "string" },
+                  "description": { "type": "string" },
+                  "type": { "type": "string" }
+                }
+              }
+            },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "metadata": { "type": "object" },
+            "usage_count": { "type": "integer", "description": "Number of initiatives using this pattern" },
+            "success_rate": { "type": "number", "description": "Percentage of successful implementations" },
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" }
+          }
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "limit": { "type": "integer" },
+            "offset": { "type": "integer" },
+            "has_more": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "POST": {
+      "success": {
+        "$ref": "#/definitions/Pattern"
+      }
+    },
+    "PUT": {
+      "success": {
+        "$ref": "#/definitions/Pattern"
+      }
+    },
+    "DELETE": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "list_patterns": "?limit=20&sort=usage_count&order=desc",
+        "filter_by_category": "?category=mobilization",
+        "filter_by_effectiveness": "?effectiveness=proven",
+        "filter_by_context": "?context=urban",
+        "filter_by_cause": "?cause_id=cause_xyz789",
+        "search_by_name": "?name=community"
+      },
+      "POST": {
+        "create_pattern": {
+          "name": "Community Assembly",
+          "description": "A participatory decision-making process that brings together community members to deliberate and decide on collective actions",
+          "category": "governance",
+          "problem": "How to make democratic decisions in large groups while ensuring everyone's voice is heard",
+          "solution": "Organize regular assemblies with facilitated discussions, breakout groups, and voting mechanisms that prioritize consensus-building",
+          "effectiveness": "proven",
+          "contexts": ["urban", "rural", "community_organizing"],
+          "prerequisites": [
+            "Trained facilitators",
+            "Accessible meeting space",
+            "Clear decision-making protocols"
+          ],
+          "risks": [
+            "Dominant voices may overshadow quieter participants",
+            "Decision fatigue in long meetings",
+            "Potential for conflict escalation"
+          ],
+          "related_patterns": ["pattern_001", "pattern_002"],
+          "cause_ids": ["cause_xyz789"],
+          "evidence": [
+            {
+              "source": "Occupy Movement Case Study",
+              "url": "https://example.org/case-study-1",
+              "description": "Analysis of assembly-based decision making in social movements",
+              "type": "case_study"
+            }
+          ],
+          "tags": ["democracy", "participation", "governance", "consensus"]
+        }
+      },
+      "PUT": {
+        "update_pattern": {
+          "id": "pattern_abc123",
+          "effectiveness": "proven",
+          "usage_count": 45
+        }
+      }
+    },
+    "response": {
+      "GET": {
+        "success": {
+          "data": [
+            {
+              "id": "pattern_abc123",
+              "name": "Community Assembly",
+              "description": "A participatory decision-making process for collective actions",
+              "category": "governance",
+              "problem": "How to make democratic decisions in large groups",
+              "solution": "Organize regular assemblies with facilitated discussions",
+              "effectiveness": "proven",
+              "contexts": ["urban", "rural", "community_organizing"],
+              "prerequisites": [
+                "Trained facilitators",
+                "Accessible meeting space"
+              ],
+              "risks": [
+                "Dominant voices may overshadow quieter participants"
+              ],
+              "related_patterns": [
+                {
+                  "id": "pattern_001",
+                  "name": "Consensus Building",
+                  "relationship": "complements"
+                }
+              ],
+              "causes": [
+                {
+                  "id": "cause_xyz789",
+                  "name": "Democratic Participation"
+                }
+              ],
+              "evidence": [
+                {
+                  "source": "Occupy Movement Case Study",
+                  "url": "https://example.org/case-study-1",
+                  "type": "case_study"
+                }
+              ],
+              "tags": ["democracy", "participation", "governance"],
+              "metadata": {},
+              "usage_count": 45,
+              "success_rate": 78,
+              "created_at": "2024-02-15T11:00:00Z",
+              "updated_at": "2024-06-10T09:30:00Z"
+            }
+          ],
+          "pagination": {
+            "total": 67,
+            "limit": 20,
+            "offset": 0,
+            "has_more": true
+          }
+        }
+      },
+      "POST": {
+        "success": {
+          "id": "pattern_new456",
+          "name": "Community Assembly",
+          "effectiveness": "proven",
+          "usage_count": 0,
+          "created_at": "2024-06-20T17:00:00Z",
+          "updated_at": "2024-06-20T17:00:00Z"
+        }
+      },
+      "DELETE": {
+        "success": {
+          "message": "Pattern deleted successfully",
+          "id": "pattern_abc123"
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid request parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "403": {
+      "code": "FORBIDDEN",
+      "description": "Insufficient permissions"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Pattern not found"
+    },
+    "409": {
+      "code": "CONFLICT",
+      "description": "Pattern with this name already exists"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Validation error"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    }
+  }
+}

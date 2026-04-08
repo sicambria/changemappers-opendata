@@ -1,0 +1,294 @@
+id: practice
+name: Practice
+description: An applied technique or activity used in change work, representing how methodologies are implemented on the ground.
+category: activity
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the practice
+    - name: name
+      type: string
+      required: true
+      description: Name of the practice
+    - name: description
+      type: string
+      required: true
+      description: Description of the practice
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the practice
+      enum_values:
+        - organizing
+        - facilitation
+        - communication
+        - governance
+        - stewardship
+        - economic
+        - educational
+    - name: methodology_id
+      type: string
+      required: false
+      description: Parent methodology
+    - name: tradition_id
+      type: string
+      required: false
+      description: Related tradition
+    - name: steps
+      type: array[string]
+      required: false
+      description: Implementation steps
+    - name: frequency
+      type: enum
+      required: false
+      description: How often this practice occurs
+      enum_values:
+        - daily
+        - weekly
+        - monthly
+        - quarterly
+        - annually
+        - as_needed
+    - name: time_required
+      type: string
+      required: false
+      description: Typical time required
+    - name: participants
+      type: string
+      required: false
+      description: Who participates
+    - name: resources_required
+      type: array[string]
+      required: false
+      description: Resources needed
+    - name: skill_ids
+      type: array[string]
+      required: false
+      description: Skills required
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where practice applies
+    - name: outcomes
+      type: array[string]
+      required: false
+      description: Expected outcomes
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 20
+    message: Description must be at least 20 characters
+relationships:
+  - entity: methodology
+    type: implements
+    description: Practice implements methodology
+  - entity: tradition
+    type: rooted_in
+    description: Practice is rooted in tradition
+  - entity: skill
+    type: requires
+    description: Practice requires skills
+  - entity: domain
+    type: applies_to
+    description: Practice applies to domains
+  - entity: actor
+    type: performed_by
+    description: Practice is performed by actors
+examples:
+  - id: prac_001
+    name: Door-to-Door Canvassing
+    description: Organizing practice of having face-to-face conversations with community members at their homes to build relationships and support.
+    type: organizing
+    steps:
+      - Prepare canvassing materials
+      - Train canvassers
+      - Walk neighborhood
+      - Have conversations
+      - Record data
+      - Follow up
+    frequency: as_needed
+    time_required: 2-4 hours per shift
+    participants: Organizers and volunteers
+    skill_ids:
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    outcomes:
+      - New relationships
+      - Support identification
+      - Issue awareness
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: prac_002
+    name: Consensus Decision Making
+    description: Governance practice for making decisions that the whole group can accept, based on Quaker tradition.
+    type: governance
+    tradition_id: trad_007
+    steps:
+      - Present proposal
+      - Share concerns
+      - Discuss modifications
+      - Test for consensus
+      - Document decision
+    frequency: as_needed
+    time_required: Variable
+    participants: Group members
+    skill_ids:
+      - skill_004
+    domain_ids:
+      - dom_democracy
+    outcomes:
+      - Group decisions
+      - Shared ownership
+      - Strong implementation
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: prac_003
+    name: Prescribed Burning
+    description: Stewardship practice of controlled burning to manage ecosystems, rooted in Indigenous tradition.
+    type: stewardship
+    tradition_id: trad_001
+    steps:
+      - Assess conditions
+      - Prepare burn plan
+      - Notify stakeholders
+      - Conduct burn
+      - Monitor results
+    frequency: annually
+    time_required: 1-3 days
+    participants: Fire practitioners, land managers
+    domain_ids:
+      - dom_ecosystem_restoration
+    outcomes:
+      - Reduced fuel loads
+      - Improved habitat
+      - Cultural burning
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: prac_004
+    name: One-on-One Meetings
+    description: Organizing practice of individual relational meetings to build understanding and commitment.
+    type: organizing
+    steps:
+      - Schedule meeting
+      - Listen and learn
+      - Share your story
+      - Identify shared concerns
+      - Ask for commitment
+    frequency: weekly
+    time_required: 30-60 minutes
+    participants: Two people
+    skill_ids:
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    outcomes:
+      - Deepened relationships
+      - Mutual understanding
+      - Commitments
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: prac_005
+    name: Mutual Aid Distribution
+    description: Economic practice of sharing resources within a community based on need and capacity.
+    type: economic
+    tradition_id: trad_003
+    steps:
+      - Identify needs
+      - Collect resources
+      - Coordinate distribution
+      - Deliver to recipients
+      - Follow up
+    frequency: as_needed
+    time_required: Variable
+    participants: Community volunteers
+    domain_ids:
+      - dom_economic_justice
+      - dom_community_resilience
+    outcomes:
+      - Needs met
+      - Community connection
+      - Solidarity demonstrated
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: prac_006
+    name: Popular Education Workshop
+    description: Educational practice using participatory methods to build critical consciousness and collective action.
+    type: educational
+    steps:
+      - Start from lived experience
+      - Pose problem
+      - Analyze root causes
+      - Develop action plans
+      - Reflect on action
+    frequency: as_needed
+    time_required: 2-4 hours
+    participants: Community members
+    skill_ids:
+      - skill_004
+    domain_ids:
+      - dom_democracy
+    outcomes:
+      - Critical consciousness
+      - Collective analysis
+      - Action plans
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: prac_007
+    name: Community Assembly
+    description: Governance practice of community-wide meetings for decision making and coordination.
+    type: governance
+    steps:
+      - Set agenda
+      - Invite participants
+      - Present information
+      - Facilitate discussion
+      - Make decisions
+      - Document outcomes
+    frequency: monthly
+    time_required: 2-3 hours
+    participants: Community members
+    skill_ids:
+      - skill_004
+    domain_ids:
+      - dom_democracy
+    outcomes:
+      - Community decisions
+      - Coordination
+      - Participation
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - practice_types
+  - practice_frequency
+  - practice_domains
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/practice
+  provenance: ChangeMappers Ontology Project

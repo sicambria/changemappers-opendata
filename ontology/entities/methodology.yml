@@ -1,0 +1,285 @@
+id: methodology
+name: Methodology
+description: A systematic method for conducting activities, research, or processes within change initiatives.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the methodology
+    - name: name
+      type: string
+      required: true
+      description: Name of the methodology
+    - name: description
+      type: string
+      required: true
+      description: Description of the methodology
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the methodology
+      enum_values:
+        - research
+        - engagement
+        - planning
+        - evaluation
+        - implementation
+        - facilitation
+    - name: steps
+      type: array[string]
+      required: true
+      description: Methodology steps or phases
+    - name: tools_required
+      type: array[string]
+      required: false
+      description: Tools required for this methodology
+    - name: skills_required
+      type: array[string]
+      required: false
+      description: Skills required
+    - name: framework_id
+      type: string
+      required: false
+      description: Parent framework
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains of application
+    - name: time_required
+      type: string
+      required: false
+      description: Typical time required
+    - name: participants
+      type: string
+      required: false
+      description: Typical participant profile
+    - name: outputs
+      type: array[string]
+      required: false
+      description: Expected outputs
+    - name: quality_criteria
+      type: array[string]
+      required: false
+      description: Criteria for quality execution
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 30
+    message: Description must be at least 30 characters
+relationships:
+  - entity: framework
+    type: implements
+    description: Methodology implements framework
+  - entity: tool
+    type: uses
+    description: Methodology uses tools
+  - entity: skill
+    type: requires
+    description: Methodology requires skills
+  - entity: project
+    type: applied_in
+    description: Methodology is applied in projects
+  - entity: domain
+    type: applies_to
+    description: Methodology applies to domains
+examples:
+  - id: meth_001
+    name: Participatory Action Research
+    description: Research methodology where community members are active participants in the research process, from design to analysis.
+    type: research
+    steps:
+      - Identify research question with community
+      - Train community researchers
+      - Collect data collaboratively
+      - Analyze data together
+      - Develop action plans
+      - Implement and evaluate
+    skills_required:
+      - skill_003
+      - skill_004
+    domain_ids:
+      - dom_democracy
+      - dom_research
+    participants: Community members and researchers together
+    outputs:
+      - Research findings
+      - Community capacity
+      - Action plans
+    quality_criteria:
+      - Community ownership
+      - Rigorous methods
+      - Action orientation
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: meth_002
+    name: Power Mapping
+    description: Strategic methodology for analyzing power relationships and identifying leverage points for campaigns.
+    type: planning
+    steps:
+      - Define campaign goal
+      - Identify key decision makers
+      - Map relationships to decision makers
+      - Assess support and opposition
+      - Identify strategic targets
+      - Develop engagement strategy
+    skills_required:
+      - skill_003
+      - skill_008
+    tools_required:
+      - tool_005
+    domain_ids:
+      - dom_democracy
+    time_required: 2-4 hours
+    participants: Campaign team and stakeholders
+    outputs:
+      - Power map
+      - Target list
+      - Engagement strategy
+    quality_criteria:
+      - Thorough research
+      - Strategic analysis
+      - Actionable outputs
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: meth_003
+    name: Community Visioning
+    description: Facilitated process for communities to develop shared visions for their future.
+    type: engagement
+    steps:
+      - Recruit diverse participants
+      - Facilitate visioning exercises
+      - Synthesize themes
+      - Validate with community
+      - Develop action priorities
+    skills_required:
+      - skill_004
+    tools_required:
+      - tool_007
+    domain_ids:
+      - dom_democracy
+      - dom_planning
+    time_required: 1-2 days
+    participants: Community members across demographics
+    outputs:
+      - Shared vision
+      - Priority actions
+      - Community engagement
+    quality_criteria:
+      - Inclusive participation
+      - Representative input
+      - Clear synthesis
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: meth_004
+    name: Outcome Harvesting
+    description: Evaluation methodology for identifying and verifying outcomes in complex initiatives.
+    type: evaluation
+    steps:
+      - Define evaluation questions
+      - Collect outcome descriptions
+      - Substantiate outcomes
+      - Analyze patterns
+      - Support use of findings
+    skills_required:
+      - skill_008
+      - skill_analysis
+    domain_ids:
+      - dom_evaluation
+    time_required: Weeks to months
+    outputs:
+      - Outcome descriptions
+      - Verified outcomes
+      - Analysis report
+    quality_criteria:
+      - Diverse sources
+      - Verification
+      - Useful findings
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: meth_005
+    name: Cooperative Feasibility Study
+    description: Methodology for assessing the viability of cooperative business opportunities.
+    type: research
+    steps:
+      - Define cooperative concept
+      - Analyze market
+      - Assess community support
+      - Develop financial projections
+      - Identify legal requirements
+      - Make recommendation
+    skills_required:
+      - skill_008
+      - skill_007
+    domain_ids:
+      - dom_economic_justice
+    time_required: 2-6 months
+    outputs:
+      - Feasibility report
+      - Financial projections
+      - Go/no-go recommendation
+    quality_criteria:
+      - Thorough market analysis
+      - Community engagement
+      - Conservative projections
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: meth_006
+    name: Story-Based Campaign Development
+    description: Methodology for developing campaign narratives through personal stories.
+    type: planning
+    steps:
+      - Identify storytelling goals
+      - Train storytellers
+      - Collect stories
+      - Analyze themes
+      - Develop narrative strategy
+      - Integrate into campaign
+    skills_required:
+      - skill_005
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    time_required: 2-4 weeks
+    outputs:
+      - Story collection
+      - Narrative framework
+      - Campaign integration plan
+    quality_criteria:
+      - Authentic voices
+      - Strategic framing
+      - Ethical storytelling
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - methodology_types
+  - methodology_domains
+  - methodology_phases
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/methodology
+  provenance: ChangeMappers Ontology Project

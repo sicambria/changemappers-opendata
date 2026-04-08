@@ -1,0 +1,420 @@
+{
+  "endpoint": "/search",
+  "path": "/v1/search",
+  "httpMethods": ["GET"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "q": {
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 500,
+          "description": "Search query string"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["actors", "organizations", "initiatives", "causes", "patterns", "stories", "all"]
+          },
+          "required": false,
+          "default": ["all"],
+          "description": "Entity types to search"
+        },
+        "filters": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "Filter by location"
+            },
+            "category": {
+              "type": "string",
+              "description": "Filter by category (context-dependent)"
+            },
+            "tags": {
+              "type": "array",
+              "items": "string",
+              "description": "Filter by tags"
+            },
+            "date_from": {
+              "type": "string",
+              "format": "date",
+              "description": "Filter from date"
+            },
+            "date_to": {
+              "type": "string",
+              "format": "date",
+              "description": "Filter to date"
+            }
+          }
+        },
+        "facets": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Include facet counts in response"
+        },
+        "highlight": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Highlight matching terms in results"
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Number of results per page"
+        },
+        "offset": {
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0,
+          "description": "Pagination offset"
+        },
+        "sort": {
+          "type": "string",
+          "required": false,
+          "enum": ["relevance", "name", "created_at", "updated_at"],
+          "default": "relevance",
+          "description": "Sort field"
+        },
+        "order": {
+          "type": "string",
+          "required": false,
+          "enum": ["asc", "desc"],
+          "default": "desc",
+          "description": "Sort order"
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "success": {
+      "type": "object",
+      "properties": {
+        "query": { "type": "string" },
+        "results": {
+          "type": "object",
+          "properties": {
+            "actors": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            },
+            "organizations": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            },
+            "initiatives": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            },
+            "causes": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            },
+            "patterns": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            },
+            "stories": {
+              "type": "object",
+              "properties": {
+                "count": { "type": "integer" },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/SearchResult"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "facets": {
+          "type": "object",
+          "properties": {
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer" }
+                }
+              }
+            },
+            "locations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer" }
+                }
+              }
+            },
+            "categories": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer" }
+                }
+              }
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "total_results": { "type": "integer" },
+        "pagination": {
+          "$ref": "#/definitions/Pagination"
+        }
+      },
+      "definitions": {
+        "SearchResult": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "type": { "type": "string" },
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "highlight": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "array", "items": { "type": "string" } },
+                "description": { "type": "array", "items": { "type": "string" } },
+                "content": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "score": { "type": "number", "description": "Relevance score" },
+            "url": { "type": "string", "description": "API URL to fetch full entity" },
+            "snippet": { "type": "string", "description": "Brief snippet with context" }
+          }
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "limit": { "type": "integer" },
+            "offset": { "type": "integer" },
+            "has_more": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "basic_search": "?q=climate",
+        "search_with_types": "?q=climate&types=organizations,initiatives",
+        "search_with_filters": "?q=climate&filters[location]=Germany&filters[tags]=activism",
+        "search_sorted_by_date": "?q=climate&sort=created_at&order=desc",
+        "search_without_facets": "?q=climate&facets=false",
+        "search_with_limit": "?q=climate&limit=50"
+      }
+    },
+    "response": {
+      "success": {
+        "query": "climate",
+        "results": {
+          "actors": {
+            "count": 15,
+            "items": [
+              {
+                "id": "actor_abc123",
+                "type": "actors",
+                "name": "Climate Action Network",
+                "description": "Global network of NGOs working on climate change",
+                "highlight": {
+                  "name": ["<em>Climate</em> Action Network"],
+                  "description": ["Global network of NGOs working on <em>climate</em> change"]
+                },
+                "score": 0.95,
+                "url": "https://api.changemappers.org/v1/actors/actor_abc123",
+                "snippet": "Global network of NGOs working on climate change..."
+              }
+            ]
+          },
+          "organizations": {
+            "count": 23,
+            "items": [
+              {
+                "id": "org_xyz789",
+                "type": "organizations",
+                "name": "Green Future Initiative",
+                "description": "Environmental advocacy organization focused on climate action",
+                "highlight": {
+                  "description": ["Environmental advocacy organization focused on <em>climate</em> action"]
+                },
+                "score": 0.89,
+                "url": "https://api.changemappers.org/v1/organizations/org_xyz789",
+                "snippet": "Environmental advocacy organization focused on climate action..."
+              }
+            ]
+          },
+          "initiatives": {
+            "count": 45,
+            "items": [
+              {
+                "id": "init_def456",
+                "type": "initiatives",
+                "name": "Climate Awareness Campaign",
+                "description": "Public awareness campaign about climate change impacts",
+                "highlight": {
+                  "name": ["<em>Climate</em> Awareness Campaign"],
+                  "description": ["Public awareness campaign about <em>climate</em> change impacts"]
+                },
+                "score": 0.92,
+                "url": "https://api.changemappers.org/v1/initiatives/init_def456",
+                "snippet": "Public awareness campaign about climate change impacts..."
+              }
+            ]
+          },
+          "causes": {
+            "count": 8,
+            "items": []
+          },
+          "patterns": {
+            "count": 12,
+            "items": []
+          },
+          "stories": {
+            "count": 67,
+            "items": [
+              {
+                "id": "story_abc789",
+                "type": "stories",
+                "name": "Community Voices on Climate Action",
+                "description": "How local communities are addressing climate change",
+                "highlight": {
+                  "name": ["Community Voices on <em>Climate</em> Action"],
+                  "description": ["How local communities are addressing <em>climate</em> change"]
+                },
+                "score": 0.87,
+                "url": "https://api.changemappers.org/v1/stories/story_abc789",
+                "snippet": "How local communities are addressing climate change..."
+              }
+            ]
+          }
+        },
+        "facets": {
+          "types": [
+            { "name": "stories", "count": 67 },
+            { "name": "initiatives", "count": 45 },
+            { "name": "organizations", "count": 23 },
+            { "name": "actors", "count": 15 },
+            { "name": "patterns", "count": 12 },
+            { "name": "causes", "count": 8 }
+          ],
+          "locations": [
+            { "name": "Germany", "count": 34 },
+            { "name": "United States", "count": 28 },
+            { "name": "United Kingdom", "count": 19 },
+            { "name": "Netherlands", "count": 12 }
+          ],
+          "categories": [
+            { "name": "environment", "count": 89 },
+            { "name": "social_justice", "count": 23 },
+            { "name": "education", "count": 15 }
+          ],
+          "tags": [
+            { "name": "activism", "count": 45 },
+            { "name": "sustainability", "count": 38 },
+            { "name": "advocacy", "count": 32 }
+          ]
+        },
+        "total_results": 170,
+        "pagination": {
+          "total": 170,
+          "limit": 20,
+          "offset": 0,
+          "has_more": true
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid search query or parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Invalid search syntax"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    },
+    "503": {
+      "code": "SERVICE_UNAVAILABLE",
+      "description": "Search service temporarily unavailable"
+    }
+  }
+}

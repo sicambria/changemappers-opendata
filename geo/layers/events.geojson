@@ -1,0 +1,218 @@
+{
+  "type": "FeatureCollection",
+  "name": "events",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "source": "changemappers.org",
+    "license": "CC-BY-SA-4.0",
+    "created": "2026-04-08T13:24:51+02:00",
+    "description": "Event locations for conferences, gatherings, and workshops related to social change"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "World Social Forum 2026",
+        "entity_type": "event",
+        "entity_id": "a0b1c2d3-e4f5-6789-0abc-def012345678",
+        "description": "Annual global gathering of civil society organizations and social movements",
+        "event_type": "conference",
+        "event_date": "2026-01-25",
+        "duration_days": 5,
+        "organizer": "WSF International Council",
+        "created_at": "2025-09-01T10:00:00Z",
+        "updated_at": "2026-01-30T14:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-47.9218, -15.8267]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "International Permaculture Convergence 2025",
+        "entity_type": "event",
+        "entity_id": "b1c2d3e4-f5a6-7890-1bcd-ef0123456789",
+        "description": "Global gathering of permaculture practitioners and teachers",
+        "event_type": "conference",
+        "event_date": "2025-09-15",
+        "duration_days": 7,
+        "organizer": "Permaculture Association",
+        "created_at": "2024-06-20T08:00:00Z",
+        "updated_at": "2025-09-22T09:30:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.1883, 55.9533]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "European Ecovillage Gathering 2026",
+        "entity_type": "event",
+        "entity_id": "c2d3e4f5-a6b7-8901-2cde-f01234567890",
+        "description": "Annual gathering of European ecovillage network members",
+        "event_type": "gathering",
+        "event_date": "2026-07-10",
+        "duration_days": 6,
+        "organizer": "GEN Europe",
+        "created_at": "2026-01-10T12:00:00Z",
+        "updated_at": "2026-04-05T16:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.9782, 43.0954]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Bioneers Annual Conference 2026",
+        "entity_type": "event",
+        "entity_id": "d3e4f5a6-b7c8-9012-3def-012345678901",
+        "description": "Leading-edge environmental and social solutions conference",
+        "event_type": "conference",
+        "event_date": "2026-10-16",
+        "duration_days": 3,
+        "organizer": "Bioneers",
+        "created_at": "2026-02-28T07:00:00Z",
+        "updated_at": "2026-03-20T11:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4194, 37.7749]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Transition Network International Conference",
+        "entity_type": "event",
+        "entity_id": "e4f5a6b7-c8d9-0123-4ef0-123456789012",
+        "description": "Biennial gathering of Transition Town initiatives worldwide",
+        "event_type": "conference",
+        "event_date": "2026-05-22",
+        "duration_days": 4,
+        "organizer": "Transition Network",
+        "created_at": "2025-11-15T14:00:00Z",
+        "updated_at": "2026-04-02T13:30:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.1276, 50.8154]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "Via Campesina International Conference",
+        "entity_type": "event",
+        "entity_id": "f5a6b7c8-d9e0-1234-5f01-234567890123",
+        "description": "Global assembly of peasant and small farmer movements",
+        "event_type": "conference",
+        "event_date": "2026-03-15",
+        "duration_days": 5,
+        "organizer": "Via Campesina",
+        "created_at": "2025-07-20T09:00:00Z",
+        "updated_at": "2026-03-28T10:45:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [90.3589, 23.8103]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Schumacher Annual Lectures",
+        "entity_type": "event",
+        "entity_id": "a6b7c8d9-e0f1-2345-6012-345678901234",
+        "description": "Annual lecture series on ecological and economic alternatives",
+        "event_type": "lecture_series",
+        "event_date": "2026-06-12",
+        "duration_days": 2,
+        "organizer": "Schumacher College",
+        "created_at": "2026-01-05T11:00:00Z",
+        "updated_at": "2026-04-06T15:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.6657, 50.5908]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "Auroville International Meeting 2026",
+        "entity_type": "event",
+        "entity_id": "b7c8d9e0-f1a2-3456-7123-456789012345",
+        "description": "Annual gathering of Auroville international coordinators",
+        "event_type": "gathering",
+        "event_date": "2026-02-20",
+        "duration_days": 5,
+        "organizer": "Auroville International",
+        "created_at": "2025-10-12T08:00:00Z",
+        "updated_at": "2026-02-25T12:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [79.8200, 12.0068]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Gaia Education Design for Sustainability",
+        "entity_type": "event",
+        "entity_id": "c8d9e0f1-a2b3-4567-8234-567890123456",
+        "description": "Annual immersive training in sustainable community design",
+        "event_type": "workshop",
+        "event_date": "2026-04-18",
+        "duration_days": 28,
+        "organizer": "Gaia Education",
+        "created_at": "2025-12-01T10:00:00Z",
+        "updated_at": "2026-04-04T09:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.9782, 43.0954]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "Findhorn New Year Gathering 2026",
+        "entity_type": "event",
+        "entity_id": "d9e0f1a2-b3c4-5678-9345-678901234567",
+        "description": "Annual community gathering and celebration",
+        "event_type": "gathering",
+        "event_date": "2026-12-28",
+        "duration_days": 3,
+        "organizer": "Findhorn Foundation",
+        "created_at": "2026-06-15T15:00:00Z",
+        "updated_at": "2026-08-20T11:00:00Z"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-3.6091, 57.6479]
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+id: timeline
+name: Timeline
+description: A sequence of events and milestones tracking the progression of an initiative, project, or change process.
+category: structure
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the timeline
+    - name: name
+      type: string
+      required: true
+      description: Name of the timeline
+    - name: description
+      type: string
+      required: false
+      description: Description of what the timeline tracks
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the timeline
+      enum_values:
+        - project
+        - initiative
+        - movement
+        - organization
+        - historical
+    - name: start_date
+      type: date
+      required: true
+      description: Timeline start date
+    - name: end_date
+      type: date
+      required: false
+      description: Timeline end date
+    - name: event_ids
+      type: array[string]
+      required: false
+      description: Events included in timeline
+    - name: phase_ids
+      type: array[string]
+      required: false
+      description: Phases included in timeline
+    - name: milestone_ids
+      type: array[string]
+      required: false
+      description: Key milestones
+    - name: initiative_id
+      type: string
+      required: false
+      description: Related initiative
+    - name: project_id
+      type: string
+      required: false
+      description: Related project
+    - name: owner_id
+      type: string
+      required: false
+      description: Actor or organization that owns this timeline
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: end_date
+    rule: greater_than
+    value: start_date
+    message: End date must be after start date
+relationships:
+  - entity: event
+    type: includes
+    description: Timeline includes events
+  - entity: phase
+    type: structured_by
+    description: Timeline is structured by phases
+  - entity: initiative
+    type: tracks
+    description: Timeline tracks initiative
+  - entity: project
+    type: documents
+    description: Timeline documents project
+examples:
+  - id: timeline_001
+    name: Portland Community Solar Project Timeline
+    description: Timeline of the North Portland community solar installation from planning to launch.
+    type: project
+    start_date: '2022-01-01'
+    end_date: '2024-12-31'
+    event_ids:
+      - event_001
+    phase_ids:
+      - phase_planning
+      - phase_development
+      - phase_implementation
+      - phase_evaluation
+    project_id: proj_001
+    owner_id: org_001
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: timeline_002
+    name: Just Transition Movement Timeline
+    description: Historical timeline of the just transition movement from labor-environmental origins to present.
+    type: movement
+    start_date: '1970-01-01'
+    event_ids:
+      - event_002
+      - event_005
+    initiative_id: init_002
+    owner_id: org_007
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: timeline_003
+    name: Detroit Food Sovereignty Timeline
+    description: Timeline of food sovereignty organizing in Detroit.
+    type: initiative
+    start_date: '2000-01-01'
+    event_ids:
+      - event_003
+    phase_ids:
+      - phase_emergence
+      - phase_growth
+      - phase_scaling
+    initiative_id: init_003
+    owner_id: org_005
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: timeline_004
+    name: Salmon River Restoration Timeline
+    description: Timeline of watershed restoration activities and milestones.
+    type: project
+    start_date: '2020-05-01'
+    event_ids:
+      - event_004
+      - event_006
+    project_id: proj_007
+    owner_id: org_006
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: timeline_005
+    name: Climate Justice Movement Timeline
+    description: Historical timeline of climate justice movement milestones.
+    type: historical
+    start_date: '2000-01-01'
+    event_ids:
+      - event_005
+    owner_id: org_004
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: timeline_006
+    name: Cooperative Movement History
+    description: Timeline documenting the history of cooperative development and movement building.
+    type: historical
+    start_date: '1800-01-01'
+    owner_id: org_003
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - timeline_types
+  - timeline_scale
+  - timeline_granularity
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/timeline
+  provenance: ChangeMappers Ontology Project

@@ -1,0 +1,269 @@
+id: transition
+name: Transition
+description: A process of state change, typically referring to societal, economic, or environmental transitions.
+category: process
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the transition
+    - name: name
+      type: string
+      required: true
+      description: Name of the transition
+    - name: description
+      type: string
+      required: true
+      description: Description of the transition process
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the transition
+      enum_values:
+        - energy
+        - economic
+        - ecological
+        - social
+        - governance
+        - technological
+    - name: from_state
+      type: string
+      required: true
+      description: Starting state of the transition
+    - name: to_state
+      type: string
+      required: true
+      description: Target state of the transition
+    - name: status
+      type: enum
+      required: true
+      description: Current status
+      enum_values:
+        - proposed
+        - early_stage
+        - emerging
+        - accelerating
+        - mainstream
+        - completed
+    - name: drivers
+      type: array[string]
+      required: false
+      description: Forces driving the transition
+    - name: barriers
+      type: array[string]
+      required: false
+      description: Barriers to transition
+    - name: phase_ids
+      type: array[string]
+      required: false
+      description: Phases of the transition
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives supporting transition
+    - name: framework_id
+      type: string
+      required: false
+      description: Framework guiding transition
+    - name: location_ids
+      type: array[string]
+      required: false
+      description: Geographic scope
+    - name: stakeholder_ids
+      type: array[string]
+      required: false
+      description: Key stakeholders
+    - name: timeline_id
+      type: string
+      required: false
+      description: Timeline of transition
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 30
+    message: Description must be at least 30 characters
+relationships:
+  - entity: initiative
+    type: advanced_by
+    description: Transition is advanced by initiatives
+  - entity: framework
+    type: guided_by
+    description: Transition is guided by framework
+  - entity: phase
+    type: structured_by
+    description: Transition is structured by phases
+  - entity: location
+    type: occurring_in
+    description: Transition is occurring in locations
+  - entity: timeline
+    type: documented_by
+    description: Transition is documented by timeline
+examples:
+  - id: trans_001
+    name: Portland Energy Transition
+    description: Transition from fossil-fuel dependent energy system to community-owned renewable energy in Portland.
+    type: energy
+    from_state: Centralized fossil fuel grid
+    to_state: Distributed community-owned renewables
+    status: emerging
+    drivers:
+      - Climate urgency
+      - Community organizing
+      - Policy support
+      - Technology costs
+    barriers:
+      - Utility resistance
+      - Financing gaps
+      - Regulatory hurdles
+    initiative_ids:
+      - init_001
+    framework_id: frame_002
+    location_ids:
+      - loc_001
+    timeline_id: timeline_001
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: trans_002
+    name: Appalachian Coal Transition
+    description: Economic transition from coal dependency to diversified regenerative economy in Appalachia.
+    type: economic
+    from_state: Coal-dependent economy
+    to_state: Diversified regenerative economy
+    status: early_stage
+    drivers:
+      - Coal decline
+      - Community organizing
+      - Federal investment
+    barriers:
+      - Lack of infrastructure
+      - Political resistance
+      - Historical disinvestment
+    initiative_ids:
+      - init_002
+    framework_id: frame_001
+    location_ids:
+      - loc_006
+    timeline_id: timeline_002
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: trans_003
+    name: Detroit Food System Transition
+    description: Transition from food apartheid to community-controlled food sovereignty in Detroit.
+    type: social
+    from_state: Food apartheid
+    to_state: Food sovereignty
+    status: accelerating
+    drivers:
+      - Community organizing
+      - Vacant land availability
+      - Health disparities
+    barriers:
+      - Land access
+      - Capital access
+      - Policy barriers
+    initiative_ids:
+      - init_003
+    framework_id: frame_003
+    location_ids:
+      - loc_002
+    timeline_id: timeline_003
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: trans_004
+    name: Salmon River Ecological Transition
+    description: Transition from degraded watershed to thriving ecosystem under Indigenous stewardship.
+    type: ecological
+    from_state: Degraded watershed
+    to_state: Restored ecosystem
+    status: emerging
+    drivers:
+      - Indigenous leadership
+      - Community engagement
+      - Restoration funding
+    barriers:
+      - Climate impacts
+      - Upstream pollution
+      - Funding continuity
+    initiative_ids:
+      - init_005
+    framework_id: frame_004
+    location_ids:
+      - loc_004
+    timeline_id: timeline_004
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: trans_005
+    name: Pacific Northwest Energy Democracy Transition
+    description: Regional transition to democratic, community-controlled energy systems.
+    type: energy
+    from_state: Investor-owned utility monopoly
+    to_state: Community-controlled energy democracy
+    status: early_stage
+    drivers:
+      - Community organizing
+      - Municipalization campaigns
+      - Renewable costs
+    barriers:
+      - Utility power
+      - Regulatory capture
+      - Capital intensity
+    initiative_ids:
+      - init_001
+    location_ids:
+      - loc_003
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: trans_006
+    name: Solidarity Economy Transition
+    description: Transition from extractive economy to solidarity-based economic systems.
+    type: economic
+    from_state: Extractive capitalist economy
+    to_state: Solidarity economy
+    status: emerging
+    drivers:
+      - Inequality
+      - Cooperative movement
+      - Community wealth building
+    barriers:
+      - Capital access
+      - Policy barriers
+      - Scale challenges
+    initiative_ids:
+      - init_007
+    framework_id: frame_006
+    location_ids:
+      - loc_national
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - transition_types
+  - transition_status
+  - transition_phases
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/transition
+  provenance: ChangeMappers Ontology Project

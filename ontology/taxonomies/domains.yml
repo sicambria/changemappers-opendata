@@ -1,0 +1,825 @@
+# RDG Domains Taxonomy
+# Part of the ChangeMappers Ontology (changemappers.org)
+# Regenerative Development Goals organized into 5 systemic domains
+
+metadata:
+  taxonomy_id: rdg-domains
+  version: "1.0.0"
+  source: changemappers.org
+  description: |
+    The Regenerative Development Goals (RDGs) framework organizes 30 goals 
+    across 5 interconnected domains representing human, ecological, economic, 
+    governance, and long-term systems. Each RDG addresses root causes of 
+    systemic challenges rather than symptoms.
+
+domains:
+  - id: domain-1
+    name: Human Development
+    slug: human-development
+    description: |
+      Foundations of individual and collective psychological development,
+      including early childhood conditions, trauma processing, inner
+      competencies, leadership maturity, epistemic integrity, and
+      cultural narratives that shape human potential.
+    rdgs:
+      - id: rdg-1
+        slug: rdg-1-foundations-of-human-development
+        title: "RDG 1: Foundations of Human Development"
+        description: |
+          Long-term societal resilience requires guaranteeing conditions for 
+          optimal physical, emotional, cognitive and relational maturation. 
+          Holistic psychological development, secure attachment, healthy 
+          neurological conditions.
+        problems: |
+          Education focuses only on basic literacy, neglecting holistic 
+          psychological development.
+        solutions: |
+          Holistic redesign of education systems; intergenerational mentoring; 
+          early childhood interventions; IDG Framework.
+        needed_functions:
+          - education-training
+          - healthcare-provision
+          - policy-advocacy
+        cross_references:
+          - rdg-2
+          - rdg-3
+        examples:
+          - Early childhood development programs
+          - Attachment-aware parenting support
+          - Neurological health screening in schools
+
+      - id: rdg-2
+        slug: rdg-2-trauma-informed-societies
+        title: "RDG 2: Trauma-Informed Societies"
+        description: |
+          Structural violence and intergenerational wounds actively sabotage 
+          peacebuilding. Embedding trauma awareness into public policy, 
+          healthcare and justice systems.
+        problems: |
+          State institutions often re-traumatise the vulnerable. Collective 
+          trauma is excluded from decision-making.
+        solutions: |
+          SAMHSA principles in public policy; trauma-informed justice; 
+          community-level trauma processing.
+        needed_functions:
+          - healthcare-provision
+          - community-organizing
+          - policy-advocacy
+        cross_references:
+          - rdg-1
+          - rdg-22
+        examples:
+          - Trauma-informed policing programs
+          - Community healing circles
+          - Intergenerational trauma workshops
+
+      - id: rdg-3
+        slug: rdg-3-inner-development-competencies
+        title: "RDG 3: Inner Development Competencies"
+        description: |
+          The IDG framework institutionalises 23 core skills into global 
+          education and corporate training systems: Being, Thinking, 
+          Relating, Collaborating, Acting.
+        problems: |
+          Education neglects inner development skills, leading to tribal 
+          polarisation.
+        solutions: |
+          IDG framework institutionalisation; competency-based assessment; 
+          self-awareness and collaboration skills in curricula.
+        needed_functions:
+          - education-training
+          - research-development
+        cross_references:
+          - rdg-1
+          - rdg-4
+          - rdg-5
+        examples:
+          - IDG framework implementation in schools
+          - Corporate inner development programs
+          - Mindfulness-based leadership training
+
+      - id: rdg-4
+        slug: rdg-4-leadership-maturity-standards
+        title: "RDG 4: Leadership Maturity Standards"
+        description: |
+          Public-sector and corporate leadership must be evaluated based on 
+          vertical development, cultivating leaders who operate from 
+          post-conventional, regenerative action logics.
+        problems: |
+          Current leaders act from short-term thinking, unable to dissolve 
+          their own immunity to change.
+        solutions: |
+          Vertically-developmental leadership programmes; maturity assessments; 
+          post-conventional logic development.
+        needed_functions:
+          - education-training
+          - policy-advocacy
+        cross_references:
+          - rdg-3
+          - rdg-19
+        examples:
+          - Leadership maturity assessments for public officials
+          - Vertical development coaching programs
+          - Regenerative leadership curricula
+
+      - id: rdg-5
+        slug: rdg-5-epistemic-integrity-and-sensemaking
+        title: "RDG 5: Epistemic Integrity and Sensemaking"
+        description: |
+          The spread of algorithmic bias, automated disinformation and 
+          synthetic media threatens collective intelligence and democratic 
+          viability.
+        problems: |
+          False narratives, AI-generated disinformation and cognitive biases 
+          undermine democracy.
+        solutions: |
+          Mandatory AI transparency requirements; metacognitive competencies; 
+          protection of knowledge commons.
+        needed_functions:
+          - technology-governance
+          - education-training
+          - policy-advocacy
+        cross_references:
+          - rdg-3
+          - rdg-17
+          - rdg-23
+        examples:
+          - AI transparency legislation
+          - Media literacy education programs
+          - Fact-checking infrastructure
+
+      - id: rdg-6
+        slug: rdg-6-regenerative-cultural-narratives
+        title: "RDG 6: Regenerative Cultural Narratives"
+        description: |
+          Systemic transformation is preceded by cultural transformation. 
+          Active movement away from extractive consumption and 
+          hyperindividualism toward responsibility and pluriversal worldviews.
+        problems: |
+          Dominant cultural narratives reinforce extraction and individualism.
+        solutions: |
+          Art and media carrying regenerative narratives; pluriversal 
+          education; Earth-stewardship identity.
+        needed_functions:
+          - community-organizing
+          - education-training
+        cross_references:
+          - rdg-30
+          - rdg-14
+        examples:
+          - Regenerative storytelling initiatives
+          - Indigenous wisdom integration in media
+          - Community arts programs for ecological awareness
+
+  - id: domain-2
+    name: Ecological Systems
+    slug: ecological-systems
+    description: |
+      Biosphere integrity and ecological regeneration, including climate
+      stabilization, biodiversity restoration, regenerative food systems,
+      watershed stewardship, bioregional governance, and urban-rural
+      integration within natural systems.
+    rdgs:
+      - id: rdg-7
+        slug: rdg-7-climate-stabilisation-and-adaptation
+        title: "RDG 7: Climate Stabilisation and Adaptation"
+        description: |
+          Going beyond simple emissions reduction: massive atmospheric carbon 
+          drawdown and radical adaptive capacity. Deep climate variability 
+          is already locked into the Earth system.
+        problems: |
+          Carbon emission reductions alone are insufficient — massive 
+          drawdown and adaptation to extreme events are simultaneously 
+          required.
+        solutions: |
+          Natural climate solutions; carbon removal technologies; 
+          anticipatory climate governance; infrastructure adaptation.
+        needed_functions:
+          - infrastructure-deployment
+          - ecological-restoration
+          - policy-advocacy
+        cross_references:
+          - rdg-8
+          - rdg-9
+          - rdg-18
+        examples:
+          - Carbon sequestration projects
+          - Climate adaptation infrastructure
+          - Anticipatory governance frameworks
+
+      - id: rdg-8
+        slug: rdg-8-biodiversity-and-habitat-restoration
+        title: "RDG 8: Biodiversity and Habitat Restoration"
+        description: |
+          Scaled, net-positive regeneration of terrestrial, freshwater and 
+          marine ecosystems. Creation of continental-scale ecological 
+          corridors.
+        problems: |
+          Habitat fragmentation, invasive species, industrial agriculture 
+          and urbanisation are drivers of the planet's sixth mass extinction.
+        solutions: |
+          Continental ecological corridors; rewilding programmes; extending 
+          conservation to 30% of land and ocean.
+        needed_functions:
+          - ecological-restoration
+          - policy-advocacy
+          - research-development
+        cross_references:
+          - rdg-7
+          - rdg-11
+          - rdg-12
+        examples:
+          - Rewilding initiatives
+          - Wildlife corridor projects
+          - Marine protected area expansion
+
+      - id: rdg-9
+        slug: rdg-9-regenerative-food-and-soil-systems
+        title: "RDG 9: Regenerative Food and Soil Systems"
+        description: |
+          Full transition from industrial, chemical-intensive agriculture to 
+          agroecological, perennial and soil-regenerating food systems.
+        problems: |
+          Industrial agriculture destroys soil by depleting organic carbon 
+          content while threatening biodiversity.
+        solutions: |
+          Regenerative agriculture (on at least 40% of global cropland); 
+          agroforestry; soil carbon measurement systems.
+        needed_functions:
+          - ecological-restoration
+          - education-training
+          - financial-investment
+        cross_references:
+          - rdg-8
+          - rdg-14
+          - rdg-15
+        examples:
+          - Agroforestry demonstration farms
+          - Soil carbon monitoring programs
+          - Regenerative agriculture training
+
+      - id: rdg-10
+        slug: rdg-10-water-cycle-and-watershed-integrity
+        title: "RDG 10: Water Cycle and Watershed Integrity"
+        description: |
+          Shifting water management from siloed urban utility regulation 
+          toward holistic watershed stewardship.
+        problems: |
+          Water management is fragmented, groundwater levels are falling, 
+          and wetland degradation has accelerated.
+        solutions: |
+          Watershed-level governance; groundwater recharge zone restoration; 
+          river renaturalisation.
+        needed_functions:
+          - infrastructure-deployment
+          - ecological-restoration
+          - policy-advocacy
+        cross_references:
+          - rdg-7
+          - rdg-11
+          - rdg-13
+        examples:
+          - Watershed restoration projects
+          - Groundwater recharge programs
+          - River renaturalisation initiatives
+
+      - id: rdg-11
+        slug: rdg-11-bioregional-governance
+        title: "RDG 11: Bioregional Governance"
+        description: |
+          Economic and political decision-making aligned with natural 
+          bioregions (watersheds, mountain ranges) rather than artificial 
+          political boundaries.
+        problems: |
+          Nation-state borders cut across ecosystems, leading to the 
+          tragedy of the commons.
+        solutions: |
+          Bioregional decision-making; strengthening local ecological-cultural 
+          identity; cross-border ecological partnerships.
+        needed_functions:
+          - policy-advocacy
+          - community-organizing
+        cross_references:
+          - rdg-8
+          - rdg-10
+          - rdg-20
+        examples:
+          - Bioregional planning councils
+          - Cross-border watershed agreements
+          - Ecosystem-based governance frameworks
+
+      - id: rdg-12
+        slug: rdg-12-urban-rural-ecological-integration
+        title: "RDG 12: Urban-Rural Ecological Integration"
+        description: |
+          Understanding human settlements as active, functional components 
+          within the wider ecosystem. Cities must be designed to restore 
+          the natural environment of their hinterlands.
+        problems: |
+          Cities currently burden ecosystems rather than being part of them.
+        solutions: |
+          Nature-based solutions in cities; green infrastructure networks; 
+          closed-loop urban resource flows.
+        needed_functions:
+          - infrastructure-deployment
+          - policy-advocacy
+          - ecological-restoration
+        cross_references:
+          - rdg-8
+          - rdg-16
+          - rdg-18
+        examples:
+          - Urban green infrastructure projects
+          - Closed-loop resource systems
+          - Nature-based urban design
+
+  - id: domain-3
+    name: Economic Systems
+    slug: economic-systems
+    description: |
+      Regenerative and distributive economic models, including basic needs
+      security, circular economy, meaningful work, resilient infrastructure,
+      responsible technology governance, and distributed renewable energy
+      systems that serve human and ecological wellbeing.
+    rdgs:
+      - id: rdg-13
+        slug: rdg-13-basic-needs-security
+        title: "RDG 13: Basic Needs Security"
+        description: |
+          Guaranteeing absolute baseline security — access to clean water, 
+          housing, healthcare, energy and education — as an unconditional 
+          human right.
+        problems: |
+          Millions' biological survival depends on unstable labour markets, 
+          creating poverty traps and vulnerability.
+        solutions: |
+          Unconditional basic income pilots; housing guarantee programmes 
+          (Housing First); decentralised energy provision.
+        needed_functions:
+          - policy-advocacy
+          - financial-investment
+          - infrastructure-deployment
+        cross_references:
+          - rdg-10
+          - rdg-15
+          - rdg-21
+        examples:
+          - Universal basic income pilots
+          - Housing First programs
+          - Decentralized energy access initiatives
+
+      - id: rdg-14
+        slug: rdg-14-regenerative-and-circular-economy
+        title: "RDG 14: Regenerative and Circular Economy"
+        description: |
+          Shifting from the industrial linear "take-make-dispose" model to 
+          mandatory, systemic circularity. Full internalisation of all 
+          ecological and social costs into market prices.
+        problems: |
+          Material throughput strains planetary boundaries. External social 
+          and ecological costs are not reflected in profits.
+        solutions: |
+          Circular industrial systems; extended producer responsibility; 
+          ecological tax systems; Doughnut Economics.
+        needed_functions:
+          - policy-advocacy
+          - financial-investment
+          - research-development
+        cross_references:
+          - rdg-9
+          - rdg-16
+          - rdg-6
+        examples:
+          - Circular economy business networks
+          - Extended producer responsibility schemes
+          - Ecological tax reform initiatives
+
+      - id: rdg-15
+        slug: rdg-15-inclusive-livelihoods-and-meaningful-work
+        title: "RDG 15: Inclusive Livelihoods and Meaningful Work"
+        description: |
+          Replacing the simple metric of aggregate job creation with focus 
+          on the quality, dignity and purpose of livelihoods. Economic 
+          democracy and fair income distribution.
+        problems: |
+          The quantitative focus on job creation obscures work quality and 
+          worker dignity.
+        solutions: |
+          Social enterprises; worker ownership models; fair wage standards; 
+          retraining programmes.
+        needed_functions:
+          - policy-advocacy
+          - education-training
+          - financial-investment
+        cross_references:
+          - rdg-13
+          - rdg-9
+          - rdg-21
+        examples:
+          - Worker cooperative development
+          - Living wage campaigns
+          - Social enterprise incubators
+
+      - id: rdg-16
+        slug: rdg-16-resilient-infrastructure-and-engineering
+        title: "RDG 16: Resilient Infrastructure and Engineering"
+        description: |
+          Adopting "regenerative engineering" principles for every civil, 
+          structural and digital project. Infrastructure must achieve 
+          net-positive impact.
+        problems: |
+          Current infrastructure design is linear and fails catastrophically 
+          in extreme weather events.
+        solutions: |
+          Bio-based building materials with carbon-sequestration capacity; 
+          modular and repairable systems; climate-volatility-ready design.
+        needed_functions:
+          - infrastructure-deployment
+          - research-development
+          - policy-advocacy
+        cross_references:
+          - rdg-12
+          - rdg-7
+          - rdg-14
+        examples:
+          - Bio-based construction projects
+          - Climate-resilient infrastructure design
+          - Modular, repairable systems development
+
+      - id: rdg-17
+        slug: rdg-17-responsible-technology-governance
+        title: "RDG 17: Responsible Technology Governance"
+        description: |
+          Advanced technology governed as a critical part of the social 
+          commons. Aligning biotechnology, artificial intelligence and 
+          digital infrastructure with human dignity.
+        problems: |
+          Technological monopolisation and "digital enclosure" threaten 
+          data sovereignty and technology access.
+        solutions: |
+          Participatory AI regulation; data sovereignty; open-source 
+          ecosystems; ethical AI safeguards.
+        needed_functions:
+          - technology-governance
+          - policy-advocacy
+          - research-development
+        cross_references:
+          - rdg-5
+          - rdg-23
+          - rdg-25
+        examples:
+          - Participatory AI governance frameworks
+          - Data sovereignty initiatives
+          - Open-source technology commons
+
+      - id: rdg-18
+        slug: rdg-18-distributed-renewable-energy-systems
+        title: "RDG 18: Distributed Renewable Energy Systems"
+        description: |
+          Accelerating the transition to zero-carbon energy through 
+          mandatory expansion of decentralised microgrids and 
+          community-owned renewable networks.
+        problems: |
+          Dependence on monolithic energy monopolies makes systems fragile. 
+          The fossil energy transition is not fast enough.
+        solutions: |
+          Community-owned renewable energy projects; microgrid technologies; 
+          decentralised storage capacity; energy communities.
+        needed_functions:
+          - infrastructure-deployment
+          - financial-investment
+          - community-organizing
+        cross_references:
+          - rdg-7
+          - rdg-12
+          - rdg-13
+        examples:
+          - Community solar cooperatives
+          - Microgrid deployment projects
+          - Energy community development
+
+  - id: domain-4
+    name: Governance Systems
+    slug: governance-systems
+    description: |
+      Participatory and accountable institutional frameworks, including
+      transparency mechanisms, polycentric governance, equity and inclusion,
+      peacebuilding, open science, and adaptive policy learning systems.
+    rdgs:
+      - id: rdg-19
+        slug: rdg-19-transparent-and-accountable-institutions
+        title: "RDG 19: Transparent and Accountable Institutions"
+        description: |
+          Strengthening the rule of law and restoring broken public 
+          institutional trust through radical transparency and 
+          anti-corruption guarantees.
+        problems: |
+          Regulatory capture, institutional corruption and lack of 
+          accountability undermine sustainable development.
+        solutions: |
+          Government open-data mandates; strong anti-corruption 
+          institutions; civil society involvement in oversight.
+        needed_functions:
+          - policy-advocacy
+          - community-organizing
+          - technology-governance
+        cross_references:
+          - rdg-4
+          - rdg-20
+          - rdg-23
+        examples:
+          - Open government data initiatives
+          - Anti-corruption watchdog organizations
+          - Civil society oversight mechanisms
+
+      - id: rdg-20
+        slug: rdg-20-polycentric-and-participatory-governance
+        title: "RDG 20: Polycentric and Participatory Governance"
+        description: |
+          Operationalising Nobel laureate Elinor Ostrom's principles for 
+          managing the commons. Decentralising power through subsidiarity.
+        problems: |
+          One-size-fits-all national mandates fail to adapt to local 
+          ecological and social diversity.
+        solutions: |
+          Institutionalising Ostrom's principles; participatory 
+          decision-making platforms; community-developed rules.
+        needed_functions:
+          - community-organizing
+          - policy-advocacy
+          - education-training
+        cross_references:
+          - rdg-11
+          - rdg-19
+          - rdg-21
+        examples:
+          - Participatory budgeting programs
+          - Community governance platforms
+          - Commons management frameworks
+
+      - id: rdg-21
+        slug: rdg-21-equity-and-structural-inclusion
+        title: "RDG 21: Equity and Structural Inclusion"
+        description: |
+          Addressing the deeper causes of social marginalisation by 
+          dismantling systemic inequalities along lines of gender, race, 
+          geography and social origin.
+        problems: |
+          Superficial equal opportunities are insufficient — systemic 
+          inequality destabilises society.
+        solutions: |
+          Targeted equity policies; redistribution of economic power; 
+          strong social floor standards.
+        needed_functions:
+          - policy-advocacy
+          - financial-investment
+          - community-organizing
+        cross_references:
+          - rdg-13
+          - rdg-15
+          - rdg-20
+        examples:
+          - Targeted equity programs
+          - Wealth redistribution initiatives
+          - Anti-discrimination frameworks
+
+      - id: rdg-22
+        slug: rdg-22-peacebuilding-and-conflict-transformation
+        title: "RDG 22: Peacebuilding and Conflict Transformation"
+        description: |
+          Transcending militarised security models by foregrounding 
+          restorative justice, community mediation and systemic 
+          de-escalation.
+        problems: |
+          Climate-change-induced resource scarcity increasingly leads 
+          to inter-group violence.
+        solutions: |
+          Restorative justice systems; community mediation; 
+          prevention-focused conflict management.
+        needed_functions:
+          - community-organizing
+          - policy-advocacy
+          - education-training
+        cross_references:
+          - rdg-2
+          - rdg-21
+          - rdg-25
+        examples:
+          - Restorative justice programs
+          - Community mediation centers
+          - Conflict prevention frameworks
+
+      - id: rdg-23
+        slug: rdg-23-open-science-and-the-knowledge-commons
+        title: "RDG 23: Open Science and the Knowledge Commons"
+        description: |
+          Defining critical scientific knowledge, environmental data and 
+          technological innovations as non-exclusive public goods.
+        problems: |
+          Patent accumulation and paywalled journals prevent the rapid 
+          spread of necessary technologies.
+        solutions: |
+          Open-source research communities; open-access publishing 
+          standards; technology transfer to the Global South.
+        needed_functions:
+          - research-development
+          - technology-governance
+          - policy-advocacy
+        cross_references:
+          - rdg-5
+          - rdg-17
+          - rdg-19
+        examples:
+          - Open access publishing initiatives
+          - Technology transfer programs
+          - Open-source research communities
+
+      - id: rdg-24
+        slug: rdg-24-feedback-based-policy-learning
+        title: "RDG 24: Feedback-Based Policy Learning"
+        description: |
+          Introducing robust "anticipatory governance" models across all 
+          levels of the public sector. Requiring institutions to shift 
+          toward flexible, adaptive policy pathways.
+        problems: |
+          Rigid, long-term legislative planning does not adapt to highly 
+          uncertain futures.
+        solutions: |
+          Horizon-scanning systems; rapid pilot testing; iterative 
+          feedback loops; anticipatory policy frameworks.
+        needed_functions:
+          - policy-advocacy
+          - research-development
+        cross_references:
+          - rdg-19
+          - rdg-27
+          - rdg-25
+        examples:
+          - Horizon scanning systems
+          - Policy pilot programs
+          - Adaptive governance frameworks
+
+  - id: domain-5
+    name: Long-term Systems
+    slug: long-term-systems
+    description: |
+      Intergenerational and civilizational-scale frameworks, including
+      existential risk reduction, future generations representation,
+      early warning systems, integrated metrics, transition strategies,
+      and planetary stewardship identity.
+    rdgs:
+      - id: rdg-25
+        slug: rdg-25-existential-risk-reduction
+        title: "RDG 25: Existential Risk Reduction"
+        description: |
+          Integrating global catastrophic risk (GCR) reduction into 
+          development frameworks. Coordinated global protocols for risks 
+          from AI, synthetic bioweapons and nuclear proliferation.
+        problems: |
+          Development frameworks ignore existential risks threatening 
+          civilisational survival.
+        solutions: |
+          Global existential risk monitoring systems; proactive AI safety 
+          protocols; biosafety frameworks.
+        needed_functions:
+          - policy-advocacy
+          - research-development
+          - technology-governance
+        cross_references:
+          - rdg-17
+          - rdg-22
+          - rdg-27
+        examples:
+          - Global risk monitoring systems
+          - AI safety protocols
+          - Biosafety frameworks
+
+      - id: rdg-26
+        slug: rdg-26-intergenerational-representation
+        title: "RDG 26: Intergenerational Representation"
+        description: |
+          Legal institutionalisation of the rights and systemic 
+          representation of future generations. Decade-long impact 
+          assessments for all public-institution decisions, modelled 
+          on the Welsh Future Generations Act.
+        problems: |
+          Political decision-making is short-sighted, focused on 
+          electoral cycles while ignoring future generations.
+        solutions: |
+          Future Generations Commissioner institution; statutory 
+          long-term impact assessment obligations; legal representation 
+          of children.
+        needed_functions:
+          - policy-advocacy
+          - community-organizing
+        cross_references:
+          - rdg-24
+          - rdg-28
+          - rdg-30
+        examples:
+          - Future Generations Commissioners
+          - Long-term impact assessment frameworks
+          - Youth representation in governance
+
+      - id: rdg-27
+        slug: rdg-27-global-early-warning-and-foresight-systems
+        title: "RDG 27: Global Early Warning and Foresight Systems"
+        description: |
+          Integrated satellite and field monitoring networks capable of 
+          identifying non-linear tipping points in both Earth systems 
+          and social systems.
+        problems: |
+          Systemic early warning systems for ecological tipping points 
+          and social system collapse are absent.
+        solutions: |
+          Integrated satellite monitoring networks; machine-learning-based 
+          early signal detection; global tipping-point dashboard.
+        needed_functions:
+          - research-development
+          - technology-governance
+          - infrastructure-deployment
+        cross_references:
+          - rdg-24
+          - rdg-25
+          - rdg-7
+        examples:
+          - Satellite monitoring networks
+          - Tipping point detection systems
+          - Global risk dashboards
+
+      - id: rdg-28
+        slug: rdg-28-integrated-inner-outer-metrics
+        title: "RDG 28: Integrated Inner-Outer Metrics"
+        description: |
+          Categorically replacing GDP as the primary indicator of national 
+          success with comprehensive dashboards measuring structural 
+          vulnerability, ecological integrity and human developmental 
+          maturity.
+        problems: |
+          GDP as a success indicator misleads decision-makers by ignoring 
+          ecological and social dimensions.
+        solutions: |
+          WISE framework and Genuine Progress Indicators (GPI); ecological 
+          integrity measures; complex wellbeing dashboards.
+        needed_functions:
+          - research-development
+          - policy-advocacy
+        cross_references:
+          - rdg-26
+          - rdg-3
+          - rdg-24
+        examples:
+          - Beyond GDP indicator frameworks
+          - Wellbeing measurement systems
+          - Ecological integrity dashboards
+
+      - id: rdg-29
+        slug: rdg-29-civilisational-scale-transition-strategy
+        title: "RDG 29: Civilisational-Scale Transition Strategy"
+        description: |
+          Exiting the fossil, hyper-extractive era requires coordinated, 
+          gradual and conscious macroeconomic and cultural descent.
+        problems: |
+          Rapid shutdown of unsustainable industries can cause massive 
+          social disruption. The transition has proceeded without 
+          coordination.
+        solutions: |
+          Geels multi-level perspective; just transition programmes; 
+          industrial brownfield rehabilitation.
+        needed_functions:
+          - policy-advocacy
+          - financial-investment
+          - ecological-restoration
+        cross_references:
+          - rdg-14
+          - rdg-25
+          - rdg-15
+        examples:
+          - Just transition programs
+          - Industrial rehabilitation projects
+          - Coordinated transition frameworks
+
+      - id: rdg-30
+        slug: rdg-30-planetary-stewardship-identity
+        title: "RDG 30: Planetary Stewardship Identity"
+        description: |
+          The ultimate north star of the RDG framework: humanity's shift 
+          from dominance and separateness toward interconnectedness and 
+          symbiosis.
+        problems: |
+          Human civilisation is based on the myth of separation and 
+          dominance, which generates all other problems.
+        solutions: |
+          Education in planetary stewardship identity; embedding 
+          Earth-system ecology in cultural narratives.
+        needed_functions:
+          - education-training
+          - community-organizing
+        cross_references:
+          - rdg-6
+          - rdg-26
+          - rdg-1
+        examples:
+          - Planetary stewardship education
+          - Earth-system ecology in culture
+          - Interconnectedness practices

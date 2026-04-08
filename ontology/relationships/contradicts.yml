@@ -1,0 +1,113 @@
+id: contradicts
+name: Contradicts
+description: An Entity opposes, conflicts with, or is incompatible with another Entity. This captures adversarial, oppositional, or tension relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  contradiction_type:
+    type: string
+    description: Type of contradiction (ideological, strategic, factual, interest_based)
+    required: false
+  intensity:
+    type: number
+    description: Strength of contradiction (0.0-1.0)
+    required: false
+  open_conflict:
+    type: boolean
+    description: Whether there is active conflict
+    required: false
+  potential_resolution:
+    type: string
+    description: Whether and how contradiction could be resolved
+    required: false
+  historical_context:
+    type: string
+    description: Historical background of the contradiction
+    required: false
+
+cardinality: many-to-many
+
+inverse: contradicted_by
+
+examples:
+  - from: FossilFuelIndustry
+    to: ClimateJusticeMovement
+    properties:
+      contradiction_type: interest_based
+      intensity: 0.95
+      open_conflict: true
+      potential_resolution: transition_away_from_fossil_fuels
+    confidence: 0.97
+    source: https://changemappers.org/conflicts/fossil-climate
+
+  - from: GentrificationPolicy
+    to: AffordableHousingAdvocacy
+    properties:
+      contradiction_type: interest_based
+      intensity: 0.85
+      open_conflict: true
+      potential_resolution: community_land_trusts
+    confidence: 0.93
+    source: https://changemappers.org/conflicts/gentrification-housing
+
+  - from: AuthoritarianGovernance
+    to: DemocraticParticipation
+    properties:
+      contradiction_type: ideological
+      intensity: 0.90
+      open_conflict: true
+      historical_context: ongoing_struggle_for_democratic_rights
+    confidence: 0.95
+    source: https://changemappers.org/conflicts/authoritarian-democratic
+
+  - from: CorporateMonopolization
+    to: CooperativeEconomics
+    properties:
+      contradiction_type: ideological
+      intensity: 0.80
+      open_conflict: true
+      potential_resolution: policy_intervention
+    confidence: 0.89
+    source: https://changemappers.org/conflicts/monopoly-cooperative
+
+  - from: ClimateDenial
+    to: ScientificConsensus
+    properties:
+      contradiction_type: factual
+      intensity: 0.98
+      open_conflict: true
+      potential_resolution: education_and_awareness
+    confidence: 0.99
+    source: https://changemappers.org/conflicts/denial-science
+
+  - from: FastFashionIndustry
+    to: SustainableFashionMovement
+    properties:
+      contradiction_type: interest_based
+      intensity: 0.82
+      open_conflict: true
+      potential_resolution: circular_economy_models
+    confidence: 0.90
+    source: https://changemappers.org/conflicts/fast-sustainable-fashion
+
+  - from: MassSurveillance
+    to: DigitalPrivacyRights
+    properties:
+      contradiction_type: ideological
+      intensity: 0.88
+      open_conflict: true
+      historical_context: post_9_11_expansion
+    confidence: 0.94
+    source: https://changemappers.org/conflicts/surveillance-privacy
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

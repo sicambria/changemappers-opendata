@@ -1,0 +1,404 @@
+{
+  "endpoint": "/graph",
+  "path": "/v1/graph",
+  "httpMethods": ["GET", "POST"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "start_node": {
+          "type": "string",
+          "required": true,
+          "description": "Starting node ID for traversal"
+        },
+        "start_type": {
+          "type": "string",
+          "required": true,
+          "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+          "description": "Type of the starting node"
+        },
+        "traversal": {
+          "type": "string",
+          "required": false,
+          "enum": ["breadth_first", "depth_first", "shortest_path"],
+          "default": "breadth_first",
+          "description": "Traversal algorithm to use"
+        },
+        "depth": {
+          "type": "integer",
+          "required": false,
+          "default": 2,
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Maximum depth for traversal"
+        },
+        "relationship_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["MEMBER_OF", "PARTNER_OF", "LEADS", "PARTICIPATES_IN", "ADDRESSES", "IMPLEMENTS", "DOCUMENTS", "RELATED_TO", "FUNDS", "SUPPORTS", "LOCATED_IN"]
+          },
+          "required": false,
+          "description": "Filter by relationship types"
+        },
+        "node_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"]
+          },
+          "required": false,
+          "description": "Filter by target node types"
+        },
+        "direction": {
+          "type": "string",
+          "required": false,
+          "enum": ["outgoing", "incoming", "both"],
+          "default": "both",
+          "description": "Direction of relationships to follow"
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 100,
+          "minimum": 1,
+          "maximum": 1000,
+          "description": "Maximum number of nodes to return"
+        },
+        "include_properties": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Include node properties in response"
+        }
+      }
+    },
+    "POST": {
+      "body": {
+        "query_type": {
+          "type": "string",
+          "required": true,
+          "enum": ["path", "subgraph", "neighbors", "shortest_path", "centrality"],
+          "description": "Type of graph query to execute"
+        },
+        "start_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "type": { "type": "string" }
+            }
+          },
+          "required": false,
+          "description": "Starting nodes for the query"
+        },
+        "end_nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "type": { "type": "string" }
+            }
+          },
+          "required": false,
+          "description": "End nodes for path queries"
+        },
+        "filters": {
+          "type": "object",
+          "properties": {
+            "relationship_types": {
+              "type": "array",
+              "items": "string"
+            },
+            "node_types": {
+              "type": "array",
+              "items": "string"
+            },
+            "properties": {
+              "type": "object",
+              "description": "Filter nodes/edges by properties"
+            }
+          },
+          "required": false
+        },
+        "depth": {
+          "type": "integer",
+          "required": false,
+          "default": 2,
+          "minimum": 1,
+          "maximum": 5
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 100,
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "algorithm": {
+          "type": "string",
+          "required": false,
+          "enum": ["bfs", "dfs", "dijkstra", "pagerank", "betweenness"],
+          "description": "Algorithm to use for analysis"
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "success": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Node"
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Edge"
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "total_nodes": { "type": "integer" },
+            "total_edges": { "type": "integer" },
+            "depth_reached": { "type": "integer" },
+            "query_time_ms": { "type": "number" }
+          }
+        },
+        "paths": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Path"
+          },
+          "description": "Only included for path queries"
+        },
+        "metrics": {
+          "type": "object",
+          "description": "Only included for centrality/analytics queries",
+          "properties": {
+            "centrality_scores": {
+              "type": "object",
+              "additionalProperties": { "type": "number" }
+            },
+            "clustering_coefficient": { "type": "number" },
+            "average_path_length": { "type": "number" }
+          }
+        }
+      },
+      "definitions": {
+        "Node": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "type": { "type": "string" },
+            "label": { "type": "string" },
+            "properties": { "type": "object" }
+          }
+        },
+        "Edge": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "source": { "type": "string" },
+            "target": { "type": "string" },
+            "type": { "type": "string" },
+            "properties": { "type": "object" }
+          }
+        },
+        "Path": {
+          "type": "object",
+          "properties": {
+            "nodes": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ordered list of node IDs in the path"
+            },
+            "edges": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Ordered list of edge IDs in the path"
+            },
+            "length": { "type": "integer" },
+            "weight": { "type": "number" }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "get_neighbors": "?start_node=org_abc123&start_type=organization&depth=2",
+        "filter_by_relationship": "?start_node=org_abc123&start_type=organization&relationship_types=PARTNER_OF,MEMBER_OF",
+        "filter_by_node_type": "?start_node=org_abc123&start_type=organization&node_types=initiative,cause",
+        "outgoing_only": "?start_node=org_abc123&start_type=organization&direction=outgoing",
+        "shortest_path": "?start_node=org_abc123&start_type=organization&traversal=shortest_path"
+      },
+      "POST": {
+        "find_path_between_organizations": {
+          "query_type": "shortest_path",
+          "start_nodes": [
+            { "id": "org_abc123", "type": "organization" }
+          ],
+          "end_nodes": [
+            { "id": "org_xyz789", "type": "organization" }
+          ],
+          "filters": {
+            "relationship_types": ["PARTNER_OF", "MEMBER_OF", "SUPPORTS"]
+          }
+        },
+        "get_subgraph": {
+          "query_type": "subgraph",
+          "start_nodes": [
+            { "id": "cause_climate", "type": "cause" }
+          ],
+          "depth": 3,
+          "filters": {
+            "node_types": ["organization", "initiative", "pattern"]
+          },
+          "limit": 200
+        },
+        "calculate_centrality": {
+          "query_type": "centrality",
+          "start_nodes": [
+            { "id": "org_abc123", "type": "organization" }
+          ],
+          "algorithm": "pagerank",
+          "depth": 3
+        },
+        "find_neighbors": {
+          "query_type": "neighbors",
+          "start_nodes": [
+            { "id": "init_def456", "type": "initiative" }
+          ],
+          "depth": 2,
+          "filters": {
+            "relationship_types": ["IMPLEMENTS", "ADDRESSES"]
+          }
+        }
+      }
+    },
+    "response": {
+      "success": {
+        "nodes": [
+          {
+            "id": "org_abc123",
+            "type": "organization",
+            "label": "Green Future Initiative",
+            "properties": {
+              "name": "Green Future Initiative",
+              "sector": "environment",
+              "location": "Berlin, Germany"
+            }
+          },
+          {
+            "id": "init_def456",
+            "type": "initiative",
+            "label": "Urban Gardening Project",
+            "properties": {
+              "name": "Urban Gardening Project",
+              "status": "active"
+            }
+          },
+          {
+            "id": "cause_xyz789",
+            "type": "cause",
+            "label": "Climate Change Mitigation",
+            "properties": {
+              "name": "Climate Change Mitigation",
+              "urgency": "critical"
+            }
+          },
+          {
+            "id": "org_partner1",
+            "type": "organization",
+            "label": "Eco Alliance",
+            "properties": {
+              "name": "Eco Alliance",
+              "sector": "environment"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "edge_001",
+            "source": "org_abc123",
+            "target": "init_def456",
+            "type": "LEADS",
+            "properties": {
+              "since": "2024-01-15"
+            }
+          },
+          {
+            "id": "edge_002",
+            "source": "init_def456",
+            "target": "cause_xyz789",
+            "type": "ADDRESSES",
+            "properties": {
+              "primary": true
+            }
+          },
+          {
+            "id": "edge_003",
+            "source": "org_abc123",
+            "target": "org_partner1",
+            "type": "PARTNER_OF",
+            "properties": {
+              "since": "2023-06-01",
+              "partnership_type": "strategic"
+            }
+          }
+        ],
+        "metadata": {
+          "total_nodes": 4,
+          "total_edges": 3,
+          "depth_reached": 2,
+          "query_time_ms": 45.23
+        },
+        "paths": [
+          {
+            "nodes": ["org_abc123", "org_partner1"],
+            "edges": ["edge_003"],
+            "length": 1,
+            "weight": 1.0
+          }
+        ]
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid query parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Start node not found"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Invalid query configuration"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    },
+    "503": {
+      "code": "SERVICE_UNAVAILABLE",
+      "description": "Graph database unavailable"
+    }
+  }
+}

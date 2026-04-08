@@ -1,0 +1,217 @@
+id: function
+name: Function
+description: A role or purpose that an actor, organization, or initiative serves within a change process.
+category: classification
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the function
+    - name: name
+      type: string
+      required: true
+      description: Name of the function
+    - name: description
+      type: string
+      required: true
+      description: Description of the function
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the function
+      enum_values:
+        - leadership
+        - coordination
+        - support
+        - advocacy
+        - research
+        - implementation
+        - funding
+        - communication
+        - education
+        - evaluation
+    - name: responsibilities
+      type: array[string]
+      required: false
+      description: Key responsibilities
+    - name: skills_required
+      type: array[string]
+      required: false
+      description: Skills typically required
+    - name: actor_ids
+      type: array[string]
+      required: false
+      description: Actors serving this function
+    - name: organization_ids
+      type: array[string]
+      required: false
+      description: Organizations serving this function
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where this function applies
+    - name: related_function_ids
+      type: array[string]
+      required: false
+      description: Related functions
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: actor
+    type: served_by
+    description: Function is served by actors
+  - entity: organization
+    type: provided_by
+    description: Function is provided by organizations
+  - entity: domain
+    type: applies_to
+    description: Function applies to domains
+  - entity: skill
+    type: requires
+    description: Function requires skills
+examples:
+  - id: func_001
+    name: Campaign Coordination
+    description: Function of coordinating campaign activities across multiple stakeholders.
+    type: coordination
+    responsibilities:
+      - Facilitate campaign planning
+      - Coordinate between groups
+      - Manage timelines
+      - Ensure communication
+    skills_required:
+      - skill_004
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: func_002
+    name: Technical Assistance
+    description: Function of providing technical expertise and support to projects.
+    type: support
+    responsibilities:
+      - Provide expert guidance
+      - Troubleshoot problems
+      - Train community members
+      - Document processes
+    skills_required:
+      - skill_002
+      - skill_008
+    domain_ids:
+      - dom_energy
+      - dom_ecosystem_restoration
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: func_003
+    name: Policy Advocacy
+    description: Function of advocating for policy change at various levels of government.
+    type: advocacy
+    responsibilities:
+      - Analyze policy
+      - Develop positions
+      - Lobby decision makers
+      - Mobilize supporters
+    skills_required:
+      - skill_001
+      - skill_003
+      - skill_005
+    domain_ids:
+      - dom_climate_justice
+      - dom_economic_justice
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: func_004
+    name: Community Organizing
+    description: Function of building community power through relationship building and collective action.
+    type: leadership
+    responsibilities:
+      - Build relationships
+      - Develop leaders
+      - Facilitate meetings
+      - Execute campaigns
+    skills_required:
+      - skill_003
+      - skill_004
+    domain_ids:
+      - dom_democracy
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: func_005
+    name: Research and Analysis
+    description: Function of conducting research and analysis to inform change efforts.
+    type: research
+    responsibilities:
+      - Design research
+      - Collect data
+      - Analyze findings
+      - Communicate results
+    skills_required:
+      - skill_001
+      - skill_002
+    domain_ids:
+      - dom_climate_justice
+      - dom_ecosystem_restoration
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: func_006
+    name: Grantmaking
+    description: Function of distributing funds to support change initiatives.
+    type: funding
+    responsibilities:
+      - Review proposals
+      - Assess impact potential
+      - Make funding decisions
+      - Monitor grants
+    domain_ids:
+      - dom_economic_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: func_007
+    name: Communications
+    description: Function of developing and implementing communication strategies.
+    type: communication
+    responsibilities:
+      - Develop messaging
+      - Manage media relations
+      - Create content
+      - Build narratives
+    skills_required:
+      - skill_005
+      - skill_006
+    domain_ids:
+      - dom_democracy
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - function_types
+  - function_responsibilities
+  - function_skills
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/function
+  provenance: ChangeMappers Ontology Project

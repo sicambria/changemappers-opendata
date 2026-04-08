@@ -1,0 +1,269 @@
+id: cause
+name: Cause
+description: A problem, issue, or condition that change initiatives and projects aim to address or resolve.
+category: context
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the cause
+    - name: name
+      type: string
+      required: true
+      description: Name of the cause or issue
+    - name: description
+      type: string
+      required: true
+      description: Detailed description of the cause
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the cause
+      enum_values:
+        - environmental
+        - social
+        - economic
+        - political
+        - cultural
+        - systemic
+    - name: severity
+      type: enum
+      required: false
+      description: Severity level of the cause
+      enum_values:
+        - critical
+        - high
+        - medium
+        - low
+    - name: urgency
+      type: enum
+      required: false
+      description: Urgency level requiring action
+      enum_values:
+        - immediate
+        - urgent
+        - moderate
+        - long_term
+    - name: root_causes
+      type: array[string]
+      required: false
+      description: Underlying causes that contribute to this issue
+    - name: effects
+      type: array[string]
+      required: false
+      description: Effects or symptoms resulting from this cause
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains related to this cause
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives addressing this cause
+    - name: location_ids
+      type: array[string]
+      required: false
+      description: Geographic areas affected
+    - name: population_affected
+      type: string
+      required: false
+      description: Description of populations affected
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 200
+    message: Name must not exceed 200 characters
+relationships:
+  - entity: initiative
+    type: addressed_by
+    description: Cause is addressed by initiatives
+  - entity: project
+    type: addressed_by
+    description: Cause is addressed by projects
+  - entity: domain
+    type: relates_to
+    description: Cause relates to domains
+  - entity: location
+    type: affects
+    description: Cause affects locations
+  - entity: actor
+    type: affected_by
+    description: Cause affects actors
+examples:
+  - id: cause_001
+    name: Energy Poverty in Low-Income Communities
+    description: Disproportionate energy burden on low-income households who spend a higher percentage of income on energy bills and often live in inefficient housing.
+    type: economic
+    severity: high
+    urgency: urgent
+    root_causes:
+      - Systemic inequality
+      - Lack of affordable housing
+      - Energy infrastructure disinvestment
+    effects:
+      - Health impacts from inadequate heating/cooling
+      - Economic hardship
+      - Housing instability
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    initiative_ids:
+      - init_001
+    location_ids:
+      - loc_portland
+      - loc_seattle
+    population_affected: Low-income households, communities of color, elderly residents
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T12:00:00Z'
+    source: changemappers.org
+  - id: cause_002
+    name: Climate Change Impact on Vulnerable Communities
+    description: Disproportionate climate impacts on communities with fewer resources to adapt and recover from extreme weather events.
+    type: environmental
+    severity: critical
+    urgency: immediate
+    root_causes:
+      - Fossil fuel dependency
+      - Historical disinvestment
+      - Systemic racism
+    effects:
+      - Health impacts
+      - Property damage
+      - Displacement
+    domain_ids:
+      - dom_climate_justice
+    initiative_ids:
+      - init_001
+      - init_002
+    location_ids:
+      - loc_national
+    population_affected: Frontline communities, low-income areas, communities of color
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T10:30:00Z'
+    source: changemappers.org
+  - id: cause_003
+    name: Fossil Fuel Worker Displacement
+    description: Job losses and economic disruption in fossil fuel-dependent communities during the energy transition.
+    type: economic
+    severity: high
+    urgency: urgent
+    root_causes:
+      - Energy market shifts
+      - Climate policy
+      - Lack of transition planning
+    effects:
+      - Unemployment
+      - Community economic decline
+      - Loss of identity and purpose
+    domain_ids:
+      - dom_just_transition
+      - dom_economic_justice
+    initiative_ids:
+      - init_002
+    location_ids:
+      - loc_appalachia
+      - loc_coal_country
+    population_affected: Coal miners, oil workers, refinery workers, their families and communities
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T14:00:00Z'
+    source: changemappers.org
+  - id: cause_004
+    name: Food Apartheid in Urban Areas
+    description: Systemic lack of access to fresh, healthy, affordable food in predominantly Black and Brown neighborhoods.
+    type: social
+    severity: high
+    urgency: urgent
+    root_causes:
+      - Historical redlining
+      - Supermarket disinvestment
+      - Transportation inequity
+    effects:
+      - Diet-related health disparities
+      - Economic injustice
+      - Community food insecurity
+    domain_ids:
+      - dom_food_systems
+    initiative_ids:
+      - init_003
+    location_ids:
+      - loc_detroit
+    population_affected: Residents of food desert areas, predominantly Black and Brown communities
+    created_at: '2024-03-15T11:00:00Z'
+    updated_at: '2024-05-30T09:00:00Z'
+    source: changemappers.org
+  - id: cause_005
+    name: Watershed Degradation
+    description: Pollution, habitat loss, and ecological degradation affecting watershed health and water quality.
+    type: environmental
+    severity: high
+    urgency: moderate
+    root_causes:
+      - Industrial pollution
+      - Agricultural runoff
+      - Urban development
+      - Colonial land management
+    effects:
+      - Salmon population decline
+      - Water quality degradation
+      - Ecosystem collapse
+    domain_ids:
+      - dom_ecosystem_restoration
+    initiative_ids:
+      - init_005
+    location_ids:
+      - loc_pnw
+      - loc_salmon_river
+    population_affected: Indigenous communities, downstream communities, fishing communities
+    created_at: '2024-02-10T12:00:00Z'
+    updated_at: '2024-07-05T11:00:00Z'
+    source: changemappers.org
+  - id: cause_006
+    name: Dispossession of Indigenous Lands
+    description: Historical and ongoing theft of Indigenous lands and displacement of Native peoples from ancestral territories.
+    type: systemic
+    severity: critical
+    urgency: immediate
+    root_causes:
+      - Colonialism
+      - Treaty violations
+      - Federal Indian policy
+    effects:
+      - Loss of cultural connection to land
+      - Economic marginalization
+      - Environmental degradation
+    domain_ids:
+      - dom_land_justice
+    initiative_ids:
+      - init_006
+    location_ids:
+      - loc_oregon
+    population_affected: Indigenous peoples, tribal nations
+    created_at: '2024-01-25T09:00:00Z'
+    updated_at: '2024-06-28T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - cause_types
+  - severity_levels
+  - urgency_levels
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/cause
+  provenance: ChangeMappers Ontology Project

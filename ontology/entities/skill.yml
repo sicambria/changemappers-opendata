@@ -1,0 +1,292 @@
+id: skill
+name: Skill
+description: A capability, competency, or area of expertise that actors possess and apply in change processes.
+category: capability
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the skill
+    - name: name
+      type: string
+      required: true
+      description: Name of the skill
+    - name: description
+      type: string
+      required: true
+      description: Description of the skill
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the skill
+      enum_values:
+        - technical
+        - organizing
+        - leadership
+        - communication
+        - analytical
+        - creative
+        - facilitation
+        - strategic
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where this skill applies
+    - name: level_options
+      type: array[string]
+      required: false
+      description: Possible proficiency levels
+    - name: related_skill_ids
+      type: array[string]
+      required: false
+      description: Related skills
+    - name: learned_from
+      type: array[string]
+      required: false
+      description: How this skill is typically acquired
+    - name: applications
+      type: array[string]
+      required: false
+      description: Applications of this skill
+    - name: program_ids
+      type: array[string]
+      required: false
+      description: Programs that teach this skill
+    - name: tool_ids
+      type: array[string]
+      required: false
+      description: Tools used with this skill
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 100
+    message: Name must not exceed 100 characters
+relationships:
+  - entity: actor
+    type: possessed_by
+    description: Skill is possessed by actors
+  - entity: program
+    type: taught_in
+    description: Skill is taught in programs
+  - entity: tool
+    type: uses
+    description: Skill uses tools
+  - entity: domain
+    type: applies_to
+    description: Skill applies to domains
+examples:
+  - id: skill_001
+    name: Policy Analysis
+    description: Ability to analyze policy proposals, understand regulatory frameworks, and assess implications for communities and movements.
+    type: analytical
+    domain_ids:
+      - dom_policy
+      - dom_climate_justice
+    level_options:
+      - beginner
+      - intermediate
+      - advanced
+      - expert
+    related_skill_ids:
+      - skill_002
+    learned_from:
+      - Graduate education
+      - Policy internships
+      - Think tank experience
+    applications:
+      - Legislative analysis
+      - Regulatory comment writing
+      - Policy brief development
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: skill_002
+    name: Climate Science
+    description: Understanding of climate systems, impacts, and the scientific basis for climate action.
+    type: technical
+    domain_ids:
+      - dom_climate_justice
+      - dom_ecosystem_restoration
+    level_options:
+      - basic
+      - intermediate
+      - advanced
+    related_skill_ids:
+      - skill_001
+    learned_from:
+      - Academic study
+      - Climate trainings
+      - Self-directed learning
+    applications:
+      - Community education
+      - Impact assessment
+      - Science communication
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: skill_003
+    name: Community Organizing
+    description: Ability to build relationships, develop leadership, and mobilize people for collective action.
+    type: organizing
+    domain_ids:
+      - dom_democracy
+      - dom_economic_justice
+    level_options:
+      - novice
+      - practitioner
+      - advanced
+      - trainer
+    related_skill_ids:
+      - skill_004
+      - skill_005
+    learned_from:
+      - Organizer trainings
+      - Mentorship
+      - Field experience
+    applications:
+      - Campaign development
+      - Leadership development
+      - Coalition building
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: skill_004
+    name: Facilitation
+    description: Ability to guide group processes, meetings, and workshops toward productive outcomes.
+    type: facilitation
+    domain_ids:
+      - dom_democracy
+    level_options:
+      - basic
+      - proficient
+      - advanced
+    related_skill_ids:
+      - skill_003
+    learned_from:
+      - Facilitation trainings
+      - Practice
+      - Certification programs
+    applications:
+      - Meeting facilitation
+      - Strategic planning
+      - Conflict resolution
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: skill_005
+    name: Strategic Communications
+    description: Ability to develop and implement communication strategies that advance movement goals.
+    type: communication
+    domain_ids:
+      - dom_democracy
+    level_options:
+      - basic
+      - intermediate
+      - advanced
+    related_skill_ids:
+      - skill_003
+      - skill_006
+    learned_from:
+      - Communications training
+      - Campaign experience
+      - Media relations practice
+    applications:
+      - Message development
+      - Media relations
+      - Narrative strategy
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: skill_006
+    name: Digital Organizing
+    description: Ability to use digital tools and platforms for organizing, communications, and engagement.
+    type: technical
+    domain_ids:
+      - dom_democracy
+    level_options:
+      - basic
+      - proficient
+      - advanced
+    related_skill_ids:
+      - skill_003
+      - skill_005
+    learned_from:
+      - Digital organizing trainings
+      - Self-directed learning
+      - Platform experience
+    applications:
+      - Online mobilization
+      - Digital campaigns
+      - Data management
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: skill_007
+    name: Grant Writing
+    description: Ability to research, write, and submit successful grant proposals.
+    type: technical
+    domain_ids:
+      - dom_economic_justice
+    level_options:
+      - beginner
+      - intermediate
+      - advanced
+    learned_from:
+      - Grant writing workshops
+      - Mentorship
+      - Practice
+    applications:
+      - Foundation grants
+      - Government funding
+      - Crowdfunding campaigns
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+  - id: skill_008
+    name: Project Management
+    description: Ability to plan, execute, and monitor projects to achieve specific goals within constraints.
+    type: strategic
+    domain_ids:
+      - dom_organizational
+    level_options:
+      - basic
+      - intermediate
+      - advanced
+      - certified
+    learned_from:
+      - Project management courses
+      - Certification programs
+      - Field experience
+    applications:
+      - Project planning
+      - Budget management
+      - Team coordination
+    created_at: '2024-02-20T11:00:00Z'
+    updated_at: '2024-06-30T13:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - skill_types
+  - skill_levels
+  - skill_domains
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/skill
+  provenance: ChangeMappers Ontology Project

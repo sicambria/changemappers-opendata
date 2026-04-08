@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/citation.schema.json",
+  "title": "Citation",
+  "description": "A reference to a source of information, evidence, or authority supporting claims in the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "type", "title", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the citation",
+      "example": "550e8400-e29b-41d4-a716-446655440034"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["academic", "report", "news", "government", "organization", "interview", "personal_communication", "website", "book", "dataset", "legal", "media"],
+      "description": "Type of citation",
+      "example": "academic"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Title of the cited work",
+      "example": "The Role of Social Capital in Community Development"
+    },
+    "authors": {
+      "type": "array",
+      "description": "Authors",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "orcid": { "type": "string", "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$" }
+        }
+      }
+    },
+    "publication_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication date"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1000,
+      "description": "Year of publication"
+    },
+    "publisher": {
+      "type": "string",
+      "description": "Publisher name"
+    },
+    "journal": {
+      "type": "string",
+      "description": "Journal name if applicable"
+    },
+    "volume": {
+      "type": "string",
+      "description": "Volume"
+    },
+    "issue": {
+      "type": "string",
+      "description": "Issue number"
+    },
+    "pages": {
+      "type": "string",
+      "description": "Page numbers",
+      "example": "45-67"
+    },
+    "doi": {
+      "type": "string",
+      "pattern": "^10\\..+$",
+      "description": "DOI",
+      "example": "10.1000/xyz123"
+    },
+    "isbn": {
+      "type": "string",
+      "pattern": "^[0-9-]+$",
+      "description": "ISBN"
+    },
+    "issn": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{3}[0-9X]$",
+      "description": "ISSN"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to access the source"
+    },
+    "pdf_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "PDF URL if available"
+    },
+    "archive_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Archive URL (Wayback Machine, etc.)"
+    },
+    "citation_key": {
+      "type": "string",
+      "description": "Citation key for reference management"
+    },
+    "abstract": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Abstract or summary"
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Keywords",
+      "items": { "type": "string" }
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "ISO 639-1 language code",
+      "example": "en"
+    },
+    "access": {
+      "type": "string",
+      "enum": ["open_access", "subscription", "free", "restricted"],
+      "description": "Access type"
+    },
+    "peer_reviewed": {
+      "type": "boolean",
+      "description": "Whether peer reviewed"
+    },
+    "citation_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of citations"
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["high", "medium", "low", "unverified"],
+      "description": "Quality assessment"
+    },
+    "relevance": {
+      "type": "string",
+      "description": "Relevance to the topic"
+    },
+    "quote": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Specific quote if citing a passage"
+    },
+    "page_quoted": {
+      "type": "string",
+      "description": "Page number of quote"
+    },
+    "context": {
+      "type": "string",
+      "description": "Context of how this citation is used"
+    },
+    "entities_citing": {
+      "type": "array",
+      "description": "Entities citing this source",
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "entity_id"],
+        "additionalProperties": false,
+        "properties": {
+          "entity_type": { "type": "string" },
+          "entity_id": { "type": "string", "format": "uuid" }
+        }
+      }
+    },
+    "related_citations": {
+      "type": "array",
+      "description": "Related citations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "bibtex": {
+      "type": "string",
+      "description": "BibTeX formatted citation"
+    },
+    "apa": {
+      "type": "string",
+      "description": "APA formatted citation"
+    },
+    "mla": {
+      "type": "string",
+      "description": "MLA formatted citation"
+    },
+    "chicago": {
+      "type": "string",
+      "description": "Chicago formatted citation"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

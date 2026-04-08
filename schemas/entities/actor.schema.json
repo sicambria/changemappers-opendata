@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/actor.schema.json",
+  "title": "Actor",
+  "description": "An individual or entity that initiates, participates in, or influences change processes within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the actor",
+      "example": "550e8400-e29b-41d4-a716-446655440000"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "jane-doe"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Full name of the actor",
+      "example": "Jane Doe"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["individual", "collective", "organization", "network"],
+      "description": "Type of actor",
+      "example": "individual"
+    },
+    "bio": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Biographical description",
+      "example": "Community organizer and environmental activist with 15 years of experience."
+    },
+    "contact": {
+      "type": "object",
+      "description": "Contact information",
+      "additionalProperties": false,
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^\\+?[0-9\\-\\s]+$",
+          "description": "Phone number"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Website URL"
+        },
+        "social_media": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "twitter": { "type": "string", "pattern": "^@?[a-zA-Z0-9_]+$" },
+            "linkedin": { "type": "string" },
+            "facebook": { "type": "string" },
+            "instagram": { "type": "string", "pattern": "^@?[a-zA-Z0-9_.]+$" }
+          }
+        }
+      }
+    },
+    "affiliations": {
+      "type": "array",
+      "description": "Organizations the actor is affiliated with",
+      "items": {
+        "type": "object",
+        "required": ["organization_id"],
+        "additionalProperties": false,
+        "properties": {
+          "organization_id": { "type": "string", "format": "uuid" },
+          "role": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic locations associated with the actor",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "expertise": {
+      "type": "array",
+      "description": "Areas of expertise",
+      "items": {
+        "type": "string",
+        "enum": ["community_organizing", "policy_advocacy", "research", "education", "technology", "finance", "communications", "legal", "health", "environment", "social_justice", "economics", "governance", "arts", "science"]
+      }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives the actor is involved in",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects the actor is involved in",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

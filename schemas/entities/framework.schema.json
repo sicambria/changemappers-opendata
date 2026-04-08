@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/framework.schema.json",
+  "title": "Framework",
+  "description": "A structured approach or model that provides guidance for understanding and implementing change processes.",
+  "type": "object",
+  "required": ["id", "slug", "name", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the framework",
+      "example": "550e8400-e29b-41d4-a716-446655440012"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "theory-of-change"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the framework",
+      "example": "Theory of Change"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the framework",
+      "example": "A comprehensive approach to planning and evaluating change initiatives."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["planning", "evaluation", "implementation", "analysis", "diagnostic", "strategic"],
+      "description": "Type of framework",
+      "example": "planning"
+    },
+    "author": {
+      "type": "string",
+      "description": "Original author(s)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
+      "description": "Version number"
+    },
+    "metamodel": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Underlying metamodel"
+    },
+    "components": {
+      "type": "array",
+      "description": "Framework components",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "order": { "type": "integer" },
+          "sub_components": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "description": "Implementation steps",
+      "items": {
+        "type": "object",
+        "required": ["order", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "order": { "type": "integer", "minimum": 1 },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "outputs": { "type": "array", "items": { "type": "string" } },
+          "tools": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "principles": {
+      "type": "array",
+      "description": "Guiding principles",
+      "items": { "type": "string" }
+    },
+    "assumptions": {
+      "type": "array",
+      "description": "Underlying assumptions",
+      "items": { "type": "string" }
+    },
+    "strengths": {
+      "type": "array",
+      "description": "Framework strengths",
+      "items": { "type": "string" }
+    },
+    "limitations": {
+      "type": "array",
+      "description": "Framework limitations",
+      "items": { "type": "string" }
+    },
+    "related_frameworks": {
+      "type": "array",
+      "description": "Related frameworks",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methodologies": {
+      "type": "array",
+      "description": "Methodologies based on this framework",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tools": {
+      "type": "array",
+      "description": "Tools that support this framework",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects_using": {
+      "type": "array",
+      "description": "Projects using this framework",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains where applicable",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "key_references": {
+      "type": "array",
+      "description": "Key references",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Learning resources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

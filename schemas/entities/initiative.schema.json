@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/initiative.schema.json",
+  "title": "Initiative",
+  "description": "A coordinated effort or campaign aimed at creating change, typically involving multiple actors, organizations, and projects.",
+  "type": "object",
+  "required": ["id", "slug", "name", "status", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the initiative",
+      "example": "550e8400-e29b-41d4-a716-446655440002"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "climate-justice-coalition"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the initiative",
+      "example": "Climate Justice Coalition"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the initiative's goals and approach",
+      "example": "A multi-stakeholder coalition working to advance climate justice policies at the municipal level."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planning", "active", "paused", "completed", "archived"],
+      "description": "Current status of the initiative",
+      "example": "active"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["campaign", "coalition", "movement", "program", "project_cluster", "network"],
+      "description": "Type of initiative",
+      "example": "coalition"
+    },
+    "lead_organizations": {
+      "type": "array",
+      "description": "Organizations leading the initiative",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "partner_organizations": {
+      "type": "array",
+      "description": "Partner organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "actors": {
+      "type": "array",
+      "description": "Key actors involved",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects under this initiative",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "causes": {
+      "type": "array",
+      "description": "Causes the initiative addresses",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains the initiative operates in",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic scope",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "timeline": {
+      "type": "object",
+      "description": "Timeline information",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["date", "description"],
+            "additionalProperties": false,
+            "properties": {
+              "date": { "type": "string", "format": "date" },
+              "description": { "type": "string" },
+              "status": { "type": "string", "enum": ["planned", "achieved", "missed"] }
+            }
+          }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Expected or achieved outcomes",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Measured impacts",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Resources available",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "budget": {
+      "type": "object",
+      "description": "Budget information",
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "amount": { "type": "number", "minimum": 0 },
+              "type": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

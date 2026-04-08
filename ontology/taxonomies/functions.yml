@@ -1,0 +1,448 @@
+# Organizational Functions Taxonomy
+# Part of the ChangeMappers Ontology (changemappers.org)
+# Core functions organizations perform in regenerative development
+
+metadata:
+  taxonomy_id: organizational-functions
+  version: "1.0.0"
+  source: changemappers.org
+  description: |
+    The functions taxonomy defines nine core organizational functions 
+    that support regenerative development. Organizations may perform 
+    one or more functions, and effective systemic change requires 
+    coordination across all functions.
+
+functions:
+  - id: education-training
+    name: Education & Training
+    slug: education-training
+    description: |
+      Developing knowledge, skills, competencies, and consciousness 
+      at individual and collective levels. This includes formal 
+      education, informal learning, professional development, 
+      and capacity building for regenerative practices.
+    scope: |
+      From early childhood education to professional development, 
+      from community workshops to institutional curriculum design.
+    skills_required:
+      - Pedagogical design and facilitation
+      - Curriculum development
+      - Adult learning methods
+      - Competency assessment
+      - Inner development frameworks (IDG)
+      - Systems thinking education
+      - Experiential learning design
+      - Cross-cultural communication
+    key_activities:
+      - Designing regenerative education curricula
+      - Facilitating transformative learning experiences
+      - Training practitioners in regenerative methods
+      - Developing assessment frameworks
+      - Creating educational resources and materials
+      - Mentoring and coaching
+    related_functions:
+      - community-organizing
+      - healthcare-provision
+      - research-development
+    examples:
+      - IDG framework implementation programs
+      - Regenerative agriculture training centers
+      - Leadership maturity development programs
+      - Community resilience workshops
+      - Ecological literacy programs
+      - Systems thinking courses
+    organizations_examples:
+      - Inner Development Goals Initiative
+      - Presencing Institute
+      - Center for Ecoliteracy
+      - Gaia Education
+
+  - id: healthcare-provision
+    name: Healthcare Provision
+    slug: healthcare-provision
+    description: |
+      Supporting physical, mental, emotional, and spiritual wellbeing 
+      through preventive, therapeutic, and integrative approaches. 
+      This includes conventional healthcare, trauma-informed care, 
+      holistic health, and community health systems.
+    scope: |
+      From individual clinical care to community health programs, 
+      from trauma treatment to preventive wellness initiatives.
+    skills_required:
+      - Clinical healthcare expertise
+      - Trauma-informed practice
+      - Integrative and holistic health
+      - Public health approaches
+      - Community health methods
+      - Mental health support
+      - Preventive care design
+      - Cultural sensitivity
+    key_activities:
+      - Providing trauma-informed healthcare
+      - Designing preventive health programs
+      - Community health worker training
+      - Mental health support services
+      - Integrative medicine practice
+      - Health education and outreach
+    related_functions:
+      - education-training
+      - community-organizing
+      - policy-advocacy
+    examples:
+      - Trauma-informed healthcare systems
+      - Community mental health programs
+      - Preventive lifestyle medicine clinics
+      - Integrative health centers
+      - Indigenous health programs
+      - Public health campaigns
+    organizations_examples:
+      - SAMHSA (trauma-informed care models)
+      - Integrative medicine centers
+      - Community health centers
+      - Mental health first aid programs
+
+  - id: policy-advocacy
+    name: Policy Advocacy
+    slug: policy-advocacy
+    description: |
+      Influencing public policy, legislation, and institutional 
+      frameworks to enable regenerative development. This includes 
+      policy research, advocacy campaigns, legislative engagement, 
+      and governance innovation.
+    scope: |
+      From local policy change to international frameworks, 
+      from specific legislation to systemic governance reform.
+    skills_required:
+      - Policy analysis and research
+      - Advocacy and campaigning
+      - Legislative process navigation
+      - Stakeholder engagement
+      - Strategic communications
+      - Coalition building
+      - Regulatory design
+      - Political strategy
+    key_activities:
+      - Drafting policy proposals
+      - Running advocacy campaigns
+      - Engaging legislators and officials
+      - Building policy coalitions
+      - Regulatory reform initiatives
+      - Public awareness campaigns
+    related_functions:
+      - research-development
+      - community-organizing
+      - technology-governance
+    examples:
+      - Future Generations legislation advocacy
+      - Ecological tax reform campaigns
+      - Basic income policy development
+      - Open government initiatives
+      - Climate policy advocacy
+      - Biodiversity protection legislation
+    organizations_examples:
+      - Wellbeing Economy Alliance
+      - Future Generations Commissioner (Wales)
+      - Climate policy coalitions
+      - Democracy Collaborative
+
+  - id: community-organizing
+    name: Community Organizing
+    slug: community-organizing
+    description: |
+      Building collective power, relationships, and capacity at 
+      community levels. This includes grassroots organizing, 
+      community development, mutual aid networks, and participatory 
+      governance processes.
+    scope: |
+      From neighborhood initiatives to regional networks, 
+      from specific campaigns to ongoing community infrastructure.
+    skills_required:
+      - Facilitation and convening
+      - Community engagement methods
+      - Conflict resolution
+      - Participatory processes
+      - Relationship building
+      - Asset-based community development
+      - Group dynamics and governance
+      - Communication and storytelling
+    key_activities:
+      - Convening community gatherings
+      - Building local networks and coalitions
+      - Facilitating participatory processes
+      - Developing community governance
+      - Creating mutual aid systems
+      - Community visioning and planning
+    related_functions:
+      - education-training
+      - policy-advocacy
+      - financial-investment
+    examples:
+      - Community resilience networks
+      - Local governance initiatives
+      - Mutual aid systems
+      - Community land trusts
+      - Neighborhood associations
+      - Participatory budgeting programs
+    organizations_examples:
+      - Transition Network
+      - Community development corporations
+      - Citizen assemblies
+      - Local community foundations
+
+  - id: financial-investment
+    name: Financial Investment
+    slug: financial-investment
+    description: |
+      Directing financial resources toward regenerative development 
+      through ethical investment, community finance, impact 
+      investing, and economic system innovation. This includes 
+      capital allocation, financial infrastructure, and economic 
+      model development.
+    scope: |
+      From community-level investments to systemic financial reform, 
+      from specific project funding to economic paradigm shifts.
+    skills_required:
+      - Financial analysis and management
+      - Impact measurement
+      - Community finance models
+      - Regenerative economics
+      - Investment design
+      - Fund development
+      - Economic systems thinking
+      - Risk assessment
+    key_activities:
+      - Developing regenerative investment funds
+      - Creating community finance mechanisms
+      - Designing economic innovation
+      - Managing impact investments
+      - Building alternative financial infrastructure
+      - Supporting social enterprises
+    related_functions:
+      - policy-advocacy
+      - community-organizing
+      - infrastructure-deployment
+    examples:
+      - Regenerative investment funds
+      - Community development finance institutions
+      - Social enterprise support
+      - Local currency systems
+      - Impact investment platforms
+      - Community land trust financing
+    organizations_examples:
+      - RSF Social Finance
+      - Community development financial institutions
+      - Social venture funds
+      - Regenerative finance networks
+
+  - id: technology-governance
+    name: Technology Governance
+    slug: technology-governance
+    description: |
+      Ensuring technology development and deployment serves human 
+      dignity, ecological integrity, and collective wellbeing. 
+      This includes AI governance, data sovereignty, open-source 
+      development, and ethical technology frameworks.
+    scope: |
+      From specific technology decisions to systemic governance 
+      frameworks, from organizational technology to global standards.
+    skills_required:
+      - Technology assessment
+      - AI ethics and governance
+      - Data privacy and sovereignty
+      - Open-source development
+      - Digital rights frameworks
+      - Participatory technology design
+      - Algorithmic accountability
+      - Technical policy development
+    key_activities:
+      - Developing AI governance frameworks
+      - Creating data sovereignty systems
+      - Building open-source platforms
+      - Technology impact assessment
+      - Digital rights advocacy
+      - Ethical technology design
+    related_functions:
+      - policy-advocacy
+      - research-development
+      - infrastructure-deployment
+    examples:
+      - AI ethics frameworks
+      - Data sovereignty initiatives
+      - Open-source technology commons
+      - Digital rights advocacy
+      - Participatory AI development
+      - Technology assessment boards
+    organizations_examples:
+      - AI ethics institutes
+      - Open source communities
+      - Digital rights organizations
+      - Data cooperatives
+
+  - id: research-development
+    name: Research & Development
+    slug: research-development
+    description: |
+      Generating new knowledge, methods, and innovations for 
+      regenerative development. This includes scientific research, 
+      action research, innovation development, and knowledge 
+      synthesis across disciplines.
+    scope: |
+      From fundamental research to applied innovation, 
+      from academic studies to community-based participatory research.
+    skills_required:
+      - Research methods and design
+      - Systems science
+      - Interdisciplinary synthesis
+      - Action research
+      - Innovation development
+      - Knowledge management
+      - Impact evaluation
+      - Transdisciplinary approaches
+    key_activities:
+      - Conducting regenerative systems research
+      - Developing assessment frameworks
+      - Creating monitoring systems
+      - Synthesizing knowledge across fields
+      - Action research with communities
+      - Innovation prototyping
+    related_functions:
+      - education-training
+      - policy-advocacy
+      - technology-governance
+    examples:
+      - Beyond GDP metrics development
+      - Climate tipping point research
+      - Regenerative agriculture science
+      - Social innovation research
+      - Community-based monitoring systems
+      - Integration of indigenous and scientific knowledge
+    organizations_examples:
+      - Stockholm Resilience Centre
+      - Research institutes for regenerative development
+      - Community-based research networks
+      - Systems science institutes
+
+  - id: infrastructure-deployment
+    name: Infrastructure Deployment
+    slug: infrastructure-deployment
+    description: |
+      Building physical and digital infrastructure that enables 
+      regenerative development. This includes renewable energy 
+      systems, ecological infrastructure, sustainable buildings, 
+      and community facilities.
+    scope: |
+      From specific projects to systemic infrastructure networks, 
+      from local installations to regional systems.
+    skills_required:
+      - Engineering and design
+      - Regenerative design principles
+      - Project management
+      - Community engagement in development
+      - Ecological infrastructure
+      - Renewable energy systems
+      - Sustainable construction
+      - Systems integration
+    key_activities:
+      - Designing regenerative infrastructure
+      - Building community energy systems
+      - Creating green infrastructure
+      - Developing sustainable buildings
+      - Installing monitoring systems
+      - Infrastructure adaptation for climate
+    related_functions:
+      - ecological-restoration
+      - financial-investment
+      - technology-governance
+    examples:
+      - Community solar installations
+      - Green infrastructure networks
+      - Sustainable building projects
+      - Climate adaptation infrastructure
+      - Ecological wastewater systems
+      - Distributed energy grids
+    organizations_examples:
+      - Community energy cooperatives
+      - Green building organizations
+      - Ecological infrastructure developers
+      - Climate adaptation programs
+
+  - id: ecological-restoration
+    name: Ecological Restoration
+    slug: ecological-restoration
+    description: |
+      Restoring degraded ecosystems, rebuilding biodiversity, and 
+      regenerating natural systems. This includes habitat restoration, 
+      rewilding, regenerative agriculture, and ecosystem stewardship.
+    scope: |
+      From specific sites to continental-scale corridors, 
+      from urban greening to wilderness restoration.
+    skills_required:
+      - Ecological restoration methods
+      - Regenerative agriculture
+      - Rewilding techniques
+      - Permaculture design
+      - Watershed restoration
+      - Biodiversity monitoring
+      - Soil health assessment
+      - Ecosystem management
+    key_activities:
+      - Restoring degraded ecosystems
+      - Implementing regenerative agriculture
+      - Creating wildlife corridors
+      - Rebuilding soil health
+      - Watershed restoration
+      - Urban greening projects
+    related_functions:
+      - education-training
+      - infrastructure-deployment
+      - policy-advocacy
+    examples:
+      - Rewilding initiatives
+      - Continental ecological corridors
+      - Regenerative farming programs
+      - Watershed restoration projects
+      - Urban reforestation
+      - Marine ecosystem restoration
+    organizations_examples:
+      - Rewilding networks
+      - Regenerative agriculture movements
+      - Ecosystem restoration camps
+      - Conservation organizations
+
+function_relationships:
+  complementarity:
+    description: |
+      Functions work together synergistically. Effective regenerative 
+      development requires coordination across multiple functions, 
+      with organizations specializing while collaborating.
+    patterns:
+      - pattern: "Education + Community Organizing"
+        description: "Learning communities that both develop capacity and take collective action"
+        example: "Transition Towns combining education with community resilience building"
+      
+      - pattern: "Research + Policy Advocacy"
+        description: "Evidence-based policy development and advocacy"
+        example: "Beyond GDP research informing policy advocacy"
+      
+      - pattern: "Financial Investment + Infrastructure Deployment"
+        description: "Capital flowing to concrete regenerative infrastructure"
+        example: "Community investment funds financing renewable energy"
+      
+      - pattern: "Technology Governance + Policy Advocacy"
+        description: "Policy frameworks enabling ethical technology"
+        example: "AI governance policy development"
+      
+      - pattern: "Ecological Restoration + Education"
+        description: "Restoration as learning and learning as restoration"
+        example: "Ecosystem restoration camps combining work with training"
+
+  distribution:
+    description: |
+      No single organization performs all functions. Effective 
+      systems have diverse organizations specializing while 
+      coordinating through networks and partnerships.
+    considerations:
+      - Organizations should identify their primary function(s)
+      - Collaboration across functions strengthens systemic impact
+      - Some functions are more effective when distributed
+      - Local contexts require different function combinations

@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/skill.schema.json",
+  "title": "Skill",
+  "description": "A capability or competency that actors can develop and apply in change-making activities within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "category", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the skill",
+      "example": "550e8400-e29b-41d4-a716-446655440007"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "facilitation"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the skill",
+      "example": "Group Facilitation"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the skill",
+      "example": "The ability to guide groups through processes to achieve productive outcomes."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["communication", "leadership", "technical", "analytical", "interpersonal", "organizational", "creative", "strategic", "advocacy", "research"],
+      "description": "Category of the skill",
+      "example": "interpersonal"
+    },
+    "sub_category": {
+      "type": "string",
+      "description": "Sub-category for more specific classification"
+    },
+    "level_definitions": {
+      "type": "object",
+      "description": "Definitions for skill levels",
+      "additionalProperties": false,
+      "properties": {
+        "beginner": { "type": "string" },
+        "intermediate": { "type": "string" },
+        "advanced": { "type": "string" },
+        "expert": { "type": "string" }
+      }
+    },
+    "learning_resources": {
+      "type": "array",
+      "description": "Resources for developing this skill",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_skills": {
+      "type": "array",
+      "description": "Related skills",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "prerequisite_skills": {
+      "type": "array",
+      "description": "Skills that are prerequisites",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "applications": {
+      "type": "array",
+      "description": "How this skill can be applied",
+      "items": { "type": "string" }
+    },
+    "assessment_criteria": {
+      "type": "array",
+      "description": "Criteria for assessing skill level",
+      "items": { "type": "string" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains where this skill is relevant",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Patterns that use this skill",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methods": {
+      "type": "array",
+      "description": "Methodologies that require this skill",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "actors_with_skill": {
+      "type": "array",
+      "description": "Actors who have this skill",
+      "items": {
+        "type": "object",
+        "required": ["actor_id", "level"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
+          "verified": { "type": "boolean" }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

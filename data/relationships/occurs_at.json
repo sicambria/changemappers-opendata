@@ -1,0 +1,72 @@
+{
+  "relationship_type": "occurs_at",
+  "description": "Event happens at a Location/Time",
+  "records": [
+    {
+      "source_id": "e1v2e3n4-t5i6-7890-abcd-ef1234567890",
+      "target_id": "t1i2m3e4-s5p6-7890-abcd-ef1234567890",
+      "properties": {
+        "event_type": "mass_protest",
+        "duration_days": 381,
+        "year": 1955
+      },
+      "confidence": 0.98,
+      "source_reference": "Montgomery Bus Boycott occurred December 1955 - December 1956 in Montgomery, Alabama"
+    },
+    {
+      "source_id": "e2v3e4n5-t6i7-8901-cdef-234567890abc",
+      "target_id": "t2i3m4e5-s6p7-8901-cdef-234567890abc",
+      "properties": {
+        "event_type": "mass_march",
+        "duration_days": 24,
+        "year": 1930
+      },
+      "confidence": 0.97,
+      "source_reference": "Salt March occurred March-April 1930, covering 240 miles across Gujarat, India"
+    },
+    {
+      "source_id": "e3v4e5n6-t7i8-9012-defa-345678901bcd",
+      "target_id": "t3i4m5e6-s7p8-9012-defa-345678901bcd",
+      "properties": {
+        "event_type": "human_chain",
+        "duration_days": 1,
+        "year": 1989
+      },
+      "confidence": 0.96,
+      "source_reference": "Baltic Way human chain occurred August 23, 1989 across Estonia, Latvia, Lithuania"
+    },
+    {
+      "source_id": "e4v5e6n7-t8i9-0123-efab-456789012cde",
+      "target_id": "t4i5m6e7-s8p9-0123-efab-456789012cde",
+      "properties": {
+        "event_type": "occupation",
+        "duration_days": 18,
+        "year": 2011
+      },
+      "confidence": 0.95,
+      "source_reference": "Tahrir Square occupation occurred January-February 2011 in Cairo, Egypt"
+    },
+    {
+      "source_id": "e5v6e7n8-t9i0-1234-fabc-567890123def",
+      "target_id": "t5i6m7e8-s9p0-1234-fabc-567890123def",
+      "properties": {
+        "event_type": "tree_sitting",
+        "duration_days": 738,
+        "year": 1997
+      },
+      "confidence": 0.94,
+      "source_reference": "Julia Butterfly Hill's tree sit occurred December 1997 - December 1999 in California redwood forest"
+    },
+    {
+      "source_id": "e6v7e8n9-t0i1-2345-abcd-ef1234567890",
+      "target_id": "t6i7m8e9-s0p1-2345-abcd-ef1234567890",
+      "properties": {
+        "event_type": "uprising",
+        "duration_days": 79,
+        "year": 2014
+      },
+      "confidence": 0.93,
+      "source_reference": "Umbrella Movement occurred September-December 2014 in Hong Kong"
+    }
+  ]
+}

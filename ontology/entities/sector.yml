@@ -1,0 +1,194 @@
+id: sector
+name: Sector
+description: An industry, field, or area of economic and social activity where change work occurs.
+category: classification
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the sector
+    - name: name
+      type: string
+      required: true
+      description: Name of the sector
+    - name: description
+      type: string
+      required: true
+      description: Description of the sector
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the sector
+      enum_values:
+        - economic
+        - public
+        - nonprofit
+        - movement
+        - cultural
+        - environmental
+    - name: parent_sector_id
+      type: string
+      required: false
+      description: Parent sector in hierarchy
+    - name: organization_ids
+      type: array[string]
+      required: false
+      description: Organizations in this sector
+    - name: actor_ids
+      type: array[string]
+      required: false
+      description: Actors working in this sector
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives in this sector
+    - name: related_sector_ids
+      type: array[string]
+      required: false
+      description: Related sectors
+    - name: key_issues
+      type: array[string]
+      required: false
+      description: Key issues in this sector
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: organization
+    type: contains
+    description: Sector contains organizations
+  - entity: actor
+    type: employs
+    description: Sector employs actors
+  - entity: initiative
+    type: addresses
+    description: Sector addresses initiatives
+examples:
+  - id: sec_energy
+    name: Energy
+    description: Sector covering energy production, distribution, and consumption.
+    type: economic
+    organization_ids:
+      - org_001
+    initiative_ids:
+      - init_001
+    key_issues:
+      - Fossil fuel dependency
+      - Energy access
+      - Just transition
+      - Energy democracy
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: sec_food_systems
+    name: Food and Agriculture
+    description: Sector covering food production, distribution, and access.
+    type: economic
+    organization_ids:
+      - org_005
+    initiative_ids:
+      - init_003
+    key_issues:
+      - Food sovereignty
+      - Food apartheid
+      - Sustainable agriculture
+      - Farm worker justice
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: sec_environment
+    name: Environment
+    description: Sector covering environmental protection and restoration.
+    type: environmental
+    organization_ids:
+      - org_006
+    initiative_ids:
+      - init_005
+    key_issues:
+      - Climate change
+      - Ecosystem degradation
+      - Pollution
+      - Biodiversity loss
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: sec_economics
+    name: Economic Development
+    description: Sector covering economic development and community wealth building.
+    type: economic
+    organization_ids:
+      - org_003
+    initiative_ids:
+      - init_007
+    key_issues:
+      - Wealth inequality
+      - Community wealth building
+      - Cooperative development
+      - Economic democracy
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: sec_policy
+    name: Policy and Governance
+    description: Sector covering policy development and governance.
+    type: public
+    key_issues:
+      - Democratic participation
+      - Policy advocacy
+      - Government accountability
+      - Regulatory reform
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: sec_education
+    name: Education
+    description: Sector covering formal and informal education.
+    type: public
+    initiative_ids:
+      - init_004
+    key_issues:
+      - Educational equity
+      - Curriculum justice
+      - Community education
+      - Popular education
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: sec_labor
+    name: Labor and Work
+    description: Sector covering workers, unions, and labor issues.
+    type: economic
+    organization_ids:
+      - org_007
+    key_issues:
+      - Worker rights
+      - Just transition
+      - Wage equity
+      - Workplace democracy
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - sector_types
+  - sector_hierarchy
+  - naics_codes
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/sector
+  provenance: ChangeMappers Ontology Project

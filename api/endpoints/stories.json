@@ -1,0 +1,530 @@
+{
+  "endpoint": "/stories",
+  "path": "/v1/stories",
+  "httpMethods": ["GET", "POST", "PUT", "DELETE"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "Unique story identifier"
+        },
+        "title": {
+          "type": "string",
+          "required": false,
+          "description": "Search by story title (partial match)"
+        },
+        "type": {
+          "type": "string",
+          "required": false,
+          "enum": ["case_study", "testimonial", "news", "report", "interview", "documentary"],
+          "description": "Filter by story type"
+        },
+        "author_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by author actor ID"
+        },
+        "organization_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by organization ID"
+        },
+        "initiative_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by initiative ID"
+        },
+        "cause_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by cause ID"
+        },
+        "pattern_id": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by pattern ID"
+        },
+        "location": {
+          "type": "string",
+          "required": false,
+          "description": "Filter by location"
+        },
+        "date_from": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "Filter stories from this date"
+        },
+        "date_to": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "Filter stories until this date"
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "featured": {
+          "type": "boolean",
+          "required": false,
+          "description": "Filter featured stories"
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        },
+        "offset": {
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0
+        },
+        "sort": {
+          "type": "string",
+          "required": false,
+          "enum": ["title", "published_at", "created_at", "updated_at", "view_count"],
+          "default": "published_at"
+        },
+        "order": {
+          "type": "string",
+          "required": false,
+          "enum": ["asc", "desc"],
+          "default": "desc"
+        }
+      }
+    },
+    "POST": {
+      "body": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["case_study", "testimonial", "news", "report", "interview", "documentary"]
+        },
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Main story content (Markdown supported)"
+        },
+        "summary": {
+          "type": "string",
+          "required": false,
+          "maxLength": 500,
+          "description": "Brief summary of the story"
+        },
+        "author_id": {
+          "type": "string",
+          "required": false,
+          "description": "Actor ID of the author"
+        },
+        "organization_id": {
+          "type": "string",
+          "required": false,
+          "description": "Organization ID this story is about"
+        },
+        "initiative_id": {
+          "type": "string",
+          "required": false,
+          "description": "Initiative ID this story relates to"
+        },
+        "cause_ids": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Cause IDs related to this story"
+        },
+        "pattern_ids": {
+          "type": "array",
+          "items": "string",
+          "required": false,
+          "description": "Pattern IDs demonstrated in this story"
+        },
+        "location": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string" },
+            "region": { "type": "string" },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "lat": { "type": "number" },
+                "lng": { "type": "number" }
+              }
+            }
+          }
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time",
+          "required": false,
+          "description": "Publication date (defaults to now)"
+        },
+        "featured": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Mark as featured story"
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["image", "video", "audio", "document"] },
+              "url": { "type": "string" },
+              "caption": { "type": "string" },
+              "credit": { "type": "string" }
+            }
+          },
+          "required": false
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "metadata": {
+          "type": "object",
+          "required": false
+        }
+      }
+    },
+    "PUT": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "body": {
+        "title": { "type": "string", "required": false },
+        "content": { "type": "string", "required": false },
+        "summary": { "type": "string", "required": false },
+        "author_id": { "type": "string", "required": false },
+        "organization_id": { "type": "string", "required": false },
+        "initiative_id": { "type": "string", "required": false },
+        "cause_ids": { "type": "array", "items": "string", "required": false },
+        "pattern_ids": { "type": "array", "items": "string", "required": false },
+        "location": { "type": "object", "required": false },
+        "published_at": { "type": "string", "format": "date-time", "required": false },
+        "featured": { "type": "boolean", "required": false },
+        "media": { "type": "array", "required": false },
+        "tags": { "type": "array", "items": "string", "required": false },
+        "metadata": { "type": "object", "required": false }
+      }
+    },
+    "DELETE": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "GET": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Story"
+            }
+          },
+          "pagination": {
+            "$ref": "#/definitions/Pagination"
+          }
+        }
+      },
+      "definitions": {
+        "Story": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "type": { "type": "string" },
+            "content": { "type": "string" },
+            "summary": { "type": "string" },
+            "author": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" },
+                "type": { "type": "string" }
+              }
+            },
+            "organization": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            },
+            "initiative": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            },
+            "causes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "name": { "type": "string" }
+                }
+              }
+            },
+            "patterns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": { "type": "string" },
+                  "name": { "type": "string" }
+                }
+              }
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "city": { "type": "string" },
+                "country": { "type": "string" },
+                "region": { "type": "string" }
+              }
+            },
+            "published_at": { "type": "string", "format": "date-time" },
+            "featured": { "type": "boolean" },
+            "media": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": { "type": "string" },
+                  "url": { "type": "string" },
+                  "caption": { "type": "string" },
+                  "credit": { "type": "string" }
+                }
+              }
+            },
+            "tags": { "type": "array", "items": { "type": "string" } },
+            "metadata": { "type": "object" },
+            "view_count": { "type": "integer" },
+            "like_count": { "type": "integer" },
+            "comment_count": { "type": "integer" },
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" }
+          }
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "limit": { "type": "integer" },
+            "offset": { "type": "integer" },
+            "has_more": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "POST": {
+      "success": {
+        "$ref": "#/definitions/Story"
+      }
+    },
+    "PUT": {
+      "success": {
+        "$ref": "#/definitions/Story"
+      }
+    },
+    "DELETE": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "list_stories": "?limit=20&sort=published_at&order=desc",
+        "filter_by_type": "?type=case_study",
+        "filter_by_organization": "?organization_id=org_abc123",
+        "filter_by_initiative": "?initiative_id=init_def456",
+        "filter_by_cause": "?cause_id=cause_xyz789",
+        "filter_featured": "?featured=true",
+        "filter_by_date_range": "?date_from=2024-01-01&date_to=2024-12-31",
+        "search_by_title": "?title=community"
+      },
+      "POST": {
+        "create_story": {
+          "title": "Transforming Urban Spaces: The Story of Berlin's Community Gardens",
+          "type": "case_study",
+          "content": "# Introduction\n\nIn the heart of Berlin, a remarkable transformation has taken place...\n\n## The Challenge\n\nUrban areas face significant challenges...\n\n## The Solution\n\nThe community garden initiative...\n\n## Results\n\nThe project has achieved remarkable success...",
+          "summary": "How Berlin's community garden movement transformed vacant lots into thriving green spaces, engaging over 500 residents.",
+          "author_id": "actor_123",
+          "organization_id": "org_abc123",
+          "initiative_id": "init_def456",
+          "cause_ids": ["cause_xyz789", "cause_abc123"],
+          "pattern_ids": ["pattern_001", "pattern_002"],
+          "location": {
+            "city": "Berlin",
+            "country": "Germany",
+            "region": "Europe"
+          },
+          "featured": true,
+          "media": [
+            {
+              "type": "image",
+              "url": "https://example.org/images/garden1.jpg",
+              "caption": "Community garden in Berlin",
+              "credit": "Photo by Jane Doe"
+            }
+          ],
+          "tags": ["urban", "gardening", "community", "berlin", "transformation"]
+        }
+      },
+      "PUT": {
+        "update_story": {
+          "id": "story_abc789",
+          "featured": true,
+          "tags": ["urban", "gardening", "community", "berlin", "transformation", "success"]
+        }
+      }
+    },
+    "response": {
+      "GET": {
+        "success": {
+          "data": [
+            {
+              "id": "story_abc789",
+              "title": "Transforming Urban Spaces: The Story of Berlin's Community Gardens",
+              "type": "case_study",
+              "content": "# Introduction\n\nIn the heart of Berlin...",
+              "summary": "How Berlin's community garden movement transformed vacant lots into thriving green spaces",
+              "author": {
+                "id": "actor_123",
+                "name": "Jane Doe",
+                "type": "person"
+              },
+              "organization": {
+                "id": "org_abc123",
+                "name": "Green Future Initiative"
+              },
+              "initiative": {
+                "id": "init_def456",
+                "name": "Urban Gardening Project"
+              },
+              "causes": [
+                { "id": "cause_xyz789", "name": "Sustainable Agriculture" },
+                { "id": "cause_abc123", "name": "Urban Development" }
+              ],
+              "patterns": [
+                { "id": "pattern_001", "name": "Community Assembly" }
+              ],
+              "location": {
+                "city": "Berlin",
+                "country": "Germany",
+                "region": "Europe"
+              },
+              "published_at": "2024-06-15T12:00:00Z",
+              "featured": true,
+              "media": [
+                {
+                  "type": "image",
+                  "url": "https://example.org/images/garden1.jpg",
+                  "caption": "Community garden in Berlin",
+                  "credit": "Photo by Jane Doe"
+                }
+              ],
+              "tags": ["urban", "gardening", "community", "berlin", "transformation"],
+              "metadata": {},
+              "view_count": 1250,
+              "like_count": 89,
+              "comment_count": 12,
+              "created_at": "2024-06-14T10:00:00Z",
+              "updated_at": "2024-06-15T12:00:00Z"
+            }
+          ],
+          "pagination": {
+            "total": 234,
+            "limit": 20,
+            "offset": 0,
+            "has_more": true
+          }
+        }
+      },
+      "POST": {
+        "success": {
+          "id": "story_new123",
+          "title": "Transforming Urban Spaces",
+          "type": "case_study",
+          "view_count": 0,
+          "created_at": "2024-06-20T18:00:00Z",
+          "updated_at": "2024-06-20T18:00:00Z"
+        }
+      },
+      "DELETE": {
+        "success": {
+          "message": "Story deleted successfully",
+          "id": "story_abc789"
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid request parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "403": {
+      "code": "FORBIDDEN",
+      "description": "Insufficient permissions"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Story not found"
+    },
+    "409": {
+      "code": "CONFLICT",
+      "description": "Story with this title already exists"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Validation error"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    }
+  }
+}

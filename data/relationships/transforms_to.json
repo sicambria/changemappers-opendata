@@ -1,0 +1,61 @@
+{
+  "relationship_type": "transforms_to",
+  "description": "Entity changes state or form to become another Entity",
+  "records": [
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "o1r2g3a4-n5i6-7890-abcd-ef1234567890",
+      "properties": {
+        "transformation_type": "institutional",
+        "magnitude": "high",
+        "timescale": "years"
+      },
+      "confidence": 0.93,
+      "source_reference": "Solidarity transformed from a trade union to a political movement and eventually governing party"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "a1u2t3o4-n5o6-7890-abcd-ef1234567890",
+      "properties": {
+        "transformation_type": "governance",
+        "magnitude": "high",
+        "timescale": "ongoing"
+      },
+      "confidence": 0.91,
+      "source_reference": "Zapatista uprising transformed from armed resistance to civilian autonomous governance"
+    },
+    {
+      "source_id": "p1r2o3t4-e5s6-7890-abcd-ef1234567890",
+      "target_id": "p1o2l3i4-c5y6-7890-abcd-ef1234567890",
+      "properties": {
+        "transformation_type": "political",
+        "magnitude": "medium",
+        "timescale": "decades"
+      },
+      "confidence": 0.87,
+      "source_reference": "Protest movements can transform into political parties (e.g., Podemos from Indignados)"
+    },
+    {
+      "source_id": "c1o2m3m4-u5n6-7890-abcd-ef1234567890",
+      "target_id": "i1n2s3t4-i5t6-7890-abcd-ef1234567890",
+      "properties": {
+        "transformation_type": "institutionalization",
+        "magnitude": "medium",
+        "timescale": "years"
+      },
+      "confidence": 0.85,
+      "source_reference": "Community assemblies can transform into permanent institutions (Gacaca Courts)"
+    },
+    {
+      "source_id": "r1e2s3i4-s5t6-7890-abcd-ef1234567890",
+      "target_id": "s1o2c3i4-e5t6-7890-abcd-ef1234567890",
+      "properties": {
+        "transformation_type": "structural",
+        "magnitude": "high",
+        "timescale": "generations"
+      },
+      "confidence": 0.82,
+      "source_reference": "Resistance movements transform societies through cultural and structural change"
+    }
+  ]
+}

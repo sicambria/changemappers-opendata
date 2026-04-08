@@ -1,0 +1,233 @@
+{
+  "dataset_info": {
+    "name": "Organizations",
+    "description": "Structured entities operating within the changemappers ecosystem, including NGOs, networks, cooperatives, and grassroots groups.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 8,
+    "schema": "https://changemappers.org/schemas/entities/organization.schema.json"
+  },
+  "records": [
+    {
+      "id": "b1c2d3e4-f5a6-7890-abcd-ef1234567890",
+      "slug": "regenerative-futures-network",
+      "name": "Regenerative Futures Network",
+      "type": "network",
+      "description": "A global network connecting regenerative agriculture practitioners, researchers, and communities. Facilitates knowledge exchange, seed sovereignty programs, and bioregional restoration projects across 40+ countries.",
+      "founded_date": "2010-05-15",
+      "contact": {
+        "email": "info@regenerativefutures.example.org",
+        "website": "https://regenerativefutures.example.org",
+        "address": {
+          "city": "London",
+          "country": "United Kingdom"
+        }
+      },
+      "locations": ["l1o2c3a4-t5i6-7890-abcd-ef1234567890", "l2o3c4a5-t6i7-8901-bcde-f12345678901"],
+      "sectors": ["environment", "agriculture", "education"],
+      "initiatives": ["i1n2i3t4-i5t6-7890-abcd-ef1234567890"],
+      "projects": ["p1r2o3j4-e5c6-7890-abcd-ef1234567890", "p2r3o4j5-e6c7-8901-bcde-f12345678901"],
+      "members": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+      "partners": ["b2c3d4e5-f6a7-8901-bcde-f12345678901"],
+      "funding_sources": [
+        {"source": "Foundation Grants", "type": "grant", "percentage": 45},
+        {"source": "Individual Donations", "type": "donation", "percentage": 30},
+        {"source": "Training Programs", "type": "earned_income", "percentage": 25}
+      ],
+      "tags": ["regenerative-agriculture", "global-network", "seed-sovereignty", "knowledge-exchange"],
+      "created_at": "2026-01-10T08:00:00Z",
+      "updated_at": "2026-04-02T10:30:00Z"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "slug": "river-guardians-collective",
+      "name": "River Guardians Collective",
+      "type": "grassroots",
+      "description": "A grassroots organization defending watershed rights and supporting Indigenous water protectors across South America. Combines direct action, legal advocacy, and community-based water monitoring.",
+      "founded_date": "2015-03-20",
+      "contact": {
+        "email": "contact@riverguardians.example.org",
+        "website": "https://riverguardians.example.org",
+        "address": {
+          "city": "Sao Paulo",
+          "country": "Brazil"
+        }
+      },
+      "locations": ["l1o2c3a4-t5i6-7890-abcd-ef1234567890"],
+      "sectors": ["environment", "social_justice"],
+      "initiatives": ["i1n2i3t4-i5t6-7890-abcd-ef1234567890"],
+      "projects": ["p1r2o3j4-e5c6-7890-abcd-ef1234567890"],
+      "members": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+      "funding_sources": [
+        {"source": "Grassroots Donations", "type": "donation", "percentage": 60},
+        {"source": "Foundation Grants", "type": "grant", "percentage": 40}
+      ],
+      "tags": ["watershed-protection", "indigenous-rights", "direct-action", "latin-america"],
+      "created_at": "2026-01-12T09:30:00Z",
+      "updated_at": "2026-04-01T14:45:00Z"
+    },
+    {
+      "id": "b3c4d5e6-f7a8-9012-cdef-123456789012",
+      "slug": "permaculture-institute-east-africa",
+      "name": "Permaculture Institute East Africa",
+      "type": "ngo",
+      "description": "Training organization providing permaculture design education to smallholder farmers, with a focus on water retention landscapes, indigenous seed systems, and climate adaptation strategies.",
+      "founded_date": "2012-08-10",
+      "contact": {
+        "email": "info@piea.example.org",
+        "website": "https://piea.example.org",
+        "address": {
+          "city": "Kampala",
+          "country": "Uganda"
+        }
+      },
+      "locations": ["l2o3c4a5-t6i7-8901-bcde-f12345678901"],
+      "sectors": ["agriculture", "education", "environment"],
+      "initiatives": ["i2n3i4t5-i6t7-8901-bcde-f12345678901"],
+      "projects": ["p2r3o4j5-e6c7-8901-bcde-f12345678901"],
+      "members": ["a2b3c4d5-e6f7-8901-bcde-f12345678901"],
+      "funding_sources": [
+        {"source": "International Grants", "type": "grant", "percentage": 50},
+        {"source": "Course Fees", "type": "earned_income", "percentage": 35},
+        {"source": "Local Donations", "type": "donation", "percentage": 15}
+      ],
+      "tags": ["permaculture", "training", "water-retention", "east-africa"],
+      "created_at": "2026-01-15T10:00:00Z",
+      "updated_at": "2026-03-28T11:20:00Z"
+    },
+    {
+      "id": "b4c5d6e7-f8a9-0123-def0-123456789012",
+      "slug": "systems-transformation-institute",
+      "name": "Systems Transformation Institute",
+      "type": "research_institute",
+      "description": "Academic research institute focused on social-ecological systems transformation, complexity science, and regenerative development. Produces open-access research and educational resources.",
+      "founded_date": "2008-09-01",
+      "contact": {
+        "email": "research@sti.example.edu",
+        "website": "https://sti.example.edu",
+        "address": {
+          "city": "Vancouver",
+          "country": "Canada"
+        }
+      },
+      "locations": ["l4o5c6a7-t8i9-0123-def0-123456789012"],
+      "sectors": ["education", "environment", "governance"],
+      "initiatives": ["i4n5i6t7-i8t9-0123-def0-123456789012"],
+      "projects": ["p4r5o6j7-e8c9-0123-def0-123456789012"],
+      "members": ["a4b5c6d7-e8f9-0123-def0-123456789012"],
+      "funding_sources": [
+        {"source": "University Funding", "type": "government", "percentage": 55},
+        {"source": "Research Grants", "type": "grant", "percentage": 40},
+        {"source": "Consulting", "type": "earned_income", "percentage": 5}
+      ],
+      "tags": ["systems-science", "research", "complexity", "regenerative-development"],
+      "created_at": "2026-01-20T11:30:00Z",
+      "updated_at": "2026-04-02T09:00:00Z"
+    },
+    {
+      "id": "b5c6d7e8-f9a0-1234-ef01-234567890123",
+      "slug": "collective-healing-initiative",
+      "name": "Collective Healing Initiative",
+      "type": "ngo",
+      "description": "Organization supporting trauma-informed community healing, restorative justice, and grief literacy programs in post-conflict and crisis-affected communities worldwide.",
+      "founded_date": "2016-04-10",
+      "contact": {
+        "email": "healing@chi.example.org",
+        "website": "https://collectivehealing.example.org",
+        "address": {
+          "city": "Berlin",
+          "country": "Germany"
+        }
+      },
+      "locations": ["l5o6c7a8-t9i0-1234-ef01-234567890123"],
+      "sectors": ["health", "social_justice"],
+      "initiatives": ["i5n6i7t8-i9t0-1234-ef01-234567890123"],
+      "projects": ["p5r6o7j8-e9c0-1234-ef01-234567890123"],
+      "members": ["a5b6c7d8-e9f0-1234-ef01-234567890123"],
+      "funding_sources": [
+        {"source": "Foundation Grants", "type": "grant", "percentage": 65},
+        {"source": "Individual Donations", "type": "donation", "percentage": 25},
+        {"source": "Training Fees", "type": "earned_income", "percentage": 10}
+      ],
+      "tags": ["trauma-informed", "restorative-justice", "grief-literacy", "community-healing"],
+      "created_at": "2026-01-25T14:00:00Z",
+      "updated_at": "2026-03-30T10:00:00Z"
+    },
+    {
+      "id": "b6c7d8e9-f0a1-2345-0123-456789012345",
+      "slug": "bioregional-learning-center",
+      "name": "Bioregional Learning Center",
+      "type": "community_organization",
+      "description": "Place-based learning center supporting bioregional regeneration through community education, ecological restoration, and local economy development in the Pacific Northwest.",
+      "founded_date": "2018-06-01",
+      "contact": {
+        "email": "learn@bioregional.example.org",
+        "website": "https://bioregionalpnw.example.org",
+        "address": {
+          "city": "Portland",
+          "state": "Oregon",
+          "country": "USA"
+        }
+      },
+      "locations": ["l3o4c5a6-t7i8-9012-cdef-123456789012"],
+      "sectors": ["environment", "education", "economic_development"],
+      "initiatives": ["i3n4i5t6-i7t8-9012-cdef-123456789012"],
+      "projects": ["p3r4o5j6-e7c8-9012-cdef-123456789012"],
+      "funding_sources": [
+        {"source": "Local Donations", "type": "donation", "percentage": 40},
+        {"source": "Workshop Fees", "type": "earned_income", "percentage": 35},
+        {"source": "Grants", "type": "grant", "percentage": 25}
+      ],
+      "tags": ["bioregional", "place-based", "community-education", "pacific-northwest"],
+      "created_at": "2026-02-01T08:30:00Z",
+      "updated_at": "2026-04-05T15:45:00Z"
+    },
+    {
+      "id": "b7c8d9e0-f1a2-3456-1234-567890123456",
+      "slug": "seed-sovereignty-alliance",
+      "name": "Seed Sovereignty Alliance",
+      "type": "cooperative",
+      "description": "Farmer-led cooperative protecting agricultural biodiversity through community seed banks, open-source seed breeding, and resistance to corporate patent systems.",
+      "founded_date": "2014-02-28",
+      "contact": {
+        "email": "seeds@sovereigntyalliance.example.org",
+        "website": "https://seedsovereignty.example.org"
+      },
+      "locations": ["l1o2c3a4-t5i6-7890-abcd-ef1234567890", "l2o3c4a5-t6i7-8901-bcde-f12345678901"],
+      "sectors": ["agriculture", "environment"],
+      "initiatives": ["i1n2i3t4-i5t6-7890-abcd-ef1234567890", "i2n3i4t5-i6t7-8901-bcde-f12345678901"],
+      "projects": ["p1r2o3j4-e5c6-7890-abcd-ef1234567890"],
+      "funding_sources": [
+        {"source": "Member Contributions", "type": "donation", "percentage": 50},
+        {"source": "Seed Sales", "type": "earned_income", "percentage": 30},
+        {"source": "Grants", "type": "grant", "percentage": 20}
+      ],
+      "tags": ["seed-sovereignty", "biodiversity", "farmer-led", "cooperative"],
+      "created_at": "2026-02-05T09:00:00Z",
+      "updated_at": "2026-04-03T11:30:00Z"
+    },
+    {
+      "id": "b8c9d0e1-f2a3-4567-2345-678901234567",
+      "slug": "intergenerational-action-network",
+      "name": "Intergenerational Action Network",
+      "type": "network",
+      "description": "Network connecting youth climate activists with elder wisdom keepers to bridge generational knowledge gaps and co-create intergenerational climate solutions.",
+      "founded_date": "2020-09-15",
+      "contact": {
+        "email": "connect@intergenerationalaction.example.org",
+        "website": "https://intergenerationalaction.example.org"
+      },
+      "locations": ["l6o7c8a9-t0i1-2345-f012-345678901234", "l7o8c9a0-t1i2-3456-0123-456789012345"],
+      "sectors": ["environment", "social_justice", "education"],
+      "initiatives": ["i6n7i8t9-i0t1-2345-f012-345678901234", "i7n8i9t0-i1t2-3456-0123-456789012345"],
+      "partners": ["b1c2d3e4-f5a6-7890-abcd-ef1234567890"],
+      "funding_sources": [
+        {"source": "Foundation Grants", "type": "grant", "percentage": 70},
+        {"source": "Crowdfunding", "type": "donation", "percentage": 30}
+      ],
+      "tags": ["intergenerational", "climate-action", "youth-elder", "wisdom-bridging"],
+      "created_at": "2026-02-10T10:30:00Z",
+      "updated_at": "2026-04-04T12:15:00Z"
+    }
+  ]
+}

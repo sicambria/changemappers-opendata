@@ -1,0 +1,72 @@
+{
+  "relationship_type": "measures",
+  "description": "Indicator assesses or tracks an Impact",
+  "records": [
+    {
+      "source_id": "in1d2i3c4-a5t6-7890-abcd-ef1234567890",
+      "target_id": "o1u2t3c4-o5m6-7890-abcd-ef1234567890",
+      "properties": {
+        "measurement_type": "quantitative",
+        "frequency": "annual",
+        "reliability": "high"
+      },
+      "confidence": 0.89,
+      "source_reference": "Genuine Progress Indicators (GPI) measure social and environmental wellbeing beyond GDP"
+    },
+    {
+      "source_id": "in2d3i4c5-a6t7-8901-cdef-234567890abc",
+      "target_id": "o2u3t4c5-o6m7-8901-cdef-234567890abc",
+      "properties": {
+        "measurement_type": "ecological",
+        "frequency": "continuous",
+        "reliability": "high"
+      },
+      "confidence": 0.92,
+      "source_reference": "Biodiversity indices measure ecosystem health and habitat restoration outcomes"
+    },
+    {
+      "source_id": "in3d4i5c6-a7t8-9012-defa-345678901bcd",
+      "target_id": "o3u4t5c6-o7m8-9012-defa-345678901bcd",
+      "properties": {
+        "measurement_type": "social",
+        "frequency": "annual",
+        "reliability": "medium"
+      },
+      "confidence": 0.86,
+      "source_reference": "Social cohesion indicators measure community resilience and inclusion outcomes"
+    },
+    {
+      "source_id": "in4d5i6c7-a8t9-0123-efab-456789012cde",
+      "target_id": "o4u5t6c7-o8m9-0123-efab-456789012cde",
+      "properties": {
+        "measurement_type": "conflict",
+        "frequency": "annual",
+        "reliability": "medium"
+      },
+      "confidence": 0.84,
+      "source_reference": "Peace indices measure conflict transformation and reconciliation outcomes"
+    },
+    {
+      "source_id": "in5d6i7c8-a9t0-1234-fabc-567890123def",
+      "target_id": "o5u6t7c8-o9m0-1234-fabc-567890123def",
+      "properties": {
+        "measurement_type": "economic",
+        "frequency": "quarterly",
+        "reliability": "high"
+      },
+      "confidence": 0.91,
+      "source_reference": "Economic democracy indicators measure worker ownership and fair wage outcomes"
+    },
+    {
+      "source_id": "in6d7i8c9-a0t1-2345-abcd-ef1234567890",
+      "target_id": "o6u7t8c9-o0m1-2345-abcd-ef1234567890",
+      "properties": {
+        "measurement_type": "psychological",
+        "frequency": "annual",
+        "reliability": "medium"
+      },
+      "confidence": 0.83,
+      "source_reference": "Inner Development Goals framework measures personal growth and relational competencies"
+    }
+  ]
+}

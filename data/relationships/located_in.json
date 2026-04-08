@@ -1,0 +1,94 @@
+{
+  "relationship_type": "located_in",
+  "description": "Entity is geographically situated in a Location",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "l1o2c3a4-t5i6-7890-abcd-ef1234567890",
+      "properties": {
+        "location_type": "city",
+        "country": "USA",
+        "region": "Alabama"
+      },
+      "confidence": 0.98,
+      "source_reference": "Montgomery Bus Boycott located in Montgomery, Alabama, USA"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "l2o3c4a5-t6i7-8901-cdef-234567890abc",
+      "properties": {
+        "location_type": "national",
+        "country": "Kenya",
+        "region": "Nationwide"
+      },
+      "confidence": 0.97,
+      "source_reference": "Green Belt Movement located across Kenya, East Africa"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "l3o4c5a6-t7i8-9012-defa-345678901bcd",
+      "properties": {
+        "location_type": "region",
+        "country": "USA",
+        "region": "California"
+      },
+      "confidence": 0.96,
+      "source_reference": "Delano Grape Strike located in Delano, California, USA"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "l4o5c6a7-t8i9-0123-efab-456789012cde",
+      "properties": {
+        "location_type": "city",
+        "country": "Liberia",
+        "region": "Montserrado"
+      },
+      "confidence": 0.95,
+      "source_reference": "Women of Liberia Mass Action located in Monrovia, Liberia"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "l5o6c7a8-t9i0-1234-fabc-567890123def",
+      "properties": {
+        "location_type": "city",
+        "country": "Poland",
+        "region": "Pomeranian"
+      },
+      "confidence": 0.97,
+      "source_reference": "Solidarity originated in Gdańsk Shipyard, Poland"
+    },
+    {
+      "source_id": "i6n7i8t9-i0a1-2345-abcd-ef1234567890",
+      "target_id": "l6o7c8a9-t0i1-2345-abcd-ef1234567890",
+      "properties": {
+        "location_type": "city",
+        "country": "Scotland",
+        "region": "Glasgow"
+      },
+      "confidence": 0.96,
+      "source_reference": "Glasgow Rent Strikes located in Glasgow, Scotland"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "l7o8c9a0-t1i2-3456-bcde-f12345678901",
+      "properties": {
+        "location_type": "region",
+        "country": "Mexico",
+        "region": "Chiapas"
+      },
+      "confidence": 0.95,
+      "source_reference": "Zapatista Autonomous Municipalities located in Chiapas, Mexico"
+    },
+    {
+      "source_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "target_id": "l8o9c0a1-t2i3-4567-cdef-123456789012",
+      "properties": {
+        "location_type": "route",
+        "country": "India",
+        "region": "Gujarat to Dandi"
+      },
+      "confidence": 0.98,
+      "source_reference": "Salt March route from Sabarmati Ashram to Dandi, Gujarat, India"
+    }
+  ]
+}

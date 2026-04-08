@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/domain.schema.json",
+  "title": "Domain",
+  "description": "A broad field or area of activity within the changemakers ecosystem, such as environment, health, or education.",
+  "type": "object",
+  "required": ["id", "slug", "name", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the domain",
+      "example": "550e8400-e29b-41d4-a716-446655440021"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "environment"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Name of the domain",
+      "example": "Environment"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the domain"
+    },
+    "parent_domain": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent domain if hierarchical"
+    },
+    "subdomains": {
+      "type": "array",
+      "description": "Subdomains",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_domains": {
+      "type": "array",
+      "description": "Related domains",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "causes": {
+      "type": "array",
+      "description": "Causes in this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives in this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects in this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Organizations working in this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "actors": {
+      "type": "array",
+      "description": "Actors working in this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Patterns applicable to this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methods": {
+      "type": "array",
+      "description": "Methodologies applicable to this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tools": {
+      "type": "array",
+      "description": "Tools for this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "indicators": {
+      "type": "array",
+      "description": "Indicators for this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "frameworks": {
+      "type": "array",
+      "description": "Frameworks for this domain",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "taxonomy_code": {
+      "type": "string",
+      "description": "Taxonomy code from changemappers.org"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Display order"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon identifier"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$",
+      "description": "Color code"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

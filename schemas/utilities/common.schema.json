@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/utilities/common.schema.json",
+  "title": "Common Definitions",
+  "description": "Reusable common definitions for ChangeMappers entity schemas",
+  "definitions": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier using lowercase alphanumeric characters and hyphens",
+      "examples": ["john-smith", "acme-corp", "paris-france"]
+    },
+    "iso8601DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 formatted date-time string",
+      "examples": ["2024-01-15T10:30:00Z", "2024-01-15T10:30:00+02:00"]
+    },
+    "geographicCoordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Geographic latitude in decimal degrees"
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Geographic longitude in decimal degrees"
+        },
+        "altitude": {
+          "type": "number",
+          "description": "Altitude in meters above sea level (optional)"
+        },
+        "precision": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Coordinate precision in meters (optional)"
+        }
+      },
+      "required": ["latitude", "longitude"],
+      "additionalProperties": false,
+      "description": "Geographic coordinates with optional altitude and precision"
+    },
+    "multilingualText": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string",
+          "description": "English text"
+        },
+        "fr": {
+          "type": "string",
+          "description": "French text"
+        },
+        "es": {
+          "type": "string",
+          "description": "Spanish text"
+        },
+        "de": {
+          "type": "string",
+          "description": "German text"
+        },
+        "zh": {
+          "type": "string",
+          "description": "Chinese text"
+        },
+        "ar": {
+          "type": "string",
+          "description": "Arabic text"
+        }
+      },
+      "minProperties": 1,
+      "additionalProperties": true,
+      "description": "Multilingual text object with ISO 639-1 language codes as keys"
+    },
+    "contactInformation": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number in international format"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Website URL"
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string",
+              "description": "Street address"
+            },
+            "city": {
+              "type": "string",
+              "description": "City name"
+            },
+            "state": {
+              "type": "string",
+              "description": "State or province"
+            },
+            "postalCode": {
+              "type": "string",
+              "description": "Postal or ZIP code"
+            },
+            "country": {
+              "type": "string",
+              "description": "ISO 3166-1 alpha-2 country code"
+            }
+          },
+          "additionalProperties": false
+        },
+        "socialMedia": {
+          "type": "object",
+          "properties": {
+            "twitter": {
+              "type": "string",
+              "description": "Twitter handle"
+            },
+            "linkedin": {
+              "type": "string",
+              "description": "LinkedIn profile URL"
+            },
+            "facebook": {
+              "type": "string",
+              "description": "Facebook page URL"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false,
+      "description": "Contact information object"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "description": "URL with HTTP or HTTPS protocol",
+      "examples": ["https://example.com", "http://example.org/path"]
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Valid email address",
+      "examples": ["user@example.com", "contact@changemappers.org"]
+    },
+    "confidenceScore": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score between 0 (no confidence) and 1 (full confidence)",
+      "examples": [0.95, 0.75, 1.0]
+    },
+    "sourceReference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["official", "news", "research", "social", "government", "ngo", "corporate", "other"],
+          "description": "Type of source"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the source"
+        },
+        "url": {
+          "$ref": "#/definitions/url"
+        },
+        "retrievedAt": {
+          "$ref": "#/definitions/iso8601DateTime"
+        },
+        "publishedAt": {
+          "$ref": "#/definitions/iso8601DateTime"
+        },
+        "author": {
+          "type": "string",
+          "description": "Author or creator of the source"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "Unique identifier for the source (e.g., DOI, ISBN)"
+        },
+        "confidence": {
+          "$ref": "#/definitions/confidenceScore"
+        }
+      },
+      "required": ["type", "name"],
+      "additionalProperties": true,
+      "description": "Reference to an information source"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "relationship_type": "part_of",
+  "description": "Entity is a component of a larger Entity",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "m1o2v3e4-m5e6-7890-abcd-ef1234567890",
+      "properties": {
+        "relationship": "campaign_within",
+        "scope": "national",
+        "duration_relation": "temporary"
+      },
+      "confidence": 0.96,
+      "source_reference": "Montgomery Bus Boycott was part of the broader US Civil Rights Movement"
+    },
+    {
+      "source_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "target_id": "c1a2t3e4-g5o6-7890-abcd-ef1234567890",
+      "properties": {
+        "relationship": "pattern_in",
+        "scope": "tactical",
+        "duration_relation": "conceptual"
+      },
+      "confidence": 0.94,
+      "source_reference": "Hyper-Local Boycotts #19 is part of Social and Economic Noncooperation category"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "m2o3v4e5-m6e7-8901-cdef-234567890abc",
+      "properties": {
+        "relationship": "component_of",
+        "scope": "regional",
+        "duration_relation": "decades"
+      },
+      "confidence": 0.92,
+      "source_reference": "Solidarity was part of the broader anti-communist dissident movements in Eastern Europe"
+    },
+    {
+      "source_id": "t1o2o3l4-s5r6-7890-abcd-ef1234567890",
+      "target_id": "e1c2o3s4-y5s6-7890-abcd-ef1234567890",
+      "properties": {
+        "relationship": "tool_within",
+        "scope": "technical",
+        "duration_relation": "ongoing"
+      },
+      "confidence": 0.89,
+      "source_reference": "Logseq is part of the open-source knowledge management ecosystem"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "m3o4v5e6-m7e8-9012-defa-345678901bcd",
+      "properties": {
+        "relationship": "autonomous_part",
+        "scope": "national",
+        "duration_relation": "ongoing"
+      },
+      "confidence": 0.88,
+      "source_reference": "Zapatista movement is part of global indigenous rights and anti-globalization movements"
+    },
+    {
+      "source_id": "l1e2a3r4-n5i6-7890-abcd-ef1234567890",
+      "target_id": "e2d3u4c5-a6t7-8901-cdef-234567890abc",
+      "properties": {
+        "relationship": "program_within",
+        "scope": "institutional",
+        "duration_relation": "temporary"
+      },
+      "confidence": 0.91,
+      "source_reference": "Intro to Human-Centered Design is part of Acumen Academy's learning programs"
+    },
+    {
+      "source_id": "p5a6t7t8-e9r0-1234-fabc-567890123def",
+      "target_id": "c3a4t5e6-g7o8-9012-defa-345678901bcd",
+      "properties": {
+        "relationship": "pattern_in",
+        "scope": "tactical",
+        "duration_relation": "conceptual"
+      },
+      "confidence": 0.93,
+      "source_reference": "Networked Campaign Alliances #65 is part of Dual Power and Systemic Transformation category"
+    }
+  ]
+}

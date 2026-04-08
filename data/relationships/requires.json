@@ -1,0 +1,83 @@
+{
+  "relationship_type": "requires",
+  "description": "Entity depends on or needs another Entity",
+  "records": [
+    {
+      "source_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "target_id": "p2a3t4t5-e6r7-8901-cdef-234567890abc",
+      "properties": {
+        "dependency_type": "sequential",
+        "strength": "medium",
+        "context": "organizing"
+      },
+      "confidence": 0.87,
+      "source_reference": "Hyper-Local Boycotts #19 often requires Community Teach-ins #17 to build public awareness first"
+    },
+    {
+      "source_id": "p3a4t5t6-e7r8-9012-defa-345678901bcd",
+      "target_id": "p4a5t6t7-e8r9-0123-efab-456789012cde",
+      "properties": {
+        "dependency_type": "enabling",
+        "strength": "high",
+        "context": "sustainability"
+      },
+      "confidence": 0.89,
+      "source_reference": "Autonomous Encampments #56 requires Alternative Economies #60 for long-term sustainability"
+    },
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "r1e2s3o4-u5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "dependency_type": "resource",
+        "strength": "high",
+        "context": "logistics"
+      },
+      "confidence": 0.92,
+      "source_reference": "Montgomery Bus Boycott required neighborhood carpools #109 as alternative transit"
+    },
+    {
+      "source_id": "p5a6t7t8-e9r0-1234-fabc-567890123def",
+      "target_id": "t1r2a3i4-n5i6-7890-abcd-ef1234567890",
+      "properties": {
+        "dependency_type": "capability",
+        "strength": "high",
+        "context": "effectiveness"
+      },
+      "confidence": 0.91,
+      "source_reference": "Networked Campaign Alliances #65 requires Resistance Training #64 for decentralized coordination"
+    },
+    {
+      "source_id": "p6a7t8t9-e0r1-2345-abcd-ef1234567890",
+      "target_id": "c1o2m3m4-u5n6-7890-abcd-ef1234567890",
+      "properties": {
+        "dependency_type": "social",
+        "strength": "high",
+        "context": "mobilization"
+      },
+      "confidence": 0.88,
+      "source_reference": "Rent Strikes #21 requires strong community assemblies #51 for collective action"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "m1e2d3i4-a5s6-7890-abcd-ef1234567890",
+      "properties": {
+        "dependency_type": "communication",
+        "strength": "high",
+        "context": "information"
+      },
+      "confidence": 0.94,
+      "source_reference": "Solidarity movement required Alternative Media/Samizdat #54 to bypass state censorship"
+    },
+    {
+      "source_id": "p7a8t9t0-e1r2-3456-bcde-f12345678901",
+      "target_id": "l1e2a3d4-e5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "dependency_type": "governance",
+        "strength": "medium",
+        "context": "coordination"
+      },
+      "confidence": 0.85,
+      "source_reference": "Restorative Justice #62 often requires Refusal of Enforcement Roles #59 from existing system actors"
+    }
+  ]
+}

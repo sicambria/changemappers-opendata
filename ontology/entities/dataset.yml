@@ -1,0 +1,272 @@
+id: dataset
+name: Dataset
+description: A collection of structured data related to change initiatives, actors, outcomes, or other entities.
+category: information
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the dataset
+    - name: name
+      type: string
+      required: true
+      description: Name of the dataset
+    - name: description
+      type: string
+      required: true
+      description: Description of the dataset contents
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the dataset
+      enum_values:
+        - operational
+        - research
+        - monitoring
+        - evaluation
+        - geographic
+        - historical
+        - reference
+    - name: format
+      type: enum
+      required: false
+      description: Data format
+      enum_values:
+        - csv
+        - json
+        - geojson
+        - yaml
+        - xml
+        - database
+    - name: schema_url
+      type: string
+      required: false
+      description: URL to dataset schema documentation
+    - name: owner_id
+      type: string
+      required: false
+      description: Actor or organization that owns the dataset
+    - name: access_level
+      type: enum
+      required: true
+      description: Access level
+      enum_values:
+        - public
+        - restricted
+        - private
+    - name: license
+      type: string
+      required: false
+      description: Data license
+    - name: temporal_coverage
+      type: string
+      required: false
+      description: Time period covered
+    - name: geographic_coverage
+      type: array[string]
+      required: false
+      description: Geographic areas covered
+    - name: entity_types
+      type: array[string]
+      required: false
+      description: Entity types included in dataset
+    - name: record_count
+      type: integer
+      required: false
+      description: Number of records
+    - name: update_frequency
+      type: enum
+      required: false
+      description: How often updated
+      enum_values:
+        - realtime
+        - daily
+        - weekly
+        - monthly
+        - quarterly
+        - annually
+        - static
+    - name: quality_notes
+      type: string
+      required: false
+      description: Notes on data quality
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains covered
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: actor
+    type: owned_by
+    description: Dataset is owned by actors
+  - entity: organization
+    type: managed_by
+    description: Dataset is managed by organizations
+  - entity: domain
+    type: covers
+    description: Dataset covers domains
+  - entity: location
+    type: covers
+    description: Dataset covers locations
+  - entity: indicator
+    type: provides
+    description: Dataset provides indicator data
+examples:
+  - id: ds_001
+    name: Community Solar Projects Database
+    description: Comprehensive database of community-owned solar installations across the US.
+    type: operational
+    format: json
+    owner_id: org_001
+    access_level: public
+    license: CC-BY-4.0
+    temporal_coverage: '2010-present'
+    geographic_coverage:
+      - United States
+    entity_types:
+      - project
+      - organization
+      - location
+    record_count: 1500
+    update_frequency: monthly
+    quality_notes: Data verified through annual survey
+    domain_ids:
+      - dom_energy
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: ds_002
+    name: Food Sovereignty Initiatives Map
+    description: Mapping of food sovereignty initiatives including urban farms, food cooperatives, and policy campaigns.
+    type: geographic
+    format: geojson
+    owner_id: org_005
+    access_level: public
+    license: CC-BY-SA-4.0
+    temporal_coverage: '2000-present'
+    geographic_coverage:
+      - North America
+    entity_types:
+      - initiative
+      - project
+      - location
+    record_count: 3000
+    update_frequency: quarterly
+    domain_ids:
+      - dom_food_systems
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: ds_003
+    name: Just Transition Case Studies
+    description: Collection of case studies documenting just transition initiatives and outcomes.
+    type: research
+    format: yaml
+    owner_id: org_007
+    access_level: public
+    license: CC-BY-4.0
+    entity_types:
+      - story
+      - initiative
+      - outcome
+    record_count: 200
+    update_frequency: quarterly
+    domain_ids:
+      - dom_just_transition
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: ds_004
+    name: Watershed Health Indicators
+    description: Time-series data on watershed health indicators in the Pacific Northwest.
+    type: monitoring
+    format: csv
+    owner_id: org_006
+    access_level: public
+    license: CC-BY-4.0
+    temporal_coverage: '1990-present'
+    geographic_coverage:
+      - Pacific Northwest
+    entity_types:
+      - indicator
+      - metric
+      - location
+    record_count: 50000
+    update_frequency: monthly
+    quality_notes: QA/QC protocols applied monthly
+    domain_ids:
+      - dom_ecosystem_restoration
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: ds_005
+    name: Cooperative Directory
+    description: Directory of worker cooperatives and solidarity economy enterprises.
+    type: reference
+    format: json
+    owner_id: org_003
+    access_level: public
+    license: CC-BY-4.0
+    geographic_coverage:
+      - United States
+      - Canada
+    entity_types:
+      - organization
+      - actor
+      - location
+    record_count: 5000
+    update_frequency: monthly
+    domain_ids:
+      - dom_economic_justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: ds_006
+    name: Climate Justice Organizations Network
+    description: Network data of climate justice organizations and their relationships.
+    type: research
+    format: json
+    owner_id: org_004
+    access_level: restricted
+    license: Restricted
+    temporal_coverage: '2015-present'
+    geographic_coverage:
+      - Global
+    entity_types:
+      - organization
+      - actor
+      - relationship
+    record_count: 2500
+    update_frequency: annually
+    quality_notes: Network data from public sources and surveys
+    domain_ids:
+      - dom_climate_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - dataset_types
+  - dataset_formats
+  - data_licenses
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/dataset
+  provenance: ChangeMappers Ontology Project

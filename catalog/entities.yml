@@ -1,0 +1,1912 @@
+# changemappers.org - Open Data Catalog
+# Entity Types Catalog Definition
+# Version: 1.0.0
+# Last Updated: 2026-04-08
+
+# =============================================================================
+# CATALOG STRUCTURE
+# =============================================================================
+# This catalog defines all entity types in the changemappers ecosystem.
+# Each entity type includes metadata, fields, relationships, validation
+# rules, and example records.
+#
+# Entity Categories:
+#   - Actors: Entities that take action (Actor, Organization)
+#   - Initiatives: Organized change efforts (Initiative, Project, Program)
+#   - Knowledge: Information and learning (Cause, Pattern, Story, Skill)
+#   - Resources: Materials and inputs (Resource, Dataset, Tool)
+#   - Systems: Structural elements (Framework, Methodology, Practice)
+#   - Events: Temporal occurrences (Event, Timeline, Transition)
+#   - Locations: Geographic and contextual spaces (Location, Domain)
+# =============================================================================
+
+catalog:
+  id: changemappers-entities
+  name: ChangeMappers Entity Types Catalog
+  description: Comprehensive catalog of entity types for modeling systemic change
+  version: "1.0.0"
+  license: CC-BY-SA-4.0
+  publisher: changemappers.org
+  entity_count: 35
+
+# =============================================================================
+# ACTORS CATEGORY
+# =============================================================================
+# Entities that take action or participate in change processes.
+# =============================================================================
+
+entities:
+  # ---------------------------------------------------------------------------
+  # ACTOR
+  # ---------------------------------------------------------------------------
+  - id: actor
+    name: Actor
+    description: An individual or entity that participates in or influences change processes
+    category: Actors
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Full name of the actor
+      - name: type
+        type: enum
+        required: true
+        values: [individual, group, network]
+        description: Classification of the actor
+      - name: role
+        type: string
+        required: false
+        description: Primary role in change process
+      - name: contact
+        type: object
+        required: false
+        description: Contact information
+      - name: biography
+        type: text
+        required: false
+        description: Background and context
+      - name: created_at
+        type: datetime
+        required: true
+        description: Record creation timestamp
+      - name: updated_at
+        type: datetime
+        required: true
+        description: Last update timestamp
+    relationships:
+      - type: INITIATES
+        target: Initiative
+        cardinality: one-to-many
+      - type: COLLABORATES_WITH
+        target: Actor
+        cardinality: many-to-many
+      - type: PARTICIPATES_IN
+        target: Project
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^actor-[a-z0-9]+$
+      - name must be 1-200 characters
+      - type must be valid enum value
+    example:
+      id: actor-jane-smith
+      name: "Jane Smith"
+      type: individual
+      role: "Community Organizer"
+      biography: "Jane has 15 years of experience in community organizing..."
+
+  # ---------------------------------------------------------------------------
+  # ORGANIZATION
+  # ---------------------------------------------------------------------------
+  - id: organization
+    name: Organization
+    description: A formal or informal collective entity with structured membership
+    category: Actors
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Organization name
+      - name: type
+        type: enum
+        required: true
+        values: [nonprofit, for-profit, government, community, network]
+        description: Organization classification
+      - name: sector
+        type: string
+        required: false
+        description: Primary sector of operation
+      - name: founded
+        type: date
+        required: false
+        description: Founding date
+      - name: mission
+        type: text
+        required: false
+        description: Organization mission statement
+      - name: location
+        type: reference
+        required: false
+        target: Location
+        description: Primary location reference
+      - name: website
+        type: url
+        required: false
+        description: Organization website
+    relationships:
+      - type: INITIATES
+        target: Initiative
+        cardinality: one-to-many
+      - type: FUNDS
+        target: Initiative
+        cardinality: one-to-many
+      - type: COLLABORATES_WITH
+        target: Organization
+        cardinality: many-to-many
+      - type: LOCATED_IN
+        target: Location
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^org-[a-z0-9]+$
+      - name must be 1-200 characters
+      - website must be valid URL if provided
+    example:
+      id: org-change-foundation
+      name: "Change Foundation"
+      type: nonprofit
+      sector: "Social Justice"
+      mission: "Empowering communities to create lasting change..."
+
+# =============================================================================
+# INITIATIVES CATEGORY
+# =============================================================================
+# Organized efforts to create change.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # INITIATIVE
+  # ---------------------------------------------------------------------------
+  - id: initiative
+    name: Initiative
+    description: An organized effort to create systemic change
+    category: Initiatives
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Initiative name
+      - name: description
+        type: text
+        required: true
+        description: Detailed description
+      - name: status
+        type: enum
+        required: true
+        values: [planning, active, completed, suspended]
+        description: Current status
+      - name: start_date
+        type: date
+        required: true
+        description: Initiative start date
+      - name: end_date
+        type: date
+        required: false
+        description: Initiative end date
+      - name: scope
+        type: string
+        required: false
+        description: Geographic or thematic scope
+      - name: goals
+        type: array
+        required: false
+        description: List of initiative goals
+    relationships:
+      - type: INITIATES
+        target: Actor
+        cardinality: many-to-one
+      - type: ADDRESSES
+        target: Cause
+        cardinality: many-to-many
+      - type: IMPLEMENTS
+        target: Pattern
+        cardinality: many-to-many
+      - type: LOCATED_IN
+        target: Location
+        cardinality: many-to-many
+      - type: PRODUCES
+        target: Outcome
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^init-[a-z0-9]+$
+      - start_date must be before end_date if both provided
+      - goals array items must be non-empty strings
+    example:
+      id: init-urban-renewal
+      name: "Urban Renewal Initiative"
+      description: "A community-led initiative to transform urban spaces..."
+      status: active
+      start_date: "2024-01-15"
+
+  # ---------------------------------------------------------------------------
+  # PROJECT
+  # ---------------------------------------------------------------------------
+  - id: project
+    name: Project
+    description: A specific, time-bounded component of an initiative
+    category: Initiatives
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Project name
+      - name: description
+        type: text
+        required: true
+        description: Project description
+      - name: initiative
+        type: reference
+        required: true
+        target: Initiative
+        description: Parent initiative reference
+      - name: status
+        type: enum
+        required: true
+        values: [planning, active, completed, suspended]
+        description: Current status
+      - name: start_date
+        type: date
+        required: true
+        description: Project start date
+      - name: end_date
+        type: date
+        required: false
+        description: Project end date
+      - name: budget
+        type: number
+        required: false
+        description: Project budget
+      - name: lead
+        type: reference
+        required: false
+        target: Actor
+        description: Project lead reference
+    relationships:
+      - type: PART_OF
+        target: Initiative
+        cardinality: many-to-one
+      - type: IMPLEMENTS
+        target: Pattern
+        cardinality: many-to-many
+      - type: USES
+        target: Tool
+        cardinality: many-to-many
+      - type: PRODUCES
+        target: Outcome
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^proj-[a-z0-9]+$
+      - budget must be positive number if provided
+    example:
+      id: proj-community-garden
+      name: "Community Garden Project"
+      description: "Establishing a community garden in the downtown area..."
+      status: active
+      start_date: "2024-03-01"
+      initiative: init-urban-renewal
+
+  # ---------------------------------------------------------------------------
+  # PROGRAM
+  # ---------------------------------------------------------------------------
+  - id: program
+    name: Program
+    description: A structured, ongoing set of related projects and initiatives
+    category: Initiatives
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Program name
+      - name: description
+        type: text
+        required: true
+        description: Program description
+      - name: objectives
+        type: array
+        required: true
+        description: Program objectives
+      - name: duration
+        type: string
+        required: false
+        description: Expected duration
+      - name: funding_source
+        type: string
+        required: false
+        description: Primary funding source
+    relationships:
+      - type: INCLUDES
+        target: Initiative
+        cardinality: one-to-many
+      - type: FUNDS
+        target: Organization
+        cardinality: many-to-one
+      - type: ADDRESSES
+        target: Cause
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^prog-[a-z0-9]+$
+      - objectives must contain at least one item
+    example:
+      id: prog-food-security
+      name: "Food Security Program"
+      description: "Comprehensive program addressing food insecurity..."
+
+# =============================================================================
+# KNOWLEDGE CATEGORY
+# =============================================================================
+# Information, learning, and knowledge artifacts.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # CAUSE
+  # ---------------------------------------------------------------------------
+  - id: cause
+    name: Cause
+    description: A root cause or driver of systemic issues
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Cause name
+      - name: description
+        type: text
+        required: true
+        description: Detailed description
+      - name: type
+        type: enum
+        required: true
+        values: [root, proximate, contributing, systemic]
+        description: Cause classification
+      - name: domain
+        type: reference
+        required: true
+        target: Domain
+        description: Domain reference
+      - name: severity
+        type: enum
+        required: false
+        values: [low, medium, high, critical]
+        description: Severity assessment
+      - name: evidence
+        type: array
+        required: false
+        description: Supporting evidence references
+    relationships:
+      - type: DERIVES_FROM
+        target: Cause
+        cardinality: many-to-many
+      - type: ADDRESSES
+        target: Initiative
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Pattern
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^cause-[a-z0-9]+$
+      - evidence items must reference valid citations
+    example:
+      id: cause-housing-shortage
+      name: "Housing Shortage"
+      description: "Insufficient affordable housing stock in urban areas..."
+      type: systemic
+      severity: high
+
+  # ---------------------------------------------------------------------------
+  # PATTERN
+  # ---------------------------------------------------------------------------
+  - id: pattern
+    name: Pattern
+    description: A reusable solution approach for systemic change
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Pattern name
+      - name: description
+        type: text
+        required: true
+        description: Pattern description
+      - name: problem
+        type: text
+        required: true
+        description: Problem statement this pattern addresses
+      - name: solution
+        type: text
+        required: true
+        description: Solution approach
+      - name: context
+        type: text
+        required: false
+        description: Applicable contexts
+      - name: phases
+        type: array
+        required: true
+        description: Applicable phases
+      - name: prerequisites
+        type: array
+        required: false
+        description: Required prerequisites
+    relationships:
+      - type: ADDRESSES
+        target: Cause
+        cardinality: many-to-many
+      - type: IMPLEMENTS
+        target: Initiative
+        cardinality: many-to-many
+      - type: REQUIRES
+        target: Skill
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Pattern
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^pat-[a-z0-9]+$
+      - phases must contain valid phase references
+    example:
+      id: pat-community-convener
+      name: "Community Convener"
+      description: "Identifying and supporting local bridge-builders..."
+      problem: "How to connect diverse community members effectively"
+      solution: "Identify individuals who naturally connect different groups..."
+
+  # ---------------------------------------------------------------------------
+  # STORY
+  # ---------------------------------------------------------------------------
+  - id: story
+    name: Story
+    description: A narrative account of change experiences
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: title
+        type: string
+        required: true
+        description: Story title
+      - name: narrative
+        type: text
+        required: true
+        description: Full story narrative
+      - name: type
+        type: enum
+        required: true
+        values: [case_study, testimonial, narrative, documentary]
+        description: Story classification
+      - name: initiative
+        type: reference
+        required: false
+        target: Initiative
+        description: Related initiative reference
+      - name: author
+        type: reference
+        required: false
+        target: Actor
+        description: Story author reference
+      - name: date
+        type: date
+        required: true
+        description: Story date
+      - name: location
+        type: reference
+        required: false
+        target: Location
+        description: Story location reference
+    relationships:
+      - type: RELATES_TO
+        target: Initiative
+        cardinality: many-to-one
+      - type: DERIVES_FROM
+        target: Pattern
+        cardinality: many-to-many
+      - type: LOCATED_IN
+        target: Location
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^story-[a-z0-9]+$
+      - narrative must be at least 100 characters
+    example:
+      id: story-detroit-revival
+      title: "Detroit's Urban Farming Revival"
+      narrative: "In 2010, a group of residents in Detroit's East Side..."
+      type: case_study
+      date: "2023-06-15"
+
+  # ---------------------------------------------------------------------------
+  # SKILL
+  # ---------------------------------------------------------------------------
+  - id: skill
+    name: Skill
+    description: A competency or capability for change work
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Skill name
+      - name: description
+        type: text
+        required: true
+        description: Skill description
+      - name: category
+        type: enum
+        required: true
+        values: [technical, relational, strategic, analytical, creative]
+        description: Skill category
+      - name: level
+        type: enum
+        required: false
+        values: [beginner, intermediate, advanced, expert]
+        description: Proficiency level
+      - name: domain
+        type: reference
+        required: false
+        target: Domain
+        description: Applicable domain reference
+    relationships:
+      - type: REQUIRES
+        target: Pattern
+        cardinality: many-to-many
+      - type: ENABLES
+        target: Tool
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Skill
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^skill-[a-z0-9]+$
+      - name must be 1-100 characters
+    example:
+      id: skill-facilitation
+      name: "Group Facilitation"
+      description: "Ability to guide group discussions and decision-making..."
+      category: relational
+      level: advanced
+
+  # ---------------------------------------------------------------------------
+  # TOOL
+  # ---------------------------------------------------------------------------
+  - id: tool
+    name: Tool
+    description: An instrument, method, or approach used in change work
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Tool name
+      - name: description
+        type: text
+        required: true
+        description: Tool description
+      - name: type
+        type: enum
+        required: true
+        values: [methodology, framework, technique, software, resource]
+        description: Tool classification
+      - name: purpose
+        type: text
+        required: true
+        description: Primary purpose
+      - name: usage
+        type: text
+        required: false
+        description: Usage instructions
+      - name: requirements
+        type: array
+        required: false
+        description: Required resources or skills
+    relationships:
+      - type: ENABLES
+        target: Skill
+        cardinality: many-to-many
+      - type: USED_IN
+        target: Project
+        cardinality: many-to-many
+      - type: IMPLEMENTS
+        target: Framework
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^tool-[a-z0-9]+$
+      - type must be valid enum value
+    example:
+      id: tool-systems-mapping
+      name: "Systems Mapping"
+      description: "Visual tool for mapping complex system relationships..."
+      type: technique
+      purpose: "Understand system structure and leverage points"
+
+  # ---------------------------------------------------------------------------
+  # TRADITION
+  # ---------------------------------------------------------------------------
+  - id: tradition
+    name: Tradition
+    description: Cultural or historical approaches to change
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Tradition name
+      - name: description
+        type: text
+        required: true
+        description: Tradition description
+      - name: origin
+        type: string
+        required: true
+        description: Geographic or cultural origin
+      - name: historical_period
+        type: string
+        required: false
+        description: Historical period
+      - name: principles
+        type: array
+        required: true
+        description: Core principles
+      - name: practices
+        type: array
+        required: false
+        description: Associated practices
+    relationships:
+      - type: LOCATED_IN
+        target: Location
+        cardinality: many-to-one
+      - type: DERIVES_FROM
+        target: Tradition
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Practice
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^trad-[a-z0-9]+$
+      - principles must contain at least one item
+    example:
+      id: trad-gandhian-satyagraha
+      name: "Satyagraha"
+      description: "Gandhi's philosophy of nonviolent resistance..."
+      origin: "India"
+      principles: ["Truth", "Nonviolence", "Self-suffering"]
+
+  # ---------------------------------------------------------------------------
+  # NARRATIVE
+  # ---------------------------------------------------------------------------
+  - id: narrative
+    name: Narrative
+    description: A synthesized story or thematic account
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: title
+        type: string
+        required: true
+        description: Narrative title
+      - name: content
+        type: text
+        required: true
+        description: Full narrative content
+      - name: theme
+        type: string
+        required: true
+        description: Central theme
+      - name: sources
+        type: array
+        required: true
+        description: Source story references
+      - name: insights
+        type: array
+        required: false
+        description: Key insights derived
+    relationships:
+      - type: DERIVES_FROM
+        target: Story
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Pattern
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^narr-[a-z0-9]+$
+      - sources must reference valid stories
+    example:
+      id: narr-collective-action
+      title: "The Power of Collective Action"
+      theme: "Community organizing"
+      content: "Across diverse contexts, collective action emerges as..."
+
+  # ---------------------------------------------------------------------------
+  # CITATION
+  # ---------------------------------------------------------------------------
+  - id: citation
+    name: Citation
+    description: A reference to external sources and evidence
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: type
+        type: enum
+        required: true
+        values: [academic, report, media, interview, document]
+        description: Citation type
+      - name: title
+        type: string
+        required: true
+        description: Source title
+      - name: authors
+        type: array
+        required: false
+        description: Author names
+      - name: date
+        type: date
+        required: false
+        description: Publication date
+      - name: url
+        type: url
+        required: false
+        description: Source URL
+      - name: doi
+        type: string
+        required: false
+        description: DOI if applicable
+    relationships:
+      - type: SUPPORTS
+        target: Pattern
+        cardinality: many-to-many
+      - type: SUPPORTS
+        target: Cause
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^cite-[a-z0-9]+$
+      - url must be valid URL if provided
+    example:
+      id: cite-systems-thinking
+      type: academic
+      title: "Systems Thinking in Social Change"
+      authors: ["Smith, J.", "Jones, M."]
+      date: "2022-01-15"
+
+# =============================================================================
+# RESOURCES CATEGORY
+# =============================================================================
+# Materials, inputs, and resources for change work.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # RESOURCE
+  # ---------------------------------------------------------------------------
+  - id: resource
+    name: Resource
+    description: A material, financial, or human resource
+    category: Resources
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Resource name
+      - name: type
+        type: enum
+        required: true
+        values: [financial, human, material, knowledge, network]
+        description: Resource classification
+      - name: description
+        type: text
+        required: true
+        description: Resource description
+      - name: quantity
+        type: number
+        required: false
+        description: Available quantity
+      - name: unit
+        type: string
+        required: false
+        description: Unit of measurement
+      - name: availability
+        type: enum
+        required: false
+        values: [available, limited, unavailable]
+        description: Availability status
+    relationships:
+      - type: REQUIRES
+        target: Project
+        cardinality: many-to-many
+      - type: PRODUCES
+        target: Organization
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^res-[a-z0-9]+$
+      - quantity must be positive if provided
+    example:
+      id: res-grant-fund
+      name: "Community Grant Fund"
+      type: financial
+      description: "Available funding for community projects..."
+      quantity: 500000
+      unit: "USD"
+
+  # ---------------------------------------------------------------------------
+  # DATASET
+  # ---------------------------------------------------------------------------
+  - id: dataset
+    name: Dataset
+    description: A structured collection of data
+    category: Resources
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Dataset name
+      - name: description
+        type: text
+        required: true
+        description: Dataset description
+      - name: format
+        type: enum
+        required: true
+        values: [csv, json, xml, yaml, rdf]
+        description: Data format
+      - name: schema
+        type: reference
+        required: false
+        target: Metamodel
+        description: Schema reference
+      - name: size
+        type: number
+        required: false
+        description: Dataset size in bytes
+      - name: records
+        type: number
+        required: false
+        description: Number of records
+      - name: license
+        type: string
+        required: true
+        description: Data license
+    relationships:
+      - type: DERIVES_FROM
+        target: Dataset
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Domain
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^data-[a-z0-9]+$
+      - license must be valid license identifier
+    example:
+      id: data-census-demographics
+      name: "Census Demographics"
+      description: "Population demographics by region..."
+      format: csv
+      license: "CC-BY-4.0"
+
+# =============================================================================
+# SYSTEMS CATEGORY
+# =============================================================================
+# Structural elements, frameworks, and methodologies.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # FRAMEWORK
+  # ---------------------------------------------------------------------------
+  - id: framework
+    name: Framework
+    description: A conceptual structure for understanding or action
+    category: Systems
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Framework name
+      - name: description
+        type: text
+        required: true
+        description: Framework description
+      - name: type
+        type: enum
+        required: true
+        values: [conceptual, operational, assessment, planning]
+        description: Framework classification
+      - name: components
+        type: array
+        required: true
+        description: Framework components
+      - name: principles
+        type: array
+        required: false
+        description: Guiding principles
+    relationships:
+      - type: IMPLEMENTS
+        target: Methodology
+        cardinality: one-to-many
+      - type: RELATES_TO
+        target: Domain
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^fw-[a-z0-9]+$
+      - components must have at least one item
+    example:
+      id: fw-iceberg-model
+      name: "Iceberg Model"
+      description: "Systems thinking framework for understanding events, patterns, structure..."
+      type: conceptual
+      components: ["Events", "Patterns", "Structure", "Mental Models"]
+
+  # ---------------------------------------------------------------------------
+  # METHODOLOGY
+  # ---------------------------------------------------------------------------
+  - id: methodology
+    name: Methodology
+    description: A systematic approach or process
+    category: Systems
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Methodology name
+      - name: description
+        type: text
+        required: true
+        description: Methodology description
+      - name: steps
+        type: array
+        required: true
+        description: Methodology steps
+      - name: prerequisites
+        type: array
+        required: false
+        description: Required prerequisites
+      - name: outputs
+        type: array
+        required: false
+        description: Expected outputs
+    relationships:
+      - type: IMPLEMENTS
+        target: Framework
+        cardinality: many-to-one
+      - type: REQUIRES
+        target: Skill
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^meth-[a-z0-9]+$
+      - steps must have at least one item
+    example:
+      id: meth-appreciative-inquiry
+      name: "Appreciative Inquiry"
+      description: "Strength-based approach to organizational change..."
+      steps: ["Discover", "Dream", "Design", "Destiny"]
+
+  # ---------------------------------------------------------------------------
+  # PRACTICE
+  # ---------------------------------------------------------------------------
+  - id: practice
+    name: Practice
+    description: A specific technique or activity
+    category: Systems
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Practice name
+      - name: description
+        type: text
+        required: true
+        description: Practice description
+      - name: category
+        type: enum
+        required: true
+        values: [individual, group, organizational, community]
+        description: Practice category
+      - name: frequency
+        type: string
+        required: false
+        description: Recommended frequency
+      - name: duration
+        type: string
+        required: false
+        description: Typical duration
+    relationships:
+      - type: DERIVES_FROM
+        target: Tradition
+        cardinality: many-to-many
+      - type: REQUIRES
+        target: Skill
+        cardinality: many-to-many
+      - type: ENABLES
+        target: Outcome
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^prac-[a-z0-9]+$
+      - name must be 1-100 characters
+    example:
+      id: prac-circle-dialogue
+      name: "Circle Dialogue"
+      description: "Structured dialogue practice for group deliberation..."
+      category: group
+
+# =============================================================================
+# EVENTS CATEGORY
+# =============================================================================
+# Temporal occurrences and timelines.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # EVENT
+  # ---------------------------------------------------------------------------
+  - id: event
+    name: Event
+    description: A specific occurrence in time
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Event name
+      - name: description
+        type: text
+        required: true
+        description: Event description
+      - name: type
+        type: enum
+        required: true
+        values: [milestone, meeting, workshop, training, public, crisis]
+        description: Event classification
+      - name: date
+        type: date
+        required: true
+        description: Event date
+      - name: end_date
+        type: date
+        required: false
+        description: End date for multi-day events
+      - name: location
+        type: reference
+        required: false
+        target: Location
+        description: Event location reference
+      - name: participants
+        type: number
+        required: false
+        description: Number of participants
+    relationships:
+      - type: OCCURS_AT
+        target: Location
+        cardinality: many-to-one
+      - type: PART_OF
+        target: Timeline
+        cardinality: many-to-one
+      - type: PRECEDES
+        target: Event
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^evt-[a-z0-9]+$
+      - end_date must be after date if provided
+    example:
+      id: evt-launch-workshop
+      name: "Initiative Launch Workshop"
+      description: "Kickoff workshop for the community initiative..."
+      type: workshop
+      date: "2024-02-15"
+
+  # ---------------------------------------------------------------------------
+  # TIMELINE
+  # ---------------------------------------------------------------------------
+  - id: timeline
+    name: Timeline
+    description: A sequence of related events
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Timeline name
+      - name: description
+        type: text
+        required: true
+        description: Timeline description
+      - name: start_date
+        type: date
+        required: true
+        description: Timeline start date
+      - name: end_date
+        type: date
+        required: false
+        description: Timeline end date
+      - name: events
+        type: array
+        required: true
+        description: Ordered list of event references
+    relationships:
+      - type: INCLUDES
+        target: Event
+        cardinality: one-to-many
+      - type: RELATES_TO
+        target: Initiative
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^tl-[a-z0-9]+$
+      - events must be in chronological order
+    example:
+      id: tl-initiative-phases
+      name: "Initiative Timeline"
+      description: "Key phases and milestones..."
+      start_date: "2024-01-01"
+
+  # ---------------------------------------------------------------------------
+  # TRANSITION
+  # ---------------------------------------------------------------------------
+  - id: transition
+    name: Transition
+    description: A change from one state to another
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Transition name
+      - name: from_state
+        type: string
+        required: true
+        description: Starting state
+      - name: to_state
+        type: string
+        required: true
+        description: Ending state
+      - name: date
+        type: date
+        required: true
+        description: Transition date
+      - name: trigger
+        type: string
+        required: false
+        description: What triggered the transition
+      - name: entity
+        type: reference
+        required: true
+        target: any
+        description: Entity that transitioned
+    relationships:
+      - type: TRANSFORMS_TO
+        target: any
+        cardinality: one-to-one
+      - type: CAUSED_BY
+        target: Event
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^trans-[a-z0-9]+$
+      - from_state and to_state must be different
+    example:
+      id: trans-status-change
+      name: "Project Status Change"
+      from_state: "planning"
+      to_state: "active"
+      date: "2024-03-01"
+
+# =============================================================================
+# LOCATIONS CATEGORY
+# =============================================================================
+# Geographic and contextual spaces.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # LOCATION
+  # ---------------------------------------------------------------------------
+  - id: location
+    name: Location
+    description: A geographic or contextual place
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Location name
+      - name: type
+        type: enum
+        required: true
+        values: [city, region, country, community, virtual, facility]
+        description: Location classification
+      - name: coordinates
+        type: object
+        required: false
+        description: Geographic coordinates
+      - name: parent
+        type: reference
+        required: false
+        target: Location
+        description: Parent location reference
+      - name: population
+        type: number
+        required: false
+        description: Population if applicable
+      - name: area
+        type: number
+        required: false
+        description: Area in square kilometers
+    relationships:
+      - type: PART_OF
+        target: Location
+        cardinality: many-to-one
+      - type: LOCATED_IN
+        target: Organization
+        cardinality: one-to-many
+      - type: LOCATED_IN
+        target: Initiative
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^loc-[a-z0-9]+$
+      - coordinates must have lat/lng if provided
+    example:
+      id: loc-detroit
+      name: "Detroit"
+      type: city
+      coordinates:
+        lat: 42.3314
+        lng: -83.0458
+
+  # ---------------------------------------------------------------------------
+  # DOMAIN
+  # ---------------------------------------------------------------------------
+  - id: domain
+    name: Domain
+    description: A thematic area or field of change
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Domain name
+      - name: description
+        type: text
+        required: true
+        description: Domain description
+      - name: parent
+        type: reference
+        required: false
+        target: Domain
+        description: Parent domain reference
+      - name: keywords
+        type: array
+        required: false
+        description: Associated keywords
+      - name: scope
+        type: string
+        required: false
+        description: Domain scope
+    relationships:
+      - type: PART_OF
+        target: Domain
+        cardinality: many-to-one
+      - type: RELATES_TO
+        target: Cause
+        cardinality: one-to-many
+      - type: RELATES_TO
+        target: Pattern
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^dom-[a-z0-9]+$
+      - name must be 1-100 characters
+    example:
+      id: dom-food-security
+      name: "Food Security"
+      description: "Access to sufficient, safe, nutritious food..."
+      keywords: ["hunger", "nutrition", "agriculture", "access"]
+
+  # ---------------------------------------------------------------------------
+  # SUBDOMAIN
+  # ---------------------------------------------------------------------------
+  - id: subdomain
+    name: Subdomain
+    description: A specialized area within a domain
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Subdomain name
+      - name: description
+        type: text
+        required: true
+        description: Subdomain description
+      - name: parent
+        type: reference
+        required: true
+        target: Domain
+        description: Parent domain reference
+    relationships:
+      - type: PART_OF
+        target: Domain
+        cardinality: many-to-one
+      - type: RELATES_TO
+        target: Topic
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^sub-[a-z0-9]+$
+      - parent must reference valid domain
+    example:
+      id: sub-urban-agriculture
+      name: "Urban Agriculture"
+      description: "Food production in urban environments..."
+      parent: dom-food-security
+
+  # ---------------------------------------------------------------------------
+  # TOPIC
+  # ---------------------------------------------------------------------------
+  - id: topic
+    name: Topic
+    description: A specific subject or theme
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Topic name
+      - name: description
+        type: text
+        required: true
+        description: Topic description
+      - name: parent
+        type: reference
+        required: false
+        target: Subdomain
+        description: Parent subdomain reference
+    relationships:
+      - type: PART_OF
+        target: Subdomain
+        cardinality: many-to-one
+      - type: RELATES_TO
+        target: Story
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^topic-[a-z0-9]+$
+    example:
+      id: topic-community-gardens
+      name: "Community Gardens"
+      description: "Shared gardening spaces in neighborhoods..."
+      parent: sub-urban-agriculture
+
+# =============================================================================
+# ADDITIONAL ENTITY TYPES
+# =============================================================================
+# Supporting entity types for comprehensive modeling.
+# =============================================================================
+
+  # ---------------------------------------------------------------------------
+  # FUNCTION
+  # ---------------------------------------------------------------------------
+  - id: function
+    name: Function
+    description: A role or purpose within a system
+    category: Systems
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Function name
+      - name: description
+        type: text
+        required: true
+        description: Function description
+      - name: type
+        type: enum
+        required: true
+        values: [core, support, coordination, governance]
+        description: Function classification
+    relationships:
+      - type: RELATES_TO
+        target: Role
+        cardinality: many-to-many
+      - type: ENABLES
+        target: Initiative
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^func-[a-z0-9]+$
+    example:
+      id: func-coordination
+      name: "Coordination"
+      description: "Aligning activities across stakeholders..."
+      type: coordination
+
+  # ---------------------------------------------------------------------------
+  # SECTOR
+  # ---------------------------------------------------------------------------
+  - id: sector
+    name: Sector
+    description: A category of economic or social activity
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Sector name
+      - name: description
+        type: text
+        required: true
+        description: Sector description
+      - name: code
+        type: string
+        required: false
+        description: Industry classification code
+    relationships:
+      - type: RELATES_TO
+        target: Organization
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^sec-[a-z0-9]+$
+    example:
+      id: sec-nonprofit
+      name: "Nonprofit"
+      description: "Non-profit organizations and charities..."
+      code: "501(c)(3)"
+
+  # ---------------------------------------------------------------------------
+  # SCALE
+  # ---------------------------------------------------------------------------
+  - id: scale
+    name: Scale
+    description: The scope or magnitude of change efforts
+    category: Locations
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Scale name
+      - name: description
+        type: text
+        required: true
+        description: Scale description
+      - name: level
+        type: enum
+        required: true
+        values: [individual, community, regional, national, global]
+        description: Scale level
+    relationships:
+      - type: RELATES_TO
+        target: Initiative
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^scale-[a-z0-9]+$
+    example:
+      id: scale-community
+      name: "Community"
+      description: "Neighborhood or local community level..."
+      level: community
+
+  # ---------------------------------------------------------------------------
+  # PHASE
+  # ---------------------------------------------------------------------------
+  - id: phase
+    name: Phase
+    description: A stage in a change process
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Phase name
+      - name: description
+        type: text
+        required: true
+        description: Phase description
+      - name: order
+        type: number
+        required: true
+        description: Phase order in sequence
+      - name: duration
+        type: string
+        required: false
+        description: Typical duration
+    relationships:
+      - type: PRECEDES
+        target: Phase
+        cardinality: many-to-many
+      - type: FOLLOWS
+        target: Phase
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^phase-[a-z0-9]+$
+      - order must be positive integer
+    example:
+      id: phase-discovery
+      name: "Discovery"
+      description: "Initial exploration and understanding phase..."
+      order: 1
+
+  # ---------------------------------------------------------------------------
+  # OUTCOME
+  # ---------------------------------------------------------------------------
+  - id: outcome
+    name: Outcome
+    description: A result or effect of change efforts
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Outcome name
+      - name: description
+        type: text
+        required: true
+        description: Outcome description
+      - name: type
+        type: enum
+        required: true
+        values: [intended, unintended, positive, negative, neutral]
+        description: Outcome classification
+      - name: date
+        type: date
+        required: false
+        description: Outcome date
+    relationships:
+      - type: PRODUCES
+        target: Initiative
+        cardinality: many-to-one
+      - type: MEASURES
+        target: Indicator
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^out-[a-z0-9]+$
+    example:
+      id: out-increased-engagement
+      name: "Increased Community Engagement"
+      description: "Greater participation in community activities..."
+      type: positive
+
+  # ---------------------------------------------------------------------------
+  # IMPACT
+  # ---------------------------------------------------------------------------
+  - id: impact
+    name: Impact
+    description: Long-term systemic effects of change
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Impact name
+      - name: description
+        type: text
+        required: true
+        description: Impact description
+      - name: type
+        type: enum
+        required: true
+        values: [social, economic, environmental, political, cultural]
+        description: Impact category
+      - name: magnitude
+        type: enum
+        required: false
+        values: [minimal, moderate, significant, transformative]
+        description: Impact magnitude
+    relationships:
+      - type: DERIVES_FROM
+        target: Outcome
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Domain
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^imp-[a-z0-9]+$
+    example:
+      id: imp-policy-change
+      name: "Policy Change"
+      description: "Changes in local government policies..."
+      type: political
+      magnitude: significant
+
+  # ---------------------------------------------------------------------------
+  # INDICATOR
+  # ---------------------------------------------------------------------------
+  - id: indicator
+    name: Indicator
+    description: A measurable sign of progress or status
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Indicator name
+      - name: description
+        type: text
+        required: true
+        description: Indicator description
+      - name: type
+        type: enum
+        required: true
+        values: [quantitative, qualitative, binary]
+        description: Indicator type
+      - name: unit
+        type: string
+        required: false
+        description: Unit of measurement
+      - name: target
+        type: number
+        required: false
+        description: Target value
+    relationships:
+      - type: MEASURES
+        target: Outcome
+        cardinality: many-to-one
+      - type: RELATES_TO
+        target: Metric
+        cardinality: one-to-many
+    validation_rules:
+      - id must match pattern ^ind-[a-z0-9]+$
+    example:
+      id: ind-participation-rate
+      name: "Participation Rate"
+      description: "Percentage of target population engaged..."
+      type: quantitative
+      unit: "percentage"
+
+  # ---------------------------------------------------------------------------
+  # METRIC
+  # ---------------------------------------------------------------------------
+  - id: metric
+    name: Metric
+    description: A specific measurement value
+    category: Events
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Metric name
+      - name: value
+        type: number
+        required: true
+        description: Metric value
+      - name: unit
+        type: string
+        required: true
+        description: Unit of measurement
+      - name: date
+        type: date
+        required: true
+        description: Measurement date
+      - name: indicator
+        type: reference
+        required: true
+        target: Indicator
+        description: Parent indicator reference
+    relationships:
+      - type: RELATES_TO
+        target: Indicator
+        cardinality: many-to-one
+      - type: MEASURES
+        target: Outcome
+        cardinality: many-to-one
+    validation_rules:
+      - id must match pattern ^met-[a-z0-9]+$
+    example:
+      id: met-participation-q1
+      name: "Q1 Participation"
+      value: 45.5
+      unit: "percentage"
+      date: "2024-03-31"
+
+  # ---------------------------------------------------------------------------
+  # MEDIA
+  # ---------------------------------------------------------------------------
+  - id: media
+    name: Media
+    description: Digital or physical media content
+    category: Knowledge
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Media name
+      - name: type
+        type: enum
+        required: true
+        values: [image, video, audio, document, presentation]
+        description: Media type
+      - name: url
+        type: url
+        required: true
+        description: Media URL
+      - name: caption
+        type: string
+        required: false
+        description: Media caption
+      - name: license
+        type: string
+        required: true
+        description: Media license
+    relationships:
+      - type: RELATES_TO
+        target: Story
+        cardinality: many-to-many
+      - type: RELATES_TO
+        target: Initiative
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^med-[a-z0-9]+$
+      - url must be valid URL
+    example:
+      id: med-community-photo
+      name: "Community Meeting Photo"
+      type: image
+      url: "https://media.changemappers.org/photos/meeting-2024.jpg"
+      license: "CC-BY-SA-4.0"
+
+  # ---------------------------------------------------------------------------
+  # METAMODEL
+  # ---------------------------------------------------------------------------
+  - id: metamodel
+    name: Metamodel
+    description: A model that defines other models
+    category: Systems
+    primary_fields:
+      - name: id
+        type: string
+        required: true
+        description: Unique identifier
+      - name: name
+        type: string
+        required: true
+        description: Metamodel name
+      - name: description
+        type: text
+        required: true
+        description: Metamodel description
+      - name: schema
+        type: object
+        required: true
+        description: Schema definition
+      - name: version
+        type: string
+        required: true
+        description: Schema version
+    relationships:
+      - type: DEFINES
+        target: Entity
+        cardinality: one-to-many
+      - type: RELATES_TO
+        target: Metamodel
+        cardinality: many-to-many
+    validation_rules:
+      - id must match pattern ^meta-[a-z0-9]+$
+      - schema must be valid JSON Schema
+    example:
+      id: meta-entity-schema
+      name: "Entity Schema"
+      description: "Base schema for all entities..."
+      version: "1.0.0"

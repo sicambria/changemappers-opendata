@@ -1,0 +1,299 @@
+id: pattern
+name: Pattern
+description: A repeated, transferable solution approach that can be applied across different contexts to address similar challenges.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the pattern
+    - name: name
+      type: string
+      required: true
+      description: Name of the pattern
+    - name: description
+      type: string
+      required: true
+      description: Description of the pattern and its application
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the pattern
+      enum_values:
+        - organizational
+        - process
+        - structural
+        - relational
+        - economic
+        - governance
+    - name: problem_statement
+      type: string
+      required: true
+      description: The problem this pattern addresses
+    - name: solution_statement
+      type: string
+      required: true
+      description: The solution approach this pattern provides
+    - name: context
+      type: string
+      required: false
+      description: Contexts where this pattern applies
+    - name: prerequisites
+      type: array[string]
+      required: false
+      description: Prerequisites for applying this pattern
+    - name: outcomes
+      type: array[string]
+      required: false
+      description: Expected outcomes from applying this pattern
+    - name: risks
+      type: array[string]
+      required: false
+      description: Potential risks or limitations
+    - name: related_patterns
+      type: array[string]
+      required: false
+      description: Related pattern IDs
+    - name: example_ids
+      type: array[string]
+      required: false
+      description: Example implementations
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where pattern applies
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: problem_statement
+    rule: min_length
+    value: 20
+    message: Problem statement must be at least 20 characters
+  - field: solution_statement
+    rule: min_length
+    value: 20
+    message: Solution statement must be at least 20 characters
+relationships:
+  - entity: domain
+    type: applies_to
+    description: Pattern applies to domains
+  - entity: initiative
+    type: used_in
+    description: Pattern is used in initiatives
+  - entity: project
+    type: implemented_in
+    description: Pattern is implemented in projects
+  - entity: framework
+    type: part_of
+    description: Pattern may be part of frameworks
+examples:
+  - id: pattern_001
+    name: Community-Owned Infrastructure
+    description: Pattern for developing infrastructure assets owned and governed by local communities rather than external entities.
+    type: economic
+    problem_statement: Communities lack control over essential infrastructure, leading to extractive relationships, unaffordable services, and disconnection from decision-making.
+    solution_statement: Establish community-owned and governed infrastructure through cooperative structures, enabling local wealth building, democratic control, and alignment with community values.
+    context: Energy systems, broadband networks, housing, food systems, transportation
+    prerequisites:
+      - Community organizing capacity
+      - Technical expertise access
+      - Financing mechanisms
+      - Legal structure knowledge
+    outcomes:
+      - Local wealth retention
+      - Democratic governance
+      - Service affordability
+      - Community resilience
+    risks:
+      - Capital intensity barriers
+      - Technical complexity
+      - Regulatory hurdles
+    related_patterns:
+      - pattern_002
+      - pattern_005
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: pattern_002
+    name: Participatory Governance
+    description: Pattern for involving stakeholders directly in decision-making processes.
+    type: governance
+    problem_statement: Decisions are made without meaningful input from affected communities, leading to misaligned priorities and lack of legitimacy.
+    solution_statement: Establish participatory structures that give stakeholders direct voice in decisions through deliberative processes, voting, and ongoing engagement.
+    context: Organizations, initiatives, public policy, community projects
+    prerequisites:
+      - Commitment to power-sharing
+      - Facilitation capacity
+      - Inclusive processes
+      - Time and resources for engagement
+    outcomes:
+      - Increased legitimacy
+      - Better decisions
+      - Community ownership
+      - Trust building
+    risks:
+      - Tokenism
+      - Process fatigue
+      - Exclusion of marginalized voices
+    related_patterns:
+      - pattern_001
+      - pattern_003
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: pattern_003
+    name: Just Transition Framework
+    description: Pattern for ensuring economic transitions center workers and communities.
+    type: process
+    problem_statement: Economic transitions often harm workers and communities who depended on declining industries, perpetuating injustice.
+    solution_statement: Apply just transition principles that prioritize worker and community well-being, provide training and support, and ensure equitable distribution of benefits.
+    context: Energy transition, industry shifts, technological change
+    prerequisites:
+      - Worker engagement
+      - Community involvement
+      - Policy support
+      - Investment in alternatives
+    outcomes:
+      - Worker protection
+      - Community resilience
+      - Economic diversification
+      - Social license for change
+    risks:
+      - Insufficient resources
+      - Political opposition
+      - Timeline pressures
+    domain_ids:
+      - dom_just_transition
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: pattern_004
+    name: Food Sovereignty Network
+    description: Pattern for building community-controlled food systems through networked production and distribution.
+    type: structural
+    problem_statement: Communities lack control over their food systems, facing dependence on external supply chains and corporate food systems.
+    solution_statement: Build interconnected networks of urban farms, food cooperatives, and distribution systems that enable community self-determination in food production and access.
+    context: Urban areas, rural communities, Indigenous territories
+    prerequisites:
+      - Land access
+      - Growing knowledge
+      - Distribution infrastructure
+      - Community organizing
+    outcomes:
+      - Food security
+      - Local economic activity
+      - Community connection
+      - Health improvement
+    risks:
+      - Land tenure insecurity
+      - Seasonal limitations
+      - Scale challenges
+    domain_ids:
+      - dom_food_systems
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: pattern_005
+    name: Indigenous Stewardship Partnership
+    description: Pattern for centering Indigenous knowledge and governance in ecological restoration.
+    type: relational
+    problem_statement: Environmental management has excluded Indigenous peoples and knowledge, leading to ecological degradation and cultural harm.
+    solution_statement: Establish partnerships that recognize Indigenous sovereignty, incorporate traditional ecological knowledge, and support Indigenous-led stewardship.
+    context: Land management, watershed restoration, conservation, resource extraction
+    prerequisites:
+      - Indigenous partnership
+      - Recognition of rights
+      - Cultural competency
+      - Long-term commitment
+    outcomes:
+      - Ecological restoration
+      - Cultural revitalization
+      - Rights recognition
+      - Knowledge preservation
+    risks:
+      - Tokenism
+      - Power imbalances
+      - Funding constraints
+    domain_ids:
+      - dom_ecosystem_restoration
+      - dom_land_justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: pattern_006
+    name: Cooperatively-Owned Enterprise
+    description: Pattern for organizing economic activity through worker or community ownership.
+    type: organizational
+    problem_statement: Traditional business structures concentrate wealth and decision-making, leading to worker exploitation and community economic extraction.
+    solution_statement: Establish cooperative enterprises where workers or community members own and govern the business, sharing profits and decisions democratically.
+    context: Any economic sector, particularly services, manufacturing, agriculture
+    prerequisites:
+      - Member commitment
+      - Business planning
+      - Democratic governance skills
+      - Access to cooperative-friendly financing
+    outcomes:
+      - Wealth building
+      - Workplace democracy
+      - Community economic development
+      - Job quality improvement
+    risks:
+      - Capital access barriers
+      - Governance challenges
+      - Scale limitations
+    domain_ids:
+      - dom_economic_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: pattern_007
+    name: Story-Based Change Communication
+    description: Pattern for using personal narratives to build understanding and support for change.
+    type: process
+    problem_statement: Abstract arguments and data often fail to connect emotionally or shift perspectives on contentious issues.
+    solution_statement: Center personal stories that humanize issues, build empathy, and show real-world impacts, combined with clear calls to action.
+    context: Advocacy campaigns, public education, community organizing
+    prerequisites:
+      - Story collection process
+      - Storyteller consent and support
+      - Distribution channels
+      - Follow-up opportunities
+    outcomes:
+      - Increased empathy
+      - Perspective shifts
+      - Action motivation
+      - Community connection
+    risks:
+      - Exploitation of storytellers
+      - Oversimplification
+      - Counter-narrative attacks
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - pattern_types
+  - pattern_domains
+  - pattern_effectiveness
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/pattern
+  provenance: ChangeMappers Ontology Project

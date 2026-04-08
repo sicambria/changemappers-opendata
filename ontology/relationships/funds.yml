@@ -1,0 +1,134 @@
+id: funds
+name: Funds
+description: An Organization or Actor provides financial resources, grants, or funding to another Entity. This captures financial support relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Organization
+  - Foundation
+  - Government
+  - Donor
+  - Actor
+
+allowed_to:
+  - Initiative
+  - Organization
+  - Project
+  - Research
+  - Campaign
+
+properties:
+  funding_type:
+    type: string
+    description: Type of funding (grant, donation, investment, loan)
+    required: true
+  amount:
+    type: number
+    description: Amount of funding
+    required: false
+  currency:
+    type: string
+    description: Currency of funding
+    required: false
+  date:
+    type: date
+    description: Date funding was provided
+    required: false
+  duration:
+    type: string
+    description: Period funding covers
+    required: false
+  restrictions:
+    type: array
+    description: Conditions or restrictions on funding use
+    required: false
+  renewal_status:
+    type: string
+    description: Whether funding is one-time or recurring
+    required: false
+
+cardinality: many-to-many
+
+inverse: funded_by
+
+examples:
+  - from: GatesFoundation
+    to: GlobalHealthInitiative
+    properties:
+      funding_type: grant
+      amount: 500000000
+      currency: USD
+      duration: "5 years"
+      renewal_status: renewable
+    confidence: 0.97
+    source: https://changemappers.org/funding/gates-health
+
+  - from: EuropeanCommission
+    to: ClimateResearchProject
+    properties:
+      funding_type: grant
+      amount: 2000000
+      currency: EUR
+      duration: "3 years"
+      restrictions: ["open_access_publishing"]
+    confidence: 0.95
+    source: https://changemappers.org/funding/eu-climate
+
+  - from: IndividualDonors
+    to: Wikipedia
+    properties:
+      funding_type: donation
+      amount: 120000000
+      currency: USD
+      date: "2023-01-01"
+      renewal_status: recurring
+    confidence: 0.96
+    source: https://changemappers.org/funding/wikipedia-donors
+
+  - from: OpenSocietyFoundations
+    to: HumanRightsWatch
+    properties:
+      funding_type: grant
+      amount: 15000000
+      currency: USD
+      duration: "2 years"
+    confidence: 0.93
+    source: https://changemappers.org/funding/osf-hrw
+
+  - from: FordFoundation
+    to: ParticipatoryBudgetingProject
+    properties:
+      funding_type: grant
+      amount: 3500000
+      currency: USD
+      duration: "3 years"
+      restrictions: ["community_engagement_required"]
+    confidence: 0.91
+    source: https://changemappers.org/funding/ford-pbp
+
+  - from: IKEAFoundation
+    to: RefugeeEmploymentInitiative
+    properties:
+      funding_type: grant
+      amount: 75000000
+      currency: EUR
+      duration: "5 years"
+    confidence: 0.94
+    source: https://changemappers.org/funding/ikea-refugee
+
+  - from: SmallDonors
+    to: BlackLivesMatter
+    properties:
+      funding_type: donation
+      amount: 90000000
+      currency: USD
+      date: "2020-01-01"
+      renewal_status: one-time
+    confidence: 0.88
+    source: https://changemappers.org/funding/blm-donations
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

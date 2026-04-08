@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/scale.schema.json",
+  "title": "Scale",
+  "description": "The geographic or organizational scope at which change activities operate.",
+  "type": "object",
+  "required": ["id", "slug", "name", "level", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the scale",
+      "example": "550e8400-e29b-41d4-a716-446655440026"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "municipal"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Name of the scale",
+      "example": "Municipal"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the scale"
+    },
+    "level": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Numerical level (higher = broader)",
+      "example": 4
+    },
+    "type": {
+      "type": "string",
+      "enum": ["geographic", "organizational", "temporal", "population"],
+      "description": "Type of scale",
+      "example": "geographic"
+    },
+    "parent_scale": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent scale (broader)"
+    },
+    "child_scales": {
+      "type": "array",
+      "description": "Child scales (narrower)",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "population_range": {
+      "type": "object",
+      "description": "Population range if geographic",
+      "additionalProperties": false,
+      "properties": {
+        "min": { "type": "integer", "minimum": 0 },
+        "max": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "geographic_scope": {
+      "type": "string",
+      "description": "Geographic scope description"
+    },
+    "examples": {
+      "type": "array",
+      "description": "Examples at this scale",
+      "items": { "type": "string" }
+    },
+    "typical_actors": {
+      "type": "array",
+      "description": "Typical actors at this scale",
+      "items": { "type": "string" }
+    },
+    "typical_organizations": {
+      "type": "array",
+      "description": "Typical organizations at this scale",
+      "items": { "type": "string" }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives at this scale",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects at this scale",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "strategies": {
+      "type": "array",
+      "description": "Typical strategies at this scale",
+      "items": { "type": "string" }
+    },
+    "challenges": {
+      "type": "array",
+      "description": "Typical challenges at this scale",
+      "items": { "type": "string" }
+    },
+    "opportunities": {
+      "type": "array",
+      "description": "Typical opportunities at this scale",
+      "items": { "type": "string" }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Patterns applicable at this scale",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "taxonomy_code": {
+      "type": "string",
+      "description": "Taxonomy code from changemappers.org"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Display order"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon identifier"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

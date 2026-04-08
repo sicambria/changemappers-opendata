@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/metamodel.schema.json",
+  "title": "Metamodel",
+  "description": "A conceptual framework that defines the structure, relationships, and constraints for modeling change processes.",
+  "type": "object",
+  "required": ["id", "slug", "name", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the metamodel",
+      "example": "550e8400-e29b-41d4-a716-446655440011"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "social-ecological-systems"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the metamodel",
+      "example": "Social-Ecological Systems Framework"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the metamodel",
+      "example": "A framework for analyzing the interactions between social and ecological systems."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["conceptual", "analytical", "operational", "descriptive", "prescriptive"],
+      "description": "Type of metamodel",
+      "example": "analytical"
+    },
+    "author": {
+      "type": "string",
+      "description": "Original author(s)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$",
+      "description": "Version number",
+      "example": "2.1"
+    },
+    "core_concepts": {
+      "type": "array",
+      "description": "Core concepts defined by the metamodel",
+      "items": {
+        "type": "object",
+        "required": ["name", "definition"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "definition": { "type": "string" },
+          "examples": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "description": "Relationships between concepts",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "additionalProperties": false,
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Constraints and rules",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "rule": { "type": "string" }
+        }
+      }
+    },
+    "variables": {
+      "type": "array",
+      "description": "Variables defined by the metamodel",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "unit": { "type": "string" },
+          "possible_values": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "related_metamodels": {
+      "type": "array",
+      "description": "Related metamodels",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "frameworks": {
+      "type": "array",
+      "description": "Frameworks implementing this metamodel",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methodologies": {
+      "type": "array",
+      "description": "Methodologies based on this metamodel",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "applications": {
+      "type": "array",
+      "description": "Applications and use cases",
+      "items": { "type": "string" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains where applicable",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "key_references": {
+      "type": "array",
+      "description": "Key references",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

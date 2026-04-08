@@ -1,0 +1,50 @@
+{
+  "relationship_type": "contradicts",
+  "description": "Entity opposes or conflicts with another Entity",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "s1e2g3r4-e5g6-7890-abcd-ef1234567890",
+      "properties": {
+        "contradiction_type": "structural",
+        "intensity": "fundamental",
+        "resolution": "successful"
+      },
+      "confidence": 0.97,
+      "source_reference": "Montgomery Bus Boycott contradicted racial segregation laws"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "d1e2f3o4-r5s6-7890-abcd-ef1234567890",
+      "properties": {
+        "contradiction_type": "ecological",
+        "intensity": "high",
+        "resolution": "partial"
+      },
+      "confidence": 0.92,
+      "source_reference": "Green Belt Movement contradicted deforestation policies and land grabbing"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "e1x2p3l4-o5i6-7890-abcd-ef1234567890",
+      "properties": {
+        "contradiction_type": "economic",
+        "intensity": "fundamental",
+        "resolution": "successful"
+      },
+      "confidence": 0.94,
+      "source_reference": "Delano Grape Strike contradicted exploitative labor practices"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "a1u2t3h4-o5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "contradiction_type": "political",
+        "intensity": "fundamental",
+        "resolution": "successful"
+      },
+      "confidence": 0.96,
+      "source_reference": "Solidarity contradicted authoritarian communist regime"
+    }
+  ]
+}

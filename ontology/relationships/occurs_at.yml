@@ -1,0 +1,118 @@
+id: occurs_at
+name: Occurs At
+description: An Event, Activity, or Occurrence happens at a specific Location and/or Time. This captures spatiotemporal context.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Event
+  - Activity
+  - Occurrence
+  - Incident
+  - Meeting
+
+allowed_to:
+  - Location
+  - Time
+  - Venue
+  - Platform
+
+properties:
+  start_time:
+    type: datetime
+    description: When the event begins
+    required: false
+  end_time:
+    type: datetime
+    description: When the event ends
+    required: false
+  duration:
+    type: string
+    description: Length of the event
+    required: false
+  recurring:
+    type: boolean
+    description: Whether the event recurs
+    required: false
+  recurrence_pattern:
+    type: string
+    description: How often it recurs (daily, weekly, monthly, annually)
+    required: false
+  participants_count:
+    type: number
+    description: Number of participants
+    required: false
+
+cardinality: many-to-one
+
+inverse: hosts
+
+examples:
+  - from: MarchOnWashington
+    to: WashingtonDC
+    properties:
+      start_time: "1963-08-28T10:00:00Z"
+      end_time: "1963-08-28T16:00:00Z"
+      participants_count: 250000
+    confidence: 0.98
+    source: https://changemappers.org/events/march-on-washington
+
+  - from: COP27
+    to: SharmElSheikh
+    properties:
+      start_time: "2022-11-06T00:00:00Z"
+      end_time: "2022-11-20T00:00:00Z"
+      duration: "14 days"
+      participants_count: 33000
+    confidence: 0.99
+    source: https://changemappers.org/events/cop27
+
+  - from: GlobalClimateStrike
+    to: Worldwide
+    properties:
+      start_time: "2019-09-20T00:00:00Z"
+      end_time: "2019-09-27T00:00:00Z"
+      participants_count: 7600000
+    confidence: 0.95
+    source: https://changemappers.org/events/climate-strike-2019
+
+  - from: OccupyWallStreet
+    to: ZuccottiPark
+    properties:
+      start_time: "2011-09-17T00:00:00Z"
+      end_time: "2011-11-15T00:00:00Z"
+      duration: "59 days"
+    confidence: 0.97
+    source: https://changemappers.org/events/occupy-wall-street
+
+  - from: ArabSpring
+    to: Tunisia
+    properties:
+      start_time: "2010-12-17T00:00:00Z"
+      end_time: "2011-01-14T00:00:00Z"
+    confidence: 0.94
+    source: https://changemappers.org/events/arab-spring
+
+  - from: WikipediaEditathon
+    to: Virtual
+    properties:
+      start_time: "2024-03-01T10:00:00Z"
+      end_time: "2024-03-01T18:00:00Z"
+      recurring: true
+      recurrence_pattern: monthly
+    confidence: 0.92
+    source: https://changemappers.org/events/wiki-editathon
+
+  - from: StandingRockStandoff
+    to: CannonBall
+    properties:
+      start_time: "2016-04-01T00:00:00Z"
+      end_time: "2017-02-23T00:00:00Z"
+      duration: "329 days"
+    confidence: 0.96
+    source: https://changemappers.org/events/standing-rock
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

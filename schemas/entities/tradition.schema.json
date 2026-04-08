@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/tradition.schema.json",
+  "title": "Tradition",
+  "description": "A body of knowledge, practice, or methodology passed down through generations that informs change-making approaches.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the tradition",
+      "example": "550e8400-e29b-41d4-a716-446655440009"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "popular-education"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the tradition",
+      "example": "Popular Education"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the tradition",
+      "example": "An educational approach that emphasizes critical consciousness and collective learning for social transformation."
+    },
+    "type": {
+      "type": "string",
+      "enum": ["pedagogical", "philosophical", "cultural", "spiritual", "political", "organizational", "artistic", "healing"],
+      "description": "Type of tradition",
+      "example": "pedagogical"
+    },
+    "origins": {
+      "type": "object",
+      "description": "Origins and history",
+      "additionalProperties": false,
+      "properties": {
+        "founder": { "type": "string" },
+        "time_period": { "type": "string" },
+        "geographic_origin": { "type": "string" },
+        "historical_context": { "type": "string" }
+      }
+    },
+    "core_principles": {
+      "type": "array",
+      "description": "Core principles of the tradition",
+      "items": { "type": "string" }
+    },
+    "key_concepts": {
+      "type": "array",
+      "description": "Key concepts",
+      "items": { "type": "string" }
+    },
+    "practices": {
+      "type": "array",
+      "description": "Associated practices",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methods": {
+      "type": "array",
+      "description": "Associated methodologies",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Associated patterns",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "influenced_traditions": {
+      "type": "array",
+      "description": "Traditions influenced by this one",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "influenced_by": {
+      "type": "array",
+      "description": "Traditions that influenced this one",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_traditions": {
+      "type": "array",
+      "description": "Related traditions",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "key_texts": {
+      "type": "array",
+      "description": "Key texts and resources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Organizations practicing this tradition",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "actors": {
+      "type": "array",
+      "description": "Key actors associated with this tradition",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects applying this tradition",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains where applicable",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "contemporary_relevance": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Contemporary relevance and applications"
+    },
+    "critiques": {
+      "type": "array",
+      "description": "Critiques and limitations",
+      "items": { "type": "string" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "relationship_type": "addresses",
+  "description": "Initiative/Project targets or works on a Cause",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "c1a2u3s4-e5f6-7890-abcd-ef1234567890",
+      "properties": {
+        "impact_level": "high",
+        "approach": "direct_action",
+        "scope": "structural"
+      },
+      "confidence": 0.96,
+      "source_reference": "Montgomery Bus Boycott directly addressed racial segregation in public transit - RDG 21: Equity and Structural Inclusion"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "c2a3u4s5-e6f7-8901-cdef-234567890abc",
+      "properties": {
+        "impact_level": "high",
+        "approach": "constructive_program",
+        "scope": "ecological"
+      },
+      "confidence": 0.94,
+      "source_reference": "Green Belt Movement addressed deforestation and environmental degradation - RDG 8: Biodiversity and Habitat Restoration"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "c3a4u5s6-e7f8-9012-defa-345678901bcd",
+      "properties": {
+        "impact_level": "high",
+        "approach": "economic_pressure",
+        "scope": "economic_justice"
+      },
+      "confidence": 0.95,
+      "source_reference": "Delano Grape Strike addressed farmworker exploitation and labor rights - RDG 15: Inclusive Livelihoods and Meaningful Work"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "c4a5u6s7-e8f9-0123-efab-456789012cde",
+      "properties": {
+        "impact_level": "high",
+        "approach": "peacebuilding",
+        "scope": "conflict_transformation"
+      },
+      "confidence": 0.93,
+      "source_reference": "Women of Liberia addressed civil war and political violence - RDG 22: Peacebuilding and Conflict Transformation"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "c5a6u7s8-e9f0-1234-fabc-567890123def",
+      "properties": {
+        "impact_level": "high",
+        "approach": "political_disobedience",
+        "scope": "governance"
+      },
+      "confidence": 0.97,
+      "source_reference": "Solidarity addressed authoritarian communist rule and workers' rights - RDG 20: Polycentric and Participatory Governance"
+    },
+    {
+      "source_id": "i6n7i8t9-i0a1-2345-abcd-ef1234567890",
+      "target_id": "c6a7u8s9-e0f1-2345-abcd-ef1234567890",
+      "properties": {
+        "impact_level": "high",
+        "approach": "economic_noncooperation",
+        "scope": "housing_justice"
+      },
+      "confidence": 0.92,
+      "source_reference": "Glasgow Rent Strikes addressed landlord profiteering and housing affordability - RDG 13: Basic Needs Security"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "c7a8u9s0-e1f2-3456-bcde-f12345678901",
+      "properties": {
+        "impact_level": "high",
+        "approach": "autonomous_governance",
+        "scope": "indigenous_rights"
+      },
+      "confidence": 0.90,
+      "source_reference": "Zapatista movement addressed indigenous disenfranchisement and neoliberal policies - RDG 21: Equity and Structural Inclusion"
+    },
+    {
+      "source_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "target_id": "c8a9u0s1-e2f3-4567-cdef-123456789012",
+      "properties": {
+        "impact_level": "high",
+        "approach": "mass_civil_disobedience",
+        "scope": "colonial_rule"
+      },
+      "confidence": 0.98,
+      "source_reference": "Salt March addressed British colonial exploitation and salt taxation - RDG 23: Open Science and the Knowledge Commons"
+    }
+  ]
+}

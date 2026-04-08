@@ -1,0 +1,168 @@
+id: subdomain
+name: Subdomain
+description: A specific area within a broader domain, providing more focused categorization.
+category: classification
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the subdomain
+    - name: name
+      type: string
+      required: true
+      description: Name of the subdomain
+    - name: description
+      type: string
+      required: true
+      description: Description of the subdomain
+    - name: parent_domain_id
+      type: string
+      required: true
+      description: Parent domain
+    - name: topic_ids
+      type: array[string]
+      required: false
+      description: Topics within this subdomain
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives in this subdomain
+    - name: key_concepts
+      type: array[string]
+      required: false
+      description: Key concepts in this subdomain
+    - name: related_subdomain_ids
+      type: array[string]
+      required: false
+      description: Related subdomains
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: domain
+    type: part_of
+    description: Subdomain is part of domain
+  - entity: topic
+    type: includes
+    description: Subdomain includes topics
+  - entity: initiative
+    type: addressed_by
+    description: Subdomain is addressed by initiatives
+examples:
+  - id: sdom_renewable_energy
+    name: Renewable Energy
+    description: Subdomain covering solar, wind, and other renewable energy systems.
+    parent_domain_id: dom_energy
+    key_concepts:
+      - Solar power
+      - Wind energy
+      - Distributed generation
+      - Community solar
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: sdom_energy_democracy
+    name: Energy Democracy
+    description: Subdomain covering democratic control of energy systems.
+    parent_domain_id: dom_energy
+    initiative_ids:
+      - init_001
+    key_concepts:
+      - Community ownership
+      - Energy governance
+      - Public power
+      - Energy justice
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: sdom_urban_agriculture
+    name: Urban Agriculture
+    description: Subdomain covering food production in urban areas.
+    parent_domain_id: dom_food_systems
+    initiative_ids:
+      - init_003
+    key_concepts:
+      - Urban farming
+      - Community gardens
+      - Vertical farming
+      - Food production
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: sdom_food_sovereignty
+    name: Food Sovereignty
+    description: Subdomain covering community control over food systems.
+    parent_domain_id: dom_food_systems
+    key_concepts:
+      - Food self-determination
+      - Community control
+      - Food policy
+      - Food planning
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: sdom_watershed_restoration
+    name: Watershed Restoration
+    description: Subdomain covering restoration of watershed ecosystems.
+    parent_domain_id: dom_ecosystem_restoration
+    initiative_ids:
+      - init_005
+    key_concepts:
+      - Riparian restoration
+      - Stream health
+      - Water quality
+      - Salmon habitat
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: sdom_solidarity_economy
+    name: Solidarity Economy
+    description: Subdomain covering economic practices based on solidarity and cooperation.
+    parent_domain_id: dom_economic_justice
+    initiative_ids:
+      - init_007
+    key_concepts:
+      - Cooperatives
+      - Mutual aid
+      - Community economies
+      - Economic solidarity
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: sdom_land_back
+    name: Land Back
+    description: Subdomain covering the movement to return land to Indigenous peoples.
+    parent_domain_id: dom_land_justice
+    initiative_ids:
+      - init_006
+    key_concepts:
+      - Indigenous land return
+      - Tribal sovereignty
+      - Land stewardship
+      - Cultural sites
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - subdomain_types
+  - subdomain_hierarchy
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/subdomain
+  provenance: ChangeMappers Ontology Project

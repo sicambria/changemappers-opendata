@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/resource.schema.json",
+  "title": "Resource",
+  "description": "A valuable asset, material, or source of information that supports change-making activities.",
+  "type": "object",
+  "required": ["id", "slug", "title", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the resource",
+      "example": "550e8400-e29b-41d4-a716-446655440015"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "community-organizing-guide"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "description": "Title of the resource",
+      "example": "Community Organizing: A Practical Guide"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the resource"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["book", "article", "guide", "manual", "toolkit", "video", "audio", "course", "template", "report", "case_study", "white_paper", "blog_post", "presentation", "curriculum", "syllabus", "database", "directory"],
+      "description": "Type of resource",
+      "example": "guide"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["pdf", "web", "video", "audio", "interactive", "print", "downloadable"],
+      "description": "Format of the resource"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to access the resource"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author(s)"
+    },
+    "publisher": {
+      "type": "string",
+      "description": "Publisher"
+    },
+    "publication_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication date"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "ISO 639-1 language code",
+      "example": "en"
+    },
+    "languages_available": {
+      "type": "array",
+      "description": "Languages available",
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+    },
+    "access": {
+      "type": "string",
+      "enum": ["free", "paid", "subscription", "restricted", "open_access"],
+      "description": "Access type",
+      "example": "open_access"
+    },
+    "cost": {
+      "type": "object",
+      "description": "Cost information",
+      "additionalProperties": false,
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "license": {
+      "type": "string",
+      "description": "License type",
+      "example": "CC-BY-SA-4.0"
+    },
+    "isbn": {
+      "type": "string",
+      "pattern": "^[0-9-]+$",
+      "description": "ISBN if applicable"
+    },
+    "doi": {
+      "type": "string",
+      "pattern": "^10\\..+$",
+      "description": "DOI if applicable"
+    },
+    "pages": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Number of pages"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Duration for video/audio"
+    },
+    "topics": {
+      "type": "array",
+      "description": "Topics covered",
+      "items": { "type": "string" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains covered",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_resources": {
+      "type": "array",
+      "description": "Related resources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_tools": {
+      "type": "array",
+      "description": "Related tools",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_patterns": {
+      "type": "array",
+      "description": "Related patterns",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_methods": {
+      "type": "array",
+      "description": "Related methodologies",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "target_audience": {
+      "type": "array",
+      "description": "Target audience",
+      "items": { "type": "string" }
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["beginner", "intermediate", "advanced", "all_levels"],
+      "description": "Difficulty level"
+    },
+    "rating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "User rating"
+    },
+    "reviews_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of reviews"
+    },
+    "downloads_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of downloads"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

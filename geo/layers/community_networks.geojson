@@ -1,0 +1,318 @@
+{
+  "type": "FeatureCollection",
+  "name": "community_networks",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "source": "changemappers.org",
+    "license": "CC-BY-SA-4.0",
+    "created": "2026-04-08T13:24:51+02:00",
+    "description": "Local community network visualizations showing connections and clusters"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Transition Town Totnes Network",
+        "entity_type": "community_network",
+        "entity_id": "9c0d1e2f-3a4b-5678-9012-345678901234",
+        "description": "Network of community groups in original Transition Town",
+        "network_type": "transition_network",
+        "member_count": 45,
+        "focus_areas": ["food", "energy", "economy", "transport"],
+        "created_at": "2020-01-15T10:00:00Z",
+        "updated_at": "2026-04-01T14:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-3.75, 50.38],
+          [-3.62, 50.48],
+          [-3.58, 50.45],
+          [-3.65, 50.35],
+          [-3.75, 50.38]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Nairobi Community Garden Network",
+        "entity_type": "community_network",
+        "entity_id": "0d1e2f3a-4b5c-6789-0123-456789012345",
+        "description": "Urban agriculture network across informal settlements",
+        "network_type": "food_network",
+        "member_count": 120,
+        "focus_areas": ["urban_farming", "seed_saving", "nutrition"],
+        "created_at": "2021-06-20T08:00:00Z",
+        "updated_at": "2026-03-28T09:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [36.72, -1.32],
+          [36.88, -1.22],
+          [36.92, -1.28],
+          [36.85, -1.38],
+          [36.72, -1.32]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Warsaw Energy Cooperative Cluster",
+        "entity_type": "community_network",
+        "entity_id": "1e2f3a4b-5c6d-7890-1234-567890123456",
+        "description": "Solar and wind energy cooperatives network",
+        "network_type": "energy_network",
+        "member_count": 28,
+        "focus_areas": ["renewable_energy", "grid_independence", "energy_efficiency"],
+        "created_at": "2022-09-10T12:00:00Z",
+        "updated_at": "2026-04-05T16:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [20.85, 52.15],
+          [21.15, 52.35],
+          [21.25, 52.25],
+          [21.05, 52.10],
+          [20.85, 52.15]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Kerala Indigenous Knowledge Network",
+        "entity_type": "community_network",
+        "entity_id": "2f3a4b5c-6d7e-8901-2345-678901234567",
+        "description": "Traditional healers and farmers knowledge exchange",
+        "network_type": "knowledge_network",
+        "member_count": 85,
+        "focus_areas": ["traditional_medicine", "seed_preservation", "sustainable_farming"],
+        "created_at": "2020-03-05T07:00:00Z",
+        "updated_at": "2026-03-20T11:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [76.30, 9.55],
+          [76.80, 9.85],
+          [76.90, 9.70],
+          [76.55, 9.40],
+          [76.30, 9.55]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Cascadia Transition Network",
+        "entity_type": "community_network",
+        "entity_id": "3a4b5c6d-7e8f-9012-3456-789012345678",
+        "description": "Pacific Northwest community resilience initiatives",
+        "network_type": "regional_network",
+        "member_count": 65,
+        "focus_areas": ["food_systems", "watershed_protection", "community_energy"],
+        "created_at": "2021-05-18T14:00:00Z",
+        "updated_at": "2026-04-02T13:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.85, 47.25],
+          [-122.45, 47.45],
+          [-122.35, 47.35],
+          [-122.65, 47.15],
+          [-122.85, 47.25]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "São Paulo Periferia Network",
+        "entity_type": "community_network",
+        "entity_id": "4b5c6d7e-8f9a-0123-4567-890123456789",
+        "description": "Social movements in São Paulo peripheral neighborhoods",
+        "network_type": "social_movement",
+        "member_count": 180,
+        "focus_areas": ["housing_rights", "food_sovereignty", "urban_planning"],
+        "created_at": "2019-11-22T09:00:00Z",
+        "updated_at": "2026-03-28T10:45:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-46.72, -23.62],
+          [-46.52, -23.48],
+          [-46.45, -23.58],
+          [-46.62, -23.72],
+          [-46.72, -23.62]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Melbourne Food Hub Network",
+        "entity_type": "community_network",
+        "entity_id": "5c6d7e8f-9a0b-1234-5678-901234567890",
+        "description": "Urban food distribution and community kitchen network",
+        "network_type": "food_network",
+        "member_count": 55,
+        "focus_areas": ["food_rescue", "community_kitchens", "local_distribution"],
+        "created_at": "2020-08-15T11:00:00Z",
+        "updated_at": "2026-04-06T15:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [144.85, -37.82],
+          [145.10, -37.72],
+          [145.15, -37.82],
+          [144.95, -37.92],
+          [144.85, -37.82]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "Detroit Black Community Food Security Network",
+        "entity_type": "community_network",
+        "entity_id": "6d7e8f9a-0b1c-2345-6789-012345678901",
+        "description": "African American food sovereignty network",
+        "network_type": "food_network",
+        "member_count": 40,
+        "focus_areas": ["urban_farming", "food_justice", "land_access"],
+        "created_at": "2019-04-30T08:00:00Z",
+        "updated_at": "2026-03-15T12:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-83.18, 42.35],
+          [-83.00, 42.45],
+          [-82.92, 42.38],
+          [-83.08, 42.28],
+          [-83.18, 42.35]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Stockholm Eco-Neighborhood Network",
+        "entity_type": "community_network",
+        "entity_id": "7e8f9a0b-1c2d-3456-7890-123456789012",
+        "description": "Sustainable neighborhood association network",
+        "network_type": "eco_district_network",
+        "member_count": 32,
+        "focus_areas": ["waste_reduction", "shared_mobility", "green_spaces"],
+        "created_at": "2021-12-08T10:00:00Z",
+        "updated_at": "2026-02-20T09:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.00, 59.25],
+          [18.15, 59.40],
+          [18.20, 59.35],
+          [18.10, 59.20],
+          [18.00, 59.25]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "Cape Town Water Justice Network",
+        "entity_type": "community_network",
+        "entity_id": "8f9a0b1c-2d3e-4567-8901-234567890123",
+        "description": "Community water access and conservation network",
+        "network_type": "water_network",
+        "member_count": 75,
+        "focus_areas": ["water_harvesting", "conservation", "access_justice"],
+        "created_at": "2020-07-20T13:00:00Z",
+        "updated_at": "2026-03-22T14:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [18.35, -33.95],
+          [18.55, -33.85],
+          [18.60, -33.92],
+          [18.48, -34.02],
+          [18.35, -33.95]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "name": "Amsterdam Circular Economy Network",
+        "entity_type": "community_network",
+        "entity_id": "9a0b1c2d-3e4f-5678-9012-345678901234",
+        "description": "Repair cafes, sharing platforms, and circular initiatives",
+        "network_type": "circular_network",
+        "member_count": 90,
+        "focus_areas": ["repair", "sharing", "upcycling", "waste_reduction"],
+        "created_at": "2019-02-14T15:00:00Z",
+        "updated_at": "2026-03-30T11:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [4.85, 52.32],
+          [5.00, 52.42],
+          [5.05, 52.38],
+          [4.95, 52.28],
+          [4.85, 52.32]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "name": "Aotearoa Maori Land Network",
+        "entity_type": "community_network",
+        "entity_id": "a0b1c2d3-e4f5-6789-0abc-456789012345",
+        "description": "Indigenous land recovery and stewardship network",
+        "network_type": "indigenous_network",
+        "member_count": 60,
+        "focus_areas": ["land_recovery", "cultural_revitalization", "guardianship"],
+        "created_at": "2018-10-05T06:00:00Z",
+        "updated_at": "2026-04-07T08:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [175.20, -37.85],
+          [175.45, -37.70],
+          [175.50, -37.80],
+          [175.35, -37.95],
+          [175.20, -37.85]
+        ]]
+      }
+    }
+  ]
+}

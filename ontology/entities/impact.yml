@@ -1,0 +1,222 @@
+id: impact
+name: Impact
+description: A measurable, significant effect resulting from change initiatives, typically longer-term and broader than outcomes.
+category: result
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the impact
+    - name: name
+      type: string
+      required: true
+      description: Name of the impact
+    - name: description
+      type: string
+      required: true
+      description: Description of the impact
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the impact
+      enum_values:
+        - environmental
+        - social
+        - economic
+        - political
+        - cultural
+        - systemic
+    - name: magnitude
+      type: enum
+      required: false
+      description: Magnitude of impact
+      enum_values:
+        - transformative
+        - significant
+        - moderate
+        - incremental
+    - name: outcome_ids
+      type: array[string]
+      required: false
+      description: Outcomes contributing to this impact
+    - name: initiative_id
+      type: string
+      required: false
+      description: Primary initiative
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains affected
+    - name: location_ids
+      type: array[string]
+      required: false
+      description: Geographic areas affected
+    - name: affected_population
+      type: string
+      required: false
+      description: Population affected by this impact
+    - name: evidence_summary
+      type: string
+      required: false
+      description: Summary of evidence for this impact
+    - name: metric_ids
+      type: array[string]
+      required: false
+      description: Metrics measuring this impact
+    - name: attribution_confidence
+      type: enum
+      required: false
+      description: Confidence in attribution
+      enum_values:
+        - high
+        - medium
+        - low
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: outcome
+    type: results_from
+    description: Impact results from outcomes
+  - entity: initiative
+    type: produced_by
+    description: Impact is produced by initiative
+  - entity: metric
+    type: measured_by
+    description: Impact is measured by metrics
+  - entity: domain
+    type: affects
+    description: Impact affects domains
+examples:
+  - id: impact_001
+    name: Community Wealth Building in Portland
+    description: Measurable increase in community-owned assets and local wealth retention in Portland neighborhoods.
+    type: economic
+    magnitude: significant
+    outcome_ids:
+      - outcome_001
+      - outcome_002
+    initiative_id: init_001
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    location_ids:
+      - loc_001
+    affected_population: Low-income households and communities of color
+    evidence_summary: Energy cost savings retained in community, jobs created in local solar sector
+    attribution_confidence: high
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: impact_002
+    name: Just Transition Precedent
+    description: Policy and practice shifts establishing precedent for worker-centered transition.
+    type: systemic
+    magnitude: transformative
+    outcome_ids:
+      - outcome_003
+    initiative_id: init_002
+    domain_ids:
+      - dom_just_transition
+    location_ids:
+      - loc_national
+    affected_population: Fossil fuel workers and communities
+    evidence_summary: State policies adopted, corporate practices shifted, national models developed
+    attribution_confidence: medium
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: impact_003
+    name: Food Sovereignty Advancement in Detroit
+    description: Measurable increase in community food security and local food system control.
+    type: social
+    magnitude: significant
+    outcome_ids:
+      - outcome_004
+    initiative_id: init_003
+    domain_ids:
+      - dom_food_systems
+    location_ids:
+      - loc_002
+    affected_population: Detroit residents in food apartheid areas
+    evidence_summary: Increased food production, expanded distribution networks, policy wins
+    attribution_confidence: high
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: impact_004
+    name: Climate Literacy Increase
+    description: Measurable increase in climate justice understanding among students.
+    type: educational
+    magnitude: moderate
+    outcome_ids:
+      - outcome_005
+    initiative_id: init_004
+    domain_ids:
+      - dom_climate_justice
+    affected_population: K-12 students
+    evidence_summary: Pre/post assessments show significant knowledge gains
+    attribution_confidence: high
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: impact_005
+    name: Watershed Health Improvement
+    description: Measurable improvement in watershed ecosystem indicators.
+    type: environmental
+    magnitude: moderate
+    outcome_ids:
+      - outcome_006
+    initiative_id: init_005
+    domain_ids:
+      - dom_ecosystem_restoration
+    location_ids:
+      - loc_004
+    affected_population: Salmon populations and watershed communities
+    evidence_summary: Water quality improvements, salmon return increases, habitat restoration
+    attribution_confidence: medium
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: impact_006
+    name: Indigenous Land Sovereignty Advancement
+    description: Measurable progress toward Indigenous land sovereignty and stewardship rights.
+    type: political
+    magnitude: significant
+    outcome_ids:
+      - outcome_007
+    initiative_id: init_006
+    domain_ids:
+      - dom_land_justice
+    location_ids:
+      - loc_oregon
+    affected_population: Indigenous nations and communities
+    evidence_summary: Land transfers completed, stewardship recognized, precedents set
+    attribution_confidence: high
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - impact_types
+  - impact_magnitude
+  - impact_attribution
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/impact
+  provenance: ChangeMappers Ontology Project

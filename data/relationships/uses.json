@@ -1,0 +1,94 @@
+{
+  "relationship_type": "uses",
+  "description": "Entity utilizes a Tool/Resource",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "t1o2o3l4-s5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "usage_type": "communication",
+        "effectiveness": "high",
+        "accessibility": "medium"
+      },
+      "confidence": 0.88,
+      "source_reference": "Montgomery Bus Boycott used church networks for organizing and communication"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "t2o3o4l5-s6r7-8901-cdef-234567890abc",
+      "properties": {
+        "usage_type": "digital_knowledge",
+        "effectiveness": "medium",
+        "accessibility": "high"
+      },
+      "confidence": 0.85,
+      "source_reference": "Modern environmental movements use open-source knowledge tools like Logseq for organizing"
+    },
+    {
+      "source_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "target_id": "t3o4o5l6-s7r8-8901-cdef-234567890abc",
+      "properties": {
+        "usage_type": "security",
+        "effectiveness": "high",
+        "accessibility": "medium"
+      },
+      "confidence": 0.90,
+      "source_reference": "Resistance movements use encrypted communication tools like Signal/Briar for coordination"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "t4o5o6l7-s8r9-9012-defa-345678901bcd",
+      "properties": {
+        "usage_type": "printing",
+        "effectiveness": "high",
+        "accessibility": "low"
+      },
+      "confidence": 0.92,
+      "source_reference": "Solidarity used underground printing presses for Samizdat publications"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "t5o6o7l8-s9r0-0123-efab-456789012cde",
+      "properties": {
+        "usage_type": "symbolic",
+        "effectiveness": "high",
+        "accessibility": "high"
+      },
+      "confidence": 0.94,
+      "source_reference": "Delano Grape Strike used wearable symbols - UFW flag and black eagle"
+    },
+    {
+      "source_id": "l1e2a3r4-n5i6-7890-abcd-ef1234567890",
+      "target_id": "t6o7o8l9-s0r1-1234-fabc-567890123def",
+      "properties": {
+        "usage_type": "education",
+        "effectiveness": "high",
+        "accessibility": "high"
+      },
+      "confidence": 0.87,
+      "source_reference": "Community organizing trainings use collaborative tools like CryptPad for workshop materials"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "t7o8o9l0-s1r2-2345-abcd-ef1234567890",
+      "properties": {
+        "usage_type": "cultural",
+        "effectiveness": "high",
+        "accessibility": "high"
+      },
+      "confidence": 0.91,
+      "source_reference": "Women of Liberia used white T-shirts as unified visual symbol"
+    },
+    {
+      "source_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "target_id": "t8o9o0l1-s2r3-3456-bcde-f12345678901",
+      "properties": {
+        "usage_type": "media",
+        "effectiveness": "high",
+        "accessibility": "medium"
+      },
+      "confidence": 0.93,
+      "source_reference": "Salt March used international press coverage to amplify message globally"
+    }
+  ]
+}

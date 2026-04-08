@@ -1,0 +1,109 @@
+id: part_of
+name: Part Of
+description: An Entity belongs to, is contained within, or is a component of a larger Entity. This captures hierarchical and compositional relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Initiative
+  - Organization
+  - Project
+  - Activity
+  - Movement
+
+allowed_to:
+  - Initiative
+  - Organization
+  - Network
+  - Movement
+  - Coalition
+
+properties:
+  role:
+    type: string
+    description: The specific role within the larger entity
+    required: false
+  join_date:
+    type: date
+    description: When the entity became part of the larger entity
+    required: false
+  autonomy_level:
+    type: string
+    description: Degree of independence (autonomous, semi-autonomous, integrated)
+    required: false
+  contribution:
+    type: string
+    description: What the sub-entity contributes
+    required: false
+
+cardinality: many-to-one
+
+inverse: has_part
+
+examples:
+  - from: FridaysForFutureGermany
+    to: FridaysForFuture
+    properties:
+      role: national_chapter
+      autonomy_level: semi-autonomous
+      join_date: "2018-12-01"
+    confidence: 0.98
+    source: https://changemappers.org/initiatives/fff-germany
+
+  - from: OxfamAmerica
+    to: OxfamInternational
+    properties:
+      role: affiliate
+      autonomy_level: semi-autonomous
+      join_date: "1970-01-01"
+    confidence: 0.97
+    source: https://changemappers.org/organizations/oxfam-america
+
+  - from: XRNewYork
+    to: ExtinctionRebellion
+    properties:
+      role: local_chapter
+      autonomy_level: semi-autonomous
+      join_date: "2019-01-01"
+    confidence: 0.95
+    source: https://changemappers.org/initiatives/xr-nyc
+
+  - from: ChangeMappersOntology
+    to: ChangeMappers
+    properties:
+      role: core_component
+      autonomy_level: integrated
+    confidence: 0.99
+    source: https://changemappers.org
+
+  - from: BlackLivesMatterUK
+    to: BlackLivesMatter
+    properties:
+      role: international_chapter
+      autonomy_level: semi-autonomous
+      join_date: "2016-08-01"
+    confidence: 0.93
+    source: https://changemappers.org/initiatives/blm-uk
+
+  - from: TransitionTownBristol
+    to: TransitionNetwork
+    properties:
+      role: member_initiative
+      autonomy_level: autonomous
+      join_date: "2007-01-01"
+    confidence: 0.91
+    source: https://changemappers.org/initiatives/tt-bristol
+
+  - from: LocalFoodBank
+    to: FeedingAmerica
+    properties:
+      role: member_organization
+      autonomy_level: semi-autonomous
+      contribution: food_distribution
+    confidence: 0.89
+    source: https://changemappers.org/initiatives/local-food-bank
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

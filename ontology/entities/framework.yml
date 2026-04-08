@@ -1,0 +1,285 @@
+id: framework
+name: Framework
+description: A structured approach for understanding, planning, or implementing change, providing conceptual scaffolding for action.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the framework
+    - name: name
+      type: string
+      required: true
+      description: Name of the framework
+    - name: description
+      type: string
+      required: true
+      description: Description of the framework
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the framework
+      enum_values:
+        - conceptual
+        - operational
+        - evaluative
+        - strategic
+        - diagnostic
+        - planning
+    - name: metamodel_id
+      type: string
+      required: false
+      description: Parent metamodel
+    - name: elements
+      type: array[string]
+      required: false
+      description: Key elements of the framework
+    - name: principles
+      type: array[string]
+      required: false
+      description: Guiding principles
+    - name: steps
+      type: array[string]
+      required: false
+      description: Implementation steps
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains of application
+    - name: methodology_ids
+      type: array[string]
+      required: false
+      description: Related methodologies
+    - name: pattern_ids
+      type: array[string]
+      required: false
+      description: Patterns within this framework
+    - name: use_cases
+      type: array[string]
+      required: false
+      description: Common use cases
+    - name: prerequisites
+      type: array[string]
+      required: false
+      description: Prerequisites for use
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 30
+    message: Description must be at least 30 characters
+relationships:
+  - entity: metamodel
+    type: derived_from
+    description: Framework is derived from metamodel
+  - entity: methodology
+    type: implements
+    description: Framework implements methodologies
+  - entity: domain
+    type: applies_to
+    description: Framework applies to domains
+  - entity: pattern
+    type: includes
+    description: Framework includes patterns
+  - entity: project
+    type: used_in
+    description: Framework is used in projects
+examples:
+  - id: frame_001
+    name: Just Transition Framework
+    description: A framework for ensuring that the transition to a sustainable economy is fair and equitable, prioritizing the needs of workers and communities.
+    type: strategic
+    metamodel_id: meta_004
+    elements:
+      - Worker support
+      - Community investment
+      - Economic diversification
+      - Democratic participation
+    principles:
+      - Workers lead the transition
+      - No one left behind
+      - Community benefits
+      - Democratic governance
+    steps:
+      - Assess impacts
+      - Engage stakeholders
+      - Develop transition plans
+      - Implement support programs
+      - Monitor and adapt
+    domain_ids:
+      - dom_just_transition
+    use_cases:
+      - Coal plant closure
+      - Industry transitions
+      - Community planning
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: frame_002
+    name: Community Energy Framework
+    description: Framework for developing community-owned energy systems that build local wealth and resilience.
+    type: operational
+    elements:
+      - Community organizing
+      - Project development
+      - Financing
+      - Governance
+      - Operations
+    principles:
+      - Community ownership
+      - Democratic governance
+      - Local benefit
+      - Environmental justice
+    steps:
+      - Build community support
+      - Assess resources
+      - Develop project plan
+      - Secure financing
+      - Construct and operate
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    use_cases:
+      - Community solar
+      - Microgrids
+      - Energy efficiency
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: frame_003
+    name: Food Sovereignty Framework
+    description: Framework for building community control over local food systems through production, distribution, and policy.
+    type: strategic
+    elements:
+      - Production
+      - Distribution
+      - Processing
+      - Policy advocacy
+      - Education
+    principles:
+      - Community self-determination
+      - Sustainable practices
+      - Food as a right
+      - Cultural food traditions
+    domain_ids:
+      - dom_food_systems
+    use_cases:
+      - Urban agriculture
+      - Food cooperatives
+      - Policy advocacy
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: frame_004
+    name: Ecological Restoration Framework
+    description: Framework for restoring degraded ecosystems using Indigenous stewardship principles.
+    type: operational
+    elements:
+      - Assessment
+      - Planning
+      - Implementation
+      - Monitoring
+      - Adaptation
+    principles:
+      - Indigenous leadership
+      - Traditional ecological knowledge
+      - Community involvement
+      - Long-term commitment
+    steps:
+      - Assess ecosystem health
+      - Engage Indigenous partners
+      - Develop restoration plan
+      - Implement restoration
+      - Monitor and adapt
+    domain_ids:
+      - dom_ecosystem_restoration
+    use_cases:
+      - Watershed restoration
+      - Forest restoration
+      - Wetland recovery
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: frame_005
+    name: Participatory Budgeting Framework
+    description: Framework for implementing democratic budgeting processes where communities decide how resources are allocated.
+    type: planning
+    elements:
+      - Community engagement
+      - Idea collection
+      - Proposal development
+      - Community voting
+      - Implementation
+      - Monitoring
+    principles:
+      - Direct democracy
+      - Community priorities
+      - Transparency
+      - Accountability
+    domain_ids:
+      - dom_democracy
+      - dom_economic_justice
+    use_cases:
+      - Municipal budgets
+      - Organization budgets
+      - Grant allocation
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: frame_006
+    name: Cooperative Development Framework
+    description: Framework for starting and growing worker-owned cooperatives.
+    type: operational
+    elements:
+      - Feasibility study
+      - Business planning
+      - Legal formation
+      - Governance design
+      - Capitalization
+      - Launch
+    principles:
+      - Worker ownership
+      - Democratic governance
+      - Surplus distribution
+      - Cooperative principles
+    steps:
+      - Build founding group
+      - Conduct feasibility study
+      - Develop business plan
+      - Form cooperative
+      - Raise capital
+      - Launch operations
+    domain_ids:
+      - dom_economic_justice
+    use_cases:
+      - Worker cooperatives
+      - Consumer cooperatives
+      - Producer cooperatives
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - framework_types
+  - framework_domains
+  - framework_maturity
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/framework
+  provenance: ChangeMappers Ontology Project

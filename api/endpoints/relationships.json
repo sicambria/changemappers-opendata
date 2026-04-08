@@ -1,0 +1,428 @@
+{
+  "endpoint": "/relationships",
+  "path": "/v1/relationships",
+  "httpMethods": ["GET", "POST", "PUT", "DELETE"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": false,
+          "description": "Unique relationship identifier"
+        },
+        "source_id": {
+          "type": "string",
+          "required": false,
+          "description": "Source entity ID"
+        },
+        "source_type": {
+          "type": "string",
+          "required": false,
+          "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+          "description": "Source entity type"
+        },
+        "target_id": {
+          "type": "string",
+          "required": false,
+          "description": "Target entity ID"
+        },
+        "target_type": {
+          "type": "string",
+          "required": false,
+          "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+          "description": "Target entity type"
+        },
+        "type": {
+          "type": "string",
+          "required": false,
+          "enum": ["MEMBER_OF", "PARTNER_OF", "LEADS", "PARTICIPATES_IN", "ADDRESSES", "IMPLEMENTS", "DOCUMENTS", "RELATED_TO", "FUNDS", "SUPPORTS", "LOCATED_IN"],
+          "description": "Relationship type"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending", "historical"],
+          "description": "Relationship status"
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "Filter relationships effective from this date"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "Filter relationships effective until this date"
+        },
+        "limit": {
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        },
+        "offset": {
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0
+        },
+        "sort": {
+          "type": "string",
+          "required": false,
+          "enum": ["created_at", "effective_from", "type"],
+          "default": "created_at"
+        },
+        "order": {
+          "type": "string",
+          "required": false,
+          "enum": ["asc", "desc"],
+          "default": "desc"
+        }
+      }
+    },
+    "POST": {
+      "body": {
+        "source_id": {
+          "type": "string",
+          "required": true,
+          "description": "Source entity ID"
+        },
+        "source_type": {
+          "type": "string",
+          "required": true,
+          "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"]
+        },
+        "target_id": {
+          "type": "string",
+          "required": true,
+          "description": "Target entity ID"
+        },
+        "target_type": {
+          "type": "string",
+          "required": true,
+          "enum": ["actor", "organization", "initiative", "cause", "pattern", "story"]
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["MEMBER_OF", "PARTNER_OF", "LEADS", "PARTICIPATES_IN", "ADDRESSES", "IMPLEMENTS", "DOCUMENTS", "RELATED_TO", "FUNDS", "SUPPORTS", "LOCATED_IN"]
+        },
+        "description": {
+          "type": "string",
+          "required": false,
+          "maxLength": 1000,
+          "description": "Description of the relationship"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending", "historical"],
+          "default": "active"
+        },
+        "effective_from": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "Start date of the relationship"
+        },
+        "effective_to": {
+          "type": "string",
+          "format": "date",
+          "required": false,
+          "description": "End date of the relationship"
+        },
+        "properties": {
+          "type": "object",
+          "required": false,
+          "description": "Additional properties specific to this relationship type"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": { "type": "string" },
+              "url": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          },
+          "required": false,
+          "description": "Evidence supporting this relationship"
+        },
+        "metadata": {
+          "type": "object",
+          "required": false
+        }
+      }
+    },
+    "PUT": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      },
+      "body": {
+        "type": { "type": "string", "required": false },
+        "description": { "type": "string", "required": false },
+        "status": { "type": "string", "required": false },
+        "effective_from": { "type": "string", "format": "date", "required": false },
+        "effective_to": { "type": "string", "format": "date", "required": false },
+        "properties": { "type": "object", "required": false },
+        "evidence": { "type": "array", "required": false },
+        "metadata": { "type": "object", "required": false }
+      }
+    },
+    "DELETE": {
+      "query": {
+        "id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "GET": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Relationship"
+            }
+          },
+          "pagination": {
+            "$ref": "#/definitions/Pagination"
+          }
+        }
+      },
+      "definitions": {
+        "Relationship": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "source": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "type": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "type": { "type": "string" },
+                "name": { "type": "string" }
+              }
+            },
+            "type": { "type": "string" },
+            "description": { "type": "string" },
+            "status": { "type": "string" },
+            "effective_from": { "type": "string", "format": "date" },
+            "effective_to": { "type": "string", "format": "date" },
+            "properties": { "type": "object" },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": { "type": "string" },
+                  "url": { "type": "string" },
+                  "description": { "type": "string" }
+                }
+              }
+            },
+            "metadata": { "type": "object" },
+            "created_at": { "type": "string", "format": "date-time" },
+            "updated_at": { "type": "string", "format": "date-time" }
+          }
+        },
+        "Pagination": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "limit": { "type": "integer" },
+            "offset": { "type": "integer" },
+            "has_more": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "POST": {
+      "success": {
+        "$ref": "#/definitions/Relationship"
+      }
+    },
+    "PUT": {
+      "success": {
+        "$ref": "#/definitions/Relationship"
+      }
+    },
+    "DELETE": {
+      "success": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "list_relationships": "?limit=20",
+        "filter_by_source": "?source_id=org_abc123&source_type=organization",
+        "filter_by_target": "?target_id=init_def456&target_type=initiative",
+        "filter_by_type": "?type=PARTNER_OF",
+        "filter_by_status": "?status=active",
+        "filter_by_date_range": "?effective_from=2024-01-01&effective_to=2024-12-31"
+      },
+      "POST": {
+        "create_partnership": {
+          "source_id": "org_abc123",
+          "source_type": "organization",
+          "target_id": "org_xyz789",
+          "target_type": "organization",
+          "type": "PARTNER_OF",
+          "description": "Strategic partnership for climate advocacy",
+          "status": "active",
+          "effective_from": "2024-01-15",
+          "properties": {
+            "partnership_type": "strategic",
+            "focus_areas": ["climate_policy", "public_campaigns"],
+            "collaboration_level": "high"
+          },
+          "evidence": [
+            {
+              "source": "Partnership Agreement",
+              "url": "https://example.org/partnership-agreement.pdf",
+              "description": "Signed partnership agreement"
+            }
+          ]
+        }
+      },
+      "PUT": {
+        "update_relationship": {
+          "id": "rel_abc123",
+          "status": "inactive",
+          "effective_to": "2024-06-30",
+          "description": "Partnership ended amicably"
+        }
+      }
+    },
+    "response": {
+      "GET": {
+        "success": {
+          "data": [
+            {
+              "id": "rel_abc123",
+              "source": {
+                "id": "org_abc123",
+                "type": "organization",
+                "name": "Green Future Initiative"
+              },
+              "target": {
+                "id": "org_xyz789",
+                "type": "organization",
+                "name": "Eco Alliance"
+              },
+              "type": "PARTNER_OF",
+              "description": "Strategic partnership for climate advocacy",
+              "status": "active",
+              "effective_from": "2024-01-15",
+              "effective_to": null,
+              "properties": {
+                "partnership_type": "strategic",
+                "focus_areas": ["climate_policy", "public_campaigns"],
+                "collaboration_level": "high"
+              },
+              "evidence": [
+                {
+                  "source": "Partnership Agreement",
+                  "url": "https://example.org/partnership-agreement.pdf",
+                  "description": "Signed partnership agreement"
+                }
+              ],
+              "metadata": {},
+              "created_at": "2024-01-15T10:00:00Z",
+              "updated_at": "2024-01-15T10:00:00Z"
+            }
+          ],
+          "pagination": {
+            "total": 45,
+            "limit": 20,
+            "offset": 0,
+            "has_more": true
+          }
+        }
+      },
+      "POST": {
+        "success": {
+          "id": "rel_new456",
+          "source": {
+            "id": "org_abc123",
+            "type": "organization",
+            "name": "Green Future Initiative"
+          },
+          "target": {
+            "id": "org_xyz789",
+            "type": "organization",
+            "name": "Eco Alliance"
+          },
+          "type": "PARTNER_OF",
+          "status": "active",
+          "created_at": "2024-06-20T19:00:00Z",
+          "updated_at": "2024-06-20T19:00:00Z"
+        }
+      },
+      "DELETE": {
+        "success": {
+          "message": "Relationship deleted successfully",
+          "id": "rel_abc123"
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid request parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "403": {
+      "code": "FORBIDDEN",
+      "description": "Insufficient permissions"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Relationship not found"
+    },
+    "409": {
+      "code": "CONFLICT",
+      "description": "Relationship already exists between these entities"
+    },
+    "422": {
+      "code": "UNPROCESSABLE_ENTITY",
+      "description": "Validation error - invalid relationship type for entity types"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    }
+  }
+}

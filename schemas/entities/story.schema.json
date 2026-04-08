@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/story.schema.json",
+  "title": "Story",
+  "description": "A narrative account of change experiences, lessons learned, or impact documentation within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "title", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the story",
+      "example": "550e8400-e29b-41d4-a716-446655440006"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "how-we-transformed-our-neighborhood"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Title of the story",
+      "example": "How We Transformed Our Neighborhood Through Collective Action"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["case_study", "testimonial", "lesson_learned", "impact_story", "personal_narrative", "organizational_profile", "project_documentation"],
+      "description": "Type of story",
+      "example": "case_study"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Brief summary of the story"
+    },
+    "content": {
+      "type": "string",
+      "maxLength": 50000,
+      "description": "Full story content in markdown format"
+    },
+    "author": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Actor who authored the story"
+    },
+    "organization": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Organization associated with the story"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Project the story is about"
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Initiative the story is about"
+    },
+    "location": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Geographic location of the story"
+    },
+    "date_range": {
+      "type": "object",
+      "description": "Time period covered by the story",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" }
+      }
+    },
+    "themes": {
+      "type": "array",
+      "description": "Themes covered",
+      "items": { "type": "string" }
+    },
+    "key_lessons": {
+      "type": "array",
+      "description": "Key lessons learned",
+      "items": { "type": "string" }
+    },
+    "challenges": {
+      "type": "array",
+      "description": "Challenges encountered",
+      "items": { "type": "string" }
+    },
+    "successes": {
+      "type": "array",
+      "description": "Successes achieved",
+      "items": { "type": "string" }
+    },
+    "patterns_used": {
+      "type": "array",
+      "description": "Patterns mentioned or used",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "media": {
+      "type": "array",
+      "description": "Associated media files",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "citations": {
+      "type": "array",
+      "description": "References and citations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Outcomes documented",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Impacts documented",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private", "restricted"],
+      "description": "Visibility level",
+      "example": "public"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "ISO 639-1 language code",
+      "example": "en"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Publication timestamp"
+    }
+  }
+}

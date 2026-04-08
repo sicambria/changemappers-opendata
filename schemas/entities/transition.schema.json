@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/transition.schema.json",
+  "title": "Transition",
+  "description": "A significant shift or transformation in a system, organization, or process within the changemakers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the transition",
+      "example": "550e8400-e29b-41d4-a716-446655440020"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "energy-transition-germany"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the transition",
+      "example": "Energy Transition in Germany"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the transition"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["energy", "economic", "social", "political", "technological", "environmental", "organizational", "cultural", "demographic"],
+      "description": "Type of transition",
+      "example": "energy"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["emerging", "ongoing", "accelerating", "stabilizing", "completed", "reversed"],
+      "description": "Status of the transition",
+      "example": "ongoing"
+    },
+    "from_state": {
+      "type": "object",
+      "description": "Initial state",
+      "additionalProperties": true
+    },
+    "to_state": {
+      "type": "object",
+      "description": "Target state",
+      "additionalProperties": true
+    },
+    "scale": {
+      "type": "string",
+      "enum": ["individual", "organizational", "community", "regional", "national", "global"],
+      "description": "Scale of the transition",
+      "example": "national"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Expected or actual end date"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Expected or actual duration"
+    },
+    "phases": {
+      "type": "array",
+      "description": "Transition phases",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" },
+          "status": { "type": "string", "enum": ["planned", "ongoing", "completed", "delayed"] }
+        }
+      }
+    },
+    "drivers": {
+      "type": "array",
+      "description": "Key drivers of the transition",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["technological", "economic", "political", "social", "environmental"] },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "barriers": {
+      "type": "array",
+      "description": "Key barriers",
+      "items": { "type": "string" }
+    },
+    "enablers": {
+      "type": "array",
+      "description": "Key enablers",
+      "items": { "type": "string" }
+    },
+    "actors": {
+      "type": "array",
+      "description": "Key actors involved",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Key organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Related initiatives",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Related projects",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "location": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Geographic focus"
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains affected",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Expected outcomes",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Measured impacts",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "indicators": {
+      "type": "array",
+      "description": "Transition indicators",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "frameworks": {
+      "type": "array",
+      "description": "Frameworks applied",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_transitions": {
+      "type": "array",
+      "description": "Related transitions",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "lessons_learned": {
+      "type": "array",
+      "description": "Lessons learned",
+      "items": { "type": "string" }
+    },
+    "references": {
+      "type": "array",
+      "description": "References",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/narrative.schema.json",
+  "title": "Narrative",
+  "description": "A structured account or interpretation of change processes, used to communicate meaning and inspire action.",
+  "type": "object",
+  "required": ["id", "slug", "title", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the narrative",
+      "example": "550e8400-e29b-41d4-a716-446655440032"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "grassroots-power-story"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "description": "Title of the narrative",
+      "example": "The Power of Grassroots Organizing"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["vision", "change_story", "challenge", "victory", "learning", "transformation", "movement", "personal", "organizational", "community"],
+      "description": "Type of narrative",
+      "example": "change_story"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Brief summary"
+    },
+    "content": {
+      "type": "string",
+      "maxLength": 50000,
+      "description": "Full narrative content"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["text", "video", "audio", "interactive", "multimedia"],
+      "description": "Format of the narrative",
+      "example": "text"
+    },
+    "perspective": {
+      "type": "string",
+      "enum": ["first_person", "third_person", "collective", "organizational"],
+      "description": "Narrative perspective",
+      "example": "collective"
+    },
+    "tone": {
+      "type": "string",
+      "enum": ["inspirational", "informative", "analytical", "critical", "celebratory", "cautionary"],
+      "description": "Tone of the narrative"
+    },
+    "themes": {
+      "type": "array",
+      "description": "Main themes",
+      "items": { "type": "string" }
+    },
+    "key_messages": {
+      "type": "array",
+      "description": "Key messages",
+      "items": { "type": "string" }
+    },
+    "characters": {
+      "type": "array",
+      "description": "Key characters/actors",
+      "items": {
+        "type": "object",
+        "required": ["actor_id"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Organizations featured",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related initiative"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related project"
+    },
+    "time_period": {
+      "type": "object",
+      "description": "Time period covered",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic settings",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Outcomes described",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Impacts described",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "lessons": {
+      "type": "array",
+      "description": "Lessons learned",
+      "items": { "type": "string" }
+    },
+    "challenges": {
+      "type": "array",
+      "description": "Challenges described",
+      "items": { "type": "string" }
+    },
+    "call_to_action": {
+      "type": "string",
+      "description": "Call to action if applicable"
+    },
+    "media": {
+      "type": "array",
+      "description": "Associated media",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "citations": {
+      "type": "array",
+      "description": "References and citations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_narratives": {
+      "type": "array",
+      "description": "Related narratives",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "audience": {
+      "type": "array",
+      "description": "Target audience",
+      "items": { "type": "string" }
+    },
+    "purpose": {
+      "type": "string",
+      "enum": ["awareness", "mobilization", "education", "advocacy", "documentation", "inspiration", "reflection"],
+      "description": "Purpose of the narrative"
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "ISO 639-1 language code",
+      "example": "en"
+    },
+    "translations": {
+      "type": "array",
+      "description": "Available translations",
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private", "restricted"],
+      "description": "Visibility level",
+      "example": "public"
+    },
+    "author": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Author of the narrative"
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether the narrative has been verified"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "published_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Publication timestamp"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "relationship_type": "derives_from",
+  "description": "Entity originates or sources from another Entity",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "t1r2a3d4-i5t6-7890-abcd-ef1234567890",
+      "properties": {
+        "derivation_type": "methodological",
+        "strength": "strong",
+        "context": "organizing_philosophy"
+      },
+      "confidence": 0.88,
+      "source_reference": "Montgomery Bus Boycott derived from African American church organizing traditions"
+    },
+    {
+      "source_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "target_id": "t2r3a4d5-i6t7-8901-cdef-234567890abc",
+      "properties": {
+        "derivation_type": "philosophical",
+        "strength": "strong",
+        "context": "nonviolent_principles"
+      },
+      "confidence": 0.95,
+      "source_reference": "Salt March derived from Gandhian Satyagraha philosophy and Hindu tradition"
+    },
+    {
+      "source_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "target_id": "h1i2s3t4-o5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "derivation_type": "historical",
+        "strength": "medium",
+        "context": "tactical_development"
+      },
+      "confidence": 0.86,
+      "source_reference": "Boycott tactics derived from Irish land struggles (Captain Boycott)"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "t3r4a5d6-i7t8-9012-defa-345678901bcd",
+      "properties": {
+        "derivation_type": "cultural",
+        "strength": "strong",
+        "context": "indigenous_governance"
+      },
+      "confidence": 0.92,
+      "source_reference": "Zapatista autonomous governance derived from Maya indigenous traditions"
+    },
+    {
+      "source_id": "p3a4t5t6-e7r8-9012-defa-345678901bcd",
+      "target_id": "t4r5a6d7-i8t9-0123-efab-456789012cde",
+      "properties": {
+        "derivation_type": "spiritual",
+        "strength": "medium",
+        "context": "consciousness_practice"
+      },
+      "confidence": 0.84,
+      "source_reference": "Restorative Justice derived from Indigenous circle traditions and Navajo Peacemaking"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "t5r6a7d8-i9t0-1234-fabc-567890123def",
+      "properties": {
+        "derivation_type": "ecological",
+        "strength": "strong",
+        "context": "environmental_knowledge"
+      },
+      "confidence": 0.90,
+      "source_reference": "Green Belt Movement derived from traditional Kikuyu tree-planting practices"
+    }
+  ]
+}

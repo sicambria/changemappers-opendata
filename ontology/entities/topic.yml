@@ -1,0 +1,183 @@
+id: topic
+name: Topic
+description: A specific subject matter within a domain or subdomain, representing a focused area of work.
+category: classification
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the topic
+    - name: name
+      type: string
+      required: true
+      description: Name of the topic
+    - name: description
+      type: string
+      required: true
+      description: Description of the topic
+    - name: parent_subdomain_id
+      type: string
+      required: false
+      description: Parent subdomain
+    - name: domain_id
+      type: string
+      required: false
+      description: Parent domain
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives addressing this topic
+    - name: project_ids
+      type: array[string]
+      required: false
+      description: Projects addressing this topic
+    - name: key_questions
+      type: array[string]
+      required: false
+      description: Key questions related to this topic
+    - name: related_topic_ids
+      type: array[string]
+      required: false
+      description: Related topics
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: subdomain
+    type: part_of
+    description: Topic is part of subdomain
+  - entity: domain
+    type: belongs_to
+    description: Topic belongs to domain
+  - entity: initiative
+    type: addressed_by
+    description: Topic is addressed by initiatives
+  - entity: project
+    type: addressed_by
+    description: Topic is addressed by projects
+examples:
+  - id: topic_001
+    name: Community Solar Development
+    description: Topic covering the development and implementation of community-owned solar projects.
+    parent_subdomain_id: sdom_renewable_energy
+    domain_id: dom_energy
+    initiative_ids:
+      - init_001
+    project_ids:
+      - proj_001
+    key_questions:
+      - How can communities finance solar projects?
+      - What governance structures work best?
+      - How do we ensure equitable access?
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: topic_002
+    name: Energy Cooperatives
+    description: Topic covering the formation and operation of energy cooperatives.
+    parent_subdomain_id: sdom_energy_democracy
+    domain_id: dom_energy
+    key_questions:
+      - What legal structures work best?
+      - How do cooperatives finance projects?
+      - What governance models succeed?
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: topic_003
+    name: Urban Farm Design
+    description: Topic covering the design and planning of urban farming operations.
+    parent_subdomain_id: sdom_urban_agriculture
+    domain_id: dom_food_systems
+    initiative_ids:
+      - init_003
+    project_ids:
+      - proj_005
+    key_questions:
+      - How do we maximize production in limited space?
+      - What crops work best in urban settings?
+      - How do we build healthy urban soils?
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: topic_004
+    name: Riparian Restoration
+    description: Topic covering restoration of streamside vegetation and habitat.
+    parent_subdomain_id: sdom_watershed_restoration
+    domain_id: dom_ecosystem_restoration
+    initiative_ids:
+      - init_005
+    project_ids:
+      - proj_007
+    key_questions:
+      - What native species should be planted?
+      - How do we involve community?
+      - What monitoring approaches work?
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: topic_005
+    name: Worker Cooperative Formation
+    description: Topic covering the process of starting worker cooperatives.
+    parent_subdomain_id: sdom_solidarity_economy
+    domain_id: dom_economic_justice
+    initiative_ids:
+      - init_007
+    project_ids:
+      - proj_009
+    key_questions:
+      - What legal structures work best?
+      - How do founders share ownership?
+      - What training do members need?
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: topic_006
+    name: Land Trust Development
+    description: Topic covering the creation of community land trusts.
+    domain_id: dom_land_justice
+    key_questions:
+      - How are land trusts structured?
+      - What financing mechanisms work?
+      - How do we ensure permanent affordability?
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: topic_007
+    name: Just Transition Planning
+    description: Topic covering planning processes for just transitions.
+    domain_id: dom_just_transition
+    initiative_ids:
+      - init_002
+    project_ids:
+      - proj_003
+    key_questions:
+      - How do we engage workers and communities?
+      - What transition timelines work?
+      - How do we measure success?
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - topic_classifications
+  - topic_hierarchy
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/topic
+  provenance: ChangeMappers Ontology Project

@@ -1,0 +1,300 @@
+id: initiative
+name: Initiative
+description: An organized, sustained effort directed toward achieving change goals, typically involving multiple actors, projects, and resources.
+category: activity
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the initiative
+    - name: name
+      type: string
+      required: true
+      description: Name of the initiative
+    - name: description
+      type: string
+      required: true
+      description: Description of the initiative's purpose and goals
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the initiative
+      enum_values:
+        - campaign
+        - movement
+        - program
+        - coalition
+        - collaborative
+    - name: status
+      type: enum
+      required: true
+      description: Current status of the initiative
+      enum_values:
+        - planning
+        - active
+        - paused
+        - completed
+        - archived
+    - name: start_date
+      type: date
+      required: false
+      description: When the initiative began
+    - name: end_date
+      type: date
+      required: false
+      description: When the initiative ended or is planned to end
+    - name: lead_actor_id
+      type: string
+      required: false
+      description: Primary actor leading the initiative
+    - name: lead_organization_id
+      type: string
+      required: false
+      description: Primary organization leading the initiative
+    - name: actor_ids
+      type: array[string]
+      required: false
+      description: Actors involved in the initiative
+    - name: project_ids
+      type: array[string]
+      required: false
+      description: Projects under this initiative
+    - name: cause_ids
+      type: array[string]
+      required: false
+      description: Causes being addressed
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains of focus
+    - name: location_ids
+      type: array[string]
+      required: false
+      description: Geographic scope
+    - name: scale_id
+      type: string
+      required: false
+      description: Scale of impact
+    - name: outcome_ids
+      type: array[string]
+      required: false
+      description: Expected or achieved outcomes
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 200
+    message: Name must not exceed 200 characters
+  - field: description
+    rule: max_length
+    value: 10000
+    message: Description must not exceed 10000 characters
+  - field: end_date
+    rule: greater_than
+    value: start_date
+    message: End date must be after start date
+relationships:
+  - entity: actor
+    type: led_by
+    description: Initiative is led by actors
+  - entity: organization
+    type: hosted_by
+    description: Initiative may be hosted by organization
+  - entity: project
+    type: includes
+    description: Initiative includes projects
+  - entity: cause
+    type: addresses
+    description: Initiative addresses causes
+  - entity: domain
+    type: focuses_on
+    description: Initiative focuses on domains
+  - entity: location
+    type: operates_in
+    description: Initiative operates in locations
+  - entity: outcome
+    type: produces
+    description: Initiative produces outcomes
+  - entity: impact
+    type: generates
+    description: Initiative generates impact
+examples:
+  - id: init_001
+    name: Community Solar Expansion Initiative
+    description: A multi-year effort to expand community-owned solar installations in underserved neighborhoods, addressing energy access and climate justice.
+    type: collaborative
+    status: active
+    start_date: '2022-01-15'
+    lead_actor_id: actor_001
+    lead_organization_id: org_001
+    actor_ids:
+      - actor_001
+      - actor_002
+    project_ids:
+      - proj_001
+      - proj_002
+    cause_ids:
+      - cause_001
+      - cause_002
+    domain_ids:
+      - dom_energy
+      - dom_climate_justice
+    location_ids:
+      - loc_portland
+      - loc_seattle
+    scale_id: scale_regional
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:30:00Z'
+    source: changemappers.org
+  - id: init_002
+    name: Just Transition Movement
+    description: Grassroots movement supporting workers and communities in transitioning from fossil fuel dependence to regenerative economies.
+    type: movement
+    status: active
+    start_date: '2018-06-01'
+    actor_ids:
+      - actor_002
+      - actor_007
+    project_ids:
+      - proj_003
+      - proj_004
+    cause_ids:
+      - cause_003
+    domain_ids:
+      - dom_just_transition
+      - dom_economic_justice
+    location_ids:
+      - loc_national
+    scale_id: scale_national
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: init_003
+    name: Food Sovereignty Campaign
+    description: Campaign to establish community control over local food systems through urban farming, food cooperatives, and policy change.
+    type: campaign
+    status: active
+    start_date: '2020-03-15'
+    lead_actor_id: actor_004
+    actor_ids:
+      - actor_004
+      - actor_006
+    project_ids:
+      - proj_005
+    cause_ids:
+      - cause_004
+    domain_ids:
+      - dom_food_systems
+    location_ids:
+      - loc_detroit
+    scale_id: scale_local
+    created_at: '2024-03-15T10:00:00Z'
+    updated_at: '2024-05-30T15:45:00Z'
+    source: changemappers.org
+  - id: init_004
+    name: Climate Education Coalition
+    description: Coalition of educators, youth, and organizations working to integrate climate justice into school curricula.
+    type: coalition
+    status: active
+    start_date: '2021-09-01'
+    lead_organization_id: org_004
+    actor_ids:
+      - actor_007
+    project_ids:
+      - proj_006
+    domain_ids:
+      - dom_climate_justice
+      - dom_education
+    location_ids:
+      - loc_national
+    scale_id: scale_national
+    created_at: '2024-04-01T11:30:00Z'
+    updated_at: '2024-06-15T09:00:00Z'
+    source: changemappers.org
+  - id: init_005
+    name: Watershed Restoration Program
+    description: Multi-stakeholder program restoring degraded watersheds through Indigenous-led stewardship and community science.
+    type: program
+    status: active
+    start_date: '2019-04-01'
+    lead_organization_id: org_006
+    actor_ids:
+      - actor_003
+    project_ids:
+      - proj_007
+    cause_ids:
+      - cause_005
+    domain_ids:
+      - dom_ecosystem_restoration
+    location_ids:
+      - loc_pnw
+    scale_id: scale_bioregional
+    created_at: '2024-02-10T12:00:00Z'
+    updated_at: '2024-07-05T14:20:00Z'
+    source: changemappers.org
+  - id: init_006
+    name: Land Back Initiative
+    description: Initiative supporting the return of land to Indigenous stewardship and recognition of tribal sovereignty.
+    type: collaborative
+    status: active
+    start_date: '2021-01-01'
+    lead_actor_id: actor_003
+    actor_ids:
+      - actor_003
+    project_ids:
+      - proj_008
+    cause_ids:
+      - cause_006
+    domain_ids:
+      - dom_land_justice
+    location_ids:
+      - loc_oregon
+    scale_id: scale_regional
+    created_at: '2024-01-20T08:30:00Z'
+    updated_at: '2024-06-28T10:15:00Z'
+    source: changemappers.org
+  - id: init_007
+    name: Cooperative Development Program
+    description: Training and technical assistance program supporting the formation of worker cooperatives in marginalized communities.
+    type: program
+    status: active
+    start_date: '2020-07-01'
+    lead_organization_id: org_003
+    actor_ids:
+      - actor_005
+      - actor_006
+    project_ids:
+      - proj_009
+    domain_ids:
+      - dom_economic_justice
+    location_ids:
+      - loc_southwest
+    scale_id: scale_regional
+    created_at: '2024-03-20T13:00:00Z'
+    updated_at: '2024-05-15T16:30:00Z'
+    source: changemappers.org
+taxonomies:
+  - initiative_types
+  - initiative_status
+  - scale_levels
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/initiative
+  provenance: ChangeMappers Ontology Project

@@ -1,0 +1,250 @@
+id: organization
+name: Organization
+description: A formal organized entity with defined structure, mission, and capacity to act within change processes.
+category: agent
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the organization
+    - name: name
+      type: string
+      required: true
+      description: Official name of the organization
+    - name: type
+      type: enum
+      required: true
+      description: Legal or structural type of organization
+      enum_values:
+        - nonprofit
+        - for_profit
+        - cooperative
+        - foundation
+        - government
+        - educational
+        - network
+        - community_org
+    - name: description
+      type: string
+      required: false
+      description: Mission and purpose description
+    - name: founding_date
+      type: date
+      required: false
+      description: Date organization was founded
+    - name: location_id
+      type: string
+      required: false
+      description: Primary location/headquarters
+    - name: sector_ids
+      type: array[string]
+      required: false
+      description: Sectors the organization operates in
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains of focus
+    - name: member_count
+      type: integer
+      required: false
+      description: Number of members or employees
+    - name: budget_range
+      type: enum
+      required: false
+      description: Annual budget range
+      enum_values:
+        - under_100k
+        - 100k_500k
+        - 500k_1m
+        - 1m_10m
+        - over_10m
+    - name: website
+      type: string
+      required: false
+      description: Official website URL
+    - name: contact_email
+      type: string
+      required: false
+      description: Primary contact email
+    - name: actor_ids
+      type: array[string]
+      required: false
+      description: Key actors associated with organization
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives led by organization
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 200
+    message: Name must not exceed 200 characters
+  - field: contact_email
+    rule: format
+    value: email
+    message: Must be a valid email address
+  - field: website
+    rule: format
+    value: url
+    message: Must be a valid URL
+relationships:
+  - entity: actor
+    type: employs
+    description: Organization employs actors
+  - entity: initiative
+    type: leads
+    description: Organization leads initiatives
+  - entity: project
+    type: implements
+    description: Organization implements projects
+  - entity: location
+    type: headquartered_in
+    description: Organization is headquartered in location
+  - entity: sector
+    type: operates_in
+    description: Organization operates in sectors
+  - entity: domain
+    type: focuses_on
+    description: Organization focuses on domains
+examples:
+  - id: org_001
+    name: Community Power Initiative
+    type: nonprofit
+    description: Nonprofit organization supporting community-owned renewable energy projects and energy democracy.
+    founding_date: '2015-06-01'
+    location_id: loc_portland
+    sector_ids:
+      - sec_energy
+      - sec_community_dev
+    domain_ids:
+      - dom_energy
+      - dom_democracy
+    member_count: 25
+    budget_range: 500k_1m
+    website: https://example.com/communitypower
+    created_at: '2024-01-10T09:00:00Z'
+    updated_at: '2024-06-30T14:00:00Z'
+    source: changemappers.org
+  - id: org_002
+    name: Regenerative Agriculture Alliance
+    type: nonprofit
+    description: Network of farmers and researchers advancing regenerative agriculture practices.
+    founding_date: '2018-03-15'
+    location_id: loc_midwest
+    sector_ids:
+      - sec_agriculture
+      - sec_food_systems
+    domain_ids:
+      - dom_food_systems
+    member_count: 500
+    budget_range: 100k_500k
+    created_at: '2024-02-05T10:30:00Z'
+    updated_at: '2024-05-20T11:15:00Z'
+    source: changemappers.org
+  - id: org_003
+    name: Solidarity Economy Network
+    type: network
+    description: Network of cooperatives, credit unions, and community enterprises building a solidarity economy.
+    founding_date: '2012-09-01'
+    location_id: loc_national
+    sector_ids:
+      - sec_economics
+      - sec_coops
+    domain_ids:
+      - dom_economic_justice
+    member_count: 150
+    budget_range: under_100k
+    created_at: '2024-01-15T08:00:00Z'
+    updated_at: '2024-07-01T16:30:00Z'
+    source: changemappers.org
+  - id: org_004
+    name: Climate Justice Foundation
+    type: foundation
+    description: Philanthropic foundation funding grassroots climate justice organizing and movement building.
+    founding_date: '2010-01-01'
+    location_id: loc_nyc
+    sector_ids:
+      - sec_philanthropy
+      - sec_climate
+    domain_ids:
+      - dom_climate_justice
+    member_count: 40
+    budget_range: over_10m
+    website: https://example.com/climatejustice
+    created_at: '2024-03-01T12:00:00Z'
+    updated_at: '2024-06-15T09:45:00Z'
+    source: changemappers.org
+  - id: org_005
+    name: Urban Futures Cooperative
+    type: cooperative
+    description: Worker cooperative providing urban planning and community development services.
+    founding_date: '2016-08-20'
+    location_id: loc_detroit
+    sector_ids:
+      - sec_urban_planning
+      - sec_community_dev
+    domain_ids:
+      - dom_urban_transformation
+    member_count: 12
+    budget_range: 500k_1m
+    created_at: '2024-02-20T14:00:00Z'
+    updated_at: '2024-05-10T10:30:00Z'
+    source: changemappers.org
+  - id: org_006
+    name: Watershed Guardians
+    type: community_org
+    description: Community-based organization protecting and restoring local watersheds.
+    founding_date: '2008-04-22'
+    location_id: loc_pnw
+    sector_ids:
+      - sec_water
+      - sec_conservation
+    domain_ids:
+      - dom_ecosystem_restoration
+    member_count: 200
+    budget_range: 100k_500k
+    created_at: '2024-01-25T11:00:00Z'
+    updated_at: '2024-07-05T13:15:00Z'
+    source: changemappers.org
+  - id: org_007
+    name: Green Worker Alliance
+    type: nonprofit
+    description: Labor-environmental coalition advocating for just transition and green jobs.
+    founding_date: '2014-05-01'
+    location_id: loc_california
+    sector_ids:
+      - sec_labor
+      - sec_energy
+    domain_ids:
+      - dom_just_transition
+    member_count: 5000
+    budget_range: 1m_10m
+    created_at: '2024-04-10T09:30:00Z'
+    updated_at: '2024-06-25T15:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - organization_types
+  - organization_size
+  - sector_classification
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/organization
+  provenance: ChangeMappers Ontology Project

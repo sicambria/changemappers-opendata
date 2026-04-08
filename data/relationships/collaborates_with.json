@@ -1,0 +1,72 @@
+{
+  "relationship_type": "collaborates_with",
+  "description": "Actor works together with another Actor",
+  "records": [
+    {
+      "source_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "target_id": "a2b3c4d5-e6f7-8901-cdef-234567890abc",
+      "properties": {
+        "collaboration_type": "strategic_partnership",
+        "duration": "campaign_period",
+        "scope": "leadership"
+      },
+      "confidence": 0.94,
+      "source_reference": "Martin Luther King Jr. collaborated with Ralph Abernathy in Montgomery Improvement Association"
+    },
+    {
+      "source_id": "d3e4f5a6-b7c8-9012-defa-345678901bcd",
+      "target_id": "d4e5f6a7-b8c9-0123-efab-456789012cde",
+      "properties": {
+        "collaboration_type": "co_leadership",
+        "duration": "5_years",
+        "scope": "organizing"
+      },
+      "confidence": 0.96,
+      "source_reference": "Cesar Chavez collaborated with Dolores Huerta in founding United Farm Workers"
+    },
+    {
+      "source_id": "e4f5a6b7-c8d9-0123-efab-456789012cde",
+      "target_id": "e5f6a7b8-c9d0-1234-fabc-567890123def",
+      "properties": {
+        "collaboration_type": "interfaith",
+        "duration": "campaign_period",
+        "scope": "peace_movement"
+      },
+      "confidence": 0.92,
+      "source_reference": "Leymah Gbowee collaborated with Asatu Bah Kenneth in Christian-Muslim women's peace coalition"
+    },
+    {
+      "source_id": "f5a6b7c8-d9e0-1234-fabc-567890123def",
+      "target_id": "f6a7b8c9-d0e1-2345-abcd-ef1234567890",
+      "properties": {
+        "collaboration_type": "movement_coalition",
+        "duration": "decades",
+        "scope": "national"
+      },
+      "confidence": 0.91,
+      "source_reference": "Lech Wałęsa collaborated with Andrzej Gwiazda and other Solidarity leaders"
+    },
+    {
+      "source_id": "a6b7c8d9-e0f1-2345-abcd-ef1234567890",
+      "target_id": "a7b8c9d0-e1f2-3456-bcde-f12345678901",
+      "properties": {
+        "collaboration_type": "community_organizing",
+        "duration": "months",
+        "scope": "neighborhood"
+      },
+      "confidence": 0.89,
+      "source_reference": "Mary Barbour collaborated with Glasgow Women's Housing Association leaders"
+    },
+    {
+      "source_id": "b7c8d9e0-f1a2-3456-bcde-f12345678901",
+      "target_id": "b8c9d0e1-f2a3-4567-cdef-123456789012",
+      "properties": {
+        "collaboration_type": "strategic_alliance",
+        "duration": "ongoing",
+        "scope": "indigenous_networks"
+      },
+      "confidence": 0.87,
+      "source_reference": "Zapatista leadership collaborates with other Mexican indigenous movements"
+    }
+  ]
+}

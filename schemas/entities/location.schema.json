@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/location.schema.json",
+  "title": "Location",
+  "description": "A geographic place or area relevant to change-making activities within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the location",
+      "example": "550e8400-e29b-41d4-a716-446655440017"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "buenos-aires-argentina"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the location",
+      "example": "Buenos Aires"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["city", "region", "country", "neighborhood", "district", "province", "state", "continent", "community", "indigenous_territory", "ecosystem", "watershed"],
+      "description": "Type of location",
+      "example": "city"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the location"
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "Geographic coordinates",
+      "additionalProperties": false,
+      "properties": {
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "geometry": {
+      "type": "object",
+      "description": "GeoJSON geometry for boundaries",
+      "additionalProperties": true
+    },
+    "country": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code",
+      "pattern": "^[A-Z]{2}$",
+      "example": "AR"
+    },
+    "country_name": {
+      "type": "string",
+      "description": "Full country name",
+      "example": "Argentina"
+    },
+    "region": {
+      "type": "string",
+      "description": "Region/state/province"
+    },
+    "parent_location": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent location (e.g., country for a city)"
+    },
+    "child_locations": {
+      "type": "array",
+      "description": "Child locations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "population": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Population if applicable"
+    },
+    "area": {
+      "type": "object",
+      "description": "Area information",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string", "enum": ["km2", "mi2", "ha", "acres"] }
+      }
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone",
+      "example": "America/Argentina/Buenos_Aires"
+    },
+    "languages_spoken": {
+      "type": "array",
+      "description": "Languages spoken",
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+    },
+    "indigenous_peoples": {
+      "type": "array",
+      "description": "Indigenous peoples/territories",
+      "items": { "type": "string" }
+    },
+    "climate": {
+      "type": "string",
+      "description": "Climate classification"
+    },
+    "industries": {
+      "type": "array",
+      "description": "Major industries",
+      "items": { "type": "string" }
+    },
+    "actors": {
+      "type": "array",
+      "description": "Actors based in this location",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "organizations": {
+      "type": "array",
+      "description": "Organizations based in this location",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects in this location",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives in this location",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "events": {
+      "type": "array",
+      "description": "Events in this location",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_locations": {
+      "type": "array",
+      "description": "Related locations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

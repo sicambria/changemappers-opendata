@@ -1,0 +1,279 @@
+id: tradition
+name: Tradition
+description: Cultural or historical practices that inform and shape change approaches, particularly Indigenous and community-based knowledge systems.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the tradition
+    - name: name
+      type: string
+      required: true
+      description: Name of the tradition
+    - name: description
+      type: string
+      required: true
+      description: Description of the tradition
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the tradition
+      enum_values:
+        - indigenous
+        - cultural
+        - spiritual
+        - ecological
+        - community
+        - historical
+    - name: origin
+      type: string
+      required: false
+      description: Geographic or cultural origin
+    - name: people
+      type: string
+      required: false
+      description: Indigenous nation or cultural group
+    - name: practices
+      type: array[string]
+      required: false
+      description: Key practices within this tradition
+    - name: values
+      type: array[string]
+      required: false
+      description: Core values embedded in this tradition
+    - name: knowledge_system
+      type: string
+      required: false
+      description: Associated knowledge system
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where tradition applies
+    - name: modern_applications
+      type: array[string]
+      required: false
+      description: Modern applications of this tradition
+    - name: related_tradition_ids
+      type: array[string]
+      required: false
+      description: Related traditions
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 20
+    message: Description must be at least 20 characters
+relationships:
+  - entity: domain
+    type: informs
+    description: Tradition informs domains
+  - entity: pattern
+    type: inspires
+    description: Tradition inspires patterns
+  - entity: location
+    type: originates_from
+    description: Tradition originates from locations
+  - entity: practice
+    type: embodied_in
+    description: Tradition is embodied in practices
+examples:
+  - id: trad_001
+    name: Traditional Ecological Knowledge
+    description: Indigenous knowledge systems developed through generations of interaction with local ecosystems, including understanding of species, habitats, and ecological relationships.
+    type: indigenous
+    origin: Global Indigenous peoples
+    practices:
+      - Prescribed burning
+      - Seasonal harvesting
+      - Habitat management
+      - Species monitoring
+    values:
+      - Reciprocity with nature
+      - Long-term thinking
+      - Community responsibility
+      - Respect for all beings
+    knowledge_system: Indigenous Science
+    domain_ids:
+      - dom_ecosystem_restoration
+      - dom_land_justice
+    modern_applications:
+      - Ecological restoration
+      - Climate adaptation
+      - Conservation planning
+      - Sustainable harvesting
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: trad_002
+    name: Salmon Ceremonies
+    description: Indigenous ceremonies honoring the salmon and ensuring respectful relationships with this vital species and the watersheds they inhabit.
+    type: spiritual
+    origin: Pacific Northwest
+    people: Coast Salish nations
+    practices:
+      - First Salmon ceremony
+      - Seasonal celebrations
+      - Prayer and gratitude
+      - Distribution protocols
+    values:
+      - Gratitude
+      - Respect
+      - Reciprocity
+      - Community sharing
+    domain_ids:
+      - dom_ecosystem_restoration
+    modern_applications:
+      - Watershed restoration
+      - Cultural revitalization
+      - Community connection
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: trad_003
+    name: Mutual Aid
+    description: Community practice of voluntary reciprocal exchange of resources and services for mutual benefit, rooted in many cultural traditions.
+    type: community
+    origin: Global
+    practices:
+      - Resource sharing
+      - Care networks
+      - Labor exchange
+      - Emergency support
+    values:
+      - Solidarity
+      - Self-determination
+      - Community resilience
+      - Cooperation
+    domain_ids:
+      - dom_economic_justice
+      - dom_community_resilience
+    modern_applications:
+      - Disaster response
+      - Community support networks
+      - Solidarity economies
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: trad_004
+    name: African American Cooperative Tradition
+    description: History of cooperative economics in African American communities, from mutual aid societies to modern cooperatives.
+    type: cultural
+    origin: African American communities
+    practices:
+      - Collective ownership
+      - Resource pooling
+      - Community banking
+      - Cooperative businesses
+    values:
+      - Self-reliance
+      - Economic independence
+      - Community wealth
+      - Collective action
+    domain_ids:
+      - dom_economic_justice
+    modern_applications:
+      - Worker cooperatives
+      - Community land trusts
+      - Credit unions
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: trad_005
+    name: Permaculture Design
+    description: Design system inspired by traditional ecological knowledge for creating sustainable human settlements and food systems.
+    type: ecological
+    origin: Australia, Indigenous influences
+    practices:
+      - Observation
+      - Pattern recognition
+      - Design
+      - Implementation
+    values:
+      - Care for earth
+      - Care for people
+      - Fair share
+    domain_ids:
+      - dom_food_systems
+      - dom_ecosystem_restoration
+    modern_applications:
+      - Urban agriculture
+      - Ecological restoration
+      - Sustainable building
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: trad_006
+    name: Indigenous Land Stewardship
+    description: Traditional practices of caring for land that maintain ecosystem health and biodiversity over generations.
+    type: indigenous
+    origin: Global Indigenous peoples
+    practices:
+      - Prescribed burning
+      - Selective harvesting
+      - Habitat creation
+      - Water management
+    values:
+      - Responsibility to future generations
+      - Relationship with land
+      - Sustainability
+      - Community governance
+    domain_ids:
+      - dom_land_justice
+      - dom_ecosystem_restoration
+    modern_applications:
+      - Conservation partnerships
+      - Land trusts
+      - Restoration projects
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: trad_007
+    name: Quaker Decision Making
+    description: Consensus-based decision-making process developed by Quakers, emphasizing unity and divine guidance.
+    type: spiritual
+    origin: Quaker tradition
+    practices:
+      - Silent reflection
+      - Discernment
+      - Sense of the meeting
+      - Standing aside
+    values:
+      - Equality
+      - Unity
+      - Divine guidance
+      - Patience
+    domain_ids:
+      - dom_democracy
+    modern_applications:
+      - Organizational governance
+      - Consensus process
+      - Conflict resolution
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - tradition_types
+  - tradition_origins
+  - knowledge_systems
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/tradition
+  provenance: ChangeMappers Ontology Project

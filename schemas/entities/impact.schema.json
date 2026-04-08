@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/impact.schema.json",
+  "title": "Impact",
+  "description": "A significant and lasting effect resulting from change activities, representing higher-level transformation.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the impact",
+      "example": "550e8400-e29b-41d4-a716-446655440029"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "reduced-carbon-emissions-region"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the impact",
+      "example": "Reduced Carbon Emissions in the Region"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the impact"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["environmental", "social", "economic", "political", "cultural", "institutional", "individual", "community", "systemic"],
+      "description": "Type of impact",
+      "example": "environmental"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["individual", "household", "community", "organizational", "sectoral", "societal", "systemic"],
+      "description": "Level of impact",
+      "example": "community"
+    },
+    "magnitude": {
+      "type": "string",
+      "enum": ["minimal", "moderate", "significant", "transformative"],
+      "description": "Magnitude of impact",
+      "example": "significant"
+    },
+    "duration": {
+      "type": "string",
+      "enum": ["temporary", "short_term", "medium_term", "long_term", "permanent"],
+      "description": "Duration of impact"
+    },
+    "reach": {
+      "type": "object",
+      "description": "Reach of the impact",
+      "additionalProperties": false,
+      "properties": {
+        "people_affected": { "type": "integer", "minimum": 0 },
+        "geographic_scope": { "type": "string" },
+        "sectors_affected": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attribution": {
+      "type": "string",
+      "enum": ["fully_attributable", "partially_attributable", "contributory", "uncertain"],
+      "description": "Attribution confidence",
+      "example": "partially_attributable"
+    },
+    "attribution_notes": {
+      "type": "string",
+      "description": "Notes on attribution"
+    },
+    "quantification": {
+      "type": "object",
+      "description": "Quantified impact data",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string" },
+        "baseline": { "type": "number" },
+        "percentage_change": { "type": "number" }
+      }
+    },
+    "evidence_strength": {
+      "type": "string",
+      "enum": ["anecdotal", "preliminary", "moderate", "strong", "conclusive"],
+      "description": "Strength of evidence"
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Supporting evidence",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "source": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related initiative"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related project"
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Outcomes contributing to this impact",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "indicators": {
+      "type": "array",
+      "description": "Indicators measuring this impact",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "beneficiaries": {
+      "type": "array",
+      "description": "Beneficiary groups",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "group": { "type": "string" },
+          "count": { "type": "integer" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic areas affected",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains affected",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "sdg_targets": {
+      "type": "array",
+      "description": "SDG targets addressed",
+      "items": { "type": "string", "pattern": "^\\d+\\.\\d+$" }
+    },
+    "unintended_consequences": {
+      "type": "array",
+      "description": "Unintended consequences",
+      "items": { "type": "string" }
+    },
+    "sustainability": {
+      "type": "string",
+      "description": "Sustainability of the impact"
+    },
+    "stories": {
+      "type": "array",
+      "description": "Stories documenting this impact",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "media": {
+      "type": "array",
+      "description": "Media documenting this impact",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "verified_by": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Actor who verified this impact"
+    },
+    "verification_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of verification"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

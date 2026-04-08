@@ -1,0 +1,72 @@
+{
+  "relationship_type": "enables",
+  "description": "Entity facilitates or makes possible another Entity",
+  "records": [
+    {
+      "source_id": "t1o2o3l4-s5r6-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "enablement_type": "communication",
+        "strength": "high",
+        "context": "organizing"
+      },
+      "confidence": 0.91,
+      "source_reference": "Encrypted communication tools enable secure organizing for resistance movements"
+    },
+    {
+      "source_id": "l1e2a3r4-n5i6-7890-abcd-ef1234567890",
+      "target_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "properties": {
+        "enablement_type": "capacity",
+        "strength": "high",
+        "context": "training"
+      },
+      "confidence": 0.88,
+      "source_reference": "Resistance training programs enable effective implementation of nonviolent tactics"
+    },
+    {
+      "source_id": "c1o2m3m4-u5n6-7890-abcd-ef1234567890",
+      "target_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "properties": {
+        "enablement_type": "social_infrastructure",
+        "strength": "high",
+        "context": "sustainability"
+      },
+      "confidence": 0.90,
+      "source_reference": "Community assemblies enable long-term movement sustainability and decision-making"
+    },
+    {
+      "source_id": "f1u2n3d4-s5o6-7890-abcd-ef1234567890",
+      "target_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "properties": {
+        "enablement_type": "resource",
+        "strength": "medium",
+        "context": "scaling"
+      },
+      "confidence": 0.86,
+      "source_reference": "Community land trusts enable long-term housing initiatives by removing land from speculation"
+    },
+    {
+      "source_id": "p2o2l3i4-c5y6-7890-abcd-ef1234567890",
+      "target_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "properties": {
+        "enablement_type": "institutional",
+        "strength": "medium",
+        "context": "legitimacy"
+      },
+      "confidence": 0.84,
+      "source_reference": "Participatory governance policies enable citizen-led initiatives and budgeting"
+    },
+    {
+      "source_id": "n1e2t3w4-o5r6-7890-abcd-ef1234567890",
+      "target_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "properties": {
+        "enablement_type": "coordination",
+        "strength": "high",
+        "context": "scaling"
+      },
+      "confidence": 0.92,
+      "source_reference": "Networked alliances enable coordination across dispersed local movements"
+    }
+  ]
+}

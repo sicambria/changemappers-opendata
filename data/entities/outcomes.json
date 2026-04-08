@@ -1,0 +1,102 @@
+{
+  "dataset_info": {
+    "name": "Outcomes",
+    "description": "Expected or achieved results from initiatives and projects within the changemappers ecosystem.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 6,
+    "schema": "https://changemappers.org/schemas/entities/outcome.schema.json"
+  },
+  "records": [
+    {
+      "id": "o1u2t3c4-o5m6-7890-abcd-ef1234567890",
+      "slug": "community-water-monitoring-established",
+      "name": "Community Water Monitoring Networks Established",
+      "description": "Establishment of community-based water quality monitoring networks with trained local monitors, regular testing protocols, and data sharing systems.",
+      "type": "capacity_building",
+      "status": "achieved",
+      "initiative": "i1n2i3t4-i5t6-7890-abcd-ef1234567890",
+      "project": "p1r2o3j4-e5c6-7890-abcd-ef1234567890",
+      "related_impacts": ["im1p2a3c4-t5i6-7890-abcd-ef1234567890"],
+      "related_indicators": ["in1d2i3c4-a5t6-7890-abcd-ef1234567890"],
+      "tags": ["water-monitoring", "community-science", "capacity-building"],
+      "created_at": "2026-01-10T08:00:00Z",
+      "updated_at": "2026-04-01T14:00:00Z"
+    },
+    {
+      "id": "o2u3t4c5-o6m7-8901-bcde-f12345678901",
+      "slug": "farmers-trained-water-retention",
+      "name": "Farmers Trained in Water Retention Techniques",
+      "description": "Thousands of smallholder farmers trained in designing and implementing water retention landscapes for climate resilience.",
+      "type": "capacity_building",
+      "status": "achieved",
+      "initiative": "i2n3i4t5-i6t7-8901-bcde-f12345678901",
+      "project": "p2r3o4j5-e6c7-8901-bcde-f12345678901",
+      "related_impacts": ["im2p3a4c5-t6i7-8901-bcde-f12345678901"],
+      "related_indicators": ["in2d3i4c5-a6t7-8901-bcde-f12345678901"],
+      "tags": ["farmer-training", "water-retention", "capacity-building"],
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-04-02T10:30:00Z"
+    },
+    {
+      "id": "o3u4t5c6-o7m8-9012-cdef-123456789012",
+      "slug": "food-hub-network-operational",
+      "name": "Regional Food Hub Network Operational",
+      "description": "Network of community food hubs connecting local producers with consumers, supporting food sovereignty and regional resilience.",
+      "type": "infrastructure",
+      "status": "achieved",
+      "initiative": "i3n4i5t6-i7t8-9012-cdef-123456789012",
+      "project": "p3r4o5j6-e7c8-9012-cdef-123456789012",
+      "related_impacts": ["im3p4a5c6-t7i8-9012-cdef-123456789012"],
+      "related_indicators": ["in3d4i5c6-a7t8-9012-cdef-123456789012"],
+      "tags": ["food-hubs", "infrastructure", "food-sovereignty"],
+      "created_at": "2026-01-15T10:00:00Z",
+      "updated_at": "2026-04-03T11:00:00Z"
+    },
+    {
+      "id": "o4u5t6c7-o8m9-0123-def0-123456789012",
+      "slug": "research-atlas-published",
+      "name": "Social-Ecological Systems Atlas Published",
+      "description": "Open-access digital atlas documenting successful social-ecological system transformations with case studies and implementation guides.",
+      "type": "knowledge_production",
+      "status": "achieved",
+      "initiative": "i4n5i6t7-i8t9-0123-def0-123456789012",
+      "project": "p4r5o6j7-e8c9-0123-def0-123456789012",
+      "related_impacts": ["im4p5a6c7-t8i9-0123-def0-123456789012"],
+      "related_indicators": ["in4d5i6c7-a8t9-0123-def0-123456789012"],
+      "tags": ["research", "open-access", "knowledge-production"],
+      "created_at": "2026-01-18T11:00:00Z",
+      "updated_at": "2026-04-04T12:00:00Z"
+    },
+    {
+      "id": "o5u6t7c8-o9m0-1234-ef01-234567890123",
+      "slug": "facilitators-trained-restorative-justice",
+      "name": "Community Facilitators Trained in Restorative Justice",
+      "description": "Community facilitators equipped with restorative justice skills for conflict resolution and healing circle facilitation.",
+      "type": "capacity_building",
+      "status": "achieved",
+      "initiative": "i5n6i7t8-i9t0-1234-ef01-234567890123",
+      "project": "p5r6o7j8-e9c0-1234-ef01-234567890123",
+      "related_impacts": ["im5p6a7c8-t9i0-1234-ef01-234567890123"],
+      "related_indicators": ["in5d6i7c8-a9t0-1234-ef01-234567890123"],
+      "tags": ["restorative-justice", "training", "facilitators"],
+      "created_at": "2026-01-20T12:00:00Z",
+      "updated_at": "2026-04-05T13:00:00Z"
+    },
+    {
+      "id": "o6u7t8c9-o0m1-2345-f012-345678901234",
+      "slug": "institutions-divested",
+      "name": "Institutions Committed to Fossil Fuel Divestment",
+      "description": "Growing number of institutions publicly committed to divesting from fossil fuel investments, shifting capital to regenerative alternatives.",
+      "type": "policy_change",
+      "status": "ongoing",
+      "initiative": "i6n7i8t9-i0t1-2345-f012-345678901234",
+      "project": "p6r7o8j9-e0c1-2345-f012-345678901234",
+      "related_impacts": ["im6p7a8c9-t0i1-2345-f012-345678901234"],
+      "related_indicators": ["in6d7i8c9-a0t1-2345-f012-345678901234"],
+      "tags": ["divestment", "policy-change", "climate-campaign"],
+      "created_at": "2026-01-22T13:00:00Z",
+      "updated_at": "2026-04-06T14:00:00Z"
+    }
+  ]
+}

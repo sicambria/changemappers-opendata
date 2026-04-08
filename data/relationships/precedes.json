@@ -1,0 +1,61 @@
+{
+  "relationship_type": "precedes",
+  "description": "Entity comes before another Entity in sequence",
+  "records": [
+    {
+      "source_id": "p1r1e2c3-e4d5-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "triggering",
+        "time_gap": "days",
+        "causality": "direct"
+      },
+      "confidence": 0.93,
+      "source_reference": "Rosa Parks' arrest preceded Montgomery Bus Boycott launch"
+    },
+    {
+      "source_id": "l1e2a3r4-n5i6-7890-abcd-ef1234567890",
+      "target_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "properties": {
+        "sequence_type": "capacity_building",
+        "time_gap": "years",
+        "causality": "enabling"
+      },
+      "confidence": 0.87,
+      "source_reference": "Community organizing training precedes successful movement launches"
+    },
+    {
+      "source_id": "e1v2e3n4-t5p6-7890-abcd-ef1234567890",
+      "target_id": "e2v3e4n5-t6p7-8901-cdef-234567890abc",
+      "properties": {
+        "sequence_type": "escalation",
+        "time_gap": "months",
+        "causality": "strategic"
+      },
+      "confidence": 0.89,
+      "source_reference": "Initial strike action precedes wider boycott campaign in Delano"
+    },
+    {
+      "source_id": "p2u3b4l5-i6c7-8901-cdef-234567890abc",
+      "target_id": "l3e4g5i6-s7l8-9012-defa-345678901bcd",
+      "properties": {
+        "sequence_type": "pressure_sequence",
+        "time_gap": "years",
+        "causality": "indirect"
+      },
+      "confidence": 0.85,
+      "source_reference": "Public awareness campaigns precede legislative change"
+    },
+    {
+      "source_id": "c1o2m3m4-u5n6-7890-abcd-ef1234567890",
+      "target_id": "a1u2t3o4-n5o6-7890-abcd-ef1234567890",
+      "properties": {
+        "sequence_type": "institutional",
+        "time_gap": "years",
+        "causality": "developmental"
+      },
+      "confidence": 0.88,
+      "source_reference": "Community assemblies precede autonomous governance structures"
+    }
+  ]
+}

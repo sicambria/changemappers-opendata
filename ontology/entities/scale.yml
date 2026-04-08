@@ -1,0 +1,182 @@
+id: scale
+name: Scale
+description: The level of geographic, social, or organizational impact of an initiative, project, or change process.
+category: classification
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the scale
+    - name: name
+      type: string
+      required: true
+      description: Name of the scale level
+    - name: description
+      type: string
+      required: true
+      description: Description of this scale level
+    - name: type
+      type: enum
+      required: true
+      description: Classification of scale type
+      enum_values:
+        - geographic
+        - organizational
+        - impact
+        - temporal
+    - name: level
+      type: integer
+      required: true
+      description: Numeric level for ordering
+    - name: parent_scale_id
+      type: string
+      required: false
+      description: Parent scale level
+    - name: child_scale_ids
+      type: array[string]
+      required: false
+      description: Child scale levels
+    - name: typical_scope
+      type: string
+      required: false
+      description: Typical scope at this scale
+    - name: examples
+      type: array[string]
+      required: false
+      description: Examples of initiatives at this scale
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: initiative
+    type: applies_to
+    description: Scale applies to initiatives
+  - entity: project
+    type: applies_to
+    description: Scale applies to projects
+  - entity: location
+    type: matches
+    description: Scale matches locations
+examples:
+  - id: scale_local
+    name: Local
+    description: Scale focused on a specific neighborhood, community, or municipality.
+    type: geographic
+    level: 1
+    typical_scope: Neighborhood or city-level change
+    examples:
+      - Community garden project
+      - Local policy campaign
+      - Neighborhood association
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: scale_regional
+    name: Regional
+    description: Scale focused on a larger geographic area like a metropolitan area or bioregion.
+    type: geographic
+    level: 2
+    parent_scale_id: scale_national
+    child_scale_ids:
+      - scale_local
+    typical_scope: Multi-city or watershed-level change
+    examples:
+      - Regional energy initiative
+      - Watershed restoration
+      - Regional coalition
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: scale_national
+    name: National
+    description: Scale focused on an entire nation or country.
+    type: geographic
+    level: 3
+    parent_scale_id: scale_global
+    child_scale_ids:
+      - scale_regional
+    typical_scope: Country-wide policy and movement
+    examples:
+      - Federal policy campaign
+      - National network
+      - Country-wide movement
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: scale_global
+    name: Global
+    description: Scale focused on worldwide or international scope.
+    type: geographic
+    level: 4
+    child_scale_ids:
+      - scale_national
+    typical_scope: International coordination and movements
+    examples:
+      - International climate movement
+      - Global coalition
+      - Worldwide campaign
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: scale_bioregional
+    name: Bioregional
+    description: Scale focused on a natural bioregion defined by ecological boundaries.
+    type: geographic
+    level: 2
+    typical_scope: Ecosystem or watershed-level change
+    examples:
+      - Watershed restoration
+      - Bioregional network
+      - Ecosystem stewardship
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: scale_organizational
+    name: Organizational
+    description: Scale focused on a single organization.
+    type: organizational
+    level: 1
+    typical_scope: Organizational change and development
+    examples:
+      - Organizational transformation
+      - Internal capacity building
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: scale_network
+    name: Network
+    description: Scale focused on a network of organizations or actors.
+    type: organizational
+    level: 2
+    typical_scope: Network coordination and collaboration
+    examples:
+      - Coalition building
+      - Network coordination
+      - Movement building
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - scale_types
+  - scale_levels
+  - geographic_hierarchy
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/scale
+  provenance: ChangeMappers Ontology Project

@@ -1,0 +1,191 @@
+id: outcome
+name: Outcome
+description: A result or effect produced by an initiative, project, or change process.
+category: result
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the outcome
+    - name: name
+      type: string
+      required: true
+      description: Name of the outcome
+    - name: description
+      type: string
+      required: true
+      description: Description of the outcome
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the outcome
+      enum_values:
+        - intended
+        - unintended
+        - short_term
+        - medium_term
+        - long_term
+        - direct
+        - indirect
+    - name: status
+      type: enum
+      required: true
+      description: Achievement status
+      enum_values:
+        - expected
+        - in_progress
+        - achieved
+        - partially_achieved
+        - not_achieved
+    - name: initiative_id
+      type: string
+      required: false
+      description: Related initiative
+    - name: project_id
+      type: string
+      required: false
+      description: Related project
+    - name: impact_ids
+      type: array[string]
+      required: false
+      description: Associated impacts
+    - name: indicator_ids
+      type: array[string]
+      required: false
+      description: Indicators measuring this outcome
+    - name: evidence
+      type: string
+      required: false
+      description: Evidence of outcome achievement
+    - name: beneficiary_ids
+      type: array[string]
+      required: false
+      description: Who benefits from this outcome
+    - name: date_achieved
+      type: date
+      required: false
+      description: Date outcome was achieved
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: initiative
+    type: produced_by
+    description: Outcome is produced by initiative
+  - entity: project
+    type: produced_by
+    description: Outcome is produced by project
+  - entity: impact
+    type: contributes_to
+    description: Outcome contributes to impact
+  - entity: indicator
+    type: measured_by
+    description: Outcome is measured by indicators
+examples:
+  - id: outcome_001
+    name: Reduced Energy Bills for 100 Households
+    description: Low-income households see 50% reduction in energy costs through community solar subscription.
+    type: intended
+    status: achieved
+    project_id: proj_001
+    initiative_id: init_001
+    evidence: Utility bill analysis shows average 50% reduction for subscribing households
+    beneficiary_ids:
+      - actor_low_income_hh
+    date_achieved: '2024-06-01'
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: outcome_002
+    name: 50 Trained Solar Installers
+    description: 50 community members completed solar installation certification.
+    type: intended
+    status: achieved
+    project_id: proj_002
+    initiative_id: init_001
+    evidence: NABCEP certification records
+    date_achieved: '2024-08-01'
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: outcome_003
+    name: Worker Support Programs Established
+    description: Just transition support programs serving displaced coal workers.
+    type: intended
+    status: in_progress
+    project_id: proj_003
+    initiative_id: init_002
+    evidence: Programs launched in 3 communities with 200 participants
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: outcome_004
+    name: 5000 lbs Annual Food Production
+    description: Urban farm network producing fresh food for community distribution.
+    type: intended
+    status: achieved
+    project_id: proj_005
+    initiative_id: init_003
+    evidence: Harvest records and distribution logs
+    date_achieved: '2023-12-31'
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: outcome_005
+    name: Climate Justice Curriculum Adopted
+    description: K-12 schools adopted climate justice curriculum modules.
+    type: intended
+    status: in_progress
+    project_id: proj_006
+    initiative_id: init_004
+    evidence: 50 schools piloting curriculum
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: outcome_006
+    name: 50 Acres Riparian Restoration
+    description: Restored riparian habitat along watershed streams.
+    type: intended
+    status: in_progress
+    project_id: proj_007
+    initiative_id: init_005
+    evidence: 35 acres planted, monitoring shows 80% survival rate
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: outcome_007
+    name: Land Returned to Tribe
+    description: 500 acres of ancestral land returned to tribal stewardship.
+    type: intended
+    status: achieved
+    project_id: proj_008
+    initiative_id: init_006
+    evidence: Land transfer completed, stewardship plan adopted
+    date_achieved: '2024-03-15'
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - outcome_types
+  - outcome_status
+  - outcome_timeframe
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/outcome
+  provenance: ChangeMappers Ontology Project

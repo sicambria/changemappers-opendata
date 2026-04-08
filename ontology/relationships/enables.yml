@@ -1,0 +1,104 @@
+id: enables
+name: Enables
+description: An Entity facilitates, makes possible, or creates conditions for another Entity. This captures facilitative and supportive relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  enablement_type:
+    type: string
+    description: How enablement occurs (provides_infrastructure, creates_opportunity, removes_barrier)
+    required: false
+  necessity_level:
+    type: string
+    description: Whether enablement is required (essential, helpful, optional)
+    required: false
+  mechanism:
+    type: string
+    description: The mechanism of enablement
+    required: false
+  conditions:
+    type: array
+    description: Conditions under which enablement works
+    required: false
+
+cardinality: many-to-many
+
+inverse: enabled_by
+
+examples:
+  - from: OpenDataPolicy
+    to: DataJournalism
+    properties:
+      enablement_type: removes_barrier
+      necessity_level: helpful
+      mechanism: data_access
+    confidence: 0.92
+    source: https://changemappers.org/policies/open-data
+
+  - from: InternetAccess
+    to: DigitalActivism
+    properties:
+      enablement_type: provides_infrastructure
+      necessity_level: essential
+      mechanism: communication_platform
+    confidence: 0.95
+    source: https://changemappers.org/infrastructure/internet
+
+  - from: LegalFramework
+    to: CommunityOrganizing
+    properties:
+      enablement_type: creates_opportunity
+      necessity_level: helpful
+      mechanism: right_to_assemble
+    confidence: 0.88
+    source: https://changemappers.org/frameworks/legal
+
+  - from: TranslationTools
+    to: InternationalSolidarity
+    properties:
+      enablement_type: removes_barrier
+      necessity_level: helpful
+      mechanism: language_access
+    confidence: 0.86
+    source: https://changemappers.org/tools/translation
+
+  - from: GrantFunding
+    to: GrassrootsInitiatives
+    properties:
+      enablement_type: creates_opportunity
+      necessity_level: essential
+      mechanism: financial_resources
+      conditions: ["aligned_mission", "community_support"]
+    confidence: 0.91
+    source: https://changemappers.org/resources/grants
+
+  - from: TrainingProgram
+    to: CommunityLeadership
+    properties:
+      enablement_type: creates_opportunity
+      necessity_level: helpful
+      mechanism: skill_development
+    confidence: 0.89
+    source: https://changemappers.org/programs/training
+
+  - from: OpenSourceSoftware
+    to: SocialInnovation
+    properties:
+      enablement_type: provides_infrastructure
+      necessity_level: helpful
+      mechanism: technology_access
+      conditions: ["technical_capacity"]
+    confidence: 0.93
+    source: https://changemappers.org/tools/open-source
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

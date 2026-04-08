@@ -1,0 +1,231 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/media.schema.json",
+  "title": "Media",
+  "description": "A digital media file (image, video, audio, document) associated with entities in the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "type", "url", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the media",
+      "example": "550e8400-e29b-41d4-a716-446655440033"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Title of the media",
+      "example": "Community Garden Opening Day"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the media"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["image", "video", "audio", "document", "presentation", "spreadsheet", "infographic", "map", "interactive"],
+      "description": "Type of media",
+      "example": "image"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to access the media",
+      "example": "https://storage.changemappers.org/media/community-garden.jpg"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Thumbnail URL"
+    },
+    "download_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Download URL"
+    },
+    "embed_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Embed URL for videos"
+    },
+    "format": {
+      "type": "string",
+      "description": "File format",
+      "example": "jpg"
+    },
+    "mime_type": {
+      "type": "string",
+      "pattern": "^[a-z]+/[a-z0-9.+-]+$",
+      "description": "MIME type",
+      "example": "image/jpeg"
+    },
+    "size": {
+      "type": "object",
+      "description": "File size",
+      "additionalProperties": false,
+      "properties": {
+        "bytes": { "type": "integer", "minimum": 0 },
+        "human_readable": { "type": "string" }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "description": "Dimensions for images/videos",
+      "additionalProperties": false,
+      "properties": {
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "duration": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Duration in seconds for audio/video"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "Resolution for video",
+      "example": "1080p"
+    },
+    "fps": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Frames per second for video"
+    },
+    "bitrate": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Bitrate in kbps"
+    },
+    "captions": {
+      "type": "array",
+      "description": "Captions/subtitles",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "language": { "type": "string", "pattern": "^[a-z]{2}$" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "transcript": {
+      "type": "string",
+      "description": "Transcript for audio/video"
+    },
+    "alt_text": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Alt text for accessibility"
+    },
+    "credit": {
+      "type": "string",
+      "description": "Credit/attribution"
+    },
+    "creator": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Creator (actor)"
+    },
+    "license": {
+      "type": "string",
+      "description": "License",
+      "example": "CC-BY-4.0"
+    },
+    "copyright_holder": {
+      "type": "string",
+      "description": "Copyright holder"
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the media was created"
+    },
+    "date_captured": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date/time the media was captured"
+    },
+    "location": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Location where media was captured"
+    },
+    "coordinates": {
+      "type": "object",
+      "description": "GPS coordinates",
+      "additionalProperties": false,
+      "properties": {
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+      }
+    },
+    "people_shown": {
+      "type": "array",
+      "description": "People shown in the media",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "event": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Event documented"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Project associated"
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Initiative associated"
+    },
+    "story": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Story associated"
+    },
+    "narrative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Narrative associated"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["public", "private", "restricted", "unlisted"],
+      "description": "Visibility level",
+      "example": "public"
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Whether this is a featured media"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata (EXIF, etc.)"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

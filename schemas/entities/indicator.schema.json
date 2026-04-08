@@ -1,0 +1,188 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/indicator.schema.json",
+  "title": "Indicator",
+  "description": "A measurable variable used to assess progress, performance, or change over time.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the indicator",
+      "example": "550e8400-e29b-41d4-a716-446655440030"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "community-engagement-score"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the indicator",
+      "example": "Community Engagement Score"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of what the indicator measures"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["quantitative", "qualitative", "composite", "binary", "ordinal", "index"],
+      "description": "Type of indicator",
+      "example": "quantitative"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["output", "outcome", "impact", "process", "input", "contextual"],
+      "description": "Category of indicator",
+      "example": "outcome"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement",
+      "example": "percentage"
+    },
+    "measurement_method": {
+      "type": "string",
+      "description": "How the indicator is measured"
+    },
+    "data_source": {
+      "type": "string",
+      "description": "Source of data"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": ["real_time", "daily", "weekly", "monthly", "quarterly", "annually", "ad_hoc"],
+      "description": "Measurement frequency",
+      "example": "quarterly"
+    },
+    "baseline": {
+      "type": "object",
+      "description": "Baseline information",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "date": { "type": "string", "format": "date" },
+        "source": { "type": "string" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "description": "Target information",
+      "additionalProperties": false,
+      "properties": {
+        "value": { "type": "number" },
+        "date": { "type": "string", "format": "date" }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "description": "Performance thresholds",
+      "additionalProperties": false,
+      "properties": {
+        "red": { "type": "number" },
+        "yellow": { "type": "number" },
+        "green": { "type": "number" }
+      }
+    },
+    "validity": {
+      "type": "object",
+      "description": "Validity information",
+      "additionalProperties": false,
+      "properties": {
+        "reliability": { "type": "string" },
+        "validity_type": { "type": "string" },
+        "limitations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "disaggregation": {
+      "type": "array",
+      "description": "Disaggregation categories",
+      "items": { "type": "string" }
+    },
+    "related_outcomes": {
+      "type": "array",
+      "description": "Outcomes this indicator measures",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_impacts": {
+      "type": "array",
+      "description": "Impacts this indicator measures",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_indicators": {
+      "type": "array",
+      "description": "Related indicators",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "parent_indicator": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent indicator if composite"
+    },
+    "child_indicators": {
+      "type": "array",
+      "description": "Child indicators if composite",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiatives_using": {
+      "type": "array",
+      "description": "Initiatives using this indicator",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects_using": {
+      "type": "array",
+      "description": "Projects using this indicator",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains this indicator applies to",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "sdg_indicator": {
+      "type": "string",
+      "description": "Related SDG indicator code"
+    },
+    "international_standard": {
+      "type": "string",
+      "description": "International standard reference"
+    },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Weight if part of composite"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Display order"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

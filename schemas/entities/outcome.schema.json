@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/outcome.schema.json",
+  "title": "Outcome",
+  "description": "A result or effect produced by a change initiative, project, or activity.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "status", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the outcome",
+      "example": "550e8400-e29b-41d4-a716-446655440028"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "increased-civic-participation"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the outcome",
+      "example": "Increased Civic Participation"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 3000,
+      "description": "Description of the outcome"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["intended", "unintended", "positive", "negative", "direct", "indirect", "short_term", "medium_term", "long_term"],
+      "description": "Type of outcome",
+      "example": "intended"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "emerging", "achieved", "partially_achieved", "not_achieved", "exceeded"],
+      "description": "Status of the outcome",
+      "example": "achieved"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["behavioral", "attitudinal", "structural", "policy", "capacity", "knowledge", "relationship", "economic", "environmental", "social"],
+      "description": "Category of outcome",
+      "example": "behavioral"
+    },
+    "target_value": {
+      "type": "number",
+      "description": "Target value if quantifiable"
+    },
+    "actual_value": {
+      "type": "number",
+      "description": "Actual value achieved"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement"
+    },
+    "baseline": {
+      "type": "number",
+      "description": "Baseline value"
+    },
+    "percentage_change": {
+      "type": "number",
+      "description": "Percentage change from baseline"
+    },
+    "target_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Target date for achievement"
+    },
+    "achieved_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date achieved"
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related initiative"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related project"
+    },
+    "activity": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related activity"
+    },
+    "contributing_factors": {
+      "type": "array",
+      "description": "Factors contributing to the outcome",
+      "items": { "type": "string" }
+    },
+    "barriers": {
+      "type": "array",
+      "description": "Barriers to achievement",
+      "items": { "type": "string" }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Evidence of outcome",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "source": { "type": "string" },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "description": "Indicators measuring this outcome",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Impacts resulting from this outcome",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_outcomes": {
+      "type": "array",
+      "description": "Related outcomes",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "beneficiaries": {
+      "type": "array",
+      "description": "Who benefits from this outcome",
+      "items": { "type": "string" }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic areas affected",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains affected",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "theory_of_change_link": {
+      "type": "string",
+      "description": "Position in theory of change"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

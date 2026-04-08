@@ -1,0 +1,102 @@
+id: relates_to
+name: Relates To
+description: A general connection between two Entities that doesn't fit other specific relationship types. This captures associations, correlations, or thematic connections.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  relationship_nature:
+    type: string
+    description: Nature of the relationship (thematic, historical, contextual, analogous)
+    required: false
+  strength:
+    type: number
+    description: Strength of relationship (0.0-1.0)
+    required: false
+  context:
+    type: string
+    description: Additional context about the relationship
+    required: false
+  discoverable:
+    type: boolean
+    description: Whether this relationship was discovered through analysis
+    required: false
+
+cardinality: many-to-many
+
+inverse: relates_to
+
+examples:
+  - from: ClimateJustice
+    to: EnvironmentalJustice
+    properties:
+      relationship_nature: thematic
+      strength: 0.95
+      context: overlapping concerns and constituencies
+    confidence: 0.94
+    source: https://changemappers.org/concepts/climate-justice
+
+  - from: ParticipatoryBudgeting
+    to: DirectDemocracy
+    properties:
+      relationship_nature: conceptual
+      strength: 0.80
+      context: implementation of democratic principles
+    confidence: 0.89
+    source: https://changemappers.org/patterns/pb
+
+  - from: CivilRightsMovement
+    to: AntiApartheidMovement
+    properties:
+      relationship_nature: historical
+      strength: 0.75
+      context: shared strategies and solidarity
+    confidence: 0.88
+    source: https://changemappers.org/movements/civil-rights
+
+  - from: OpenSource
+    to: OpenData
+    properties:
+      relationship_nature: conceptual
+      strength: 0.85
+      context: shared philosophy of openness
+    confidence: 0.92
+    source: https://changemappers.org/concepts/open-source
+
+  - from: Gentrification
+    to: Displacement
+    properties:
+      relationship_nature: causal
+      strength: 0.90
+      context: gentrification causes displacement
+    confidence: 0.93
+    source: https://changemappers.org/concepts/gentrification
+
+  - from: Cooperatives
+    to: SolidarityEconomy
+    properties:
+      relationship_nature: thematic
+      strength: 0.88
+      context: cooperatives are a key component of solidarity economy
+    confidence: 0.91
+    source: https://changemappers.org/patterns/cooperatives
+
+  - from: TruthAndReconciliation
+    to: RestorativeJustice
+    properties:
+      relationship_nature: conceptual
+      strength: 0.82
+      context: shared principles of healing and accountability
+    confidence: 0.87
+    source: https://changemappers.org/patterns/trc
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

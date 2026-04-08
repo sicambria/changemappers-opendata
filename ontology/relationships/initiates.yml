@@ -1,0 +1,108 @@
+id: initiates
+name: Initiates
+description: An Actor (person, organization, or group) starts, launches, or begins an Initiative, Project, or Campaign. This relationship captures the origin point and ownership of change-making activities.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Actor
+  - Organization
+  - Person
+  - Group
+
+allowed_to:
+  - Initiative
+  - Project
+  - Campaign
+  - Movement
+
+properties:
+  role:
+    type: string
+    description: The specific role the actor plays in initiating (e.g., founder, co-initiator, sponsor)
+    required: false
+  start_date:
+    type: date
+    description: When the initiation occurred
+    required: false
+  motivation:
+    type: string
+    description: The stated motivation for initiating
+    required: false
+  context:
+    type: string
+    description: Circumstances or events that led to initiation
+    required: false
+
+cardinality: one-to-many
+
+inverse: initiated_by
+
+examples:
+  - from: GreenpeaceInternational
+    to: SaveTheArcticCampaign
+    properties:
+      role: primary_initiator
+      start_date: "2012-06-21"
+      motivation: Protecting Arctic ecosystem from oil drilling
+    confidence: 0.95
+    source: https://changemappers.org/initiatives/save-the-arctic
+
+  - from: MuhammadYunus
+    to: GrameenBank
+    properties:
+      role: founder
+      start_date: "1983-10-01"
+      motivation: Poverty alleviation through microfinance
+    confidence: 0.99
+    source: https://changemappers.org/initiatives/grameen-bank
+
+  - from: ExtinctionRebellion
+    to: InternationalRebellion
+    properties:
+      role: organizer
+      start_date: "2019-04-15"
+      motivation: Climate emergency response
+    confidence: 0.92
+    source: https://changemappers.org/initiatives/international-rebellion
+
+  - from: WangariMaathai
+    to: GreenBeltMovement
+    properties:
+      role: founder
+      start_date: "1977-01-01"
+      motivation: Environmental conservation and women's empowerment
+    confidence: 0.98
+    source: https://changemappers.org/initiatives/green-belt-movement
+
+  - from: BoyanSlat
+    to: TheOceanCleanup
+    properties:
+      role: founder
+      start_date: "2013-01-01"
+      motivation: Cleaning plastic from oceans
+    confidence: 0.96
+    source: https://changemappers.org/initiatives/ocean-cleanup
+
+  - from: MalalaYousafzai
+    to: MalalaFund
+    properties:
+      role: co-founder
+      start_date: "2013-07-01"
+      motivation: Girls' education advocacy
+    confidence: 0.97
+    source: https://changemappers.org/initiatives/malala-fund
+
+  - from: BillGates
+    to: GatesFoundation
+    properties:
+      role: co-founder
+      start_date: "2000-01-01"
+      motivation: Global health and education equity
+    confidence: 0.99
+    source: https://changemappers.org/initiatives/gates-foundation
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

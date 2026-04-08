@@ -1,0 +1,72 @@
+{
+  "relationship_type": "relates_to",
+  "description": "General connections between entities",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "properties": {
+        "relationship_nature": "historical_precedent",
+        "strength": "conceptual",
+        "domain": "labor_rights"
+      },
+      "confidence": 0.87,
+      "source_reference": "Montgomery Bus Boycott relates to Delano Grape Strike in use of economic boycott tactics"
+    },
+    {
+      "source_id": "p1a2t3t4-e5r6-7890-abcd-ef1234567890",
+      "target_id": "p2a3t4t5-e6r7-8901-cdef-234567890abc",
+      "properties": {
+        "relationship_nature": "tactical_synergy",
+        "strength": "complementary",
+        "domain": "nonviolent_action"
+      },
+      "confidence": 0.85,
+      "source_reference": "Hyper-Local Boycotts relates to Community Teach-ins as awareness-building precursor"
+    },
+    {
+      "source_id": "c1a2u3s4-e5f6-7890-abcd-ef1234567890",
+      "target_id": "c2a3u4s5-e6f7-8901-cdef-234567890abc",
+      "properties": {
+        "relationship_nature": "intersectional",
+        "strength": "conceptual",
+        "domain": "social_justice"
+      },
+      "confidence": 0.89,
+      "source_reference": "Racial segregation relates to environmental degradation through environmental justice framework"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "properties": {
+        "relationship_nature": "inspiration",
+        "strength": "methodological",
+        "domain": "organizing"
+      },
+      "confidence": 0.82,
+      "source_reference": "Solidarity's nonviolent methods inspired later movements including Women of Liberia"
+    },
+    {
+      "source_id": "t1r2a3d4-i5t6-7890-abcd-ef1234567890",
+      "target_id": "p6a7t8t9-e0r1-2345-abcd-ef1234567890",
+      "properties": {
+        "relationship_nature": "embodiment",
+        "strength": "practical",
+        "domain": "wisdom_practice"
+      },
+      "confidence": 0.86,
+      "source_reference": "Ubuntu Indaba Circles tradition relates to Community Assemblies pattern in dialogue practice"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "l2e3a4r5-n6i7-8901-cdef-234567890abc",
+      "properties": {
+        "relationship_nature": "educational_link",
+        "strength": "developmental",
+        "domain": "capacity_building"
+      },
+      "confidence": 0.84,
+      "source_reference": "Green Belt Movement relates to permaculture training programs in ecological approach"
+    }
+  ]
+}

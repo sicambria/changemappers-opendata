@@ -1,0 +1,109 @@
+id: supports
+name: Supports
+description: An Entity validates, endorses, helps, or reinforces another Entity. This captures supportive, affirmative, and strengthening relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  support_type:
+    type: string
+    description: Type of support (endorsement, evidence, resources, solidarity)
+    required: false
+  support_level:
+    type: string
+    description: Degree of support (strong, moderate, conditional)
+    required: false
+  evidence_strength:
+    type: number
+    description: Strength of supporting evidence if applicable (0.0-1.0)
+    required: false
+  public_visibility:
+    type: boolean
+    description: Whether support is public
+    required: false
+  support_date:
+    type: date
+    description: When support was provided
+    required: false
+
+cardinality: many-to-many
+
+inverse: supported_by
+
+examples:
+  - from: ScientificResearch
+    to: ClimateActionPolicy
+    properties:
+      support_type: evidence
+      support_level: strong
+      evidence_strength: 0.98
+      public_visibility: true
+    confidence: 0.97
+    source: https://changemappers.org/research/climate-policy
+
+  - from: CivilRightsOrganizations
+    to: BlackLivesMatter
+    properties:
+      support_type: solidarity
+      support_level: strong
+      public_visibility: true
+      support_date: "2020-06-01"
+    confidence: 0.95
+    source: https://changemappers.org/solidarity/civil-rights-blm
+
+  - from: ImpactEvaluation
+    to: MicrofinanceProgram
+    properties:
+      support_type: evidence
+      support_level: moderate
+      evidence_strength: 0.82
+    confidence: 0.91
+    source: https://changemappers.org/evaluations/microfinance
+
+  - from: EuropeanUnion
+    to: ParisAgreement
+    properties:
+      support_type: endorsement
+      support_level: strong
+      public_visibility: true
+    confidence: 0.98
+    source: https://changemappers.org/policies/eu-paris
+
+  - from: AcademicLiterature
+    to: ParticipatoryBudgeting
+    properties:
+      support_type: evidence
+      support_level: strong
+      evidence_strength: 0.88
+    confidence: 0.93
+    source: https://changemappers.org/research/participatory-budgeting
+
+  - from: CommunityEndorsement
+    to: LocalClimateInitiative
+    properties:
+      support_type: endorsement
+      support_level: strong
+      public_visibility: true
+      support_date: "2023-03-01"
+    confidence: 0.89
+    source: https://changemappers.org/endorsements/local-climate
+
+  - from: UNHumanRightsCouncil
+    to: IndigenousLandRights
+    properties:
+      support_type: endorsement
+      support_level: strong
+      public_visibility: true
+    confidence: 0.96
+    source: https://changemappers.org/endorsements/un-indigenous
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

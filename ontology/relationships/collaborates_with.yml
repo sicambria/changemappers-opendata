@@ -1,0 +1,119 @@
+id: collaborates_with
+name: Collaborates With
+description: An Actor works jointly, cooperatively, or in partnership with another Actor. This captures cooperative relationships and alliances.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Actor
+  - Organization
+  - Person
+  - Group
+
+allowed_to:
+  - Actor
+  - Organization
+  - Person
+  - Group
+
+properties:
+  collaboration_type:
+    type: string
+    description: Type of collaboration (partnership, coalition, network, alliance)
+    required: false
+  scope:
+    type: string
+    description: Scope of collaboration (project, program, strategic)
+    required: false
+  start_date:
+    type: date
+    description: When collaboration began
+    required: false
+  end_date:
+    type: date
+    description: When collaboration ended
+    required: false
+  shared_goals:
+    type: array
+    description: Goals shared by collaborators
+    required: false
+  governance:
+    type: string
+    description: How decisions are made
+    required: false
+
+cardinality: many-to-many
+
+inverse: collaborates_with
+
+examples:
+  - from: Greenpeace
+    to: 350
+    properties:
+      collaboration_type: coalition
+      scope: strategic
+      shared_goals: ["climate_action", "fossil_fuel_divestment"]
+    confidence: 0.94
+    source: https://changemappers.org/collaborations/greenpeace-350
+
+  - from: Oxfam
+    to: ActionAid
+    properties:
+      collaboration_type: partnership
+      scope: program
+      shared_goals: ["poverty_alleviation", "food_security"]
+      governance: joint_steering_committee
+    confidence: 0.92
+    source: https://changemappers.org/collaborations/oxfam-actionaid
+
+  - from: Wikipedia
+    to: InternetArchive
+    properties:
+      collaboration_type: partnership
+      scope: project
+      shared_goals: ["knowledge_access"]
+    confidence: 0.91
+    source: https://changemappers.org/collaborations/wiki-archive
+
+  - from: LocalCommunityGroup
+    to: UniversityResearchTeam
+    properties:
+      collaboration_type: partnership
+      scope: project
+      shared_goals: ["participatory_research"]
+      governance: community_advisory_board
+    confidence: 0.88
+    source: https://changemappers.org/collaborations/community-university
+
+  - from: ClimateJusticeAlliance
+    to: IndigenousEnvironmentalNetwork
+    properties:
+      collaboration_type: coalition
+      scope: strategic
+      shared_goals: ["just_transition", "indigenous_rights"]
+    confidence: 0.95
+    source: https://changemappers.org/collaborations/cja-ien
+
+  - from: ChangeMappers
+    to: OpenDataInstitute
+    properties:
+      collaboration_type: partnership
+      scope: strategic
+      shared_goals: ["open_standards", "data_for_good"]
+    confidence: 0.96
+    source: https://changemappers.org
+
+  - from: ExtinctionRebellion
+    to: FridaysForFuture
+    properties:
+      collaboration_type: alliance
+      scope: strategic
+      shared_goals: ["climate_emergency_response"]
+      governance: coordinated_actions
+    confidence: 0.93
+    source: https://changemappers.org/collaborations/xr-fff
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

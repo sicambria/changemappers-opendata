@@ -1,0 +1,350 @@
+id: project
+name: Project
+description: A specific, time-bound implementation effort with defined objectives, deliverables, and resources within a change initiative.
+category: activity
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the project
+    - name: name
+      type: string
+      required: true
+      description: Name of the project
+    - name: description
+      type: string
+      required: true
+      description: Description of project goals and activities
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the project
+      enum_values:
+        - research
+        - advocacy
+        - capacity_building
+        - direct_action
+        - pilot
+        - demonstration
+        - infrastructure
+    - name: status
+      type: enum
+      required: true
+      description: Current status of the project
+      enum_values:
+        - planning
+        - active
+        - on_hold
+        - completed
+        - cancelled
+    - name: start_date
+      type: date
+      required: true
+      description: Project start date
+    - name: end_date
+      type: date
+      required: false
+      description: Project end date or expected completion
+    - name: initiative_id
+      type: string
+      required: false
+      description: Parent initiative
+    - name: lead_actor_id
+      type: string
+      required: false
+      description: Primary actor responsible
+    - name: lead_organization_id
+      type: string
+      required: false
+      description: Primary organization responsible
+    - name: actor_ids
+      type: array[string]
+      required: false
+      description: Actors involved in project
+    - name: location_ids
+      type: array[string]
+      required: false
+      description: Project locations
+    - name: budget
+      type: number
+      required: false
+      description: Project budget amount
+    - name: budget_currency
+      type: string
+      required: false
+      description: Currency code (ISO 4217)
+    - name: deliverables
+      type: array[string]
+      required: false
+      description: Expected deliverables
+    - name: outcome_ids
+      type: array[string]
+      required: false
+      description: Expected outcomes
+    - name: metric_ids
+      type: array[string]
+      required: false
+      description: Metrics tracked
+    - name: phase_id
+      type: string
+      required: false
+      description: Current phase
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 200
+    message: Name must not exceed 200 characters
+  - field: budget
+    rule: min_value
+    value: 0
+    message: Budget must be non-negative
+  - field: end_date
+    rule: greater_than
+    value: start_date
+    message: End date must be after start date
+relationships:
+  - entity: initiative
+    type: part_of
+    description: Project is part of an initiative
+  - entity: actor
+    type: led_by
+    description: Project is led by actors
+  - entity: organization
+    type: implemented_by
+    description: Project is implemented by organizations
+  - entity: location
+    type: located_in
+    description: Project operates in locations
+  - entity: outcome
+    type: produces
+    description: Project produces outcomes
+  - entity: metric
+    type: measured_by
+    description: Project is measured by metrics
+  - entity: phase
+    type: in_phase
+    description: Project is in a phase
+examples:
+  - id: proj_001
+    name: Portland Community Solar Installation
+    description: Installation of a 500kW community-owned solar array serving 100 low-income households in North Portland.
+    type: infrastructure
+    status: active
+    start_date: '2023-06-01'
+    end_date: '2024-12-31'
+    initiative_id: init_001
+    lead_organization_id: org_001
+    actor_ids:
+      - actor_001
+    location_ids:
+      - loc_portland_north
+    budget: 1500000
+    budget_currency: USD
+    deliverables:
+      - 500kW solar array
+      - 100 household subscriptions
+      - Community ownership model documentation
+    outcome_ids:
+      - outcome_001
+    metric_ids:
+      - metric_001
+      - metric_002
+    phase_id: phase_implementation
+    created_at: '2024-01-15T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: proj_002
+    name: Solar Workforce Training Program
+    description: Training program for community members to become certified solar installers with job placement support.
+    type: capacity_building
+    status: active
+    start_date: '2023-09-01'
+    end_date: '2024-08-31'
+    initiative_id: init_001
+    lead_actor_id: actor_002
+    actor_ids:
+      - actor_002
+      - actor_005
+    location_ids:
+      - loc_seattle
+    budget: 250000
+    budget_currency: USD
+    deliverables:
+      - 50 trained solar installers
+      - Job placement partnerships
+    outcome_ids:
+      - outcome_002
+    phase_id: phase_implementation
+    created_at: '2024-02-01T09:30:00Z'
+    updated_at: '2024-05-15T11:00:00Z'
+    source: changemappers.org
+  - id: proj_003
+    name: Coal Plant Transition Advocacy Campaign
+    description: Advocacy campaign supporting just transition for workers and communities affected by coal plant closures.
+    type: advocacy
+    status: active
+    start_date: '2022-01-01'
+    end_date: '2025-12-31'
+    initiative_id: init_002
+    lead_organization_id: org_007
+    actor_ids:
+      - actor_002
+    location_ids:
+      - loc_appalachia
+    budget: 500000
+    budget_currency: USD
+    deliverables:
+      - Policy recommendations
+      - Worker support programs
+      - Community transition plans
+    outcome_ids:
+      - outcome_003
+    phase_id: phase_implementation
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-07-01T13:30:00Z'
+    source: changemappers.org
+  - id: proj_004
+    name: Just Transition Storytelling Project
+    description: Documentary and oral history project capturing stories of communities transitioning to regenerative economies.
+    type: research
+    status: active
+    start_date: '2023-03-01'
+    initiative_id: init_002
+    lead_actor_id: actor_007
+    actor_ids:
+      - actor_007
+    location_ids:
+      - loc_national
+    budget: 100000
+    budget_currency: USD
+    deliverables:
+      - Documentary film
+      - Oral history archive
+      - Educational materials
+    phase_id: phase_planning
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-06-25T15:00:00Z'
+    source: changemappers.org
+  - id: proj_005
+    name: Detroit Urban Farm Network
+    description: Network of urban farms growing fresh produce for local distribution and building community food sovereignty.
+    type: direct_action
+    status: active
+    start_date: '2021-04-01'
+    initiative_id: init_003
+    lead_actor_id: actor_004
+    actor_ids:
+      - actor_004
+    location_ids:
+      - loc_detroit
+    budget: 75000
+    budget_currency: USD
+    deliverables:
+      - 10 urban farm sites
+      - 5000 lbs annual produce
+      - Community distribution network
+    outcome_ids:
+      - outcome_004
+    phase_id: phase_scaling
+    created_at: '2024-02-15T14:00:00Z'
+    updated_at: '2024-05-30T10:45:00Z'
+    source: changemappers.org
+  - id: proj_006
+    name: Climate Justice Curriculum Development
+    description: Developing K-12 curriculum integrating climate science, justice, and action for schools.
+    type: capacity_building
+    status: active
+    start_date: '2022-08-01'
+    end_date: '2024-07-31'
+    initiative_id: init_004
+    lead_organization_id: org_004
+    actor_ids:
+      - actor_007
+    location_ids:
+      - loc_national
+    budget: 200000
+    budget_currency: USD
+    deliverables:
+      - K-12 curriculum modules
+      - Teacher training materials
+      - Student action guides
+    outcome_ids:
+      - outcome_005
+    phase_id: phase_evaluation
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-15T12:30:00Z'
+    source: changemappers.org
+  - id: proj_007
+    name: Salmon River Watershed Restoration
+    description: Community-led restoration of riparian zones and stream habitat with Indigenous stewardship practices.
+    type: direct_action
+    status: active
+    start_date: '2020-05-01'
+    initiative_id: init_005
+    lead_organization_id: org_006
+    actor_ids:
+      - actor_003
+    location_ids:
+      - loc_salmon_river
+    budget: 300000
+    budget_currency: USD
+    deliverables:
+      - 50 acres riparian restoration
+      - Stream habitat improvements
+      - Community monitoring program
+    outcome_ids:
+      - outcome_006
+    phase_id: phase_implementation
+    created_at: '2024-02-20T10:30:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: proj_008
+    name: Tribal Land Transfer Project
+    description: Facilitating the return of ancestral lands to tribal stewardship through purchase and conservation easements.
+    type: advocacy
+    status: active
+    start_date: '2022-01-01'
+    initiative_id: init_006
+    lead_actor_id: actor_003
+    actor_ids:
+      - actor_003
+    location_ids:
+      - loc_oregon
+    budget: 2000000
+    budget_currency: USD
+    deliverables:
+      - Land transfer agreements
+      - Stewardship plans
+      - Cultural site protection
+    outcome_ids:
+      - outcome_007
+    phase_id: phase_implementation
+    created_at: '2024-01-25T11:00:00Z'
+    updated_at: '2024-06-28T16:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - project_types
+  - project_status
+  - project_phases
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/project
+  provenance: ChangeMappers Ontology Project

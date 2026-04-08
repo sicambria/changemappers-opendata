@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/topic.schema.json",
+  "title": "Topic",
+  "description": "A specific subject or theme within a subdomain that can be addressed by change initiatives.",
+  "type": "object",
+  "required": ["id", "slug", "name", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the topic",
+      "example": "550e8400-e29b-41d4-a716-446655440023"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "renewable-energy-policy"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150,
+      "description": "Name of the topic",
+      "example": "Renewable Energy Policy"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the topic"
+    },
+    "subdomain_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent subdomain"
+    },
+    "domain_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent domain"
+    },
+    "parent_topic": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent topic if nested"
+    },
+    "child_topics": {
+      "type": "array",
+      "description": "Child topics",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "related_topics": {
+      "type": "array",
+      "description": "Related topics",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "causes": {
+      "type": "array",
+      "description": "Causes related to this topic",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives addressing this topic",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects addressing this topic",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Resources about this topic",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "stories": {
+      "type": "array",
+      "description": "Stories about this topic",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Keywords for search",
+      "items": { "type": "string" }
+    },
+    "taxonomy_code": {
+      "type": "string",
+      "description": "Taxonomy code from changemappers.org"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Display order"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon identifier"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9a-fA-F]{6}$",
+      "description": "Color code"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

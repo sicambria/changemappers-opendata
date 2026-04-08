@@ -1,0 +1,72 @@
+{
+  "relationship_type": "supports",
+  "description": "Entity helps or aids another Entity",
+  "records": [
+    {
+      "source_id": "o1r2g3a4-n5s6-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "support_type": "solidarity",
+        "strength": "high",
+        "context": "interstate"
+      },
+      "confidence": 0.89,
+      "source_reference": "NAACP supported Montgomery Bus Boycott with legal strategy and resources"
+    },
+    {
+      "source_id": "i1n2t3e4-r5n6-7890-abcd-ef1234567890",
+      "target_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "properties": {
+        "support_type": "funding",
+        "strength": "medium",
+        "context": "international"
+      },
+      "confidence": 0.86,
+      "source_reference": "International environmental organizations supported Green Belt Movement"
+    },
+    {
+      "source_id": "u1n2i3o4-n5s6-7890-abcd-ef1234567890",
+      "target_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "properties": {
+        "support_type": "boycott_participation",
+        "strength": "high",
+        "context": "consumer"
+      },
+      "confidence": 0.94,
+      "source_reference": "National consumer unions supported Delano Grape Strike boycott"
+    },
+    {
+      "source_id": "w1o2m3e4-n5s6-7890-abcd-ef1234567890",
+      "target_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "properties": {
+        "support_type": "interfaith",
+        "strength": "high",
+        "context": "regional"
+      },
+      "confidence": 0.91,
+      "source_reference": "West African women's networks supported Liberian peace movement"
+    },
+    {
+      "source_id": "l1a2b3o4-r5m6-7890-abcd-ef1234567890",
+      "target_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "properties": {
+        "support_type": "international",
+        "strength": "high",
+        "context": "solidarity"
+      },
+      "confidence": 0.92,
+      "source_reference": "International labor movement supported Solidarity with funding and political pressure"
+    },
+    {
+      "source_id": "c1h2u3r4-c5h6-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "support_type": "logistical",
+        "strength": "high",
+        "context": "local"
+      },
+      "confidence": 0.93,
+      "source_reference": "Black churches supported Montgomery boycott with organizing infrastructure"
+    }
+  ]
+}

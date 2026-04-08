@@ -1,0 +1,212 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/program.schema.json",
+  "title": "Program",
+  "description": "A structured, ongoing set of activities and services designed to achieve specific change outcomes over an extended period.",
+  "type": "object",
+  "required": ["id", "slug", "name", "status", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the program",
+      "example": "550e8400-e29b-41d4-a716-446655440010"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "youth-leadership-academy"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the program",
+      "example": "Youth Leadership Academy"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the program",
+      "example": "A year-long leadership development program for young changemakers aged 18-25."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planning", "active", "paused", "completed", "archived"],
+      "description": "Current status of the program",
+      "example": "active"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["training", "fellowship", "grant", "service", "advocacy", "research", "capacity_building", "network"],
+      "description": "Type of program",
+      "example": "training"
+    },
+    "lead_organization": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Organization running the program"
+    },
+    "partner_organizations": {
+      "type": "array",
+      "description": "Partner organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "funders": {
+      "type": "array",
+      "description": "Funding organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "timeline": {
+      "type": "object",
+      "description": "Program timeline",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "duration": { "type": "string" },
+        "cohorts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "start_date": { "type": "string", "format": "date" },
+              "end_date": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "description": "Eligibility criteria",
+      "additionalProperties": false,
+      "properties": {
+        "age_range": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "min": { "type": "integer" },
+            "max": { "type": "integer" }
+          }
+        },
+        "geographic_scope": { "type": "string" },
+        "other_criteria": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "application_process": {
+      "type": "object",
+      "description": "Application process details",
+      "additionalProperties": false,
+      "properties": {
+        "deadline": { "type": "string", "format": "date" },
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "selection_criteria": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "curriculum": {
+      "type": "array",
+      "description": "Program curriculum/modules",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "duration": { "type": "string" },
+          "topics": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects under this program",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "participants": {
+      "type": "array",
+      "description": "Program participants",
+      "items": {
+        "type": "object",
+        "required": ["actor_id"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "cohort": { "type": "string" },
+          "status": { "type": "string", "enum": ["applicant", "selected", "active", "completed", "alumni"] }
+        }
+      }
+    },
+    "staff": {
+      "type": "array",
+      "description": "Program staff",
+      "items": {
+        "type": "object",
+        "required": ["actor_id"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Program locations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains addressed",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Expected outcomes",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Measured impacts",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "budget": {
+      "type": "object",
+      "description": "Program budget",
+      "additionalProperties": false,
+      "properties": {
+        "total": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "per_participant": { "type": "number", "minimum": 0 }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Program resources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

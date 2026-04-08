@@ -1,0 +1,255 @@
+# Scale Levels Taxonomy
+# Part of the ChangeMappers Ontology (changemappers.org)
+# Levels of systemic intervention and transformation
+
+metadata:
+  taxonomy_id: scale-levels
+  version: "1.0.0"
+  source: changemappers.org
+  description: |
+    The scale taxonomy defines five interconnected levels at which 
+    regenerative development interventions operate. Each scale builds 
+    upon and reinforces the others, creating nested systems of 
+    transformation from individual to planetary.
+
+scales:
+  - id: scale-1
+    name: Individual
+    slug: individual
+    description: |
+      Personal transformation and inner development as the foundation 
+      for all systemic change. Individual-scale work focuses on 
+      consciousness, competencies, trauma processing, and the 
+      cultivation of regenerative mindsets and practices.
+    characteristics:
+      scope: Personal sphere of influence
+      time_horizon: Immediate to lifetime
+      primary_focus: Inner development, behavior change, personal practice
+      key_question: "How do I need to develop to contribute to systemic change?"
+    examples:
+      - Developing inner development goals (IDG) competencies
+      - Personal trauma processing and healing work
+      - Adopting regenerative lifestyle practices
+      - Deepening ecological awareness and connection
+      - Leadership maturity development
+      - Cultivating systems thinking capabilities
+      - Personal mindfulness and contemplative practices
+      - Changing consumption patterns and habits
+    indicators:
+      - IDG competency assessments showing growth
+      - Personal ecological footprint reduction
+      - Psychological wellbeing measures
+      - Leadership maturity stage progression
+      - Behavioral change consistency
+      - Self-reported sense of agency and purpose
+    related_rdgs:
+      - rdg-1-foundations-of-human-development
+      - rdg-2-trauma-informed-societies
+      - rdg-3-inner-development-competencies
+      - rdg-30-planetary-stewardship-identity
+    functions_involved:
+      - education-training
+      - healthcare-provision
+
+  - id: scale-2
+    name: Community
+    slug: community
+    description: |
+      Local collective action and community-level transformation. 
+      Community-scale work focuses on building relationships, 
+      collective sensemaking, shared resources, and local governance 
+      that embodies regenerative principles.
+    characteristics:
+      scope: Neighborhood, village, town, or local network
+      time_horizon: Months to decades
+      primary_focus: Relationships, collective action, local systems
+      key_question: "How can we organize and act together locally?"
+    examples:
+      - Community gardens and food cooperatives
+      - Local resilience networks and mutual aid
+      - Community-owned renewable energy projects
+      - Neighborhood composting and waste reduction
+      - Local currency and time banking systems
+      - Community land trusts for affordable housing
+      - Local watershed stewardship groups
+      - Community mediation and restorative justice circles
+      - Co-working spaces and local business networks
+      - Community-supported agriculture (CSA) programs
+    indicators:
+      - Number of active community initiatives
+      - Local economic multiplier effects
+      - Community wellbeing surveys
+      - Participation rates in local governance
+      - Local resource circulation metrics
+      - Social capital measurements
+      - Community resilience assessments
+    related_rdgs:
+      - rdg-11-bioregional-governance
+      - rdg-20-polycentric-and-participatory-governance
+      - rdg-22-peacebuilding-and-conflict-transformation
+      - rdg-12-urban-rural-ecological-integration
+    functions_involved:
+      - community-organizing
+      - education-training
+      - financial-investment
+
+  - id: scale-3
+    name: Regional
+    slug: regional
+    description: |
+      Bioregional coordination and regional system transformation. 
+      Regional-scale work aligns human systems with ecological 
+      boundaries, coordinates across communities, and develops 
+      bioregional identity and governance.
+    characteristics:
+      scope: Watershed, bioregion, or sub-national territory
+      time_horizon: Years to generations
+      primary_focus: Bioregional coordination, ecological alignment, regional infrastructure
+      key_question: "How do we align our region with ecological and social systems?"
+    examples:
+      - Bioregional planning and governance councils
+      - Regional food system networks and distribution
+      - Watershed-wide restoration initiatives
+      - Regional renewable energy grids
+      - Cross-community transportation systems
+      - Regional biodiversity corridors and protected areas
+      - Bioregional learning centers and networks
+      - Regional circular economy initiatives
+      - Cross-border ecological partnerships
+      - Regional climate adaptation planning
+    indicators:
+      - Bioregional ecological health metrics
+      - Regional food self-sufficiency rates
+      - Cross-community collaboration measures
+      - Regional carbon sequestration levels
+      - Watershed health indicators
+      - Regional economic resilience scores
+      - Biodiversity corridor connectivity
+    related_rdgs:
+      - rdg-11-bioregional-governance
+      - rdg-10-water-cycle-and-watershed-integrity
+      - rdg-8-biodiversity-and-habitat-restoration
+      - rdg-9-regenerative-food-and-soil-systems
+    functions_involved:
+      - policy-advocacy
+      - infrastructure-deployment
+      - ecological-restoration
+
+  - id: scale-4
+    name: National
+    slug: national
+    description: |
+      Country-wide systemic transformation and national policy reform. 
+      National-scale work focuses on legislative change, institutional 
+      transformation, national metrics, and creating enabling 
+      conditions for local and regional initiatives.
+    characteristics:
+      scope: Nation-state or country
+      time_horizon: Electoral cycles to generational
+      primary_focus: Policy, legislation, national infrastructure, institutional change
+      key_question: "How do we transform national systems to enable regeneration?"
+    examples:
+      - Future Generations legislation (Wales model)
+      - National basic income programs
+      - National ecological tax reform
+      - National education curriculum transformation
+      - Healthcare system reform toward prevention
+      - National renewable energy transitions
+      - National biodiversity protection laws
+      - Anti-corruption and transparency legislation
+      - National metrics beyond GDP
+      - National climate adaptation frameworks
+      - National regenerative agriculture support
+    indicators:
+      - Legislation passed and implemented
+      - National wellbeing indicators
+      - Policy coherence assessments
+      - National ecological footprint trends
+      - Inequality measures and trends
+      - Institutional trust surveys
+      - National renewable energy percentages
+    related_rdgs:
+      - rdg-19-transparent-and-accountable-institutions
+      - rdg-21-equity-and-structural-inclusion
+      - rdg-24-feedback-based-policy-learning
+      - rdg-13-basic-needs-security
+    functions_involved:
+      - policy-advocacy
+      - technology-governance
+      - research-development
+
+  - id: scale-5
+    name: Global
+    slug: global
+    description: |
+      Planetary stewardship and international coordination. Global-scale 
+      work addresses challenges that transcend national boundaries, 
+      requires international cooperation, and affects civilizational 
+      trajectories.
+    characteristics:
+      scope: Planetary, international, civilizational
+      time_horizon: Generations to centuries
+      primary_focus: International frameworks, global commons, planetary boundaries, civilizational narratives
+      key_question: "How do we steward planetary systems for current and future generations?"
+    examples:
+      - Global climate treaties and carbon frameworks
+      - International biodiversity agreements
+      - Global existential risk reduction protocols
+      - International technology governance frameworks
+      - Global open science initiatives
+      - International human rights frameworks
+      - Global financial system reform
+      - Planetary boundaries monitoring
+      - Global early warning systems
+      - International peacebuilding mechanisms
+      - Global knowledge commons protection
+    indicators:
+      - International treaty effectiveness
+      - Planetary boundary status
+      - Global inequality trends
+      - International cooperation indices
+      - Global ecological health metrics
+      - Existential risk assessments
+      - Global wellbeing measures
+    related_rdgs:
+      - rdg-25-existential-risk-reduction
+      - rdg-27-global-early-warning-and-foresight-systems
+      - rdg-28-integrated-inner-outer-metrics
+      - rdg-30-planetary-stewardship-identity
+    functions_involved:
+      - policy-advocacy
+      - technology-governance
+      - research-development
+
+cross_scale_dynamics:
+  principle: |
+    Each scale both constrains and enables the others. Individual 
+    transformation enables community action; community initiatives 
+    aggregate into regional systems; regional coordination informs 
+    national policy; national frameworks enable global coordination; 
+    and global agreements create conditions for individual action.
+  
+  upward_causation:
+    description: "Local actions aggregate to create higher-scale patterns"
+    examples:
+      - Individual practice changes → community norms
+      - Community initiatives → regional networks
+      - Regional coordination → national policy models
+      - National leadership → global agreements
+  
+  downward_causation:
+    description: "Higher-scale structures create conditions for lower-scale action"
+    examples:
+      - Global agreements → national policy frameworks
+      - National policy → regional funding and authority
+      - Regional infrastructure → community capabilities
+      - Community culture → individual identity and practice
+  
+  horizontal_integration:
+    description: "Same-scale networks and coordination"
+    examples:
+      - Individual-to-individual learning networks
+      - Community-to-community peer learning
+      - Regional-to-regional bioregional partnerships
+      - National-to-national policy learning
+      - Global multi-stakeholder networks

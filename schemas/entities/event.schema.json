@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/event.schema.json",
+  "title": "Event",
+  "description": "A time-bound occurrence, gathering, or milestone within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "start_date", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the event",
+      "example": "550e8400-e29b-41d4-a716-446655440018"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "climate-march-2024"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "description": "Name of the event",
+      "example": "Global Climate March 2024"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 3000,
+      "description": "Description of the event"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["conference", "workshop", "protest", "rally", "training", "webinar", "meeting", "celebration", "fundraiser", "launch", "milestone", "crisis", "victory", "policy_change"],
+      "description": "Type of event",
+      "example": "protest"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "confirmed", "ongoing", "completed", "cancelled", "postponed"],
+      "description": "Status of the event",
+      "example": "completed"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "End date"
+    },
+    "start_time": {
+      "type": "string",
+      "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+      "description": "Start time (HH:MM format)"
+    },
+    "end_time": {
+      "type": "string",
+      "pattern": "^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$",
+      "description": "End time (HH:MM format)"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "Timezone"
+    },
+    "location": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Location of the event"
+    },
+    "virtual": {
+      "type": "boolean",
+      "description": "Whether the event is virtual",
+      "example": false
+    },
+    "virtual_platform": {
+      "type": "string",
+      "description": "Virtual platform if online"
+    },
+    "virtual_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL for virtual event"
+    },
+    "organizers": {
+      "type": "array",
+      "description": "Organizing organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "co_organizers": {
+      "type": "array",
+      "description": "Co-organizing organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "sponsors": {
+      "type": "array",
+      "description": "Sponsors",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "attendees_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of attendees"
+    },
+    "participants": {
+      "type": "array",
+      "description": "Registered participants",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "speakers": {
+      "type": "array",
+      "description": "Speakers/presenters",
+      "items": {
+        "type": "object",
+        "required": ["actor_id"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "role": { "type": "string" },
+          "topic": { "type": "string" }
+        }
+      }
+    },
+    "agenda": {
+      "type": "array",
+      "description": "Event agenda",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "time": { "type": "string" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "speaker": { "type": "string", "format": "uuid" }
+        }
+      }
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related initiative"
+    },
+    "project": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Related project"
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Event outcomes",
+      "items": { "type": "string" }
+    },
+    "media": {
+      "type": "array",
+      "description": "Media from the event",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Event resources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "registration_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Registration URL"
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "Event website"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

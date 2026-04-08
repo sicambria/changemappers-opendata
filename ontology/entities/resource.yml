@@ -1,0 +1,241 @@
+id: resource
+name: Resource
+description: An asset, material, or support available for use in change initiatives and projects.
+category: asset
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the resource
+    - name: name
+      type: string
+      required: true
+      description: Name of the resource
+    - name: description
+      type: string
+      required: true
+      description: Description of the resource
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the resource
+      enum_values:
+        - financial
+        - physical
+        - human
+        - informational
+        - network
+        - technical
+        - political
+    - name: category
+      type: enum
+      required: false
+      description: Resource category
+      enum_values:
+        - funding
+        - space
+        - equipment
+        - expertise
+        - data
+        - relationships
+        - tools
+    - name: owner_id
+      type: string
+      required: false
+      description: Actor or organization that owns the resource
+    - name: availability
+      type: enum
+      required: false
+      description: Availability status
+      enum_values:
+        - available
+        - limited
+        - restricted
+        - unavailable
+    - name: access_requirements
+      type: array[string]
+      required: false
+      description: Requirements to access this resource
+    - name: quantity
+      type: number
+      required: false
+      description: Quantity available
+    - name: unit
+      type: string
+      required: false
+      description: Unit of measurement
+    - name: location_id
+      type: string
+      required: false
+      description: Physical location
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where resource applies
+    - name: project_ids
+      type: array[string]
+      required: false
+      description: Projects using this resource
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: actor
+    type: owned_by
+    description: Resource is owned by actors
+  - entity: organization
+    type: managed_by
+    description: Resource is managed by organizations
+  - entity: project
+    type: used_in
+    description: Resource is used in projects
+  - entity: location
+    type: located_at
+    description: Resource is located at locations
+  - entity: domain
+    type: applies_to
+    description: Resource applies to domains
+examples:
+  - id: res_001
+    name: Community Solar Investment Fund
+    description: Pool of community investment capital for solar projects.
+    type: financial
+    category: funding
+    owner_id: org_001
+    availability: available
+    access_requirements:
+      - Community ownership structure
+      - Project feasibility study
+      - Local partnership
+    quantity: 2000000
+    unit: USD
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: res_002
+    name: Detroit Urban Farm Land
+    description: Seven-acre urban farm site available for community agriculture.
+    type: physical
+    category: space
+    owner_id: org_005
+    availability: available
+    access_requirements:
+      - Community farming commitment
+      - Sustainable practices
+    quantity: 7
+    unit: acres
+    location_id: loc_detroit
+    domain_ids:
+      - dom_food_systems
+    project_ids:
+      - proj_005
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: res_003
+    name: Climate Justice Policy Expert Network
+    description: Network of policy experts available for consultation and support.
+    type: human
+    category: expertise
+    owner_id: org_004
+    availability: limited
+    access_requirements:
+      - Alignment with climate justice
+      - Specific consultation request
+    domain_ids:
+      - dom_climate_justice
+      - dom_policy
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: res_004
+    name: Salmon River Watershed Data
+    description: Comprehensive watershed monitoring data and analysis.
+    type: informational
+    category: data
+    owner_id: org_006
+    availability: available
+    access_requirements:
+      - Research purpose
+      - Data use agreement
+    domain_ids:
+      - dom_ecosystem_restoration
+    project_ids:
+      - proj_007
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: res_005
+    name: Solidarity Economy Network Connections
+    description: Network of cooperative and solidarity economy practitioners across regions.
+    type: network
+    category: relationships
+    owner_id: org_003
+    availability: available
+    access_requirements:
+      - Membership or partnership
+      - Reciprocal participation
+    domain_ids:
+      - dom_economic_justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: res_006
+    name: Solar Installation Equipment
+    description: Equipment and tools for community solar installations.
+    type: physical
+    category: equipment
+    owner_id: org_001
+    availability: limited
+    access_requirements:
+      - Trained installation team
+      - Insurance coverage
+      - Project partnership
+    location_id: loc_portland
+    domain_ids:
+      - dom_energy
+    project_ids:
+      - proj_001
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: res_007
+    name: Just Transition Policy Toolkit
+    description: Technical resources for developing just transition policies.
+    type: technical
+    category: tools
+    owner_id: org_007
+    availability: available
+    access_requirements: []
+    domain_ids:
+      - dom_just_transition
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - resource_types
+  - resource_categories
+  - resource_availability
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/resource
+  provenance: ChangeMappers Ontology Project

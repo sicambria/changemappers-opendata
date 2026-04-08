@@ -1,0 +1,809 @@
+# changemappers.org - Open Data Catalog
+# Dataset Catalog Definition
+# Version: 1.0.0
+# Last Updated: 2026-04-08
+
+# =============================================================================
+# CATALOG STRUCTURE
+# =============================================================================
+# This catalog defines all datasets available in the changemappers open data
+# ecosystem. Each dataset is versioned and includes comprehensive metadata
+# for discovery, quality assessment, and integration.
+#
+# Dataset Sections:
+#   - causes: Root cause analysis and driver datasets
+#   - patterns: Change pattern libraries and templates
+#   - stories: Narrative case studies and testimonials
+#   - skills: Competency frameworks and skill taxonomies
+#   - tools: Methodology and instrument catalogs
+#   - traditions: Cultural and historical change contexts
+#   - programs: Organized intervention datasets
+#   - metamodels: Meta-level frameworks and schemas
+# =============================================================================
+
+catalog:
+  id: changemappers-datasets
+  name: ChangeMappers Open Data Catalog
+  description: Comprehensive catalog of datasets for mapping, analyzing, and understanding systemic change processes
+  version: "1.0.0"
+  license: CC-BY-SA-4.0
+  publisher: changemappers.org
+  created: 2026-01-01
+  modified: 2026-04-08
+
+# =============================================================================
+# CAUSES DATASETS
+# =============================================================================
+# Datasets containing root cause analysis, drivers of change, and causal
+# relationship mappings for systemic transformation.
+# =============================================================================
+
+causes:
+  - id: causes-drivers
+    name: Change Drivers Dataset
+    description: Primary drivers and forces that initiate and sustain systemic change processes
+    version: "1.2.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Cause
+      - Actor
+      - Domain
+    relationship_types:
+      - INITIATES
+      - RELATES_TO
+      - PRECEDES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/causes/drivers
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/causes-drivers.csv
+        format: csv
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.92
+      accuracy: 0.89
+      timeliness: 0.95
+      consistency: 0.91
+    validation_rules:
+      - id must be unique
+      - name is required
+      - domain must reference valid domain entity
+
+  - id: causes-root-analysis
+    name: Root Cause Analysis Dataset
+    description: Systematic analysis of root causes across different change domains and contexts
+    version: "1.0.3"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Cause
+      - Pattern
+      - Domain
+    relationship_types:
+      - DERIVES_FROM
+      - RELATES_TO
+      - PART_OF
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/causes/root-analysis
+        format: json
+    update_frequency: quarterly
+    quality_metrics:
+      completeness: 0.87
+      accuracy: 0.85
+      timeliness: 0.82
+      consistency: 0.90
+
+# =============================================================================
+# PATTERNS DATASETS
+# =============================================================================
+# Datasets containing change patterns, templates, and reusable transformation
+# models derived from successful change initiatives.
+# =============================================================================
+
+patterns:
+  - id: patterns-library
+    name: Change Patterns Library
+    description: Curated library of patterns for systemic change drawn from documented case studies
+    version: "2.1.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Pattern
+      - Cause
+      - Outcome
+      - Phase
+    relationship_types:
+      - ADDRESSES
+      - PRODUCES
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/patterns/library
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/patterns-library.json
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.94
+      accuracy: 0.91
+      timeliness: 0.93
+      consistency: 0.96
+    validation_rules:
+      - pattern_id must be unique
+      - name is required
+      - phases array must contain valid phase references
+
+  - id: patterns-templates
+    name: Pattern Templates Dataset
+    description: Reusable templates and schemas for documenting new change patterns
+    version: "1.4.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Pattern
+      - Metamodel
+    relationship_types:
+      - DERIVES_FROM
+      - IMPLEMENTS
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/patterns/templates
+        format: json
+    update_frequency: quarterly
+    quality_metrics:
+      completeness: 0.90
+      accuracy: 0.88
+      timeliness: 0.85
+      consistency: 0.92
+
+  - id: patterns-evidence
+    name: Pattern Evidence Dataset
+    description: Evidence base and validation data for documented change patterns
+    version: "1.1.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Pattern
+      - Initiative
+      - Story
+      - Citation
+    relationship_types:
+      - SUPPORTS
+      - RELATES_TO
+      - DERIVES_FROM
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/patterns/evidence
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.78
+      accuracy: 0.82
+      timeliness: 0.80
+      consistency: 0.85
+
+# =============================================================================
+# STORIES DATASETS
+# =============================================================================
+# Datasets containing narrative accounts, case studies, and testimonials
+# from change initiatives and transformations.
+# =============================================================================
+
+stories:
+  - id: stories-case-studies
+    name: Case Studies Dataset
+    description: Comprehensive case studies of systemic change initiatives and their outcomes
+    version: "3.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Story
+      - Initiative
+      - Actor
+      - Location
+      - Timeline
+    relationship_types:
+      - INITIATES
+      - IMPLEMENTS
+      - LOCATED_IN
+      - OCCURS_AT
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/stories/case-studies
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/case-studies.zip
+        format: json
+    update_frequency: weekly
+    quality_metrics:
+      completeness: 0.96
+      accuracy: 0.94
+      timeliness: 0.97
+      consistency: 0.95
+    validation_rules:
+      - story_id must be unique
+      - initiative reference is required
+      - timeline must be valid date range
+
+  - id: stories-testimonials
+    name: Testimonials Dataset
+    description: First-person accounts and testimonials from change participants
+    version: "1.5.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Story
+      - Actor
+      - Narrative
+    relationship_types:
+      - RELATES_TO
+      - SUPPORTS
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/stories/testimonials
+        format: json
+    update_frequency: biweekly
+    quality_metrics:
+      completeness: 0.88
+      accuracy: 0.91
+      timeliness: 0.89
+      consistency: 0.90
+
+  - id: stories-narratives
+    name: Change Narratives Dataset
+    description: Synthesized narratives capturing the essence of transformation journeys
+    version: "1.2.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Narrative
+      - Story
+      - Pattern
+    relationship_types:
+      - DERIVES_FROM
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/stories/narratives
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.85
+      accuracy: 0.87
+      timeliness: 0.84
+      consistency: 0.88
+
+# =============================================================================
+# SKILLS DATASETS
+# =============================================================================
+# Datasets containing competency frameworks, skill taxonomies, and capability
+# models for change agents and practitioners.
+# =============================================================================
+
+skills:
+  - id: skills-framework
+    name: Change Skills Framework
+    description: Competency framework for systemic change practitioners
+    version: "2.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Skill
+      - Domain
+      - Function
+      - Phase
+    relationship_types:
+      - RELATES_TO
+      - REQUIRES
+      - ENABLES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/skills/framework
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/skills-framework.csv
+        format: csv
+    update_frequency: quarterly
+    quality_metrics:
+      completeness: 0.93
+      accuracy: 0.90
+      timeliness: 0.88
+      consistency: 0.94
+    validation_rules:
+      - skill_id must be unique
+      - name is required
+      - domain must be valid reference
+
+  - id: skills-taxonomy
+    name: Skills Taxonomy Dataset
+    description: Hierarchical taxonomy of skills for change work
+    version: "1.3.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Skill
+      - Domain
+    relationship_types:
+      - PART_OF
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/skills/taxonomy
+        format: json
+    update_frequency: semiannual
+    quality_metrics:
+      completeness: 0.95
+      accuracy: 0.93
+      timeliness: 0.85
+      consistency: 0.96
+
+  - id: skills-assessments
+    name: Skills Assessments Dataset
+    description: Assessment data and competency measurements for practitioners
+    version: "1.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Skill
+      - Actor
+      - Indicator
+      - Metric
+    relationship_types:
+      - MEASURES
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/skills/assessments
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.82
+      accuracy: 0.86
+      timeliness: 0.90
+      consistency: 0.88
+
+# =============================================================================
+# TOOLS DATASETS
+# =============================================================================
+# Datasets containing methodologies, instruments, frameworks, and approaches
+# used in systemic change work.
+# =============================================================================
+
+tools:
+  - id: tools-methodologies
+    name: Change Methodologies Dataset
+    description: Documented methodologies for facilitating systemic change
+    version: "2.2.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Tool
+      - Methodology
+      - Framework
+      - Phase
+    relationship_types:
+      - IMPLEMENTS
+      - ENABLES
+      - REQUIRES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/tools/methodologies
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/methodologies.json
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.91
+      accuracy: 0.89
+      timeliness: 0.90
+      consistency: 0.92
+    validation_rules:
+      - tool_id must be unique
+      - methodology type is required
+      - phases must be valid references
+
+  - id: tools-frameworks
+    name: Frameworks Dataset
+    description: Conceptual and operational frameworks for understanding change
+    version: "1.6.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Framework
+      - Domain
+      - Pattern
+    relationship_types:
+      - RELATES_TO
+      - IMPLEMENTS
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/tools/frameworks
+        format: json
+    update_frequency: quarterly
+    quality_metrics:
+      completeness: 0.89
+      accuracy: 0.87
+      timeliness: 0.86
+      consistency: 0.90
+
+  - id: tools-practices
+    name: Practices Dataset
+    description: Documented practices and techniques for change work
+    version: "1.4.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Practice
+      - Tool
+      - Skill
+    relationship_types:
+      - REQUIRES
+      - ENABLES
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/tools/practices
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.86
+      accuracy: 0.84
+      timeliness: 0.88
+      consistency: 0.87
+
+# =============================================================================
+# TRADITIONS DATASETS
+# =============================================================================
+# Datasets containing cultural, historical, and contextual knowledge about
+# change traditions and approaches across different societies.
+# =============================================================================
+
+traditions:
+  - id: traditions-cultural
+    name: Cultural Traditions Dataset
+    description: Cultural approaches and traditions for community change
+    version: "1.3.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Tradition
+      - Location
+      - Domain
+      - Narrative
+    relationship_types:
+      - LOCATED_IN
+      - RELATES_TO
+      - DERIVES_FROM
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/traditions/cultural
+        format: json
+    update_frequency: quarterly
+    quality_metrics:
+      completeness: 0.84
+      accuracy: 0.88
+      timeliness: 0.80
+      consistency: 0.86
+    validation_rules:
+      - tradition_id must be unique
+      - location reference required
+      - cultural_context field required
+
+  - id: traditions-historical
+    name: Historical Traditions Dataset
+    description: Historical change movements and their approaches
+    version: "1.1.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Tradition
+      - Timeline
+      - Actor
+      - Event
+    relationship_types:
+      - OCCURS_AT
+      - INITIATES
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/traditions/historical
+        format: json
+    update_frequency: semiannual
+    quality_metrics:
+      completeness: 0.80
+      accuracy: 0.85
+      timeliness: 0.75
+      consistency: 0.82
+
+  - id: traditions-indigenous
+    name: Indigenous Knowledge Dataset
+    description: Indigenous approaches to change and community transformation
+    version: "1.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Tradition
+      - Location
+      - Narrative
+      - Practice
+    relationship_types:
+      - LOCATED_IN
+      - DERIVES_FROM
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/traditions/indigenous
+        format: json
+    update_frequency: annual
+    quality_metrics:
+      completeness: 0.75
+      accuracy: 0.90
+      timeliness: 0.70
+      consistency: 0.85
+
+# =============================================================================
+# PROGRAMS DATASETS
+# =============================================================================
+# Datasets containing organized interventions, initiatives, and programs
+# for systemic change.
+# =============================================================================
+
+programs:
+  - id: programs-initiatives
+    name: Change Initiatives Dataset
+    description: Catalog of organized change initiatives and their characteristics
+    version: "3.1.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Program
+      - Initiative
+      - Project
+      - Actor
+      - Location
+      - Domain
+    relationship_types:
+      - INITIATES
+      - IMPLEMENTS
+      - LOCATED_IN
+      - ADDRESSES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/programs/initiatives
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/initiatives.csv
+        format: csv
+    update_frequency: weekly
+    quality_metrics:
+      completeness: 0.95
+      accuracy: 0.93
+      timeliness: 0.96
+      consistency: 0.94
+    validation_rules:
+      - initiative_id must be unique
+      - name is required
+      - start_date is required
+      - location reference recommended
+
+  - id: programs-projects
+    name: Projects Dataset
+    description: Specific projects within change initiatives
+    version: "2.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Project
+      - Initiative
+      - Actor
+      - Outcome
+    relationship_types:
+      - PART_OF
+      - IMPLEMENTS
+      - PRODUCES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/programs/projects
+        format: json
+    update_frequency: weekly
+    quality_metrics:
+      completeness: 0.92
+      accuracy: 0.90
+      timeliness: 0.93
+      consistency: 0.91
+
+  - id: programs-organizations
+    name: Organizations Dataset
+    description: Organizations involved in change work
+    version: "2.4.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Organization
+      - Actor
+      - Location
+      - Sector
+    relationship_types:
+      - COLLABORATES_WITH
+      - LOCATED_IN
+      - FUNDS
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/programs/organizations
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/organizations.csv
+        format: csv
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.94
+      accuracy: 0.92
+      timeliness: 0.91
+      consistency: 0.93
+
+  - id: programs-funding
+    name: Funding Dataset
+    description: Funding relationships and resource flows for change work
+    version: "1.2.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Organization
+      - Initiative
+      - Resource
+    relationship_types:
+      - FUNDS
+      - PRODUCES
+      - REQUIRES
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/programs/funding
+        format: json
+    update_frequency: monthly
+    quality_metrics:
+      completeness: 0.78
+      accuracy: 0.82
+      timeliness: 0.85
+      consistency: 0.80
+
+# =============================================================================
+# METAMODELS DATASETS
+# =============================================================================
+# Datasets containing meta-level schemas, ontologies, and structural
+# definitions for the changemappers system.
+# =============================================================================
+
+metamodels:
+  - id: metamodels-schema
+    name: Entity Schema Dataset
+    description: Schema definitions for all entity types in the system
+    version: "1.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Metamodel
+      - Domain
+    relationship_types:
+      - RELATES_TO
+      - PART_OF
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/metamodels/schema
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/schema.json
+        format: json
+    update_frequency: on-demand
+    quality_metrics:
+      completeness: 1.0
+      accuracy: 1.0
+      timeliness: 1.0
+      consistency: 1.0
+    validation_rules:
+      - schema must be valid JSON Schema
+      - entity_type must match catalog/entities.yml
+
+  - id: metamodels-ontology
+    name: Domain Ontology Dataset
+    description: Ontological definitions for change domains and concepts
+    version: "1.1.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Metamodel
+      - Domain
+      - Subdomain
+      - Topic
+    relationship_types:
+      - PART_OF
+      - RELATES_TO
+      - DERIVES_FROM
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/metamodels/ontology
+        format: json
+    update_frequency: semiannual
+    quality_metrics:
+      completeness: 0.92
+      accuracy: 0.95
+      timeliness: 0.88
+      consistency: 0.94
+
+  - id: metamodels-taxonomy
+    name: Classification Taxonomy Dataset
+    description: Taxonomic classifications for all entity categories
+    version: "1.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Metamodel
+      - Domain
+      - Sector
+      - Scale
+    relationship_types:
+      - PART_OF
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/metamodels/taxonomy
+        format: json
+    update_frequency: annual
+    quality_metrics:
+      completeness: 0.96
+      accuracy: 0.94
+      timeliness: 0.90
+      consistency: 0.97
+
+# =============================================================================
+# CROSS-CUTTING DATASETS
+# =============================================================================
+# Datasets that span multiple categories and provide cross-referencing
+# capabilities across the entire catalog.
+# =============================================================================
+
+cross_cutting:
+  - id: relationships-graph
+    name: Entity Relationships Graph
+    description: Complete graph of all entity relationships in the system
+    version: "1.5.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - all
+    relationship_types:
+      - all
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/graph
+        format: json
+      - type: export
+        url: https://data.changemappers.org/exports/graph.gml
+        format: gml
+    update_frequency: daily
+    quality_metrics:
+      completeness: 0.98
+      accuracy: 0.96
+      timeliness: 0.99
+      consistency: 0.97
+
+  - id: search-index
+    name: Full-Text Search Index
+    description: Searchable index of all catalog content
+    version: "2.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - all
+    relationship_types:
+      - all
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/search
+        format: json
+    update_frequency: hourly
+    quality_metrics:
+      completeness: 1.0
+      accuracy: 0.99
+      timeliness: 1.0
+      consistency: 0.99
+
+  - id: metrics-dashboard
+    name: System Metrics Dataset
+    description: Aggregated metrics and statistics for the entire catalog
+    version: "1.0.0"
+    license: CC-BY-SA-4.0
+    entity_types:
+      - Metric
+      - Indicator
+    relationship_types:
+      - MEASURES
+      - RELATES_TO
+    data_sources:
+      - type: api
+        url: https://api.changemappers.org/v1/metrics
+        format: json
+    update_frequency: daily
+    quality_metrics:
+      completeness: 0.95
+      accuracy: 0.93
+      timeliness: 0.98
+      consistency: 0.94

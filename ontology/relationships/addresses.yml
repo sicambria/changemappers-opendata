@@ -1,0 +1,114 @@
+id: addresses
+name: Addresses
+description: An Initiative, Project, or Intervention targets or seeks to solve a specific Cause, Problem, Issue, or Challenge. This relationship connects action to the problem space.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Initiative
+  - Project
+  - Campaign
+  - Policy
+  - Intervention
+
+allowed_to:
+  - Cause
+  - Problem
+  - Issue
+  - Challenge
+  - Need
+
+properties:
+  primary_focus:
+    type: boolean
+    description: Whether this is the main problem being addressed
+    required: false
+  approach:
+    type: string
+    description: How the initiative addresses the problem (direct, indirect, systemic)
+    required: false
+  scope:
+    type: string
+    description: The scale of intervention (local, regional, national, global)
+    required: false
+  target_population:
+    type: string
+    description: Who is primarily affected by the problem
+    required: false
+
+cardinality: many-to-many
+
+inverse: addressed_by
+
+examples:
+  - from: BlackLivesMatter
+    to: SystemicRacism
+    properties:
+      primary_focus: true
+      approach: systemic
+      scope: national
+    confidence: 0.98
+    source: https://changemappers.org/initiatives/blm
+
+  - from: FridaysForFuture
+    to: ClimateCrisis
+    properties:
+      primary_focus: true
+      approach: systemic
+      scope: global
+      target_population: future_generations
+    confidence: 0.96
+    source: https://changemappers.org/initiatives/fff
+
+  - from: DoctorsWithoutBorders
+    to: HealthcareAccess
+    properties:
+      primary_focus: true
+      approach: direct
+      scope: global
+      target_population: conflict_zones
+    confidence: 0.95
+    source: https://changemappers.org/initiatives/msf
+
+  - from: FairTradeMovement
+    to: TradeInjustice
+    properties:
+      primary_focus: true
+      approach: systemic
+      scope: global
+      target_population: smallholder_farmers
+    confidence: 0.92
+    source: https://changemappers.org/initiatives/fair-trade
+
+  - from: MeTooMovement
+    to: GenderBasedViolence
+    properties:
+      primary_focus: true
+      approach: systemic
+      scope: global
+    confidence: 0.97
+    source: https://changemappers.org/initiatives/me-too
+
+  - from: OpenStreetMap
+    to: GeographicDataAccessibility
+    properties:
+      primary_focus: true
+      approach: direct
+      scope: global
+    confidence: 0.91
+    source: https://changemappers.org/initiatives/osm
+
+  - from: PrisonAbolitionMovement
+    to: MassIncarceration
+    properties:
+      primary_focus: true
+      approach: systemic
+      scope: national
+      target_population: marginalized_communities
+    confidence: 0.93
+    source: https://changemappers.org/initiatives/prison-abolition
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

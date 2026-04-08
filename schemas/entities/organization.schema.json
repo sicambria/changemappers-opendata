@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/organization.schema.json",
+  "title": "Organization",
+  "description": "A structured entity that operates within the changemappers ecosystem, including NGOs, corporations, government bodies, and grassroots groups.",
+  "type": "object",
+  "required": ["id", "slug", "name", "type", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the organization",
+      "example": "550e8400-e29b-41d4-a716-446655440001"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "green-planet-initiative"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Official name of the organization",
+      "example": "Green Planet Initiative"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["ngo", "nonprofit", "corporation", "government", "grassroots", "network", "foundation", "cooperative", "community_organization", "academic", "research_institute"],
+      "description": "Type of organization",
+      "example": "ngo"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Description of the organization's mission and activities",
+      "example": "A nonprofit organization dedicated to environmental conservation and sustainable development."
+    },
+    "founded_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the organization was founded"
+    },
+    "contact": {
+      "type": "object",
+      "description": "Contact information",
+      "additionalProperties": false,
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string", "pattern": "^\\+?[0-9\\-\\s]+$" },
+        "website": { "type": "string", "format": "uri" },
+        "address": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "street": { "type": "string" },
+            "city": { "type": "string" },
+            "state": { "type": "string" },
+            "postal_code": { "type": "string" },
+            "country": { "type": "string" }
+          }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic locations where the organization operates",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "sectors": {
+      "type": "array",
+      "description": "Sectors the organization operates in",
+      "items": {
+        "type": "string",
+        "enum": ["environment", "education", "health", "social_justice", "economic_development", "governance", "arts_culture", "technology", "agriculture", "energy", "housing", "transportation"]
+      }
+    },
+    "initiatives": {
+      "type": "array",
+      "description": "Initiatives the organization leads or participates in",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "projects": {
+      "type": "array",
+      "description": "Projects the organization is involved in",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "members": {
+      "type": "array",
+      "description": "Actor members of the organization",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "parent_organization": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent organization ID if this is a subsidiary"
+    },
+    "child_organizations": {
+      "type": "array",
+      "description": "Child/subsidiary organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "partners": {
+      "type": "array",
+      "description": "Partner organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "funding_sources": {
+      "type": "array",
+      "description": "Sources of funding",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "source": { "type": "string" },
+          "type": { "type": "string", "enum": ["grant", "donation", "investment", "government", "earned_income"] },
+          "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

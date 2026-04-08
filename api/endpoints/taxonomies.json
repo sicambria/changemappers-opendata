@@ -1,0 +1,655 @@
+{
+  "endpoint": "/taxonomies",
+  "path": "/v1/taxonomies",
+  "httpMethods": ["GET"],
+  "parameters": {
+    "GET": {
+      "query": {
+        "name": {
+          "type": "string",
+          "required": false,
+          "enum": ["sectors", "organization_types", "initiative_types", "cause_categories", "pattern_categories", "relationship_types", "sdg", "urgency_levels", "scopes", "all"],
+          "description": "Name of the taxonomy to retrieve",
+          "default": "all"
+        },
+        "include_counts": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Include usage counts for each taxonomy term"
+        },
+        "format": {
+          "type": "string",
+          "required": false,
+          "enum": ["flat", "tree", "graph"],
+          "default": "flat",
+          "description": "Output format for taxonomy"
+        },
+        "lang": {
+          "type": "string",
+          "required": false,
+          "default": "en",
+          "description": "Language code for labels (if translations available)"
+        }
+      }
+    }
+  },
+  "responseSchema": {
+    "success": {
+      "type": "object",
+      "properties": {
+        "taxonomies": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Taxonomy"
+          }
+        }
+      },
+      "definitions": {
+        "Taxonomy": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "description": { "type": "string" },
+            "terms": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TaxonomyTerm"
+              }
+            }
+          }
+        },
+        "TaxonomyTerm": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "label": { "type": "string" },
+            "description": { "type": "string" },
+            "parent_id": { "type": "string" },
+            "children": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/TaxonomyTerm"
+              }
+            },
+            "count": {
+              "type": "integer",
+              "description": "Usage count (only if include_counts=true)"
+            },
+            "metadata": { "type": "object" }
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "request": {
+      "GET": {
+        "all_taxonomies": "?include_counts=true",
+        "specific_taxonomy": "?name=sectors",
+        "tree_format": "?name=cause_categories&format=tree",
+        "graph_format": "?name=relationship_types&format=graph"
+      }
+    },
+    "response": {
+      "success": {
+        "taxonomies": {
+          "sectors": {
+            "name": "sectors",
+            "description": "Organization and initiative sector classifications",
+            "terms": [
+              {
+                "id": "environment",
+                "label": "Environment",
+                "description": "Environmental protection and sustainability",
+                "parent_id": null,
+                "children": [
+                  {
+                    "id": "climate_action",
+                    "label": "Climate Action",
+                    "description": "Climate change mitigation and adaptation",
+                    "parent_id": "environment",
+                    "count": 145
+                  },
+                  {
+                    "id": "biodiversity",
+                    "label": "Biodiversity",
+                    "description": "Biodiversity conservation and ecosystem protection",
+                    "parent_id": "environment",
+                    "count": 67
+                  }
+                ],
+                "count": 234
+              },
+              {
+                "id": "social_justice",
+                "label": "Social Justice",
+                "description": "Social justice and human rights",
+                "parent_id": null,
+                "count": 189
+              }
+            ]
+          },
+          "organization_types": {
+            "name": "organization_types",
+            "description": "Types of organizations in the network",
+            "terms": [
+              {
+                "id": "ngo",
+                "label": "Non-Governmental Organization",
+                "description": "Independent non-profit organizations",
+                "parent_id": null,
+                "count": 156
+              },
+              {
+                "id": "nonprofit",
+                "label": "Non-Profit",
+                "description": "Non-profit organizations and charities",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "social_enterprise",
+                "label": "Social Enterprise",
+                "description": "Businesses with social missions",
+                "parent_id": null,
+                "count": 45
+              },
+              {
+                "id": "cooperative",
+                "label": "Cooperative",
+                "description": "Member-owned cooperatives",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "foundation",
+                "label": "Foundation",
+                "description": "Philanthropic foundations",
+                "parent_id": null,
+                "count": 28
+              },
+              {
+                "id": "community_group",
+                "label": "Community Group",
+                "description": "Local community-based groups",
+                "parent_id": null,
+                "count": 112
+              },
+              {
+                "id": "network",
+                "label": "Network",
+                "description": "Networks and coalitions",
+                "parent_id": null,
+                "count": 67
+              }
+            ]
+          },
+          "initiative_types": {
+            "name": "initiative_types",
+            "description": "Types of initiatives and projects",
+            "terms": [
+              {
+                "id": "project",
+                "label": "Project",
+                "description": "Time-bound project with specific objectives",
+                "parent_id": null,
+                "count": 234
+              },
+              {
+                "id": "campaign",
+                "label": "Campaign",
+                "description": "Advocacy or awareness campaigns",
+                "parent_id": null,
+                "count": 167
+              },
+              {
+                "id": "program",
+                "label": "Program",
+                "description": "Ongoing programs with multiple activities",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "event",
+                "label": "Event",
+                "description": "One-time or recurring events",
+                "parent_id": null,
+                "count": 145
+              },
+              {
+                "id": "research",
+                "label": "Research",
+                "description": "Research initiatives and studies",
+                "parent_id": null,
+                "count": 56
+              },
+              {
+                "id": "pilot",
+                "label": "Pilot",
+                "description": "Pilot projects and experiments",
+                "parent_id": null,
+                "count": 34
+              }
+            ]
+          },
+          "cause_categories": {
+            "name": "cause_categories",
+            "description": "Categories of causes and issues",
+            "terms": [
+              {
+                "id": "environment",
+                "label": "Environment",
+                "description": "Environmental causes",
+                "parent_id": null,
+                "count": 145
+              },
+              {
+                "id": "social_justice",
+                "label": "Social Justice",
+                "description": "Social justice and human rights causes",
+                "parent_id": null,
+                "count": 123
+              },
+              {
+                "id": "economic",
+                "label": "Economic",
+                "description": "Economic development and justice",
+                "parent_id": null,
+                "count": 78
+              },
+              {
+                "id": "health",
+                "label": "Health",
+                "description": "Health and wellbeing causes",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "education",
+                "label": "Education",
+                "description": "Education and learning causes",
+                "parent_id": null,
+                "count": 67
+              },
+              {
+                "id": "governance",
+                "label": "Governance",
+                "description": "Democratic governance and participation",
+                "parent_id": null,
+                "count": 45
+              },
+              {
+                "id": "culture",
+                "label": "Culture",
+                "description": "Cultural and artistic causes",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "infrastructure",
+                "label": "Infrastructure",
+                "description": "Infrastructure and built environment",
+                "parent_id": null,
+                "count": 23
+              }
+            ]
+          },
+          "pattern_categories": {
+            "name": "pattern_categories",
+            "description": "Categories of change patterns",
+            "terms": [
+              {
+                "id": "organizational",
+                "label": "Organizational",
+                "description": "Organizational structures and processes",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "tactical",
+                "label": "Tactical",
+                "description": "Tactical approaches and methods",
+                "parent_id": null,
+                "count": 45
+              },
+              {
+                "id": "strategic",
+                "label": "Strategic",
+                "description": "Strategic planning and positioning",
+                "parent_id": null,
+                "count": 28
+              },
+              {
+                "id": "communication",
+                "label": "Communication",
+                "description": "Communication and messaging patterns",
+                "parent_id": null,
+                "count": 56
+              },
+              {
+                "id": "funding",
+                "label": "Funding",
+                "description": "Funding and resource mobilization",
+                "parent_id": null,
+                "count": 23
+              },
+              {
+                "id": "governance",
+                "label": "Governance",
+                "description": "Governance and decision-making",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "mobilization",
+                "label": "Mobilization",
+                "description": "Mobilization and engagement",
+                "parent_id": null,
+                "count": 67
+              },
+              {
+                "id": "coalition_building",
+                "label": "Coalition Building",
+                "description": "Building alliances and coalitions",
+                "parent_id": null,
+                "count": 45
+              }
+            ]
+          },
+          "relationship_types": {
+            "name": "relationship_types",
+            "description": "Types of relationships between entities",
+            "terms": [
+              {
+                "id": "MEMBER_OF",
+                "label": "Member Of",
+                "description": "Entity is a member of another entity",
+                "parent_id": null,
+                "count": 234
+              },
+              {
+                "id": "PARTNER_OF",
+                "label": "Partner Of",
+                "description": "Partnership relationship",
+                "parent_id": null,
+                "count": 189
+              },
+              {
+                "id": "LEADS",
+                "label": "Leads",
+                "description": "Leadership relationship",
+                "parent_id": null,
+                "count": 145
+              },
+              {
+                "id": "PARTICIPATES_IN",
+                "label": "Participates In",
+                "description": "Participation in an initiative",
+                "parent_id": null,
+                "count": 345
+              },
+              {
+                "id": "ADDRESSES",
+                "label": "Addresses",
+                "description": "Addresses a cause or issue",
+                "parent_id": null,
+                "count": 267
+              },
+              {
+                "id": "IMPLEMENTS",
+                "label": "Implements",
+                "description": "Implements a pattern",
+                "parent_id": null,
+                "count": 123
+              },
+              {
+                "id": "DOCUMENTS",
+                "label": "Documents",
+                "description": "Documents an entity or activity",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "RELATED_TO",
+                "label": "Related To",
+                "description": "General relationship",
+                "parent_id": null,
+                "count": 456
+              },
+              {
+                "id": "FUNDS",
+                "label": "Funds",
+                "description": "Funding relationship",
+                "parent_id": null,
+                "count": 78
+              },
+              {
+                "id": "SUPPORTS",
+                "label": "Supports",
+                "description": "Support relationship",
+                "parent_id": null,
+                "count": 167
+              }
+            ]
+          },
+          "sdg": {
+            "name": "sdg",
+            "description": "UN Sustainable Development Goals",
+            "terms": [
+              {
+                "id": "SDG1",
+                "label": "No Poverty",
+                "description": "End poverty in all its forms everywhere",
+                "parent_id": null,
+                "count": 67
+              },
+              {
+                "id": "SDG2",
+                "label": "Zero Hunger",
+                "description": "End hunger, achieve food security",
+                "parent_id": null,
+                "count": 45
+              },
+              {
+                "id": "SDG3",
+                "label": "Good Health and Well-being",
+                "description": "Ensure healthy lives and promote well-being",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "SDG4",
+                "label": "Quality Education",
+                "description": "Ensure inclusive and equitable quality education",
+                "parent_id": null,
+                "count": 78
+              },
+              {
+                "id": "SDG5",
+                "label": "Gender Equality",
+                "description": "Achieve gender equality and empower all women and girls",
+                "parent_id": null,
+                "count": 56
+              },
+              {
+                "id": "SDG6",
+                "label": "Clean Water and Sanitation",
+                "description": "Ensure availability and sustainable management of water",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "SDG7",
+                "label": "Affordable and Clean Energy",
+                "description": "Ensure access to affordable, reliable, sustainable energy",
+                "parent_id": null,
+                "count": 45
+              },
+              {
+                "id": "SDG8",
+                "label": "Decent Work and Economic Growth",
+                "description": "Promote sustained, inclusive economic growth",
+                "parent_id": null,
+                "count": 67
+              },
+              {
+                "id": "SDG9",
+                "label": "Industry, Innovation and Infrastructure",
+                "description": "Build resilient infrastructure",
+                "parent_id": null,
+                "count": 23
+              },
+              {
+                "id": "SDG10",
+                "label": "Reduced Inequalities",
+                "description": "Reduce inequality within and among countries",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "SDG11",
+                "label": "Sustainable Cities and Communities",
+                "description": "Make cities and human settlements inclusive, safe, resilient",
+                "parent_id": null,
+                "count": 56
+              },
+              {
+                "id": "SDG12",
+                "label": "Responsible Consumption and Production",
+                "description": "Ensure sustainable consumption and production patterns",
+                "parent_id": null,
+                "count": 34
+              },
+              {
+                "id": "SDG13",
+                "label": "Climate Action",
+                "description": "Take urgent action to combat climate change",
+                "parent_id": null,
+                "count": 145
+              },
+              {
+                "id": "SDG14",
+                "label": "Life Below Water",
+                "description": "Conserve and sustainably use the oceans",
+                "parent_id": null,
+                "count": 23
+              },
+              {
+                "id": "SDG15",
+                "label": "Life on Land",
+                "description": "Protect, restore and promote sustainable use of terrestrial ecosystems",
+                "parent_id": null,
+                "count": 67
+              },
+              {
+                "id": "SDG16",
+                "label": "Peace, Justice and Strong Institutions",
+                "description": "Promote peaceful and inclusive societies",
+                "parent_id": null,
+                "count": 78
+              },
+              {
+                "id": "SDG17",
+                "label": "Partnerships for the Goals",
+                "description": "Strengthen the means of implementation and revitalize the global partnership",
+                "parent_id": null,
+                "count": 123
+              }
+            ]
+          },
+          "urgency_levels": {
+            "name": "urgency_levels",
+            "description": "Urgency levels for causes",
+            "terms": [
+              {
+                "id": "critical",
+                "label": "Critical",
+                "description": "Immediate action required",
+                "parent_id": null,
+                "count": 23
+              },
+              {
+                "id": "high",
+                "label": "High",
+                "description": "Urgent action needed",
+                "parent_id": null,
+                "count": 56
+              },
+              {
+                "id": "medium",
+                "label": "Medium",
+                "description": "Important but not urgent",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "low",
+                "label": "Low",
+                "description": "Can be addressed over time",
+                "parent_id": null,
+                "count": 45
+              }
+            ]
+          },
+          "scopes": {
+            "name": "scopes",
+            "description": "Geographic scope of entities",
+            "terms": [
+              {
+                "id": "local",
+                "label": "Local",
+                "description": "City or community level",
+                "parent_id": null,
+                "count": 234
+              },
+              {
+                "id": "regional",
+                "label": "Regional",
+                "description": "Regional or state level",
+                "parent_id": null,
+                "count": 145
+              },
+              {
+                "id": "national",
+                "label": "National",
+                "description": "Country level",
+                "parent_id": null,
+                "count": 89
+              },
+              {
+                "id": "global",
+                "label": "Global",
+                "description": "International or global level",
+                "parent_id": null,
+                "count": 67
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "errorCodes": {
+    "400": {
+      "code": "BAD_REQUEST",
+      "description": "Invalid taxonomy name or parameters"
+    },
+    "401": {
+      "code": "UNAUTHORIZED",
+      "description": "Authentication required"
+    },
+    "404": {
+      "code": "NOT_FOUND",
+      "description": "Taxonomy not found"
+    },
+    "429": {
+      "code": "RATE_LIMIT_EXCEEDED",
+      "description": "Too many requests"
+    },
+    "500": {
+      "code": "INTERNAL_SERVER_ERROR",
+      "description": "Server error"
+    }
+  }
+}

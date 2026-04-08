@@ -1,0 +1,282 @@
+{
+  "dataset_info": {
+    "name": "Initiatives",
+    "description": "Coordinated efforts or campaigns aimed at creating change, involving multiple actors, organizations, and projects.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 8,
+    "schema": "https://changemappers.org/schemas/entities/initiative.schema.json"
+  },
+  "records": [
+    {
+      "id": "i1n2i3t4-i5t6-7890-abcd-ef1234567890",
+      "slug": "amazon-watershed-defense",
+      "name": "Amazon Watershed Defense Initiative",
+      "description": "A multi-stakeholder coalition defending the Amazon watershed from industrial extraction, supporting Indigenous water protectors, and establishing community-based water monitoring networks.",
+      "status": "active",
+      "type": "coalition",
+      "lead_organizations": ["b2c3d4e5-f6a7-8901-bcde-f12345678901"],
+      "partner_organizations": ["b1c2d3e4-f5a6-7890-abcd-ef1234567890", "b7c8d9e0-f1a2-3456-1234-567890123456"],
+      "actors": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+      "projects": ["p1r2o3j4-e5c6-7890-abcd-ef1234567890"],
+      "causes": ["c1a2u3s4-e5f6-7890-abcd-ef1234567890"],
+      "locations": ["l1o2c3a4-t5i6-7890-abcd-ef1234567890"],
+      "timeline": {
+        "start_date": "2022-01-15",
+        "end_date": "2027-12-31",
+        "milestones": [
+          {"date": "2022-06-01", "description": "Coalition formation complete", "status": "achieved"},
+          {"date": "2023-03-15", "description": "First community monitoring network established", "status": "achieved"},
+          {"date": "2025-01-01", "description": "Legal recognition of river rights", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o1u2t3c4-o5m6-7890-abcd-ef1234567890"],
+      "budget": {
+        "total": 2500000,
+        "currency": "USD",
+        "sources": [
+          {"name": "Foundation Grants", "amount": 1500000, "type": "grant"},
+          {"name": "Individual Donations", "amount": 750000, "type": "donation"},
+          {"name": "Government Support", "amount": 250000, "type": "government"}
+        ]
+      },
+      "tags": ["watershed-defense", "indigenous-rights", "amazon", "water-protectors"],
+      "created_at": "2026-01-15T08:00:00Z",
+      "updated_at": "2026-04-01T14:30:00Z"
+    },
+    {
+      "id": "i2n3i4t5-i6t7-8901-bcde-f12345678901",
+      "slug": "east-africa-water-retention",
+      "name": "East Africa Water Retention Initiative",
+      "description": "Training and implementation program supporting smallholder farmers across East Africa to build water retention landscapes, increase resilience, and restore degraded lands.",
+      "status": "active",
+      "type": "program",
+      "lead_organizations": ["b3c4d5e6-f7a8-9012-cdef-123456789012"],
+      "partner_organizations": ["b1c2d3e4-f5a6-7890-abcd-ef1234567890", "b7c8d9e0-f1a2-3456-1234-567890123456"],
+      "actors": ["a2b3c4d5-e6f7-8901-bcde-f12345678901"],
+      "projects": ["p2r3o4j5-e6c7-8901-bcde-f12345678901"],
+      "causes": ["c2a3u4s5-e6f7-8901-bcde-f12345678901", "c3a4u5s6-e7f8-8901-bcde-f12345678901"],
+      "locations": ["l2o3c4a5-t6i7-8901-bcde-f12345678901"],
+      "timeline": {
+        "start_date": "2021-03-01",
+        "milestones": [
+          {"date": "2021-06-15", "description": "First training cohort completed", "status": "achieved"},
+          {"date": "2023-09-01", "description": "1000 farmers trained", "status": "achieved"},
+          {"date": "2026-12-01", "description": "5000 hectares restored", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o2u3t4c5-o6m7-8901-bcde-f12345678901"],
+      "budget": {
+        "total": 1800000,
+        "currency": "USD",
+        "sources": [
+          {"name": "International Grants", "amount": 1200000, "type": "grant"},
+          {"name": "Training Fees", "amount": 400000, "type": "earned_income"},
+          {"name": "Local Contributions", "amount": 200000, "type": "donation"}
+        ]
+      },
+      "tags": ["water-retention", "regenerative-agriculture", "farmer-training", "east-africa"],
+      "created_at": "2026-01-18T09:30:00Z",
+      "updated_at": "2026-03-28T11:00:00Z"
+    },
+    {
+      "id": "i3n4i5t6-i7t8-9012-cdef-123456789012",
+      "slug": "pacific-northwest-bioregional-resilience",
+      "name": "Pacific Northwest Bioregional Resilience Initiative",
+      "description": "Community-led initiative building local resilience through food systems, energy cooperatives, and mutual aid networks in the Cascadia bioregion.",
+      "status": "active",
+      "type": "movement",
+      "lead_organizations": ["b6c7d8e9-f0a1-2345-0123-456789012345"],
+      "actors": ["a3b4c5d6-e7f8-9012-cdef-123456789012"],
+      "projects": ["p3r4o5j6-e7c8-9012-cdef-123456789012"],
+      "causes": ["c4a5u6s7-e8f9-9012-cdef-123456789012"],
+      "locations": ["l3o4c5a6-t7i8-9012-cdef-123456789012"],
+      "timeline": {
+        "start_date": "2020-01-01",
+        "milestones": [
+          {"date": "2021-06-01", "description": "First community food hub launched", "status": "achieved"},
+          {"date": "2023-03-15", "description": "Energy cooperative established", "status": "achieved"},
+          {"date": "2025-06-01", "description": "Regional mutual aid network operational", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o3u4t5c6-o7m8-9012-cdef-123456789012"],
+      "budget": {
+        "total": 950000,
+        "currency": "USD",
+        "sources": [
+          {"name": "Community Contributions", "amount": 400000, "type": "donation"},
+          {"name": "Foundation Grants", "amount": 350000, "type": "grant"},
+          {"name": "Earned Income", "amount": 200000, "type": "earned_income"}
+        ]
+      },
+      "tags": ["bioregional", "resilience", "mutual-aid", "cascadia"],
+      "created_at": "2026-01-22T10:00:00Z",
+      "updated_at": "2026-04-05T16:00:00Z"
+    },
+    {
+      "id": "i4n5i6t7-i8t9-0123-def0-123456789012",
+      "slug": "systems-transformation-research",
+      "name": "Systems Transformation Research Initiative",
+      "description": "Academic research initiative studying social-ecological systems transformation, producing open-access resources on complexity science and regenerative development.",
+      "status": "active",
+      "type": "project_cluster",
+      "lead_organizations": ["b4c5d6e7-f8a9-0123-def0-123456789012"],
+      "actors": ["a4b5c6d7-e8f9-0123-def0-123456789012"],
+      "projects": ["p4r5o6j7-e8c9-0123-def0-123456789012"],
+      "causes": ["c5a6u7s8-e9f0-0123-def0-123456789012"],
+      "locations": ["l4o5c6a7-t8i9-0123-def0-123456789012"],
+      "timeline": {
+        "start_date": "2019-09-01",
+        "milestones": [
+          {"date": "2021-06-30", "description": "First research compendium published", "status": "achieved"},
+          {"date": "2023-12-15", "description": "Open educational platform launched", "status": "achieved"},
+          {"date": "2026-09-01", "description": "Global practitioner network established", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o4u5t6c7-o8m9-0123-def0-123456789012"],
+      "budget": {
+        "total": 3200000,
+        "currency": "USD",
+        "sources": [
+          {"name": "University Funding", "amount": 1800000, "type": "government"},
+          {"name": "Research Grants", "amount": 1200000, "type": "grant"},
+          {"name": "Consulting", "amount": 200000, "type": "earned_income"}
+        ]
+      },
+      "tags": ["systems-research", "complexity", "open-access", "regenerative-development"],
+      "created_at": "2026-01-25T11:30:00Z",
+      "updated_at": "2026-04-02T09:15:00Z"
+    },
+    {
+      "id": "i5n6i7t8-i9t0-1234-ef01-234567890123",
+      "slug": "post-conflict-healing-network",
+      "name": "Post-Conflict Healing Network",
+      "description": "Network supporting trauma-informed healing, restorative justice, and grief literacy programs in post-conflict and crisis-affected communities.",
+      "status": "active",
+      "type": "network",
+      "lead_organizations": ["b5c6d7e8-f9a0-1234-ef01-234567890123"],
+      "actors": ["a5b6c7d8-e9f0-1234-ef01-234567890123"],
+      "projects": ["p5r6o7j8-e9c0-1234-ef01-234567890123"],
+      "causes": ["c6a7u8s9-e0f1-1234-ef01-234567890123"],
+      "locations": ["l5o6c7a8-t9i0-1234-ef01-234567890123"],
+      "timeline": {
+        "start_date": "2020-04-01",
+        "milestones": [
+          {"date": "2021-09-15", "description": "First grief circle training completed", "status": "achieved"},
+          {"date": "2023-06-01", "description": "Restorative justice protocols established", "status": "achieved"},
+          {"date": "2025-12-01", "description": "Network active in 10 regions", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o5u6t7c8-o9m0-1234-ef01-234567890123"],
+      "budget": {
+        "total": 1200000,
+        "currency": "EUR",
+        "sources": [
+          {"name": "Foundation Grants", "amount": 800000, "type": "grant"},
+          {"name": "Individual Donations", "amount": 300000, "type": "donation"},
+          {"name": "Training Fees", "amount": 100000, "type": "earned_income"}
+        ]
+      },
+      "tags": ["trauma-informed", "restorative-justice", "grief-literacy", "post-conflict"],
+      "created_at": "2026-02-01T14:00:00Z",
+      "updated_at": "2026-03-30T10:30:00Z"
+    },
+    {
+      "id": "i6n7i8t9-i0t1-2345-f012-345678901234",
+      "slug": "youth-climate-justice-movement",
+      "name": "Youth Climate Justice Movement",
+      "description": "Global youth-led movement coordinating campaigns for climate justice, fossil fuel divestment, and intergenerational equity across 15 countries.",
+      "status": "active",
+      "type": "movement",
+      "actors": ["a6b7c8d9-e0f1-2345-f012-345678901234"],
+      "projects": ["p6r7o8j9-e0c1-2345-f012-345678901234"],
+      "causes": ["c7a8u9s0-e1f2-2345-f012-345678901234"],
+      "locations": ["l6o7c8a9-t0i1-2345-f012-345678901234"],
+      "timeline": {
+        "start_date": "2019-08-01",
+        "milestones": [
+          {"date": "2020-09-20", "description": "First global climate strike coordinated", "status": "achieved"},
+          {"date": "2022-06-15", "description": "50 institutions committed to divestment", "status": "achieved"},
+          {"date": "2026-12-01", "description": "Policy wins in 20 jurisdictions", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o6u7t8c9-o0m1-2345-f012-345678901234"],
+      "budget": {
+        "total": 500000,
+        "currency": "USD",
+        "sources": [
+          {"name": "Crowdfunding", "amount": 300000, "type": "donation"},
+          {"name": "Foundation Grants", "amount": 200000, "type": "grant"}
+        ]
+      },
+      "tags": ["youth-led", "climate-justice", "divestment", "global-movement"],
+      "created_at": "2026-02-05T08:45:00Z",
+      "updated_at": "2026-04-03T12:00:00Z"
+    },
+    {
+      "id": "i7n8i9t0-i1t2-3456-0123-456789012345",
+      "slug": "elder-wisdom-transmission",
+      "name": "Elder Wisdom Transmission Initiative",
+      "description": "Initiative connecting Indigenous elders and traditional knowledge keepers with younger generations to preserve and transmit ancestral wisdom and ecological stewardship practices.",
+      "status": "active",
+      "type": "program",
+      "actors": ["a7b8c9d0-e1f2-3456-0123-456789012345"],
+      "partner_organizations": ["b8c9d0e1-f2a3-4567-2345-678901234567"],
+      "projects": ["p7r8o9j0-e1c2-3456-0123-456789012345"],
+      "causes": ["c8a9u0s1-e2f3-3456-0123-456789012345"],
+      "locations": ["l7o8c9a0-t1i2-3456-0123-456789012345"],
+      "timeline": {
+        "start_date": "2021-01-15",
+        "milestones": [
+          {"date": "2022-06-01", "description": "First intergenerational circle held", "status": "achieved"},
+          {"date": "2024-03-15", "description": "Oral history archive launched", "status": "achieved"},
+          {"date": "2026-09-01", "description": "Youth mentorship program established", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o7u8t9c0-o1m2-3456-0123-456789012345"],
+      "budget": {
+        "total": 350000,
+        "currency": "USD",
+        "sources": [
+          {"name": "Foundation Grants", "amount": 250000, "type": "grant"},
+          {"name": "Community Contributions", "amount": 100000, "type": "donation"}
+        ]
+      },
+      "tags": ["elder-wisdom", "intergenerational", "traditional-knowledge", "indigenous"],
+      "created_at": "2026-02-10T16:00:00Z",
+      "updated_at": "2026-04-04T13:30:00Z"
+    },
+    {
+      "id": "i8n9i0t1-i2t3-4567-0123-567890123456",
+      "slug": "open-knowledge-commons",
+      "name": "Open Knowledge Commons Initiative",
+      "description": "Initiative creating and maintaining open-source knowledge resources for regenerative development, including educational materials, research databases, and practical guides.",
+      "status": "active",
+      "type": "network",
+      "lead_organizations": ["b1c2d3e4-f5a6-7890-abcd-ef1234567890", "b4c5d6e7-f8a9-0123-def0-123456789012"],
+      "projects": ["p8r9o0j1-e2c3-4567-0123-567890123456"],
+      "causes": ["c9a0u1s2-e3f4-4567-0123-567890123456"],
+      "timeline": {
+        "start_date": "2023-01-01",
+        "milestones": [
+          {"date": "2023-12-01", "description": "First open educational resource published", "status": "achieved"},
+          {"date": "2025-06-15", "description": "Research database launched", "status": "achieved"},
+          {"date": "2027-01-01", "description": "Global contributor network established", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o8u9t0c1-o2m3-4567-0123-567890123456"],
+      "budget": {
+        "total": 600000,
+        "currency": "USD",
+        "sources": [
+          {"name": "Foundation Grants", "amount": 400000, "type": "grant"},
+          {"name": "Institutional Support", "amount": 150000, "type": "grant"},
+          {"name": "Community Contributions", "amount": 50000, "type": "donation"}
+        ]
+      },
+      "tags": ["open-source", "knowledge-commons", "education", "regenerative-development"],
+      "created_at": "2026-02-15T09:00:00Z",
+      "updated_at": "2026-04-06T10:45:00Z"
+    }
+  ]
+}

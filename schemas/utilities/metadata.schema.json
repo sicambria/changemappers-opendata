@@ -1,0 +1,336 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/utilities/metadata.schema.json",
+  "title": "Dataset Metadata Schema",
+  "description": "Metadata schema for ChangeMappers dataset files",
+  "type": "object",
+  "properties": {
+    "dataset": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the dataset",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable name of the dataset"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the dataset contents"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "description": "Semantic version of the dataset (major.minor.patch)"
+        },
+        "license": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the license"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "URL to the license text"
+            },
+            "identifier": {
+              "type": "string",
+              "description": "SPDX license identifier"
+            }
+          },
+          "required": ["name"],
+          "description": "License information for the dataset"
+        }
+      },
+      "required": ["id", "name", "version", "license"],
+      "description": "Dataset identification and basic information"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of records in the dataset"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Field name"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["string", "number", "integer", "boolean", "object", "array", "null"],
+            "description": "JSON Schema type of the field"
+          },
+          "format": {
+            "type": "string",
+            "description": "Format specifier (e.g., 'date-time', 'email', 'uri')"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the field"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether the field is required"
+          },
+          "nullable": {
+            "type": "boolean",
+            "description": "Whether the field can be null"
+          },
+          "enum": {
+            "type": "array",
+            "items": {},
+            "description": "Allowed values for the field"
+          },
+          "pattern": {
+            "type": "string",
+            "description": "Regex pattern the field must match"
+          },
+          "minimum": {
+            "type": "number",
+            "description": "Minimum value for numeric fields"
+          },
+          "maximum": {
+            "type": "number",
+            "description": "Maximum value for numeric fields"
+          },
+          "minLength": {
+            "type": "integer",
+            "description": "Minimum string length"
+          },
+          "maxLength": {
+            "type": "integer",
+            "description": "Maximum string length"
+          },
+          "default": {
+            "description": "Default value for the field"
+          },
+          "examples": {
+            "type": "array",
+            "items": {},
+            "description": "Example values for the field"
+          }
+        },
+        "required": ["name", "type"]
+      },
+      "description": "Definitions of fields in the dataset"
+    },
+    "validation_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the validation rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of what the rule validates"
+          },
+          "field": {
+            "type": "string",
+            "description": "Field the rule applies to"
+          },
+          "rule": {
+            "type": "string",
+            "description": "Rule expression or type"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["error", "warning", "info"],
+            "description": "Severity level when rule fails"
+          }
+        },
+        "required": ["name", "rule"]
+      },
+      "description": "Validation rules applied to the dataset"
+    },
+    "data_quality": {
+      "type": "object",
+      "properties": {
+        "completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of fields that are non-null"
+        },
+        "accuracy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Estimated accuracy percentage"
+        },
+        "consistency": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Consistency score percentage"
+        },
+        "timeliness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Timeliness score percentage"
+        },
+        "validity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Validity score percentage"
+        },
+        "overall_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Overall data quality score"
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Type of quality issue"
+              },
+              "count": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Number of occurrences"
+              },
+              "percentage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100,
+                "description": "Percentage of records affected"
+              }
+            },
+            "required": ["type", "count"]
+          },
+          "description": "List of data quality issues found"
+        },
+        "last_checked": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When quality was last assessed"
+        }
+      },
+      "description": "Data quality metrics for the dataset"
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the data source"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the data source"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["official", "news", "research", "social", "government", "ngo", "corporate", "aggregated", "other"],
+          "description": "Type of the data source"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Organization or entity providing the data"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the data was retrieved"
+        },
+        "update_frequency": {
+          "type": "string",
+          "description": "How often the source is updated"
+        }
+      },
+      "required": ["name", "type"],
+      "description": "Information about the data source"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the dataset was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 datetime when the dataset was last updated"
+    },
+    "branding": {
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "string",
+          "const": "ChangeMappers",
+          "description": "Organization name"
+        },
+        "website": {
+          "type": "string",
+          "const": "https://changemappers.org",
+          "description": "Organization website"
+        },
+        "logo_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to organization logo"
+        },
+        "attribution": {
+          "type": "string",
+          "description": "Attribution text to use when citing this data"
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "website": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "description": "Contact information"
+        }
+      },
+      "required": ["organization", "website"],
+      "description": "ChangeMappers.org branding information"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Version of the schema used for this dataset"
+    },
+    "checksum": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "type": "string",
+          "enum": ["md5", "sha256", "sha512"],
+          "description": "Hash algorithm used"
+        },
+        "value": {
+          "type": "string",
+          "description": "Checksum hash value"
+        }
+      },
+      "required": ["algorithm", "value"],
+      "description": "Checksum for data integrity verification"
+    }
+  },
+  "required": ["dataset", "record_count", "created_at", "updated_at", "branding"]
+}

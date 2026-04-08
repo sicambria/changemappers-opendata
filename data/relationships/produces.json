@@ -1,0 +1,83 @@
+{
+  "relationship_type": "produces",
+  "description": "Entity generates or creates an Outcome/Impact",
+  "records": [
+    {
+      "source_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "target_id": "o1u2t3c4-o5m6-7890-abcd-ef1234567890",
+      "properties": {
+        "outcome_type": "policy_change",
+        "magnitude": "high",
+        "duration": "permanent"
+      },
+      "confidence": 0.96,
+      "source_reference": "Montgomery Bus Boycott produced desegregation of public transit - Supreme Court ruling"
+    },
+    {
+      "source_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "target_id": "o2u3t4c5-o6m7-8901-cdef-234567890abc",
+      "properties": {
+        "outcome_type": "ecological_restoration",
+        "magnitude": "high",
+        "duration": "ongoing"
+      },
+      "confidence": 0.93,
+      "source_reference": "Green Belt Movement produced planting of 50+ million trees and Nobel Peace Prize"
+    },
+    {
+      "source_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "target_id": "o3u4t5c6-o7m8-9012-defa-345678901bcd",
+      "properties": {
+        "outcome_type": "labor_rights",
+        "magnitude": "high",
+        "duration": "permanent"
+      },
+      "confidence": 0.94,
+      "source_reference": "Delano Grape Strike produced union contracts for 10,000+ farmworkers"
+    },
+    {
+      "source_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "target_id": "o4u5t6c7-o8m9-0123-efab-456789012cde",
+      "properties": {
+        "outcome_type": "peace_agreement",
+        "magnitude": "high",
+        "duration": "permanent"
+      },
+      "confidence": 0.92,
+      "source_reference": "Women of Liberia produced peace agreement ending Second Liberian Civil War"
+    },
+    {
+      "source_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "target_id": "o5u6t7c8-o9m0-1234-fabc-567890123def",
+      "properties": {
+        "outcome_type": "regime_change",
+        "magnitude": "high",
+        "duration": "permanent"
+      },
+      "confidence": 0.95,
+      "source_reference": "Solidarity produced collapse of communist rule in Poland"
+    },
+    {
+      "source_id": "i6n7i8t9-i0a1-2345-abcd-ef1234567890",
+      "target_id": "o6u7t8c9-o0m1-2345-abcd-ef1234567890",
+      "properties": {
+        "outcome_type": "legislative_change",
+        "magnitude": "high",
+        "duration": "long_term"
+      },
+      "confidence": 0.91,
+      "source_reference": "Glasgow Rent Strikes produced Rent Restriction Act of 1915"
+    },
+    {
+      "source_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "target_id": "o7u8t9c0-o1m2-3456-bcde-f12345678901",
+      "properties": {
+        "outcome_type": "autonomous_governance",
+        "magnitude": "high",
+        "duration": "ongoing"
+      },
+      "confidence": 0.89,
+      "source_reference": "Zapatista movement produced functioning autonomous municipalities for 30+ years"
+    }
+  ]
+}

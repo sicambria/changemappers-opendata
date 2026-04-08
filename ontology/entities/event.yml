@@ -1,0 +1,243 @@
+id: event
+name: Event
+description: An occurrence in time, including gatherings, trainings, actions, and milestones in change processes.
+category: activity
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the event
+    - name: name
+      type: string
+      required: true
+      description: Name of the event
+    - name: description
+      type: string
+      required: false
+      description: Description of the event
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the event
+      enum_values:
+        - gathering
+        - training
+        - action
+        - milestone
+        - ceremony
+        - conference
+        - workshop
+        - protest
+    - name: start_date
+      type: datetime
+      required: true
+      description: Event start date and time
+    - name: end_date
+      type: datetime
+      required: false
+      description: Event end date and time
+    - name: location_id
+      type: string
+      required: false
+      description: Event location
+    - name: virtual
+      type: boolean
+      required: false
+      description: Whether event is virtual
+    - name: organizer_id
+      type: string
+      required: false
+      description: Actor or organization organizing
+    - name: participant_ids
+      type: array[string]
+      required: false
+      description: Expected or actual participants
+    - name: initiative_id
+      type: string
+      required: false
+      description: Related initiative
+    - name: project_id
+      type: string
+      required: false
+      description: Related project
+    - name: expected_attendance
+      type: integer
+      required: false
+      description: Expected number of attendees
+    - name: actual_attendance
+      type: integer
+      required: false
+      description: Actual attendance count
+    - name: outcomes
+      type: array[string]
+      required: false
+      description: Event outcomes
+    - name: media_ids
+      type: array[string]
+      required: false
+      description: Associated media
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: end_date
+    rule: greater_than
+    value: start_date
+    message: End date must be after start date
+relationships:
+  - entity: location
+    type: held_at
+    description: Event is held at location
+  - entity: actor
+    type: organized_by
+    description: Event is organized by actors
+  - entity: initiative
+    type: part_of
+    description: Event is part of initiative
+  - entity: timeline
+    type: included_in
+    description: Event is included in timeline
+  - entity: media
+    type: documented_by
+    description: Event is documented by media
+examples:
+  - id: event_001
+    name: Portland Community Solar Launch
+    description: Community celebration marking the launch of the North Portland community solar project.
+    type: milestone
+    start_date: '2024-09-15T14:00:00Z'
+    end_date: '2024-09-15T18:00:00Z'
+    location_id: loc_007
+    organizer_id: org_001
+    initiative_id: init_001
+    project_id: proj_001
+    expected_attendance: 200
+    outcomes:
+      - Project dedication
+      - Community celebration
+      - Media coverage
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: event_002
+    name: Just Transition Summit 2024
+    description: Annual gathering of just transition organizers, workers, and communities.
+    type: conference
+    start_date: '2024-06-01T09:00:00Z'
+    end_date: '2024-06-03T17:00:00Z'
+    location_id: loc_001
+    organizer_id: org_007
+    initiative_id: init_002
+    expected_attendance: 500
+    outcomes:
+      - Strategy sharing
+      - Network building
+      - Action planning
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: event_003
+    name: Detroit Food Sovereignty Assembly
+    description: Community assembly to plan neighborhood food sovereignty initiatives.
+    type: gathering
+    start_date: '2024-04-20T10:00:00Z'
+    end_date: '2024-04-20T16:00:00Z'
+    location_id: loc_002
+    organizer_id: org_005
+    initiative_id: init_003
+    expected_attendance: 100
+    outcomes:
+      - Neighborhood plans
+      - Working groups formed
+      - Resource commitments
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: event_004
+    name: Salmon River Restoration Work Party
+    description: Community volunteer event for riparian restoration.
+    type: action
+    start_date: '2024-05-11T09:00:00Z'
+    end_date: '2024-05-11T15:00:00Z'
+    location_id: loc_004
+    organizer_id: org_006
+    project_id: proj_007
+    expected_attendance: 50
+    actual_attendance: 65
+    outcomes:
+      - 200 trees planted
+      - Community engagement
+      - Skills building
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: event_005
+    name: Climate Justice Direct Action
+    description: Nonviolent direct action targeting fossil fuel financing.
+    type: protest
+    start_date: '2024-10-10T07:00:00Z'
+    end_date: '2024-10-10T14:00:00Z'
+    location_id: loc_national
+    organizer_id: org_004
+    initiative_id: init_002
+    expected_attendance: 1000
+    outcomes:
+      - Media attention
+      - Policy pressure
+      - Movement visibility
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: event_006
+    name: First Salmon Ceremony
+    description: Traditional ceremony honoring the return of salmon and Indigenous stewardship.
+    type: ceremony
+    start_date: '2024-04-15T06:00:00Z'
+    location_id: loc_004
+    outcomes:
+      - Cultural practice
+      - Community connection
+      - Watershed blessing
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: event_007
+    name: Cooperative Development Training
+    description: Two-day training for cooperative founders and members.
+    type: training
+    start_date: '2024-03-23T09:00:00Z'
+    end_date: '2024-03-24T17:00:00Z'
+    location_id: loc_001
+    organizer_id: org_003
+    expected_attendance: 30
+    actual_attendance: 35
+    outcomes:
+      - Governance skills
+      - Business planning
+      - Network connections
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - event_types
+  - event_scale
+  - event_outcomes
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/event
+  provenance: ChangeMappers Ontology Project

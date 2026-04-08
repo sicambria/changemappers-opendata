@@ -1,0 +1,109 @@
+id: follows
+name: Follows
+description: An Entity comes after, succeeds, or is subsequent to another Entity in time or sequence. This captures temporal ordering relationships.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  temporal_gap:
+    type: string
+    description: Time between entities
+    required: false
+  causal_relationship:
+    type: boolean
+    description: Whether there is a causal connection
+    required: false
+  sequence_type:
+    type: string
+    description: Type of sequence (chronological, logical, developmental)
+    required: false
+  learning_from:
+    type: boolean
+    description: Whether the later entity learned from the earlier
+    required: false
+
+cardinality: one-to-one
+
+inverse: precedes
+
+examples:
+  - from: BlackPowerMovement
+    to: CivilRightsMovement
+    properties:
+      temporal_gap: "5 years"
+      causal_relationship: true
+      sequence_type: developmental
+      learning_from: true
+    confidence: 0.92
+    source: https://changemappers.org/movements/black-power
+
+  - from: ClimateMovement
+    to: AntiNuclearMovement
+    properties:
+      temporal_gap: "30 years"
+      causal_relationship: false
+      sequence_type: chronological
+      learning_from: true
+    confidence: 0.88
+    source: https://changemappers.org/movements/climate
+
+  - from: DemocraticSocialistsOfAmericaGrowth
+    to: OccupyWallStreet
+    properties:
+      temporal_gap: "6 years"
+      causal_relationship: true
+      sequence_type: developmental
+      learning_from: true
+    confidence: 0.86
+    source: https://changemappers.org/organizations/dsa
+
+  - from: CampaignLaunch
+    to: CommunityOrganizingTraining
+    properties:
+      temporal_gap: "3 months"
+      causal_relationship: true
+      sequence_type: logical
+      learning_from: false
+    confidence: 0.91
+    source: https://changemappers.org/initiatives/campaign
+
+  - from: ImplementationPhase
+    to: ResearchPhase
+    properties:
+      temporal_gap: "6 months"
+      causal_relationship: true
+      sequence_type: logical
+      learning_from: false
+    confidence: 0.94
+    source: https://changemappers.org/processes/implementation
+
+  - from: BlackLivesMatter
+    to: ArabSpring
+    properties:
+      temporal_gap: "3 years"
+      causal_relationship: false
+      sequence_type: chronological
+      learning_from: true
+    confidence: 0.82
+    source: https://changemappers.org/initiatives/blm
+
+  - from: ModernClimateMovement
+    to: EarlyEnvironmentalMovement
+    properties:
+      temporal_gap: "50 years"
+      causal_relationship: true
+      sequence_type: developmental
+      learning_from: true
+    confidence: 0.89
+    source: https://changemappers.org/movements/modern-climate
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

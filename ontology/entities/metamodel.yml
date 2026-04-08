@@ -1,0 +1,258 @@
+id: metamodel
+name: Metamodel
+description: A model that describes and structures other models, providing a framework for understanding change processes at a meta level.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the metamodel
+    - name: name
+      type: string
+      required: true
+      description: Name of the metamodel
+    - name: description
+      type: string
+      required: true
+      description: Description of the metamodel
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the metamodel
+      enum_values:
+        - theoretical
+        - analytical
+        - process
+        - evaluative
+        - strategic
+        - systems
+    - name: components
+      type: array[string]
+      required: false
+      description: Key components of the metamodel
+    - name: principles
+      type: array[string]
+      required: false
+      description: Core principles
+    - name: framework_ids
+      type: array[string]
+      required: false
+      description: Frameworks derived from this metamodel
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains of application
+    - name: origin
+      type: string
+      required: false
+      description: Origin or creator
+    - name: applications
+      type: array[string]
+      required: false
+      description: How this metamodel is applied
+    - name: limitations
+      type: array[string]
+      required: false
+      description: Known limitations
+    - name: related_metamodel_ids
+      type: array[string]
+      required: false
+      description: Related metamodels
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: description
+    rule: min_length
+    value: 50
+    message: Description must be at least 50 characters
+relationships:
+  - entity: framework
+    type: structures
+    description: Metamodel structures frameworks
+  - entity: domain
+    type: applies_to
+    description: Metamodel applies to domains
+  - entity: methodology
+    type: guides
+    description: Metamodel guides methodologies
+examples:
+  - id: meta_001
+    name: Theory of Change
+    description: A metamodel for articulating how and why a desired change is expected to happen in a particular context, mapping the pathway from activities to outcomes.
+    type: analytical
+    components:
+      - Long-term goal
+      - Outcomes chain
+      - Assumptions
+      - Indicators
+    principles:
+      - Backwards mapping from goals
+      - Explicit assumptions
+      - Evidence-based pathways
+      - Adaptive learning
+    domain_ids:
+      - dom_planning
+      - dom_evaluation
+    origin: ActKnowledge, various practitioners
+    applications:
+      - Program planning
+      - Evaluation design
+      - Strategic communication
+    limitations:
+      - Linear assumptions
+      - Complexity challenges
+      - Resource intensive
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: meta_002
+    name: Systems Thinking
+    description: A metamodel for understanding complex systems as interconnected wholes, focusing on relationships, feedback loops, and emergent properties.
+    type: systems
+    components:
+      - System boundaries
+      - Relationships
+      - Feedback loops
+      - Leverage points
+    principles:
+      - See the whole
+      - Understand interconnections
+      - Identify leverage points
+      - Embrace complexity
+    domain_ids:
+      - dom_complex_systems
+      - dom_planning
+    origin: Systems theory tradition
+    applications:
+      - Problem analysis
+      - Intervention design
+      - Evaluation
+    limitations:
+      - Complexity can overwhelm
+      - Requires systems literacy
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: meta_003
+    name: Power Analysis
+    description: A metamodel for understanding power dynamics and how they shape change possibilities and strategies.
+    type: analytical
+    components:
+      - Power mapping
+      - Stakeholder analysis
+      - Interest identification
+      - Relationship mapping
+    principles:
+      - Power is relational
+      - Power can shift
+      - Multiple forms of power
+      - Context matters
+    domain_ids:
+      - dom_democracy
+      - dom_political_strategy
+    origin: Community organizing tradition
+    applications:
+      - Campaign strategy
+      - Coalition building
+      - Target identification
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: meta_004
+    name: Transition Framework
+    description: A metamodel for understanding and guiding societal transitions toward sustainability and justice.
+    type: process
+    components:
+      - Multi-level perspective
+      - Niches
+      - Regimes
+      - Landscapes
+    principles:
+      - Transitions are multi-level
+      - Change happens at multiple scales
+      - Path dependency matters
+      - Windows of opportunity
+    domain_ids:
+      - dom_just_transition
+      - dom_sustainability
+    origin: Transition studies
+    applications:
+      - Strategic planning
+      - Policy design
+      - Movement building
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: meta_005
+    name: Adaptive Management
+    description: A metamodel for iterative decision-making in complex, uncertain environments.
+    type: evaluative
+    components:
+      - Hypothesis setting
+      - Implementation
+      - Monitoring
+      - Learning
+    principles:
+      - Learn by doing
+      - Embrace uncertainty
+      - Iterate and adapt
+      - Share learning
+    domain_ids:
+      - dom_planning
+      - dom_evaluation
+    origin: Natural resource management
+    applications:
+      - Program management
+      - Conservation
+      - Complex interventions
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: meta_006
+    name: Movement Building Framework
+    description: A metamodel for understanding how movements grow, develop, and achieve change.
+    type: strategic
+    components:
+      - Base building
+      - Leadership development
+      - Campaigns
+      - Organizational capacity
+    principles:
+      - Build from the grassroots
+      - Develop leadership
+      - Win campaigns
+      - Build organization
+    domain_ids:
+      - dom_democracy
+    origin: Community organizing tradition
+    applications:
+      - Movement assessment
+      - Strategic planning
+      - Capacity building
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - metamodel_types
+  - metamodel_applications
+  - knowledge_domains
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/metamodel
+  provenance: ChangeMappers Ontology Project

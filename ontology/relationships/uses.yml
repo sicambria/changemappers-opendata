@@ -1,0 +1,115 @@
+id: uses
+name: Uses
+description: An Entity employs, utilizes, or leverages a Tool, Resource, Technology, or Platform. This captures the means and methods employed.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Initiative
+  - Project
+  - Organization
+  - Person
+  - Activity
+
+allowed_to:
+  - Tool
+  - Resource
+  - Technology
+  - Platform
+  - Infrastructure
+  - Method
+
+properties:
+  usage_frequency:
+    type: string
+    description: How often the tool is used (continuous, daily, weekly, occasional)
+    required: false
+  adoption_date:
+    type: date
+    description: When the tool was adopted
+    required: false
+  effectiveness:
+    type: number
+    description: How effective the tool is (0.0-1.0)
+    required: false
+  cost:
+    type: string
+    description: Cost of using the tool
+    required: false
+  training_required:
+    type: boolean
+    description: Whether training is needed to use the tool
+    required: false
+
+cardinality: many-to-many
+
+inverse: used_by
+
+examples:
+  - from: FridaysForFuture
+    to: SocialMedia
+    properties:
+      usage_frequency: continuous
+      effectiveness: 0.92
+      cost: low
+    confidence: 0.96
+    source: https://changemappers.org/initiatives/fff
+
+  - from: OpenStreetMap
+    to: OpenStreetMapEditor
+    properties:
+      usage_frequency: continuous
+      effectiveness: 0.95
+      training_required: true
+    confidence: 0.98
+    source: https://changemappers.org/initiatives/osm
+
+  - from: ChangeMappers
+    to: GraphQL
+    properties:
+      usage_frequency: continuous
+      adoption_date: "2023-01-01"
+      effectiveness: 0.88
+    confidence: 0.99
+    source: https://changemappers.org
+
+  - from: CrisisResponseTeam
+    to: SatelliteImagery
+    properties:
+      usage_frequency: daily
+      effectiveness: 0.90
+      cost: medium
+    confidence: 0.91
+    source: https://changemappers.org/initiatives/crisis-response
+
+  - from: CitizenScienceProject
+    to: MobileApp
+    properties:
+      usage_frequency: daily
+      adoption_date: "2020-03-01"
+      effectiveness: 0.85
+    confidence: 0.89
+    source: https://changemappers.org/initiatives/citizen-science
+
+  - from: CommunityOrganizing
+    to: Slack
+    properties:
+      usage_frequency: continuous
+      cost: freemium
+      effectiveness: 0.80
+    confidence: 0.87
+    source: https://changemappers.org/initiatives/community-organizing
+
+  - from: DataJournalismProject
+    to: DataWrapper
+    properties:
+      usage_frequency: weekly
+      effectiveness: 0.92
+      training_required: false
+    confidence: 0.90
+    source: https://changemappers.org/initiatives/data-journalism
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

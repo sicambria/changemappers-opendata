@@ -1,0 +1,237 @@
+id: citation
+name: Citation
+description: A reference or source that supports claims, data, or information in the ChangeMappers knowledge base.
+category: reference
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the citation
+    - name: type
+      type: enum
+      required: true
+      description: Type of citation
+      enum_values:
+        - academic
+        - report
+        - news
+        - government
+        - website
+        - book
+        - interview
+        - documentary
+        - data
+    - name: title
+      type: string
+      required: true
+      description: Title of the cited work
+    - name: authors
+      type: array[string]
+      required: false
+      description: Authors or creators
+    - name: publication
+      type: string
+      required: false
+      description: Publication or publisher
+    - name: date
+      type: date
+      required: false
+      description: Publication date
+    - name: url
+      type: string
+      required: false
+      description: URL if available online
+    - name: doi
+      type: string
+      required: false
+      description: Digital Object Identifier
+    - name: isbn
+      type: string
+      required: false
+      description: ISBN for books
+    - name: pages
+      type: string
+      required: false
+      description: Page numbers
+    - name: volume
+      type: string
+      required: false
+      description: Volume and issue
+    - name: description
+      type: string
+      required: false
+      description: Brief description of the source
+    - name: relevance
+      type: string
+      required: false
+      description: Relevance to ChangeMappers
+    - name: story_ids
+      type: array[string]
+      required: false
+      description: Stories citing this source
+    - name: dataset_ids
+      type: array[string]
+      required: false
+      description: Datasets citing this source
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains covered
+    - name: access_date
+      type: date
+      required: false
+      description: Date accessed (for websites)
+    - name: archive_url
+      type: string
+      required: false
+      description: Archive URL
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: title
+    rule: min_length
+    value: 5
+    message: Title must be at least 5 characters
+  - field: url
+    rule: format
+    value: url
+    message: Must be a valid URL
+relationships:
+  - entity: story
+    type: supports
+    description: Citation supports stories
+  - entity: dataset
+    type: sources
+    description: Citation sources datasets
+  - entity: domain
+    type: covers
+    description: Citation covers domains
+examples:
+  - id: cite_001
+    type: report
+    title: "Community Solar Initiative Impact Assessment"
+    authors:
+      - Community Power Initiative
+    publication: Community Power Initiative
+    date: '2024-03-01'
+    url: https://example.com/community-solar-impact
+    description: Impact assessment of Portland community solar project
+    relevance: Documents outcomes and lessons from community solar model
+    domain_ids:
+      - dom_energy
+    created_at: '2024-03-15T10:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: cite_002
+    type: academic
+    title: "Just Transition: A Framework for Equity in Environmental Policy"
+    authors:
+      - Dr. Sarah Martinez
+      - Dr. James Wilson
+    publication: Journal of Environmental Justice
+    date: '2022-06-15'
+    volume: "15(2)"
+    pages: "45-78"
+    doi: "10.1234/jej.2022.0015"
+    description: Academic paper analyzing just transition frameworks
+    relevance: Theoretical foundation for just transition initiatives
+    domain_ids:
+      - dom_just_transition
+    created_at: '2024-01-20T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: cite_003
+    type: news
+    title: "Detroit Urban Farms Feed Thousands During Pandemic"
+    authors:
+      - Maria Rodriguez
+    publication: Detroit Free Press
+    date: '2021-08-10'
+    url: https://example.com/detroit-urban-farms
+    description: News article on Detroit urban agriculture
+    relevance: Documents food sovereignty movement in Detroit
+    domain_ids:
+      - dom_food_systems
+    access_date: '2024-02-01'
+    created_at: '2024-02-05T11:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: cite_004
+    type: government
+    title: "Pacific Northwest Watershed Health Report 2023"
+    publication: Environmental Protection Agency
+    date: '2023-12-01'
+    url: https://example.gov/watershed-report
+    description: Government report on watershed conditions
+    relevance: Baseline data for watershed restoration initiatives
+    domain_ids:
+      - dom_ecosystem_restoration
+    access_date: '2024-03-10'
+    created_at: '2024-03-15T14:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: cite_005
+    type: book
+    title: "The Indigenous Stewardship Model: Traditional Ecological Knowledge in Practice"
+    authors:
+      - Dr. Robin Kimmerer
+    publication: Oregon State University Press
+    date: '2020-09-01'
+    isbn: "978-0-123456-78-9"
+    description: Book on Indigenous stewardship practices
+    relevance: Foundational text for understanding TEK and stewardship
+    domain_ids:
+      - dom_ecosystem_restoration
+      - dom_land_justice
+    created_at: '2024-02-20T10:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: cite_006
+    type: interview
+    title: "Interview with Standing Rock Water Protectors"
+    authors:
+      - Indigenous Environmental Network
+    date: '2022-04-15'
+    description: Interview collection from Standing Rock
+    relevance: Primary source for movement history and strategy
+    domain_ids:
+      - dom_climate_justice
+      - dom_land_justice
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: cite_007
+    type: documentary
+    title: "Power to the People: Energy Democracy in Action"
+    authors:
+      - Climate Justice Films
+    date: '2023-06-01'
+    url: https://example.com/power-to-the-people
+    description: Documentary on community energy projects
+    relevance: Visual documentation of energy democracy movement
+    domain_ids:
+      - dom_energy
+    access_date: '2024-03-01'
+    created_at: '2024-03-05T12:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - citation_types
+  - citation_domains
+  - citation_reliability
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/citation
+  provenance: ChangeMappers Ontology Project

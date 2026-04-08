@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/timeline.schema.json",
+  "title": "Timeline",
+  "description": "A chronological sequence of events and milestones related to a change process.",
+  "type": "object",
+  "required": ["id", "slug", "name", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the timeline",
+      "example": "550e8400-e29b-41d4-a716-446655440019"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "climate-action-movement-history"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the timeline",
+      "example": "Climate Action Movement History"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Description of the timeline"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["historical", "project", "initiative", "movement", "organization", "policy", "personal"],
+      "description": "Type of timeline",
+      "example": "movement"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Timeline start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Timeline end date"
+    },
+    "events": {
+      "type": "array",
+      "description": "Events in the timeline",
+      "items": {
+        "type": "object",
+        "required": ["date", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "type": { "type": "string" },
+          "significance": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "actors": { "type": "array", "items": { "type": "string", "format": "uuid" } },
+          "locations": { "type": "array", "items": { "type": "string", "format": "uuid" } },
+          "media": { "type": "array", "items": { "type": "string", "format": "uuid" } },
+          "sources": { "type": "array", "items": { "type": "string", "format": "uuid" } }
+        }
+      }
+    },
+    "phases": {
+      "type": "array",
+      "description": "Timeline phases",
+      "items": {
+        "type": "object",
+        "required": ["name", "start_date"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" },
+          "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+        }
+      }
+    },
+    "related_entity": {
+      "type": "object",
+      "description": "Related entity (project, initiative, etc.)",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "type": "string" },
+        "id": { "type": "string", "format": "uuid" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Sources",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

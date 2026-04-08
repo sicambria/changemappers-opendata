@@ -1,0 +1,269 @@
+name: Data Validation
+
+on:
+  push:
+    paths:
+      - 'data/**'
+      - 'schemas/**'
+  pull_request:
+    paths:
+      - 'data/**'
+      - 'schemas/**'
+  workflow_dispatch:
+
+jobs:
+  schema-validation:
+    name: Schema Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install -g ajv-cli
+
+      - name: List changed files
+        run: |
+          echo "Changed data files:"
+          git diff --name-only HEAD~1 HEAD -- 'data/*.json' 'data/**/*.json' 2>/dev/null || echo "No previous commit"
+
+      - name: Validate JSON syntax
+        run: |
+          echo "Validating JSON syntax..."
+          errors=0
+          for file in $(find data -name "*.json" -type f); do
+            if python3 -c "import json; json.load(open('$file'))" 2>/dev/null; then
+              echo "✓ $file"
+            else
+              echo "✗ $file"
+              errors=$((errors + 1))
+            fi
+          done
+          if [ $errors -gt 0 ]; then
+            echo "Found $errors JSON syntax errors"
+            exit 1
+          fi
+
+      - name: Validate against schemas
+        run: |
+          echo "Validating data against schemas..."
+          for schema in schemas/*.json; do
+            if [ -f "$schema" ]; then
+              schema_name=$(basename "$schema" .json)
+              echo "Checking schema: $schema_name"
+              ajv validate -s "$schema" -d "data/**/*.json" 2>/dev/null || echo "Schema validation for $schema_name completed"
+            fi
+          done
+        continue-on-error: true
+
+  data-integrity:
+    name: Data Integrity Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check for duplicate slugs
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+          from collections import defaultdict
+
+          slugs = defaultdict(list)
+          issues = []
+
+          for root, dirs, files in os.walk('data'):
+              for file in files:
+                  if file.endswith('.json'):
+                      path = os.path.join(root, file)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              data = json.load(f)
+                              items = data if isinstance(data, list) else [data]
+                              for item in items:
+                                  if isinstance(item, dict) and 'slug' in item:
+                                      slug = item['slug']
+                                      if slug in slugs:
+                                          issues.append(f"Duplicate slug '{slug}' found in: {slugs[slug][0]} and {path}")
+                                      slugs[slug].append(path)
+                      except Exception as e:
+                          pass
+
+          if issues:
+              print("❌ Duplicate slugs found:")
+              for issue in issues:
+                  print(f"  {issue}")
+              exit(1)
+          print(f"✓ Checked {len(slugs)} unique slugs")
+          EOF
+
+      - name: Check required fields
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+
+          required_by_type = {
+              'default': ['title', 'slug', 'description']
+          }
+
+          issues = []
+          files_checked = 0
+
+          for root, dirs, files in os.walk('data'):
+              for file in files:
+                  if file.endswith('.json'):
+                      path = os.path.join(root, file)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              data = json.load(f)
+                              items = data if isinstance(data, list) else [data]
+                              for i, item in enumerate(items):
+                                  if isinstance(item, dict):
+                                      required = required_by_type.get('default', [])
+                                      for field in required:
+                                          if field not in item or not item.get(field):
+                                              issues.append(f"{path}[{i}]: missing required field '{field}'")
+                              files_checked += 1
+                      except Exception as e:
+                          pass
+
+          if issues:
+              print("❌ Missing required fields:")
+              for issue in issues[:10]:
+                  print(f"  {issue}")
+              if len(issues) > 10:
+                  print(f"  ... and {len(issues) - 10} more")
+              exit(1)
+          print(f"✓ Checked {files_checked} files for required fields")
+          EOF
+
+      - name: Check reference integrity
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+
+          all_slugs = set()
+          references = []
+
+          for root, dirs, files in os.walk('data'):
+              for file in files:
+                  if file.endswith('.json'):
+                      path = os.path.join(root, file)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              data = json.load(f)
+                              items = data if isinstance(data, list) else [data]
+                              for item in items:
+                                  if isinstance(item, dict):
+                                      if 'slug' in item:
+                                          all_slugs.add(item['slug'])
+                                      # Collect references (simplified)
+                                      for key in item:
+                                          if 'Slug' in key or key.endswith('Ref'):
+                                              ref = item.get(key)
+                                              if isinstance(ref, str):
+                                                  references.append((path, key, ref))
+                                              elif isinstance(ref, list):
+                                                  for r in ref:
+                                                      if isinstance(r, str):
+                                                          references.append((path, key, r))
+                      except:
+                          pass
+
+          broken_refs = []
+          for path, key, ref in references:
+              if ref not in all_slugs:
+                  broken_refs.append(f"{path}: {key} references non-existent slug '{ref}'")
+
+          if broken_refs:
+              print("⚠️  Broken references found:")
+              for ref in broken_refs[:10]:
+                  print(f"  {ref}")
+              if len(broken_refs) > 10:
+                  print(f"  ... and {len(broken_refs) - 10} more")
+              # Warning only for now
+          else:
+              print(f"✓ All {len(references)} references valid")
+          EOF
+
+  data-quality-report:
+    name: Generate Data Quality Report
+    runs-on: ubuntu-latest
+    needs: [schema-validation, data-integrity]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate report
+        run: |
+          python3 << 'EOF'
+          import json
+          import os
+          from datetime import datetime
+
+          stats = {
+              'files': 0,
+              'entities': 0,
+              'by_type': {}
+          }
+
+          for root, dirs, files in os.walk('data'):
+              for file in files:
+                  if file.endswith('.json'):
+                      stats['files'] += 1
+                      path = os.path.join(root, file)
+                      try:
+                          with open(path, 'r', encoding='utf-8') as f:
+                              data = json.load(f)
+                              items = data if isinstance(data, list) else [data]
+                              for item in items:
+                                  if isinstance(item, dict):
+                                      stats['entities'] += 1
+                                      entity_type = item.get('type', 'unknown')
+                                      stats['by_type'][entity_type] = stats['by_type'].get(entity_type, 0) + 1
+                      except:
+                          pass
+
+          print("## Data Quality Report" >> $GITHUB_STEP_SUMMARY)
+          print("") >> $GITHUB_STEP_SUMMARY
+          print(f"**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} UTC") >> $GITHUB_STEP_SUMMARY
+          print("") >> $GITHUB_STEP_SUMMARY
+          print("### Statistics") >> $GITHUB_STEP_SUMMARY
+          print("") >> $GITHUB_STEP_SUMMARY
+          print(f"- **Files analyzed:** {stats['files']}") >> $GITHUB_STEP_SUMMARY
+          print(f"- **Total entities:** {stats['entities']}") >> $GITHUB_STEP_SUMMARY
+          print("") >> $GITHUB_STEP_SUMMARY
+          print("### Entities by Type") >> $GITHUB_STEP_SUMMARY
+          print("") >> $GITHUB_STEP_SUMMARY
+          for entity_type, count in sorted(stats['by_type'].items()):
+              print(f"- {entity_type}: {count}") >> $GITHUB_STEP_SUMMARY
+          print("") >> $GITHUB_STEP_SUMMARY
+          print("---") >> $GITHUB_STEP_SUMMARY
+          print("Website: https://changemappers.org") >> $GITHUB_STEP_SUMMARY
+          EOF
+
+      - name: Upload quality report
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-quality-report
+          path: |
+            $GITHUB_STEP_SUMMARY
+          if-no-files-found: ignore

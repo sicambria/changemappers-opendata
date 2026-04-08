@@ -1,0 +1,231 @@
+id: narrative
+name: Narrative
+description: A structured story framework used to communicate change processes, including key elements like protagonists, conflict, and resolution.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the narrative
+    - name: name
+      type: string
+      required: true
+      description: Name of the narrative
+    - name: description
+      type: string
+      required: true
+      description: Description of the narrative
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the narrative
+      enum_values:
+        - movement
+        - organizational
+        - campaign
+        - personal
+        - historical
+        - visionary
+    - name: protagonist
+      type: string
+      required: false
+      description: Who is the protagonist
+    - name: antagonist
+      type: string
+      required: false
+      description: Who or what is the antagonist
+    - name: conflict
+      type: string
+      required: false
+      description: Central conflict or challenge
+    - name: resolution
+      type: string
+      required: false
+      description: Resolution or goal
+    - name: themes
+      type: array[string]
+      required: false
+      description: Key themes
+    - name: key_messages
+      type: array[string]
+      required: false
+      description: Key messages conveyed
+    - name: story_ids
+      type: array[string]
+      required: false
+      description: Stories using this narrative
+    - name: initiative_id
+      type: string
+      required: false
+      description: Related initiative
+    - name: media_ids
+      type: array[string]
+      required: false
+      description: Media using this narrative
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: story
+    type: structures
+    description: Narrative structures stories
+  - entity: initiative
+    type: guides
+    description: Narrative guides initiatives
+  - entity: media
+    type: used_in
+    description: Narrative is used in media
+examples:
+  - id: narr_001
+    name: Energy Democracy Narrative
+    description: Narrative framing energy transition as a struggle for democratic control of essential resources.
+    type: movement
+    protagonist: Communities historically excluded from energy decisions
+    antagonist: Investor-owned utilities and fossil fuel interests
+    conflict: Control over energy systems and who benefits from them
+    resolution: Community ownership and democratic governance of energy
+    themes:
+      - Democracy
+      - Justice
+      - Community power
+      - Self-determination
+    key_messages:
+      - Energy is a human right
+      - Communities should own their energy
+      - Energy democracy creates equity and resilience
+    initiative_ids:
+      - init_001
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: narr_002
+    name: Just Transition Narrative
+    description: Narrative framing economic transition as an opportunity to build a better future for workers and communities.
+    type: movement
+    protagonist: Workers and communities dependent on fossil fuel industries
+    antagonist: Corporate interests abandoning communities without support
+    conflict: How to transition away from fossil fuels without leaving communities behind
+    resolution: Worker-led transition to regenerative economy with good jobs
+    themes:
+      - Solidarity
+      - Justice
+      - Hope
+      - Collective action
+    key_messages:
+      - Workers should lead the transition
+      - No community left behind
+      - A better future is possible
+    initiative_ids:
+      - init_002
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: narr_003
+    name: Food Sovereignty Narrative
+    description: Narrative framing food apartheid as a systemic injustice requiring community self-determination.
+    type: campaign
+    protagonist: Communities living in food deserts
+    antagonist: Corporate food system and structural racism
+    conflict: Access to fresh, healthy, culturally appropriate food
+    resolution: Community-controlled food systems
+    themes:
+      - Self-determination
+      - Health
+      - Community
+      - Justice
+    key_messages:
+      - Food is a right
+      - Communities know what they need
+      - Food sovereignty means control
+    initiative_ids:
+      - init_003
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: narr_004
+    name: Indigenous Stewardship Narrative
+    description: Narrative framing ecological restoration through Indigenous knowledge and rights.
+    type: movement
+    protagonist: Indigenous peoples and their traditional territories
+    antagonist: Colonialism and extractive land management
+    conflict: Dispossession and degradation of Indigenous lands
+    resolution: Return of land and Indigenous-led stewardship
+    themes:
+      - Indigenous rights
+      - Traditional knowledge
+      - Relationship with land
+      - Healing
+    key_messages:
+      - Indigenous peoples are the original stewards
+      - Traditional knowledge is essential
+      - Land back is justice
+    initiative_ids:
+      - init_005
+      - init_006
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: narr_005
+    name: Climate Justice Narrative
+    description: Narrative framing climate change through the lens of justice and frontline communities.
+    type: movement
+    protagonist: Frontline communities bearing the brunt of climate impacts
+    antagonist: Fossil fuel industry and systemic inequality
+    conflict: Disproportionate climate impacts on vulnerable communities
+    resolution: Justice-centered climate action led by frontline communities
+    themes:
+      - Justice
+      - Frontline leadership
+      - Systemic change
+      - Interconnected struggles
+    key_messages:
+      - Those most impacted must lead
+      - Climate action must address root causes
+      - Solutions must center justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: narr_006
+    name: Solidarity Economy Narrative
+    description: Narrative framing economic transformation through cooperation and solidarity.
+    type: movement
+    protagonist: Workers and communities building cooperative economies
+    antagonist: Extractive capitalism and inequality
+    conflict: Building alternatives to extractive economic systems
+    resolution: Solidarity economy based on cooperation and mutual aid
+    themes:
+      - Cooperation
+      - Democracy
+      - Solidarity
+      - Community wealth
+    key_messages:
+      - Another economy is possible
+      - Cooperation over competition
+      - Build the world we need
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - narrative_types
+  - narrative_themes
+  - narrative_elements
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/narrative
+  provenance: ChangeMappers Ontology Project

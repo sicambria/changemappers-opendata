@@ -1,0 +1,1041 @@
+# changemappers.org - Open Data Catalog
+# Relationship Types Catalog Definition
+# Version: 1.0.0
+# Last Updated: 2026-04-08
+
+# =============================================================================
+# CATALOG STRUCTURE
+# =============================================================================
+# This catalog defines all relationship types in the changemappers ecosystem.
+# Each relationship type includes metadata, source/target constraints,
+# properties, cardinality rules, and examples.
+#
+# Relationship Categories:
+#   - Agency: INITIATES, IMPLEMENTS, COLLABORATES_WITH, FUNDS
+#   - Addressing: ADDRESSES, REQUIRES, ENABLES, SUPPORTS
+#   - Production: PRODUCES, USES, MEASURES
+#   - Location: LOCATED_IN, OCCURS_AT
+#   - Structure: PART_OF, RELATES_TO, DERIVES_FROM
+#   - Transformation: TRANSFORMS_TO
+#   - Temporal: PRECEDES, FOLLOWS
+#   - Conflict: CONTRADICTS
+# =============================================================================
+
+catalog:
+  id: changemappers-relationships
+  name: ChangeMappers Relationship Types Catalog
+  description: Comprehensive catalog of relationship types for modeling systemic change
+  version: "1.0.0"
+  license: CC-BY-SA-4.0
+  publisher: changemappers.org
+  relationship_count: 20
+
+# =============================================================================
+# RELATIONSHIP TYPES
+# =============================================================================
+
+relationships:
+  # ---------------------------------------------------------------------------
+  # INITIATES
+  # ---------------------------------------------------------------------------
+  - id: initiates
+    name: INITIATES
+    description: Entity starts or triggers another entity
+    category: Agency
+    source_entity_types:
+      - Actor
+      - Organization
+    target_entity_types:
+      - Initiative
+      - Project
+      - Event
+    properties:
+      - name: role
+        type: string
+        required: false
+        description: Role of initiator
+      - name: date
+        type: date
+        required: false
+        description: Date of initiation
+      - name: context
+        type: text
+        required: false
+        description: Context of initiation
+    cardinality:
+      source: one-to-many
+      target: many-to-one
+    examples:
+      - source: actor-jane-smith
+        target: init-community-garden
+        properties:
+          role: "Founder"
+          date: "2024-01-15"
+      - source: org-change-foundation
+        target: init-urban-renewal
+        properties:
+          role: "Primary Sponsor"
+          date: "2023-06-01"
+    validation_rules:
+      - source must be Actor or Organization
+      - target must be Initiative, Project, or Event
+
+  # ---------------------------------------------------------------------------
+  # IMPLEMENTS
+  # ---------------------------------------------------------------------------
+  - id: implements
+    name: IMPLEMENTS
+    description: Entity puts a pattern, framework, or methodology into practice
+    category: Agency
+    source_entity_types:
+      - Initiative
+      - Project
+      - Organization
+    target_entity_types:
+      - Pattern
+      - Framework
+      - Methodology
+    properties:
+      - name: start_date
+        type: date
+        required: false
+        description: Implementation start date
+      - name: adaptation_notes
+        type: text
+        required: false
+        description: How implementation was adapted
+      - name: fidelity
+        type: enum
+        required: false
+        values: [high, moderate, low, adapted]
+        description: Implementation fidelity
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: init-community-garden
+        target: pat-community-convener
+        properties:
+          fidelity: "adapted"
+      - source: proj-outreach
+        target: meth-appreciative-inquiry
+        properties:
+          start_date: "2024-02-01"
+    validation_rules:
+      - source must be Initiative, Project, or Organization
+      - target must be Pattern, Framework, or Methodology
+
+  # ---------------------------------------------------------------------------
+  # ADDRESSES
+  # ---------------------------------------------------------------------------
+  - id: addresses
+    name: ADDRESSES
+    description: Entity targets or works to solve a cause or issue
+    category: Addressing
+    source_entity_types:
+      - Initiative
+      - Project
+      - Program
+      - Pattern
+    target_entity_types:
+      - Cause
+      - Issue
+      - Problem
+    properties:
+      - name: approach
+        type: string
+        required: false
+        description: Approach to addressing
+      - name: priority
+        type: enum
+        required: false
+        values: [primary, secondary, tertiary]
+        description: Priority level
+      - name: effectiveness
+        type: number
+        required: false
+        description: Effectiveness rating (0-1)
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: init-urban-renewal
+        target: cause-housing-shortage
+        properties:
+          priority: "primary"
+          approach: "Direct intervention"
+      - source: pat-community-convener
+        target: cause-social-fragmentation
+        properties:
+          effectiveness: 0.85
+    validation_rules:
+      - source must be Initiative, Project, Program, or Pattern
+      - target must be Cause or related entity
+
+  # ---------------------------------------------------------------------------
+  # REQUIRES
+  # ---------------------------------------------------------------------------
+  - id: requires
+    name: REQUIRES
+    description: Entity depends on another entity for functioning
+    category: Addressing
+    source_entity_types:
+      - Pattern
+      - Project
+      - Methodology
+      - Practice
+    target_entity_types:
+      - Skill
+      - Resource
+      - Tool
+      - Prerequisite
+    properties:
+      - name: necessity
+        type: enum
+        required: true
+        values: [required, recommended, optional]
+        description: Necessity level
+      - name: quantity
+        type: number
+        required: false
+        description: Required quantity
+      - name: notes
+        type: text
+        required: false
+        description: Additional notes
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: pat-community-convener
+        target: skill-facilitation
+        properties:
+          necessity: "required"
+      - source: proj-community-garden
+        target: res-land-access
+        properties:
+          necessity: "required"
+          notes: "At least 0.5 acre"
+    validation_rules:
+      - necessity must be valid enum value
+      - quantity must be positive if provided
+
+  # ---------------------------------------------------------------------------
+  # PRODUCES
+  # ---------------------------------------------------------------------------
+  - id: produces
+    name: PRODUCES
+    description: Entity generates or creates another entity
+    category: Production
+    source_entity_types:
+      - Initiative
+      - Project
+      - Organization
+      - Process
+    target_entity_types:
+      - Outcome
+      - Resource
+      - Impact
+      - Dataset
+    properties:
+      - name: date
+        type: date
+        required: false
+        description: Production date
+      - name: quantity
+        type: number
+        required: false
+        description: Quantity produced
+      - name: quality
+        type: enum
+        required: false
+        values: [high, medium, low]
+        description: Quality assessment
+    cardinality:
+      source: one-to-many
+      target: many-to-one
+    examples:
+      - source: init-urban-renewal
+        target: out-increased-engagement
+        properties:
+          date: "2024-06-15"
+      - source: org-research-institute
+        target: data-community-survey
+        properties:
+          quality: "high"
+    validation_rules:
+      - source must be Initiative, Project, Organization, or Process
+      - target must be Outcome, Resource, Impact, or Dataset
+
+  # ---------------------------------------------------------------------------
+  # USES
+  # ---------------------------------------------------------------------------
+  - id: uses
+    name: USES
+    description: Entity employs or leverages another entity
+    category: Production
+    source_entity_types:
+      - Project
+      - Initiative
+      - Actor
+      - Organization
+    target_entity_types:
+      - Tool
+      - Methodology
+      - Resource
+      - Dataset
+    properties:
+      - name: purpose
+        type: string
+        required: true
+        description: Purpose of use
+      - name: frequency
+        type: enum
+        required: false
+        values: [continuous, regular, occasional, one-time]
+        description: Usage frequency
+      - name: start_date
+        type: date
+        required: false
+        description: Usage start date
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: proj-community-garden
+        target: tool-systems-mapping
+        properties:
+          purpose: "Map stakeholder relationships"
+          frequency: "one-time"
+      - source: init-policy-advocacy
+        target: data-census-demographics
+        properties:
+          purpose: "Evidence for policy briefs"
+          frequency: "regular"
+    validation_rules:
+      - purpose must be non-empty string
+      - frequency must be valid enum if provided
+
+  # ---------------------------------------------------------------------------
+  # LOCATED_IN
+  # ---------------------------------------------------------------------------
+  - id: located_in
+    name: LOCATED_IN
+    description: Entity is geographically or contextually situated in another
+    category: Location
+    source_entity_types:
+      - Organization
+      - Initiative
+      - Event
+      - Story
+      - Tradition
+    target_entity_types:
+      - Location
+      - Domain
+      - Region
+    properties:
+      - name: primary
+        type: boolean
+        required: false
+        description: Whether this is primary location
+      - name: scope
+        type: enum
+        required: false
+        values: [headquarters, operating, service, historical]
+        description: Location scope
+      - name: dates
+        type: object
+        required: false
+        description: Date range for location
+    cardinality:
+      source: many-to-one
+      target: one-to-many
+    examples:
+      - source: org-change-foundation
+        target: loc-detroit
+        properties:
+          primary: true
+          scope: "headquarters"
+      - source: init-urban-renewal
+        target: loc-midwest
+        properties:
+          scope: "operating"
+    validation_rules:
+      - primary defaults to false
+      - target must be Location or geographic entity
+
+  # ---------------------------------------------------------------------------
+  # OCCURS_AT
+  # ---------------------------------------------------------------------------
+  - id: occurs_at
+    name: OCCURS_AT
+    description: Entity takes place at a specific location or time
+    category: Location
+    source_entity_types:
+      - Event
+      - Tradition
+      - Practice
+    target_entity_types:
+      - Location
+      - Timeline
+      - Phase
+    properties:
+      - name: date
+        type: date
+        required: false
+        description: Specific date
+      - name: duration
+        type: string
+        required: false
+        description: Duration of occurrence
+      - name: recurrence
+        type: enum
+        required: false
+        values: [one-time, periodic, continuous]
+        description: Recurrence pattern
+    cardinality:
+      source: many-to-one
+      target: one-to-many
+    examples:
+      - source: evt-launch-workshop
+        target: loc-community-center
+        properties:
+          date: "2024-02-15"
+          duration: "4 hours"
+      - source: trad-harvest-festival
+        target: loc-rural-village
+        properties:
+          recurrence: "periodic"
+    validation_rules:
+      - date must be valid ISO date if provided
+      - recurrence must be valid enum if provided
+
+  # ---------------------------------------------------------------------------
+  # PART_OF
+  # ---------------------------------------------------------------------------
+  - id: part_of
+    name: PART_OF
+    description: Entity is a component or member of another entity
+    category: Structure
+    source_entity_types:
+      - Project
+      - Event
+      - Topic
+      - Subdomain
+      - Phase
+      - Location
+    target_entity_types:
+      - Initiative
+      - Timeline
+      - Domain
+      - Program
+      - Location
+    properties:
+      - name: order
+        type: number
+        required: false
+        description: Position in sequence
+      - name: contribution
+        type: text
+        required: false
+        description: Contribution to parent
+      - name: start_date
+        type: date
+        required: false
+        description: Membership start date
+    cardinality:
+      source: many-to-one
+      target: one-to-many
+    examples:
+      - source: proj-community-garden
+        target: init-urban-renewal
+        properties:
+          order: 1
+          contribution: "Physical transformation component"
+      - source: sub-urban-agriculture
+        target: dom-food-security
+        properties:
+          order: 3
+    validation_rules:
+      - order must be positive if provided
+      - source and target cannot be same entity type at same level
+
+  # ---------------------------------------------------------------------------
+  # RELATES_TO
+  # ---------------------------------------------------------------------------
+  - id: relates_to
+    name: RELATES_TO
+    description: Entity has a general association with another entity
+    category: Structure
+    source_entity_types:
+      - any
+    target_entity_types:
+      - any
+    properties:
+      - name: relationship_type
+        type: string
+        required: false
+        description: Type of relationship
+      - name: strength
+        type: enum
+        required: false
+        values: [strong, moderate, weak]
+        description: Relationship strength
+      - name: notes
+        type: text
+        required: false
+        description: Additional notes
+      - name: verified
+        type: boolean
+        required: false
+        description: Whether relationship is verified
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: pat-community-convener
+        target: pat-network-weaving
+        properties:
+          strength: "strong"
+          verified: true
+      - source: cause-housing-shortage
+        target: cause-poverty
+        properties:
+          relationship_type: "contributes to"
+    validation_rules:
+      - strength must be valid enum if provided
+      - verified defaults to false
+
+  # ---------------------------------------------------------------------------
+  # DERIVES_FROM
+  # ---------------------------------------------------------------------------
+  - id: derives_from
+    name: DERIVES_FROM
+    description: Entity originates or is derived from another entity
+    category: Structure
+    source_entity_types:
+      - Pattern
+      - Story
+      - Narrative
+      - Tradition
+      - Dataset
+      - Impact
+      - Cause
+    target_entity_types:
+      - Pattern
+      - Story
+      - Tradition
+      - Dataset
+      - Outcome
+      - Cause
+    properties:
+      - name: derivation_type
+        type: enum
+        required: false
+        values: [adaptation, synthesis, extraction, evolution]
+        description: Type of derivation
+      - name: modifications
+        type: text
+        required: false
+        description: What was modified
+      - name: attribution
+        type: string
+        required: false
+        description: Attribution statement
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: pat-community-convener-adapted
+        target: pat-community-convener
+        properties:
+          derivation_type: "adaptation"
+          modifications: "Adapted for urban context"
+      - source: narr-collective-action
+        target: story-detroit-revival
+        properties:
+          derivation_type: "synthesis"
+    validation_rules:
+      - derivation_type must be valid enum if provided
+      - source and target cannot be the same entity
+
+  # ---------------------------------------------------------------------------
+  # TRANSFORMS_TO
+  # ---------------------------------------------------------------------------
+  - id: transforms_to
+    name: TRANSFORMS_TO
+    description: Entity changes state to become another entity
+    category: Transformation
+    source_entity_types:
+      - any
+    target_entity_types:
+      - any
+    properties:
+      - name: transformation_type
+        type: enum
+        required: true
+        values: [state_change, evolution, merger, split, dissolution]
+        description: Type of transformation
+      - name: date
+        type: date
+        required: true
+        description: Transformation date
+      - name: trigger
+        type: string
+        required: false
+        description: What triggered transformation
+      - name: preservation
+        type: array
+        required: false
+        description: What was preserved
+    cardinality:
+      source: one-to-one
+      target: one-to-one
+    examples:
+      - source: proj-planning-phase
+        target: proj-implementation-phase
+        properties:
+          transformation_type: "state_change"
+          date: "2024-03-01"
+          trigger: "Funding secured"
+      - source: org-grassroots
+        target: org-established-ngo
+        properties:
+          transformation_type: "evolution"
+          date: "2024-01-15"
+    validation_rules:
+      - transformation_type must be valid enum
+      - date must be valid ISO date
+      - source and target must be same entity type for state changes
+
+  # ---------------------------------------------------------------------------
+  # MEASURES
+  # ---------------------------------------------------------------------------
+  - id: measures
+    name: MEASURES
+    description: Entity assesses or quantifies another entity
+    category: Production
+    source_entity_types:
+      - Indicator
+      - Metric
+    target_entity_types:
+      - Outcome
+      - Impact
+      - Skill
+      - Progress
+    properties:
+      - name: measurement_type
+        type: enum
+        required: true
+        values: [quantitative, qualitative, mixed]
+        description: Type of measurement
+      - name: frequency
+        type: enum
+        required: false
+        values: [daily, weekly, monthly, quarterly, annual]
+        description: Measurement frequency
+      - name: target_value
+        type: number
+        required: false
+        description: Target value
+      - name: threshold_minimum
+        type: number
+        required: false
+        description: Minimum threshold
+    cardinality:
+      source: many-to-one
+      target: one-to-many
+    examples:
+      - source: ind-participation-rate
+        target: out-increased-engagement
+        properties:
+          measurement_type: "quantitative"
+          target_value: 50
+      - source: met-participation-q1
+        target: out-increased-engagement
+        properties:
+          measurement_type: "quantitative"
+          frequency: "quarterly"
+    validation_rules:
+      - measurement_type must be valid enum
+      - target_value must be positive number if provided
+
+  # ---------------------------------------------------------------------------
+  # ENABLES
+  # ---------------------------------------------------------------------------
+  - id: enables
+    name: ENABLES
+    description: Entity facilitates or makes possible another entity
+    category: Addressing
+    source_entity_types:
+      - Skill
+      - Tool
+      - Resource
+      - Practice
+    target_entity_types:
+      - Pattern
+      - Outcome
+      - Initiative
+      - Tool
+    properties:
+      - name: enablement_type
+        type: enum
+        required: false
+        values: [necessary, helpful, conditional]
+        description: Type of enablement
+      - name: conditions
+        type: text
+        required: false
+        description: Conditions for enablement
+      - name: effectiveness
+        type: number
+        required: false
+        description: Effectiveness rating (0-1)
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: skill-facilitation
+        target: pat-community-convener
+        properties:
+          enablement_type: "necessary"
+      - source: tool-systems-mapping
+        target: init-urban-renewal
+        properties:
+          enablement_type: "helpful"
+          effectiveness: 0.9
+    validation_rules:
+      - enablement_type must be valid enum if provided
+      - effectiveness must be between 0 and 1 if provided
+
+  # ---------------------------------------------------------------------------
+  # FUNDS
+  # ---------------------------------------------------------------------------
+  - id: funds
+    name: FUNDS
+    description: Entity provides financial support to another entity
+    category: Agency
+    source_entity_types:
+      - Organization
+      - Actor
+      - Program
+    target_entity_types:
+      - Initiative
+      - Project
+      - Organization
+    properties:
+      - name: amount
+        type: number
+        required: true
+        description: Funding amount
+      - name: currency
+        type: string
+        required: true
+        description: Currency code (ISO 4217)
+      - name: funding_type
+        type: enum
+        required: true
+        values: [grant, loan, investment, in-kind]
+        description: Type of funding
+      - name: start_date
+        type: date
+        required: false
+        description: Funding start date
+      - name: end_date
+        type: date
+        required: false
+        description: Funding end date
+      - name: restrictions
+        type: text
+        required: false
+        description: Funding restrictions
+    cardinality:
+      source: one-to-many
+      target: many-to-one
+    examples:
+      - source: org-change-foundation
+        target: init-urban-renewal
+        properties:
+          amount: 250000
+          currency: "USD"
+          funding_type: "grant"
+          start_date: "2024-01-01"
+          end_date: "2024-12-31"
+      - source: prog-government-initiative
+        target: org-community-group
+        properties:
+          amount: 50000
+          currency: "USD"
+          funding_type: "grant"
+          restrictions: "For operational costs only"
+    validation_rules:
+      - amount must be positive number
+      - currency must be valid ISO 4217 code
+      - end_date must be after start_date if both provided
+
+  # ---------------------------------------------------------------------------
+  # COLLABORATES_WITH
+  # ---------------------------------------------------------------------------
+  - id: collaborates_with
+    name: COLLABORATES_WITH
+    description: Entity works together with another entity
+    category: Agency
+    source_entity_types:
+      - Actor
+      - Organization
+    target_entity_types:
+      - Actor
+      - Organization
+    properties:
+      - name: collaboration_type
+        type: enum
+        required: true
+        values: [partnership, coalition, network, informal]
+        description: Type of collaboration
+      - name: scope
+        type: enum
+        required: false
+        values: [project, initiative, ongoing]
+        description: Collaboration scope
+      - name: start_date
+        type: date
+        required: false
+        description: Collaboration start date
+      - name: roles
+        type: object
+        required: false
+        description: Role definitions
+      - name: shared_goals
+        type: array
+        required: false
+        description: Shared goals
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: org-change-foundation
+        target: org-community-partners
+        properties:
+          collaboration_type: "partnership"
+          scope: "initiative"
+          shared_goals: ["Housing access", "Community development"]
+      - source: actor-jane-smith
+        target: actor-john-doe
+        properties:
+          collaboration_type: "informal"
+          scope: "project"
+    validation_rules:
+      - collaboration_type must be valid enum
+      - source and target cannot be the same entity
+      - This relationship is symmetric (bidirectional)
+
+  # ---------------------------------------------------------------------------
+  # PRECEDES
+  # ---------------------------------------------------------------------------
+  - id: precedes
+    name: PRECEDES
+    description: Entity comes before another entity in sequence
+    category: Temporal
+    source_entity_types:
+      - Event
+      - Phase
+      - Cause
+      - Transition
+    target_entity_types:
+      - Event
+      - Phase
+      - Cause
+      - Transition
+    properties:
+      - name: sequence_type
+        type: enum
+        required: false
+        values: [chronological, causal, logical]
+        description: Type of sequence
+      - name: gap
+        type: string
+        required: false
+        description: Time gap between entities
+      - name: mandatory
+        type: boolean
+        required: false
+        description: Whether sequence is mandatory
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: phase-discovery
+        target: phase-design
+        properties:
+          sequence_type: "logical"
+          mandatory: true
+      - source: evt-community-meeting
+        target: evt-action-planning
+        properties:
+          sequence_type: "chronological"
+          gap: "2 weeks"
+    validation_rules:
+      - sequence_type must be valid enum if provided
+      - source and target must be same type for phase sequences
+
+  # ---------------------------------------------------------------------------
+  # FOLLOWS
+  # ---------------------------------------------------------------------------
+  - id: follows
+    name: FOLLOWS
+    description: Entity comes after another entity in sequence
+    category: Temporal
+    source_entity_types:
+      - Event
+      - Phase
+      - Cause
+      - Transition
+    target_entity_types:
+      - Event
+      - Phase
+      - Cause
+      - Transition
+    properties:
+      - name: sequence_type
+        type: enum
+        required: false
+        values: [chronological, causal, logical]
+        description: Type of sequence
+      - name: gap
+        type: string
+        required: false
+        description: Time gap between entities
+      - name: mandatory
+        type: boolean
+        required: false
+        description: Whether sequence is mandatory
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: phase-implementation
+        target: phase-discovery
+        properties:
+          sequence_type: "logical"
+      - source: evt-evaluation
+        target: evt-implementation
+        properties:
+          sequence_type: "chronological"
+          gap: "3 months"
+    validation_rules:
+      - This is the inverse of PRECEDES
+      - sequence_type must be valid enum if provided
+
+  # ---------------------------------------------------------------------------
+  # CONTRADICTS
+  # ---------------------------------------------------------------------------
+  - id: contradicts
+    name: CONTRADICTS
+    description: Entity opposes or conflicts with another entity
+    category: Conflict
+    source_entity_types:
+      - Cause
+      - Pattern
+      - Story
+      - Narrative
+      - Approach
+    target_entity_types:
+      - Cause
+      - Pattern
+      - Story
+      - Narrative
+      - Approach
+    properties:
+      - name: contradiction_type
+        type: enum
+        required: true
+        values: [logical, empirical, practical, ideological]
+        description: Type of contradiction
+      - name: severity
+        type: enum
+        required: false
+        values: [minor, moderate, major, fundamental]
+        description: Severity of contradiction
+      - name: resolution
+        type: text
+        required: false
+        description: Potential resolution
+      - name: evidence
+        type: array
+        required: false
+        description: Supporting evidence
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: pat-top-down-change
+        target: pat-community-convener
+        properties:
+          contradiction_type: "ideological"
+          severity: "major"
+          resolution: "Context-dependent application"
+      - source: cause-economic-growth
+        target: cause-environmental-protection
+        properties:
+          contradiction_type: "practical"
+          severity: "moderate"
+    validation_rules:
+      - contradiction_type must be valid enum
+      - source and target cannot be the same entity
+      - This relationship is symmetric (bidirectional)
+
+  # ---------------------------------------------------------------------------
+  # SUPPORTS
+  # ---------------------------------------------------------------------------
+  - id: supports
+    name: SUPPORTS
+    description: Entity provides evidence or backing for another entity
+    category: Addressing
+    source_entity_types:
+      - Story
+      - Citation
+      - Evidence
+      - Pattern
+    target_entity_types:
+      - Pattern
+      - Cause
+      - Outcome
+      - Claim
+    properties:
+      - name: support_type
+        type: enum
+        required: true
+        values: [empirical, anecdotal, theoretical, expert]
+        description: Type of support
+      - name: strength
+        type: enum
+        required: false
+        values: [strong, moderate, weak]
+        description: Strength of support
+      - name: relevance
+        type: number
+        required: false
+        description: Relevance score (0-1)
+      - name: context
+        type: text
+        required: false
+        description: Context of support
+    cardinality:
+      source: many-to-many
+      target: many-to-many
+    examples:
+      - source: story-detroit-revival
+        target: pat-community-convener
+        properties:
+          support_type: "anecdotal"
+          strength: "strong"
+      - source: cite-systems-thinking
+        target: cause-housing-shortage
+        properties:
+          support_type: "empirical"
+          strength: "moderate"
+          relevance: 0.85
+    validation_rules:
+      - support_type must be valid enum
+      - strength must be valid enum if provided
+      - relevance must be between 0 and 1 if provided

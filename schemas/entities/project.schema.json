@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/entities/project.schema.json",
+  "title": "Project",
+  "description": "A specific, time-bound undertaking with defined objectives, deliverables, and resources within the changemappers ecosystem.",
+  "type": "object",
+  "required": ["id", "slug", "name", "status", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the project",
+      "example": "550e8400-e29b-41d4-a716-446655440003"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "URL-friendly identifier",
+      "example": "urban-gardens-2024"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Name of the project",
+      "example": "Urban Gardens Initiative 2024"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Detailed description of the project",
+      "example": "Establishing 50 community gardens across urban neighborhoods to improve food security and community cohesion."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planning", "active", "on_hold", "completed", "cancelled"],
+      "description": "Current status of the project",
+      "example": "active"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["pilot", "demonstration", "scaling", "research", "capacity_building", "infrastructure", "advocacy", "education"],
+      "description": "Type of project",
+      "example": "demonstration"
+    },
+    "initiative": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Parent initiative if part of one"
+    },
+    "lead_organization": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Organization leading the project"
+    },
+    "partner_organizations": {
+      "type": "array",
+      "description": "Partner organizations",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "team": {
+      "type": "array",
+      "description": "Project team members",
+      "items": {
+        "type": "object",
+        "required": ["actor_id"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string", "format": "uuid" },
+          "role": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Geographic locations of the project",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "domains": {
+      "type": "array",
+      "description": "Domains the project addresses",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "timeline": {
+      "type": "object",
+      "description": "Project timeline",
+      "additionalProperties": false,
+      "properties": {
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "phases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "start_date"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "start_date": { "type": "string", "format": "date" },
+              "end_date": { "type": "string", "format": "date" },
+              "status": { "type": "string", "enum": ["planned", "in_progress", "completed"] }
+            }
+          }
+        }
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "description": "Project deliverables",
+      "items": {
+        "type": "object",
+        "required": ["description"],
+        "additionalProperties": false,
+        "properties": {
+          "description": { "type": "string" },
+          "due_date": { "type": "string", "format": "date" },
+          "status": { "type": "string", "enum": ["pending", "in_progress", "completed", "delayed"] }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Expected or achieved outcomes",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "impacts": {
+      "type": "array",
+      "description": "Measured impacts",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "budget": {
+      "type": "object",
+      "description": "Project budget",
+      "additionalProperties": false,
+      "properties": {
+        "allocated": { "type": "number", "minimum": 0 },
+        "spent": { "type": "number", "minimum": 0 },
+        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Resources used",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "methods": {
+      "type": "array",
+      "description": "Methodologies applied",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tools": {
+      "type": "array",
+      "description": "Tools used",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Patterns applied",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags",
+      "items": { "type": "string", "maxLength": 50 }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    }
+  }
+}

@@ -1,0 +1,990 @@
+{
+  "schema_version": "1.0.0",
+  "description": "ChangeMappers Graph Database Schema",
+  "nodes": {
+    "Actor": {
+      "label": "actor",
+      "description": "Individuals or groups who take action in the changemaking ecosystem",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true,
+          "description": "Unique identifier for the actor"
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true,
+          "description": "Name of the actor"
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["person", "organization", "group", "network"],
+          "index": true,
+          "description": "Type of actor"
+        },
+        "description": {
+          "type": "string",
+          "required": false,
+          "description": "Description of the actor"
+        },
+        "location": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string", "index": true },
+            "region": { "type": "string", "index": true },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "lat": { "type": "number" },
+                "lng": { "type": "number" }
+              }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true,
+          "description": "Tags for categorization"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Additional metadata"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Organization": {
+      "label": "organization",
+      "description": "Organizations working on social and environmental change",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["ngo", "nonprofit", "social_enterprise", "cooperative", "foundation", "community_group", "network"],
+          "index": true
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        },
+        "sector": {
+          "type": "string",
+          "required": false,
+          "enum": ["environment", "social_justice", "education", "health", "economic_development", "arts_culture", "human_rights", "community_development"],
+          "index": true
+        },
+        "location": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string", "index": true },
+            "region": { "type": "string", "index": true },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "lat": { "type": "number" },
+                "lng": { "type": "number" }
+              }
+            }
+          }
+        },
+        "size": {
+          "type": "string",
+          "required": false,
+          "enum": ["small", "medium", "large"]
+        },
+        "founded_year": {
+          "type": "integer",
+          "required": false
+        },
+        "website": {
+          "type": "string",
+          "required": false
+        },
+        "contact": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "email": { "type": "string" },
+            "phone": { "type": "string" },
+            "social_media": {
+              "type": "object",
+              "properties": {
+                "twitter": { "type": "string" },
+                "facebook": { "type": "string" },
+                "linkedin": { "type": "string" },
+                "instagram": { "type": "string" }
+              }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Initiative": {
+      "label": "initiative",
+      "description": "Projects, campaigns, and programs addressing social or environmental issues",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["project", "campaign", "program", "event", "research", "pilot"],
+          "index": true
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        },
+        "status": {
+          "type": "string",
+          "required": true,
+          "enum": ["planning", "active", "completed", "on_hold", "cancelled"],
+          "default": "planning",
+          "index": true
+        },
+        "location": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string", "index": true },
+            "region": { "type": "string", "index": true },
+            "coordinates": {
+              "type": "object",
+              "properties": {
+                "lat": { "type": "number" },
+                "lng": { "type": "number" }
+              }
+            }
+          }
+        },
+        "start_date": {
+          "type": "date",
+          "required": false,
+          "index": true
+        },
+        "end_date": {
+          "type": "date",
+          "required": false
+        },
+        "budget": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "amount": { "type": "number" },
+            "currency": { "type": "string", "default": "EUR" }
+          }
+        },
+        "target_audience": {
+          "type": "string",
+          "required": false
+        },
+        "expected_outcomes": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "actual_outcomes": {
+          "type": "array",
+          "items": "string",
+          "required": false
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Cause": {
+      "label": "cause",
+      "description": "Social or environmental issues being addressed",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        },
+        "category": {
+          "type": "string",
+          "required": true,
+          "enum": ["environment", "social_justice", "economic", "health", "education", "governance", "culture", "infrastructure"],
+          "index": true
+        },
+        "urgency": {
+          "type": "string",
+          "required": false,
+          "enum": ["critical", "high", "medium", "low"],
+          "default": "medium",
+          "index": true
+        },
+        "scope": {
+          "type": "string",
+          "required": false,
+          "enum": ["local", "regional", "national", "global"],
+          "default": "regional",
+          "index": true
+        },
+        "sdg": {
+          "type": "array",
+          "items": "string",
+          "index": true,
+          "description": "UN Sustainable Development Goals"
+        },
+        "indicators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "unit": { "type": "string" },
+              "baseline": { "type": "number" },
+              "current": { "type": "number" },
+              "target": { "type": "number" }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Pattern": {
+      "label": "pattern",
+      "description": "Reusable patterns and strategies for change",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "description": {
+          "type": "string",
+          "required": true
+        },
+        "category": {
+          "type": "string",
+          "required": true,
+          "enum": ["organizational", "tactical", "strategic", "communication", "funding", "governance", "mobilization", "coalition_building"],
+          "index": true
+        },
+        "problem": {
+          "type": "string",
+          "required": true,
+          "description": "The problem this pattern addresses"
+        },
+        "solution": {
+          "type": "string",
+          "required": true,
+          "description": "The solution this pattern provides"
+        },
+        "effectiveness": {
+          "type": "string",
+          "required": false,
+          "enum": ["proven", "promising", "experimental"],
+          "default": "experimental",
+          "index": true
+        },
+        "contexts": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": "string"
+        },
+        "risks": {
+          "type": "array",
+          "items": "string"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": { "type": "string" },
+              "url": { "type": "string" },
+              "description": { "type": "string" },
+              "type": { "type": "string", "enum": ["case_study", "research", "testimonial", "documentation"] }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Story": {
+      "label": "story",
+      "description": "Narratives documenting change efforts and experiences",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "title": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["case_study", "testimonial", "news", "report", "interview", "documentary"],
+          "index": true
+        },
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Main story content (Markdown supported)"
+        },
+        "summary": {
+          "type": "string",
+          "required": false
+        },
+        "published_at": {
+          "type": "datetime",
+          "required": false,
+          "index": true
+        },
+        "featured": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "index": true
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["image", "video", "audio", "document"] },
+              "url": { "type": "string" },
+              "caption": { "type": "string" },
+              "credit": { "type": "string" }
+            }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "items": "string",
+          "index": true
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "created_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        },
+        "updated_at": {
+          "type": "datetime",
+          "required": true,
+          "default": "now"
+        }
+      }
+    },
+    "Location": {
+      "label": "location",
+      "description": "Geographic locations for spatial queries",
+      "properties": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "index": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "index": true
+        },
+        "type": {
+          "type": "string",
+          "required": true,
+          "enum": ["city", "country", "region", "continent"],
+          "index": true
+        },
+        "coordinates": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "lat": { "type": "number" },
+            "lng": { "type": "number" }
+          }
+        },
+        "parent_id": {
+          "type": "string",
+          "required": false,
+          "index": true,
+          "description": "Parent location ID for hierarchical locations"
+        },
+        "codes": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "iso_3166_1": { "type": "string" },
+            "iso_3166_2": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "edges": {
+    "MEMBER_OF": {
+      "label": "MEMBER_OF",
+      "description": "Entity is a member of another entity",
+      "source_types": ["actor", "organization"],
+      "target_types": ["organization", "network"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "required": false,
+          "description": "Role within the organization"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending"],
+          "default": "active"
+        },
+        "joined_at": {
+          "type": "date",
+          "required": false
+        },
+        "left_at": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "PARTNER_OF": {
+      "label": "PARTNER_OF",
+      "description": "Partnership relationship between organizations",
+      "source_types": ["organization"],
+      "target_types": ["organization"],
+      "properties": {
+        "partnership_type": {
+          "type": "string",
+          "required": false,
+          "enum": ["strategic", "project", "funding", "advocacy"],
+          "description": "Type of partnership"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending"],
+          "default": "active"
+        },
+        "focus_areas": {
+          "type": "array",
+          "items": "string"
+        },
+        "effective_from": {
+          "type": "date",
+          "required": false
+        },
+        "effective_to": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "LEADS": {
+      "label": "LEADS",
+      "description": "Entity leads an initiative or organization",
+      "source_types": ["actor", "organization"],
+      "target_types": ["initiative", "organization"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "required": false,
+          "description": "Leadership role (e.g., director, coordinator)"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending"],
+          "default": "active"
+        },
+        "effective_from": {
+          "type": "date",
+          "required": false
+        },
+        "effective_to": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "PARTICIPATES_IN": {
+      "label": "PARTICIPATES_IN",
+      "description": "Entity participates in an initiative",
+      "source_types": ["actor", "organization"],
+      "target_types": ["initiative"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "required": false,
+          "description": "Participation role"
+        },
+        "status": {
+          "type": "string",
+          "required": false,
+          "enum": ["active", "inactive", "pending"],
+          "default": "active"
+        },
+        "effective_from": {
+          "type": "date",
+          "required": false
+        },
+        "effective_to": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "ADDRESSES": {
+      "label": "ADDRESSES",
+      "description": "Entity addresses a cause or issue",
+      "source_types": ["initiative", "organization"],
+      "target_types": ["cause"],
+      "properties": {
+        "primary": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Whether this is the primary cause addressed"
+        },
+        "approach": {
+          "type": "string",
+          "required": false,
+          "enum": ["direct", "indirect", "advocacy", "research"],
+          "description": "Approach to addressing the cause"
+        }
+      }
+    },
+    "IMPLEMENTS": {
+      "label": "IMPLEMENTS",
+      "description": "Entity implements a pattern",
+      "source_types": ["initiative"],
+      "target_types": ["pattern"],
+      "properties": {
+        "adaptation_notes": {
+          "type": "string",
+          "required": false,
+          "description": "Notes on how the pattern was adapted"
+        },
+        "effectiveness": {
+          "type": "string",
+          "required": false,
+          "enum": ["highly_effective", "effective", "partially_effective", "ineffective"],
+          "description": "Assessment of pattern effectiveness"
+        },
+        "lessons_learned": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "DOCUMENTS": {
+      "label": "DOCUMENTS",
+      "description": "Story documents an entity or activity",
+      "source_types": ["story"],
+      "target_types": ["actor", "organization", "initiative", "cause", "pattern"],
+      "properties": {
+        "perspective": {
+          "type": "string",
+          "required": false,
+          "enum": ["participant", "observer", "beneficiary", "researcher"],
+          "description": "Perspective from which the story is told"
+        },
+        "timeline_coverage": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "start": { "type": "date" },
+            "end": { "type": "date" }
+          }
+        }
+      }
+    },
+    "RELATED_TO": {
+      "label": "RELATED_TO",
+      "description": "General relationship between entities",
+      "source_types": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+      "target_types": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+      "properties": {
+        "relationship": {
+          "type": "string",
+          "required": false,
+          "description": "Description of the relationship"
+        },
+        "strength": {
+          "type": "string",
+          "required": false,
+          "enum": ["strong", "moderate", "weak"],
+          "default": "moderate"
+        }
+      }
+    },
+    "FUNDS": {
+      "label": "FUNDS",
+      "description": "Entity provides funding to another entity",
+      "source_types": ["actor", "organization"],
+      "target_types": ["organization", "initiative"],
+      "properties": {
+        "amount": {
+          "type": "number",
+          "required": false
+        },
+        "currency": {
+          "type": "string",
+          "required": false,
+          "default": "EUR"
+        },
+        "frequency": {
+          "type": "string",
+          "required": false,
+          "enum": ["one_time", "monthly", "quarterly", "annual", "multi_year"]
+        },
+        "purpose": {
+          "type": "string",
+          "required": false
+        },
+        "effective_from": {
+          "type": "date",
+          "required": false
+        },
+        "effective_to": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "SUPPORTS": {
+      "label": "SUPPORTS",
+      "description": "Entity provides support to another entity",
+      "source_types": ["actor", "organization"],
+      "target_types": ["organization", "initiative", "cause"],
+      "properties": {
+        "support_type": {
+          "type": "string",
+          "required": false,
+          "enum": ["technical", "capacity_building", "advocacy", "in_kind", "networking"],
+          "description": "Type of support provided"
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        },
+        "effective_from": {
+          "type": "date",
+          "required": false
+        },
+        "effective_to": {
+          "type": "date",
+          "required": false
+        }
+      }
+    },
+    "LOCATED_IN": {
+      "label": "LOCATED_IN",
+      "description": "Entity is located in a geographic location",
+      "source_types": ["actor", "organization", "initiative", "story"],
+      "target_types": ["location"],
+      "properties": {
+        "primary": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Whether this is the primary location"
+        },
+        "scope": {
+          "type": "string",
+          "required": false,
+          "enum": ["headquarters", "branch", "project_site", "coverage_area"]
+        }
+      }
+    },
+    "PARENT_OF": {
+      "label": "PARENT_OF",
+      "description": "Hierarchical parent-child relationship",
+      "source_types": ["cause", "organization", "location"],
+      "target_types": ["cause", "organization", "location"],
+      "properties": {
+        "relationship_type": {
+          "type": "string",
+          "required": false,
+          "enum": ["subcause", "subsidiary", "chapter", "region_of"]
+        }
+      }
+    },
+    "RELATED_PATTERN": {
+      "label": "RELATED_PATTERN",
+      "description": "Relationship between patterns",
+      "source_types": ["pattern"],
+      "target_types": ["pattern"],
+      "properties": {
+        "relationship": {
+          "type": "string",
+          "required": true,
+          "enum": ["complements", "conflicts_with", "requires", "enhances", "alternative_to"]
+        },
+        "description": {
+          "type": "string",
+          "required": false
+        }
+      }
+    }
+  },
+  "indexes": {
+    "node_indexes": [
+      {
+        "label": "actor",
+        "properties": ["name", "type", "created_at"]
+      },
+      {
+        "label": "organization",
+        "properties": ["name", "type", "sector", "created_at"]
+      },
+      {
+        "label": "initiative",
+        "properties": ["name", "type", "status", "created_at"]
+      },
+      {
+        "label": "cause",
+        "properties": ["name", "category", "urgency", "created_at"]
+      },
+      {
+        "label": "pattern",
+        "properties": ["name", "category", "effectiveness", "created_at"]
+      },
+      {
+        "label": "story",
+        "properties": ["title", "type", "published_at", "featured"]
+      },
+      {
+        "label": "location",
+        "properties": ["name", "type", "parent_id"]
+      }
+    ],
+    "edge_indexes": [
+      {
+        "type": "MEMBER_OF",
+        "properties": ["status", "joined_at"]
+      },
+      {
+        "type": "PARTNER_OF",
+        "properties": ["status", "effective_from"]
+      },
+      {
+        "type": "PARTICIPATES_IN",
+        "properties": ["status", "effective_from"]
+      },
+      {
+        "type": "LEADS",
+        "properties": ["status", "effective_from"]
+      },
+      {
+        "type": "ADDRESSES",
+        "properties": ["primary"]
+      },
+      {
+        "type": "FUNDS",
+        "properties": ["effective_from", "effective_to"]
+      }
+    ],
+    "fulltext_indexes": [
+      {
+        "name": "entity_search",
+        "labels": ["actor", "organization", "initiative", "cause", "pattern", "story"],
+        "properties": ["name", "title", "description", "content"]
+      }
+    ],
+    "spatial_indexes": [
+      {
+        "label": "location",
+        "property": "coordinates"
+      }
+    ]
+  },
+  "constraints": {
+    "uniqueness": [
+      {
+        "label": "actor",
+        "property": "id"
+      },
+      {
+        "label": "organization",
+        "property": "id"
+      },
+      {
+        "label": "initiative",
+        "property": "id"
+      },
+      {
+        "label": "cause",
+        "property": "id"
+      },
+      {
+        "label": "pattern",
+        "property": "id"
+      },
+      {
+        "label": "story",
+        "property": "id"
+      },
+      {
+        "label": "location",
+        "property": "id"
+      }
+    ],
+    "existence": [
+      {
+        "label": "actor",
+        "properties": ["id", "name", "type"]
+      },
+      {
+        "label": "organization",
+        "properties": ["id", "name", "type"]
+      },
+      {
+        "label": "initiative",
+        "properties": ["id", "name", "type", "status"]
+      },
+      {
+        "label": "cause",
+        "properties": ["id", "name", "category"]
+      },
+      {
+        "label": "pattern",
+        "properties": ["id", "name", "category", "problem", "solution"]
+      },
+      {
+        "label": "story",
+        "properties": ["id", "title", "type", "content"]
+      }
+    ]
+  }
+}

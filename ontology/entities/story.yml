@@ -1,0 +1,292 @@
+id: story
+name: Story
+description: A narrative account of change processes, experiences, or transformations that communicates meaning and lessons.
+category: knowledge
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the story
+    - name: title
+      type: string
+      required: true
+      description: Title of the story
+    - name: content
+      type: string
+      required: true
+      description: The story narrative content
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the story
+      enum_values:
+        - personal
+        - community
+        - organizational
+        - movement
+        - case_study
+    - name: author_id
+      type: string
+      required: false
+      description: ID of the storyteller/author
+    - name: organization_id
+      type: string
+      required: false
+      description: Organization associated with the story
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives related to the story
+    - name: project_ids
+      type: array[string]
+      required: false
+      description: Projects related to the story
+    - name: location_id
+      type: string
+      required: false
+      description: Geographic setting of the story
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains addressed in the story
+    - name: date_occurred
+      type: date
+      required: false
+      description: When the events occurred
+    - name: key_actors
+      type: array[string]
+      required: false
+      description: Key actors mentioned in the story
+    - name: themes
+      type: array[string]
+      required: false
+      description: Themes addressed in the story
+    - name: lessons_learned
+      type: array[string]
+      required: false
+      description: Key lessons from the story
+    - name: media_ids
+      type: array[string]
+      required: false
+      description: Associated media assets
+    - name: citation_ids
+      type: array[string]
+      required: false
+      description: Related citations
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: title
+    rule: min_length
+    value: 5
+    message: Title must be at least 5 characters
+  - field: content
+    rule: min_length
+    value: 100
+    message: Content must be at least 100 characters
+  - field: title
+    rule: max_length
+    value: 200
+    message: Title must not exceed 200 characters
+relationships:
+  - entity: actor
+    type: told_by
+    description: Story is told by actors
+  - entity: organization
+    type: documents
+    description: Story documents organizations
+  - entity: initiative
+    type: describes
+    description: Story describes initiatives
+  - entity: project
+    type: narrates
+    description: Story narrates projects
+  - entity: location
+    type: set_in
+    description: Story is set in locations
+  - entity: media
+    type: includes
+    description: Story includes media
+  - entity: narrative
+    type: structured_as
+    description: Story is structured as narrative
+examples:
+  - id: story_001
+    title: "From Coal to Solar: A West Virginia Transition"
+    content: "When the Coal River Mountain was slated for mountaintop removal mining in 2008, local residents organized to propose an alternative: a wind farm that would provide long-term jobs while preserving the mountain. Though the wind farm proposal ultimately failed due to political and economic barriers, the community's organizing planted seeds for a broader transition movement. Today, former coal miners are training for solar installation jobs, and the community is building a new economic future rooted in renewable energy."
+    type: community
+    author_id: actor_002
+    location_id: loc_west_virginia
+    initiative_ids:
+      - init_002
+    project_ids:
+      - proj_003
+    domain_ids:
+      - dom_just_transition
+    date_occurred: '2008-01-01'
+    key_actors:
+      - Coal River Mountain Watch
+      - Local community members
+      - Former coal workers
+    themes:
+      - community organizing
+      - just transition
+      - renewable energy
+    lessons_learned:
+      - Community organizing creates alternatives even when immediate goals aren't achieved
+      - Transition requires long-term commitment beyond single projects
+      - Former fossil fuel workers can lead the transition
+    created_at: '2024-01-15T10:00:00Z'
+    updated_at: '2024-06-20T14:30:00Z'
+    source: changemappers.org
+  - id: story_002
+    title: "The D-Town Farm Story"
+    content: "In 2006, a group of Detroit residents transformed a two-acre vacant lot into D-Town Farm, now a seven-acre urban agriculture operation growing over 30 crops. Founded by members of the Detroit Black Community Food Security Network, the farm addresses food apartheid while building community wealth and connection. Youth programs train the next generation of farmers and food justice leaders."
+    type: organizational
+    author_id: actor_004
+    organization_id: org_005
+    location_id: loc_detroit
+    initiative_ids:
+      - init_003
+    project_ids:
+      - proj_005
+    domain_ids:
+      - dom_food_systems
+    date_occurred: '2006-01-01'
+    key_actors:
+      - Malik Yakini
+      - Detroit Black Community Food Security Network
+      - Detroit residents
+    themes:
+      - food sovereignty
+      - urban agriculture
+      - community wealth building
+    lessons_learned:
+      - Urban agriculture can transform vacant land into community assets
+      - Food sovereignty requires addressing root causes of food apartheid
+      - Youth programs ensure intergenerational knowledge transfer
+    created_at: '2024-02-10T11:00:00Z'
+    updated_at: '2024-05-25T15:00:00Z'
+    source: changemappers.org
+  - id: story_003
+    title: "The Standing Rock Effect"
+    content: "The 2016 Standing Rock resistance to the Dakota Access Pipeline sparked a global movement of Indigenous-led climate activism. The encampment brought together over 300 Indigenous nations and thousands of allies in peaceful prayer and resistance. Though the pipeline was ultimately built, Standing Rock catalyzed a new era of Indigenous power and climate activism."
+    type: movement
+    location_id: loc_standing_rock
+    domain_ids:
+      - dom_climate_justice
+      - dom_land_justice
+    date_occurred: '2016-04-01'
+    key_actors:
+      - Standing Rock Sioux Tribe
+      - Water Protectors
+      - Indigenous nations
+    themes:
+      - Indigenous sovereignty
+      - climate resistance
+      - movement building
+    lessons_learned:
+      - Indigenous-led resistance can shift public discourse
+      - Movements can win even when specific campaigns lose
+      - Prayerful resistance builds community and spirit
+    created_at: '2024-03-01T09:00:00Z'
+    updated_at: '2024-06-15T12:00:00Z'
+    source: changemappers.org
+  - id: story_004
+    title: "Building Community Solar in Portland"
+    content: "In 2018, the Community Power Initiative partnered with low-income neighborhoods in North Portland to develop community-owned solar. Residents formed a cooperative, secured financing through community investment, and now own a 500kW installation serving 100 households. The project reduced energy bills by 50% for participating families while building local wealth and skills."
+    type: case_study
+    organization_id: org_001
+    location_id: loc_portland_north
+    initiative_ids:
+      - init_001
+    project_ids:
+      - proj_001
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    date_occurred: '2018-01-01'
+    key_actors:
+      - North Portland residents
+      - Community Power Initiative
+    themes:
+      - community ownership
+      - energy democracy
+      - wealth building
+    lessons_learned:
+      - Community ownership creates lasting benefits beyond bill savings
+      - Technical assistance is crucial for communities new to energy projects
+      - Local investment keeps wealth in the community
+    created_at: '2024-01-20T12:00:00Z'
+    updated_at: '2024-07-01T10:00:00Z'
+    source: changemappers.org
+  - id: story_005
+    title: "Returning Salmon River to Indigenous Stewardship"
+    content: "After decades of degradation from industrial logging and pollution, the Salmon River watershed is being restored through Indigenous-led stewardship. The local tribe combined traditional ecological knowledge with modern restoration science, involving community members in monitoring and planting. Salmon populations have begun recovering, and the project has become a model for partnership."
+    type: community
+    author_id: actor_003
+    location_id: loc_salmon_river
+    initiative_ids:
+      - init_005
+    project_ids:
+      - proj_007
+    domain_ids:
+      - dom_ecosystem_restoration
+    date_occurred: '2020-01-01'
+    key_actors:
+      - Local tribe
+      - Watershed Guardians
+      - Community volunteers
+    themes:
+      - Indigenous stewardship
+      - ecological restoration
+      - community science
+    lessons_learned:
+      - Traditional ecological knowledge enhances restoration outcomes
+      - Community involvement builds long-term stewardship
+      - Restoration heals both land and cultural connections
+    created_at: '2024-02-25T14:00:00Z'
+    updated_at: '2024-07-05T11:00:00Z'
+    source: changemappers.org
+  - id: story_006
+    title: "Maya's Journey: From Policy Analyst to Solar Advocate"
+    content: "Dr. Maya Chen spent 15 years as a climate policy researcher before realizing that policy alone would not create the change needed. In 2020, she left academia to work directly with communities on community solar projects. Now she bridges policy expertise with on-the-ground implementation, helping communities navigate regulatory barriers while centering equity."
+    type: personal
+    author_id: actor_001
+    location_id: loc_sf_bay
+    domain_ids:
+      - dom_energy
+      - dom_climate_justice
+    key_actors:
+      - Dr. Maya Chen
+    themes:
+      - career transition
+      - community-led change
+      - bridging policy and practice
+    lessons_learned:
+      - Technical expertise is most powerful when serving community priorities
+      - Career transitions into movement work require relationship building
+      - Policy and implementation need each other
+    created_at: '2024-03-15T11:30:00Z'
+    updated_at: '2024-05-30T09:45:00Z'
+    source: changemappers.org
+taxonomies:
+  - story_types
+  - story_themes
+  - story_length
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/story
+  provenance: ChangeMappers Ontology Project

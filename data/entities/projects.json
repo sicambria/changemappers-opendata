@@ -1,0 +1,234 @@
+{
+  "dataset_info": {
+    "name": "Projects",
+    "description": "Specific, time-bound activities with defined objectives and deliverables within the changemappers ecosystem.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 7,
+    "schema": "https://changemappers.org/schemas/entities/project.schema.json"
+  },
+  "records": [
+    {
+      "id": "p1r2o3j4-e5c6-7890-abcd-ef1234567890",
+      "slug": "amazon-water-monitoring-network",
+      "name": "Amazon Water Monitoring Network",
+      "description": "Establishing community-based water quality monitoring networks along critical Amazon tributaries, training local Indigenous communities in water testing and data collection, and creating real-time pollution alert systems.",
+      "status": "active",
+      "type": "implementation",
+      "lead_organization": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "partner_organizations": ["b1c2d3e4-f5a6-7890-abcd-ef1234567890"],
+      "actors": ["a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+      "initiative": "i1n2i3t4-i5t6-7890-abcd-ef1234567890",
+      "causes": ["c1a2u3s4-e5f6-7890-abcd-ef1234567890"],
+      "locations": ["l1o2c3a4-t5i6-7890-abcd-ef1234567890"],
+      "timeline": {
+        "start_date": "2023-01-15",
+        "end_date": "2025-12-31",
+        "milestones": [
+          {"date": "2023-06-01", "description": "Equipment procurement complete", "status": "achieved"},
+          {"date": "2024-03-15", "description": "50 community monitors trained", "status": "achieved"},
+          {"date": "2025-06-01", "description": "Real-time alert system operational", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o1u2t3c4-o5m6-7890-abcd-ef1234567890"],
+      "impacts": ["im1p2a3c4-t5i6-7890-abcd-ef1234567890"],
+      "indicators": ["in1d2i3c4-a5t6-7890-abcd-ef1234567890"],
+      "budget": {
+        "total": 450000,
+        "currency": "USD"
+      },
+      "tags": ["water-monitoring", "indigenous-led", "amazon", "community-science"],
+      "created_at": "2026-01-20T08:00:00Z",
+      "updated_at": "2026-04-01T14:00:00Z"
+    },
+    {
+      "id": "p2r3o4j5-e6c7-8901-bcde-f12345678901",
+      "slug": "water-retention-landscape-training",
+      "name": "Water Retention Landscape Training Program",
+      "description": "Comprehensive training program teaching smallholder farmers to design and implement water retention landscapes including swales, check dams, and recharge ponds for climate resilience.",
+      "status": "active",
+      "type": "education",
+      "lead_organization": "b3c4d5e6-f7a8-9012-cdef-123456789012",
+      "actors": ["a2b3c4d5-e6f7-8901-bcde-f12345678901"],
+      "initiative": "i2n3i4t5-i6t7-8901-bcde-f12345678901",
+      "causes": ["c2a3u4s5-e6f7-8901-bcde-f12345678901", "c3a4u5s6-e7f8-8901-bcde-f12345678901"],
+      "locations": ["l2o3c4a5-t6i7-8901-bcde-f12345678901"],
+      "timeline": {
+        "start_date": "2022-03-01",
+        "end_date": "2027-02-28",
+        "milestones": [
+          {"date": "2022-12-01", "description": "Curriculum developed", "status": "achieved"},
+          {"date": "2024-06-15", "description": "1000 farmers trained", "status": "achieved"},
+          {"date": "2026-12-01", "description": "5000 farmers trained", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o2u3t4c5-o6m7-8901-bcde-f12345678901"],
+      "impacts": ["im2p3a4c5-t6i7-8901-bcde-f12345678901"],
+      "indicators": ["in2d3i4c5-a6t7-8901-bcde-f12345678901"],
+      "budget": {
+        "total": 320000,
+        "currency": "USD"
+      },
+      "tags": ["water-retention", "farmer-training", "climate-adaptation", "east-africa"],
+      "created_at": "2026-01-22T09:30:00Z",
+      "updated_at": "2026-03-28T11:00:00Z"
+    },
+    {
+      "id": "p3r4o5j6-e7c8-9012-cdef-123456789012",
+      "slug": "cascadia-food-hub-network",
+      "name": "Cascadia Food Hub Network",
+      "description": "Establishing a network of community food hubs connecting local producers with consumers, supporting food sovereignty, and building resilient regional food systems.",
+      "status": "active",
+      "type": "implementation",
+      "lead_organization": "b6c7d8e9-f0a1-2345-0123-456789012345",
+      "actors": ["a3b4c5d6-e7f8-9012-cdef-123456789012"],
+      "initiative": "i3n4i5t6-i7t8-9012-cdef-123456789012",
+      "causes": ["c4a5u6s7-e8f9-9012-cdef-123456789012"],
+      "locations": ["l3o4c5a6-t7i8-9012-cdef-123456789012"],
+      "timeline": {
+        "start_date": "2021-01-15",
+        "end_date": "2026-12-31",
+        "milestones": [
+          {"date": "2022-06-01", "description": "First food hub launched", "status": "achieved"},
+          {"date": "2024-03-15", "description": "Network of 5 hubs operational", "status": "achieved"},
+          {"date": "2026-06-01", "description": "Regional distribution system complete", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o3u4t5c6-o7m8-9012-cdef-123456789012"],
+      "impacts": ["im3p4a5c6-t7i8-9012-cdef-123456789012"],
+      "indicators": ["in3d4i5c6-a7t8-9012-cdef-123456789012"],
+      "budget": {
+        "total": 280000,
+        "currency": "USD"
+      },
+      "tags": ["food-sovereignty", "community-hubs", "local-food", "cascadia"],
+      "created_at": "2026-01-25T10:00:00Z",
+      "updated_at": "2026-04-05T15:30:00Z"
+    },
+    {
+      "id": "p4r5o6j7-e8c9-0123-def0-123456789012",
+      "slug": "social-ecological-systems-atlas",
+      "name": "Social-Ecological Systems Atlas",
+      "description": "Creating an open-access digital atlas documenting successful social-ecological system transformations, with case studies, methodologies, and practical implementation guides.",
+      "status": "active",
+      "type": "research",
+      "lead_organization": "b4c5d6e7-f8a9-0123-def0-123456789012",
+      "actors": ["a4b5c6d7-e8f9-0123-def0-123456789012"],
+      "initiative": "i4n5i6t7-i8t9-0123-def0-123456789012",
+      "causes": ["c5a6u7s8-e9f0-0123-def0-123456789012"],
+      "locations": ["l4o5c6a7-t8i9-0123-def0-123456789012"],
+      "timeline": {
+        "start_date": "2022-09-01",
+        "end_date": "2026-08-31",
+        "milestones": [
+          {"date": "2023-06-30", "description": "Methodology framework complete", "status": "achieved"},
+          {"date": "2024-12-15", "description": "50 case studies documented", "status": "achieved"},
+          {"date": "2026-06-01", "description": "Atlas platform launched", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o4u5t6c7-o8m9-0123-def0-123456789012"],
+      "impacts": ["im4p5a6c7-t8i9-0123-def0-123456789012"],
+      "indicators": ["in4d5i6c7-a8t9-0123-def0-123456789012"],
+      "budget": {
+        "total": 580000,
+        "currency": "USD"
+      },
+      "tags": ["research", "open-access", "case-studies", "systems-transformation"],
+      "created_at": "2026-01-28T11:30:00Z",
+      "updated_at": "2026-04-02T09:00:00Z"
+    },
+    {
+      "id": "p5r6o7j8-e9c0-1234-ef01-234567890123",
+      "slug": "restorative-justice-training",
+      "name": "Restorative Justice Training Program",
+      "description": "Training program equipping community facilitators with restorative justice skills for conflict resolution, community healing circles, and trauma-informed dialogue facilitation.",
+      "status": "active",
+      "type": "education",
+      "lead_organization": "b5c6d7e8-f9a0-1234-ef01-234567890123",
+      "actors": ["a5b6c7d8-e9f0-1234-ef01-234567890123"],
+      "initiative": "i5n6i7t8-i9t0-1234-ef01-234567890123",
+      "causes": ["c6a7u8s9-e0f1-1234-ef01-234567890123"],
+      "locations": ["l5o6c7a8-t9i0-1234-ef01-234567890123"],
+      "timeline": {
+        "start_date": "2021-04-01",
+        "end_date": "2026-03-31",
+        "milestones": [
+          {"date": "2022-09-15", "description": "Training curriculum developed", "status": "achieved"},
+          {"date": "2024-06-01", "description": "100 facilitators trained", "status": "achieved"},
+          {"date": "2026-03-01", "description": "Training of trainers program complete", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o5u6t7c8-o9m0-1234-ef01-234567890123"],
+      "impacts": ["im5p6a7c8-t9i0-1234-ef01-234567890123"],
+      "indicators": ["in5d6i7c8-a9t0-1234-ef01-234567890123"],
+      "budget": {
+        "total": 220000,
+        "currency": "EUR"
+      },
+      "tags": ["restorative-justice", "training", "trauma-informed", "community-healing"],
+      "created_at": "2026-02-01T14:00:00Z",
+      "updated_at": "2026-03-30T10:00:00Z"
+    },
+    {
+      "id": "p6r7o8j9-e0c1-2345-f012-345678901234",
+      "slug": "fossil-fuel-divestment-campaign",
+      "name": "Fossil Fuel Divestment Campaign",
+      "description": "Coordinating campaigns targeting institutions to divest from fossil fuel investments, with educational resources, organizing support, and tracking of divestment commitments.",
+      "status": "active",
+      "type": "campaign",
+      "actors": ["a6b7c8d9-e0f1-2345-f012-345678901234"],
+      "initiative": "i6n7i8t9-i0t1-2345-f012-345678901234",
+      "causes": ["c7a8u9s0-e1f2-2345-f012-345678901234"],
+      "locations": ["l6o7c8a9-t0i1-2345-f012-345678901234"],
+      "timeline": {
+        "start_date": "2020-01-01",
+        "milestones": [
+          {"date": "2021-09-20", "description": "First 10 institutions divested", "status": "achieved"},
+          {"date": "2023-06-15", "description": "100 institutions divested", "status": "achieved"},
+          {"date": "2026-12-01", "description": "500 institutions divested", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o6u7t8c9-o0m1-2345-f012-345678901234"],
+      "impacts": ["im6p7a8c9-t0i1-2345-f012-345678901234"],
+      "indicators": ["in6d7i8c9-a0t1-2345-f012-345678901234"],
+      "budget": {
+        "total": 150000,
+        "currency": "USD"
+      },
+      "tags": ["divestment", "climate-campaign", "youth-led", "fossil-fuel-free"],
+      "created_at": "2026-02-05T08:30:00Z",
+      "updated_at": "2026-04-03T12:00:00Z"
+    },
+    {
+      "id": "p7r8o9j0-e1c2-3456-0123-456789012345",
+      "slug": "oral-history-oral-traditions-archive",
+      "name": "Oral History and Traditions Archive",
+      "description": "Preserving and documenting Indigenous oral histories, traditional ecological knowledge, and ancestral wisdom through audio-visual recordings and community-controlled archives.",
+      "status": "active",
+      "type": "implementation",
+      "actors": ["a7b8c9d0-e1f2-3456-0123-456789012345"],
+      "initiative": "i7n8i9t0-i1t2-3456-0123-456789012345",
+      "causes": ["c8a9u0s1-e2f3-3456-0123-456789012345"],
+      "locations": ["l7o8c9a0-t1i2-3456-0123-456789012345"],
+      "timeline": {
+        "start_date": "2023-01-15",
+        "end_date": "2028-12-31",
+        "milestones": [
+          {"date": "2024-06-01", "description": "Recording protocol established", "status": "achieved"},
+          {"date": "2025-12-15", "description": "100 elders documented", "status": "achieved"},
+          {"date": "2028-06-01", "description": "Community archive platform launched", "status": "planned"}
+        ]
+      },
+      "outcomes": ["o7u8t9c0-o1m2-3456-0123-456789012345"],
+      "impacts": ["im7p8a9c0-t1i2-3456-0123-456789012345"],
+      "indicators": ["in7d8i9c0-a1t2-3456-0123-456789012345"],
+      "budget": {
+        "total": 180000,
+        "currency": "USD"
+      },
+      "tags": ["oral-history", "indigenous-knowledge", "archiving", "intergenerational"],
+      "created_at": "2026-02-10T16:00:00Z",
+      "updated_at": "2026-04-04T13:00:00Z"
+    }
+  ]
+}

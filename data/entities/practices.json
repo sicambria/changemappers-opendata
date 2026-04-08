@@ -1,0 +1,96 @@
+{
+  "dataset_info": {
+    "name": "Practices",
+    "description": "Specific activities and behaviors for implementing regenerative development.",
+    "version": "1.0.0",
+    "created_at": "2026-04-08T12:00:00Z",
+    "record_count": 6,
+    "schema": "https://changemappers.org/schemas/entities/practice.schema.json"
+  },
+  "records": [
+    {
+      "id": "pr1a2c3t4-i5c6-7890-abcd-ef1234567890",
+      "slug": "cover-cropping",
+      "name": "Cover Cropping",
+      "description": "Growing crops primarily to benefit the soil rather than for harvest. Cover crops protect soil from erosion, fix nitrogen, suppress weeds, and increase organic matter.",
+      "category": "Agricultural",
+      "type": "regenerative",
+      "key_benefits": ["Soil Protection", "Nitrogen Fixation", "Weed Suppression", "Organic Matter"],
+      "implementation_complexity": "Beginner",
+      "related_practices": ["pr2a3c4t5-i6c7-8901-bcde-f12345678901", "pr3a4c5t6-i7c8-9012-cdef-123456789012"],
+      "tags": ["cover-crops", "soil-health", "regenerative-agriculture", "erosion-control"],
+      "created_at": "2026-01-10T08:00:00Z",
+      "updated_at": "2026-04-01T14:00:00Z"
+    },
+    {
+      "id": "pr2a3c4t5-i6c7-8901-bcde-f12345678901",
+      "slug": "no-till-farming",
+      "name": "No-Till Farming",
+      "description": "Agricultural practice of growing crops without disturbing the soil through tillage. Preserves soil structure, retains moisture, and reduces erosion while building soil carbon.",
+      "category": "Agricultural",
+      "type": "regenerative",
+      "key_benefits": ["Soil Structure Preservation", "Carbon Sequestration", "Moisture Retention", "Erosion Reduction"],
+      "implementation_complexity": "Intermediate",
+      "related_practices": ["pr1a2c3t4-i5c6-7890-abcd-ef1234567890", "pr4a5c6t7-i8c9-0123-def0-123456789012"],
+      "tags": ["no-till", "soil-health", "carbon-sequestration", "regenerative"],
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-04-02T10:30:00Z"
+    },
+    {
+      "id": "pr3a4c5t6-i7c8-9012-cdef-123456789012",
+      "slug": "community-gardening",
+      "name": "Community Gardening",
+      "description": "Collective cultivation of food and plants in shared spaces. Builds community connections, increases food security, and transforms urban spaces into productive landscapes.",
+      "category": "Community",
+      "type": "social",
+      "key_benefits": ["Community Building", "Food Security", "Urban Greening", "Knowledge Sharing"],
+      "implementation_complexity": "Beginner",
+      "related_practices": ["pr1a2c3t4-i5c6-7890-abcd-ef1234567890", "pr6a7c8t9-i0c1-2345-f012-345678901234"],
+      "tags": ["community-gardens", "urban-agriculture", "food-security", "community-building"],
+      "created_at": "2026-01-15T10:00:00Z",
+      "updated_at": "2026-04-03T11:00:00Z"
+    },
+    {
+      "id": "pr4a5c6t7-i8c9-0123-def0-123456789012",
+      "slug": "restorative-circles-practice",
+      "name": "Restorative Circles Practice",
+      "description": "Facilitated gatherings where community members address harm and conflict through dialogue. Centers the voices of those affected and focuses on healing and accountability.",
+      "category": "Social",
+      "type": "healing",
+      "key_benefits": ["Conflict Resolution", "Community Healing", "Accountability", "Relationship Repair"],
+      "implementation_complexity": "Intermediate",
+      "related_practices": ["pr5a6c7t8-i9c0-1234-ef01-234567890123"],
+      "tags": ["restorative-justice", "circles", "healing", "conflict-resolution"],
+      "created_at": "2026-01-18T11:00:00Z",
+      "updated_at": "2026-04-04T12:00:00Z"
+    },
+    {
+      "id": "pr5a6c7t8-i9c0-1234-ef01-234567890123",
+      "slug": "regular-gratitude-circles",
+      "name": "Regular Gratitude Circles",
+      "description": "Regular community gatherings focused on expressing gratitude and appreciation. Builds social bonds, shifts culture toward appreciation, and strengthens community resilience.",
+      "category": "Community",
+      "type": "social",
+      "key_benefits": ["Community Bonding", "Positive Culture", "Resilience Building", "Mental Health"],
+      "implementation_complexity": "Beginner",
+      "related_practices": ["pr4a5c6t7-i8c9-0123-def0-123456789012", "pr6a7c8t9-i0c1-2345-f012-345678901234"],
+      "tags": ["gratitude", "community", "resilience", "well-being"],
+      "created_at": "2026-01-20T12:00:00Z",
+      "updated_at": "2026-04-05T13:00:00Z"
+    },
+    {
+      "id": "pr6a7c8t9-i0c1-2345-f012-345678901234",
+      "slug": "seed-saving-networks",
+      "name": "Seed Saving Networks",
+      "description": "Community-based systems for preserving, exchanging, and adapting local seed varieties. Maintains agricultural biodiversity and food sovereignty.",
+      "category": "Agricultural",
+      "type": "regenerative",
+      "key_benefits": ["Biodiversity Preservation", "Food Sovereignty", "Climate Adaptation", "Community Resilience"],
+      "implementation_complexity": "Intermediate",
+      "related_practices": ["pr1a2c3t4-i5c6-7890-abcd-ef1234567890", "pr3a4c5t6-i7c8-9012-cdef-123456789012"],
+      "tags": ["seed-saving", "biodiversity", "food-sovereignty", "community-networks"],
+      "created_at": "2026-01-22T13:00:00Z",
+      "updated_at": "2026-04-06T14:00:00Z"
+    }
+  ]
+}

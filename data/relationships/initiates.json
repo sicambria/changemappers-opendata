@@ -1,0 +1,94 @@
+{
+  "relationship_type": "initiates",
+  "description": "Actor starts or launches an Initiative/Project",
+  "records": [
+    {
+      "source_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "role": "founder",
+        "year_started": 1955,
+        "context": "Civil rights movement leadership"
+      },
+      "confidence": 0.95,
+      "source_reference": "Montgomery Bus Boycott historical records - Martin Luther King Jr. founded Montgomery Improvement Association"
+    },
+    {
+      "source_id": "c2d3e4f5-a6b7-8901-cdef-234567890abc",
+      "target_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "properties": {
+        "role": "co-founder",
+        "year_started": 1977,
+        "context": "Environmental conservation movement"
+      },
+      "confidence": 0.92,
+      "source_reference": "Green Belt Movement archives - Wangari Maathai founded the movement in Kenya"
+    },
+    {
+      "source_id": "d3e4f5a6-b7c8-9012-defa-345678901bcd",
+      "target_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "properties": {
+        "role": "leader",
+        "year_started": 1965,
+        "context": "Farmworker labor rights"
+      },
+      "confidence": 0.94,
+      "source_reference": "United Farm Workers history - Cesar Chavez initiated Delano Grape Strike"
+    },
+    {
+      "source_id": "e4f5a6b7-c8d9-0123-efab-456789012cde",
+      "target_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "properties": {
+        "role": "organizer",
+        "year_started": 2003,
+        "context": "Women's peace movement"
+      },
+      "confidence": 0.93,
+      "source_reference": "Women of Liberia Mass Action - Leymah Gbowee organized the peace movement"
+    },
+    {
+      "source_id": "f5a6b7c8-d9e0-1234-fabc-567890123def",
+      "target_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "properties": {
+        "role": "founder",
+        "year_started": 1980,
+        "context": "Independent trade union movement"
+      },
+      "confidence": 0.96,
+      "source_reference": "Solidarity movement archives - Lech Wałęsa co-founded Solidarność"
+    },
+    {
+      "source_id": "a6b7c8d9-e0f1-2345-abcd-ef1234567890",
+      "target_id": "i6n7i8t9-i0a1-2345-abcd-ef1234567890",
+      "properties": {
+        "role": "co-organizer",
+        "year_started": 1915,
+        "context": "Housing rights movement"
+      },
+      "confidence": 0.91,
+      "source_reference": "Glasgow Rent Strikes - Mary Barbour organized the resistance movement"
+    },
+    {
+      "source_id": "b7c8d9e0-f1a2-3456-bcde-f12345678901",
+      "target_id": "i7n8i9t0-i1a2-3456-bcde-f12345678901",
+      "properties": {
+        "role": "initiator",
+        "year_started": 1994,
+        "context": "Indigenous autonomy movement"
+      },
+      "confidence": 0.89,
+      "source_reference": "Zapatista movement - Subcomandante Marcos initiated the uprising"
+    },
+    {
+      "source_id": "c8d9e0f1-a2b3-4567-cdef-123456789012",
+      "target_id": "i8n9i0t1-i2a3-4567-cdef-123456789012",
+      "properties": {
+        "role": "founder",
+        "year_started": 1930,
+        "context": "Indian independence movement"
+      },
+      "confidence": 0.97,
+      "source_reference": "Salt March historical records - Mahatma Gandhi initiated the march to Dandi"
+    }
+  ]
+}

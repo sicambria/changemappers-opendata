@@ -1,0 +1,61 @@
+{
+  "relationship_type": "funds",
+  "description": "Organization provides financial support to an Initiative",
+  "records": [
+    {
+      "source_id": "o1r2g3a4-n5i6-7890-abcd-ef1234567890",
+      "target_id": "i1n2i3t4-i5a6-7890-abcd-ef1234567890",
+      "properties": {
+        "funding_type": "community",
+        "amount_estimate": "grassroots",
+        "duration": "campaign_period"
+      },
+      "confidence": 0.88,
+      "source_reference": "Montgomery Bus Boycott funded by Black community churches and small donations"
+    },
+    {
+      "source_id": "o2r3g4a5-n6i7-8901-cdef-234567890abc",
+      "target_id": "i2n3i4t5-i6a7-8901-cdef-234567890abc",
+      "properties": {
+        "funding_type": "international_aid",
+        "amount_estimate": "institutional",
+        "duration": "ongoing"
+      },
+      "confidence": 0.85,
+      "source_reference": "Green Belt Movement funded by Norwegian Forestry Society and international donors"
+    },
+    {
+      "source_id": "o3r4g5a6-n7i8-9012-defa-345678901bcd",
+      "target_id": "i3n4i5t6-i7a8-9012-defa-345678901bcd",
+      "properties": {
+        "funding_type": "union_dues",
+        "amount_estimate": "membership",
+        "duration": "strike_period"
+      },
+      "confidence": 0.92,
+      "source_reference": "Delano Grape Strike funded by union dues and national boycott support"
+    },
+    {
+      "source_id": "o4r5g6a7-n8i9-0123-efab-456789012cde",
+      "target_id": "i4n5i6t7-i8a9-0123-efab-456789012cde",
+      "properties": {
+        "funding_type": "regional",
+        "amount_estimate": "local_support",
+        "duration": "campaign_period"
+      },
+      "confidence": 0.86,
+      "source_reference": "Women of Liberia funded by local market women and West African regional support"
+    },
+    {
+      "source_id": "o5r6g7a8-n9i0-1234-fabc-567890123def",
+      "target_id": "i5n6i7t8-i9a0-1234-fabc-567890123def",
+      "properties": {
+        "funding_type": "membership",
+        "amount_estimate": "millions",
+        "duration": "decades"
+      },
+      "confidence": 0.90,
+      "source_reference": "Solidarity funded by worker dues and international labor movement support"
+    }
+  ]
+}

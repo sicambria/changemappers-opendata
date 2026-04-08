@@ -1,0 +1,206 @@
+id: actor
+name: Actor
+description: A person, group, or entity that initiates, participates in, or influences change processes within the ChangeMappers ecosystem.
+category: agent
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the actor
+    - name: name
+      type: string
+      required: true
+      description: Display name of the actor
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the actor type
+      enum_values:
+        - person
+        - group
+        - organization
+        - community
+        - network
+    - name: description
+      type: string
+      required: false
+      description: Detailed description of the actor
+    - name: aliases
+      type: array[string]
+      required: false
+      description: Alternative names or identifiers
+    - name: contact_info
+      type: object
+      required: false
+      description: Contact details for the actor
+    - name: location_id
+      type: string
+      required: false
+      description: Reference to primary location
+    - name: sector_ids
+      type: array[string]
+      required: false
+      description: Sectors the actor operates in
+    - name: skill_ids
+      type: array[string]
+      required: false
+      description: Skills associated with this actor
+    - name: created_at
+      type: datetime
+      required: true
+      description: When the actor record was created
+    - name: updated_at
+      type: datetime
+      required: true
+      description: When the actor record was last updated
+    - name: source
+      type: string
+      required: false
+      description: Source of the actor information
+    - name: external_urls
+      type: array[string]
+      required: false
+      description: External references and profiles
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: name
+    rule: max_length
+    value: 200
+    message: Name must not exceed 200 characters
+  - field: description
+    rule: max_length
+    value: 5000
+    message: Description must not exceed 5000 characters
+relationships:
+  - entity: organization
+    type: belongs_to
+    description: Actor may belong to an organization
+  - entity: initiative
+    type: participates_in
+    description: Actor participates in initiatives
+  - entity: project
+    type: leads
+    description: Actor may lead projects
+  - entity: skill
+    type: has
+    description: Actor possesses skills
+  - entity: location
+    type: located_in
+    description: Actor is located in a place
+  - entity: sector
+    type: operates_in
+    description: Actor operates in sectors
+examples:
+  - id: actor_001
+    name: Dr. Maya Chen
+    type: person
+    description: Climate policy researcher and advocate with 15 years of experience in environmental governance.
+    location_id: loc_sf_bay
+    sector_ids:
+      - sec_environment
+      - sec_policy
+    skill_ids:
+      - skill_policy_analysis
+      - skill_climate_science
+    created_at: '2024-01-15T10:30:00Z'
+    updated_at: '2024-06-20T14:45:00Z'
+    source: changemappers.org
+    external_urls:
+      - https://example.com/maya-chen
+  - id: actor_002
+    name: Green Future Coalition
+    type: group
+    description: A grassroots network of environmental activists working on climate justice in the Pacific Northwest.
+    location_id: loc_seattle
+    sector_ids:
+      - sec_environment
+      - sec_advocacy
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-06-15T11:30:00Z'
+    source: changemappers.org
+  - id: actor_003
+    name: Indigenous Land Trust
+    type: organization
+    description: Organization dedicated to returning land to Indigenous stewardship and supporting traditional ecological knowledge.
+    location_id: loc_oregon
+    sector_ids:
+      - sec_land_rights
+      - sec_environment
+    created_at: '2024-01-20T12:00:00Z'
+    updated_at: '2024-07-01T08:15:00Z'
+    source: changemappers.org
+  - id: actor_004
+    name: Marcus Williams
+    type: person
+    description: Community organizer and urban farmer focusing on food sovereignty in Detroit.
+    location_id: loc_detroit
+    sector_ids:
+      - sec_food_systems
+      - sec_community_dev
+    skill_ids:
+      - skill_organizing
+      - skill_urban_agriculture
+    created_at: '2024-03-10T16:20:00Z'
+    updated_at: '2024-05-28T09:45:00Z'
+    source: changemappers.org
+  - id: actor_005
+    name: Solar Energy Collective
+    type: network
+    description: Decentralized network of solar energy cooperatives across the Southwest United States.
+    location_id: loc_southwest
+    sector_ids:
+      - sec_energy
+      - sec_coops
+    created_at: '2024-02-28T11:00:00Z'
+    updated_at: '2024-06-30T13:30:00Z'
+    source: changemappers.org
+  - id: actor_006
+    name: Dr. Aisha Rahman
+    type: person
+    description: Economist specializing in sustainable development and community wealth building models.
+    location_id: loc_nyc
+    sector_ids:
+      - sec_economics
+      - sec_community_dev
+    skill_ids:
+      - skill_economic_analysis
+      - skill_community_finance
+    created_at: '2024-01-25T14:00:00Z'
+    updated_at: '2024-07-05T10:20:00Z'
+    source: changemappers.org
+  - id: actor_007
+    name: Youth Climate Action Network
+    type: community
+    description: Youth-led network organizing for climate action and environmental justice in schools and communities.
+    location_id: loc_national
+    sector_ids:
+      - sec_youth
+      - sec_climate
+      - sec_education
+    created_at: '2024-04-01T08:00:00Z'
+    updated_at: '2024-07-10T15:00:00Z'
+    source: changemappers.org
+  - id: actor_008
+    name: Transition Town Movement
+    type: network
+    description: Global grassroots movement of communities working toward resilience and sustainability.
+    location_id: loc_global
+    sector_ids:
+      - sec_community_resilience
+      - sec_sustainability
+    created_at: '2024-02-15T10:00:00Z'
+    updated_at: '2024-06-25T12:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - actor_types
+  - geographic_scope
+  - sector_classification
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/actor
+  provenance: ChangeMappers Ontology Project

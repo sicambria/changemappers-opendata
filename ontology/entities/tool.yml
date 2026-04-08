@@ -1,0 +1,276 @@
+id: tool
+name: Tool
+description: An instrument, platform, resource, or method used to accomplish specific tasks in change processes.
+category: resource
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the tool
+    - name: name
+      type: string
+      required: true
+      description: Name of the tool
+    - name: description
+      type: string
+      required: true
+      description: Description of the tool
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the tool
+      enum_values:
+        - software
+        - platform
+        - methodology
+        - framework
+        - template
+        - hardware
+        - resource
+    - name: category
+      type: enum
+      required: false
+      description: Functional category
+      enum_values:
+        - communication
+        - data_management
+        - organizing
+        - analysis
+        - visualization
+        - collaboration
+        - documentation
+    - name: url
+      type: string
+      required: false
+      description: URL to access or learn about the tool
+    - name: cost
+      type: enum
+      required: false
+      description: Cost structure
+      enum_values:
+        - free
+        - freemium
+        - paid
+        - open_source
+    - name: skill_ids
+      type: array[string]
+      required: false
+      description: Skills required or related
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Domains where tool is useful
+    - name: use_cases
+      type: array[string]
+      required: false
+      description: Common use cases
+    - name: limitations
+      type: array[string]
+      required: false
+      description: Known limitations
+    - name: alternatives
+      type: array[string]
+      required: false
+      description: Alternative tools
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+  - field: url
+    rule: format
+    value: url
+    message: Must be a valid URL
+relationships:
+  - entity: skill
+    type: requires
+    description: Tool requires skills
+  - entity: domain
+    type: applies_to
+    description: Tool applies to domains
+  - entity: actor
+    type: used_by
+    description: Tool is used by actors
+  - entity: project
+    type: used_in
+    description: Tool is used in projects
+examples:
+  - id: tool_001
+    name: Action Network
+    description: Digital organizing platform for campaigns, including email, petitions, events, and fundraising.
+    type: platform
+    category: organizing
+    url: https://actionnetwork.org
+    cost: freemium
+    skill_ids:
+      - skill_003
+      - skill_006
+    domain_ids:
+      - dom_democracy
+    use_cases:
+      - Email campaigns
+      - Petition drives
+      - Event management
+      - Fundraising
+    limitations:
+      - Cost scales with list size
+      - Limited customization
+    alternatives:
+      - tool_002
+      - tool_003
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: tool_002
+    name: Mobilize
+    description: Event organizing platform for recruiting and managing volunteers and events.
+    type: platform
+    category: organizing
+    cost: freemium
+    skill_ids:
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    use_cases:
+      - Event promotion
+      - Volunteer recruitment
+      - Event management
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: tool_003
+    name: NationBuilder
+    description: Community organizing platform combining website, database, and communication tools.
+    type: platform
+    category: organizing
+    cost: paid
+    skill_ids:
+      - skill_003
+      - skill_006
+    domain_ids:
+      - dom_democracy
+    use_cases:
+      - Contact management
+      - Website building
+      - Communication
+    limitations:
+      - Higher cost
+      - Learning curve
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: tool_004
+    name: Google Sheets
+    description: Spreadsheet tool for data management, analysis, and collaboration.
+    type: software
+    category: data_management
+    cost: free
+    skill_ids:
+      - skill_008
+    domain_ids:
+      - dom_organizational
+    use_cases:
+      - Data tracking
+      - Budget management
+      - Collaboration
+    limitations:
+      - Limited analysis capabilities
+      - Privacy considerations
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: tool_005
+    name: Power Mapping Template
+    description: Template for analyzing power relationships and identifying strategic targets.
+    type: template
+    category: analysis
+    cost: free
+    skill_ids:
+      - skill_003
+    domain_ids:
+      - dom_democracy
+    use_cases:
+      - Campaign planning
+      - Coalition strategy
+      - Target identification
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: tool_006
+    name: Canva
+    description: Design platform for creating visual content for communications.
+    type: platform
+    category: communication
+    cost: freemium
+    skill_ids:
+      - skill_005
+    domain_ids:
+      - dom_democracy
+    use_cases:
+      - Social media graphics
+      - Flyers
+      - Presentations
+    limitations:
+      - Limited design flexibility in free tier
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: tool_007
+    name: Zoom
+    description: Video conferencing platform for virtual meetings and events.
+    type: platform
+    category: collaboration
+    cost: freemium
+    skill_ids:
+      - skill_004
+    domain_ids:
+      - dom_organizational
+    use_cases:
+      - Virtual meetings
+      - Webinars
+      - Remote collaboration
+    limitations:
+      - Time limits on free tier
+      - Privacy considerations
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+  - id: tool_008
+    name: Theory of Change Framework
+    description: Methodology for articulating how change happens and mapping activities to outcomes.
+    type: methodology
+    category: analysis
+    cost: free
+    skill_ids:
+      - skill_008
+    domain_ids:
+      - dom_organizational
+    use_cases:
+      - Strategic planning
+      - Evaluation design
+      - Communication
+    created_at: '2024-02-20T11:00:00Z'
+    updated_at: '2024-06-30T13:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - tool_types
+  - tool_categories
+  - tool_cost
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/tool
+  provenance: ChangeMappers Ontology Project

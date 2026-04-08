@@ -1,0 +1,115 @@
+id: transforms_to
+name: Transforms To
+description: An Entity changes, evolves, or becomes another Entity through a transformation process. This captures state changes and metamorphoses.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Entity
+
+allowed_to:
+  - Entity
+
+properties:
+  transformation_type:
+    type: string
+    description: Nature of transformation (growth, reorganization, rebranding, evolution)
+    required: false
+  transformation_date:
+    type: date
+    description: When the transformation occurred
+    required: false
+  driver:
+    type: string
+    description: What caused the transformation
+    required: false
+  continuity_level:
+    type: string
+    description: How much continuity exists (high, medium, low)
+    required: false
+  assets_transferred:
+    type: array
+    description: What was carried over
+    required: false
+
+cardinality: one-to-one
+
+inverse: transformed_from
+
+examples:
+  - from: OccupyWallStreet
+    to: OccupyNetworks
+    properties:
+      transformation_type: evolution
+      transformation_date: "2012-01-01"
+      driver: loss_of_physical_space
+      continuity_level: medium
+      assets_transferred: ["activist_networks", "organizing_knowledge"]
+    confidence: 0.85
+    source: https://changemappers.org/initiatives/occupy
+
+  - from: IndustrialWorkersOfTheWorld
+    to: IWWModern
+    properties:
+      transformation_type: reorganization
+      transformation_date: "1950-01-01"
+      driver: membership_decline
+      continuity_level: high
+      assets_transferred: ["name", "principles", "structure"]
+    confidence: 0.88
+    source: https://changemappers.org/organizations/iww
+
+  - from: GoogleOrg
+    to: GoogleDotOrg
+    properties:
+      transformation_type: rebranding
+      transformation_date: "2017-01-01"
+      driver: strategic_repositioning
+      continuity_level: high
+    confidence: 0.94
+    source: https://changemappers.org/organizations/google-org
+
+  - from: EnvironmentalMovement1960s
+    to: ClimateMovement2020s
+    properties:
+      transformation_type: evolution
+      driver: climate_crisis_emergence
+      continuity_level: medium
+      assets_transferred: ["organizations", "advocacy_methods"]
+    confidence: 0.82
+    source: https://changemappers.org/movements/environmental
+
+  - from: ArabSpringProtests
+    to: DemocraticTransitions
+    properties:
+      transformation_type: evolution
+      driver: regime_change
+      continuity_level: low
+    confidence: 0.78
+    source: https://changemappers.org/events/arab-spring
+
+  - from: StartupInitiative
+    to: EstablishedNGO
+    properties:
+      transformation_type: growth
+      transformation_date: "2020-01-01"
+      driver: organizational_maturity
+      continuity_level: high
+      assets_transferred: ["mission", "staff", "programs"]
+    confidence: 0.90
+    source: https://changemappers.org/initiatives/startup-growth
+
+  - from: MovementForBlackLives
+    to: MovementForBlackLivesPlatform
+    properties:
+      transformation_type: evolution
+      transformation_date: "2016-01-01"
+      driver: policy_focus
+      continuity_level: high
+    confidence: 0.92
+    source: https://changemappers.org/initiatives/m4bl
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

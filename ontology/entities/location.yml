@@ -1,0 +1,242 @@
+id: location
+name: Location
+description: A geographic place where change initiatives, actors, or events are situated.
+category: geography
+version: 1.0.0
+schema:
+  fields:
+    - name: id
+      type: string
+      required: true
+      description: Unique identifier for the location
+    - name: name
+      type: string
+      required: true
+      description: Name of the location
+    - name: description
+      type: string
+      required: false
+      description: Description of the location
+    - name: type
+      type: enum
+      required: true
+      description: Classification of the location
+      enum_values:
+        - city
+        - region
+        - watershed
+        - bioregion
+        - nation
+        - neighborhood
+        - site
+        - territory
+        - indigenous_land
+    - name: parent_location_id
+      type: string
+      required: false
+      description: Parent location in hierarchy
+    - name: indigenous_territory
+      type: boolean
+      required: false
+      description: Whether this is Indigenous territory
+    - name: indigenous_nations
+      type: array[string]
+      required: false
+      description: Indigenous nations associated with this location
+    - name: coordinates
+      type: object
+      required: false
+      description: Geographic coordinates
+    - name: boundaries
+      type: object
+      required: false
+      description: Geographic boundaries
+    - name: population
+      type: integer
+      required: false
+      description: Population
+    - name: area
+      type: number
+      required: false
+      description: Area in square kilometers
+    - name: climate_zone
+      type: string
+      required: false
+      description: Climate zone classification
+    - name: domain_ids
+      type: array[string]
+      required: false
+      description: Relevant domains for this location
+    - name: initiative_ids
+      type: array[string]
+      required: false
+      description: Initiatives in this location
+    - name: created_at
+      type: datetime
+      required: true
+      description: Record creation timestamp
+    - name: updated_at
+      type: datetime
+      required: true
+      description: Last update timestamp
+    - name: source
+      type: string
+      required: false
+      description: Data source
+validation_rules:
+  - field: name
+    rule: min_length
+    value: 2
+    message: Name must be at least 2 characters
+relationships:
+  - entity: actor
+    type: home_of
+    description: Location is home of actors
+  - entity: organization
+    type: base_of
+    description: Location is base of organizations
+  - entity: initiative
+    type: site_of
+    description: Location is site of initiatives
+  - entity: project
+    type: location_of
+    description: Location is site of projects
+  - entity: event
+    type: venue_of
+    description: Location is venue of events
+examples:
+  - id: loc_001
+    name: Portland Metro Area
+    description: Metropolitan region of Portland, Oregon and surrounding communities.
+    type: region
+    indigenous_territory: true
+    indigenous_nations:
+      - Multnomah
+      - Chinook
+      - Kalapuya
+    coordinates:
+      lat: 45.5152
+      lng: -122.6784
+    population: 2500000
+    climate_zone: Oceanic
+    domain_ids:
+      - dom_energy
+      - dom_urban_transformation
+    initiative_ids:
+      - init_001
+    created_at: '2024-01-10T08:00:00Z'
+    updated_at: '2024-06-20T14:00:00Z'
+    source: changemappers.org
+  - id: loc_002
+    name: Detroit
+    description: City of Detroit, Michigan.
+    type: city
+    indigenous_territory: true
+    indigenous_nations:
+      - Anishinaabe
+      - Potawatomi
+      - Ojibwe
+    coordinates:
+      lat: 42.3314
+      lng: -83.0458
+    population: 670000
+    climate_zone: Humid continental
+    domain_ids:
+      - dom_food_systems
+      - dom_urban_transformation
+    initiative_ids:
+      - init_003
+    created_at: '2024-02-01T09:00:00Z'
+    updated_at: '2024-07-01T11:00:00Z'
+    source: changemappers.org
+  - id: loc_003
+    name: Pacific Northwest Bioregion
+    description: Bioregion encompassing the watersheds of the Pacific Northwest.
+    type: bioregion
+    indigenous_territory: true
+    indigenous_nations:
+      - Coast Salish
+      - Chinook
+      - Nisqually
+      - Duwamish
+    domain_ids:
+      - dom_ecosystem_restoration
+    initiative_ids:
+      - init_005
+    created_at: '2024-01-20T10:00:00Z'
+    updated_at: '2024-06-15T15:00:00Z'
+    source: changemappers.org
+  - id: loc_004
+    name: Salmon River Watershed
+    description: Watershed of the Salmon River in the Pacific Northwest.
+    type: watershed
+    indigenous_territory: true
+    indigenous_nations:
+      - Nez Perce
+    parent_location_id: loc_003
+    area: 4500
+    domain_ids:
+      - dom_ecosystem_restoration
+      - dom_land_justice
+    initiative_ids:
+      - init_005
+    created_at: '2024-03-10T11:00:00Z'
+    updated_at: '2024-05-25T09:30:00Z'
+    source: changemappers.org
+  - id: loc_005
+    name: Standing Rock Reservation
+    description: Standing Rock Sioux Reservation straddling North and South Dakota.
+    type: indigenous_land
+    indigenous_territory: true
+    indigenous_nations:
+      - Standing Rock Sioux
+    coordinates:
+      lat: 46.1164
+      lng: -100.6254
+    domain_ids:
+      - dom_land_justice
+      - dom_climate_justice
+    created_at: '2024-02-15T12:00:00Z'
+    updated_at: '2024-07-05T14:00:00Z'
+    source: changemappers.org
+  - id: loc_006
+    name: Appalachia
+    description: Cultural and geographic region of the Appalachian Mountains.
+    type: region
+    indigenous_territory: true
+    indigenous_nations:
+      - Cherokee
+      - Shawnee
+    climate_zone: Humid subtropical
+    domain_ids:
+      - dom_just_transition
+    initiative_ids:
+      - init_002
+    created_at: '2024-04-01T09:00:00Z'
+    updated_at: '2024-06-20T10:00:00Z'
+    source: changemappers.org
+  - id: loc_007
+    name: North Portland
+    description: Neighborhood in Portland, Oregon with historical significance for environmental justice.
+    type: neighborhood
+    indigenous_territory: true
+    indigenous_nations:
+      - Multnomah
+    parent_location_id: loc_001
+    population: 50000
+    domain_ids:
+      - dom_energy
+      - dom_economic_justice
+    project_ids:
+      - proj_001
+    created_at: '2024-03-01T10:00:00Z'
+    updated_at: '2024-05-30T14:00:00Z'
+    source: changemappers.org
+taxonomies:
+  - location_types
+  - climate_zones
+  - indigenous_territories
+metadata:
+  branding: ChangeMappers - Mapping pathways to positive change
+  namespace: https://changemappers.org/ontology/entities/location
+  provenance: ChangeMappers Ontology Project

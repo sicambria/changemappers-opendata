@@ -1,0 +1,120 @@
+id: located_in
+name: Located In
+description: An Entity is physically positioned, situated, or based in a Location. This captures geographic and spatial context.
+version: 1.0.0
+source: changemappers.org
+
+allowed_from:
+  - Organization
+  - Initiative
+  - Project
+  - Event
+  - Resource
+  - Actor
+
+allowed_to:
+  - Location
+  - Region
+  - Country
+  - City
+  - Neighborhood
+  - Building
+
+properties:
+  location_type:
+    type: string
+    description: Type of location presence (headquarters, branch, virtual, distributed)
+    required: false
+  primary_location:
+    type: boolean
+    description: Whether this is the main location
+    required: false
+  coordinates:
+    type: object
+    description: Geographic coordinates (lat, long)
+    required: false
+  address:
+    type: string
+    description: Physical address
+    required: false
+  date_established:
+    type: date
+    description: When the entity was established at this location
+    required: false
+
+cardinality: many-to-one
+
+inverse: contains
+
+examples:
+  - from: GreenpeaceInternational
+    to: Amsterdam
+    properties:
+      location_type: headquarters
+      primary_location: true
+      coordinates:
+        lat: 52.3702
+        long: 4.8952
+    confidence: 0.98
+    source: https://changemappers.org/organizations/greenpeace
+
+  - from: ZapatistaMovement
+    to: Chiapas
+    properties:
+      location_type: primary
+      coordinates:
+        lat: 16.7683
+        long: -92.6525
+    confidence: 0.95
+    source: https://changemappers.org/initiatives/zapatista
+
+  - from: StandingRockProtest
+    to: StandingRockReservation
+    properties:
+      location_type: event_site
+      coordinates:
+        lat: 45.9458
+        long: -100.4783
+    confidence: 0.97
+    source: https://changemappers.org/events/standing-rock
+
+  - from: TransitionTownTotnes
+    to: Totnes
+    properties:
+      location_type: primary
+      coordinates:
+        lat: 50.4342
+        long: -3.6822
+    confidence: 0.94
+    source: https://changemappers.org/initiatives/totnes-transition
+
+  - from: ChangeMappers
+    to: Global
+    properties:
+      location_type: distributed
+      primary_location: false
+    confidence: 0.99
+    source: https://changemappers.org
+
+  - from: Rojava
+    to: NorthernSyria
+    properties:
+      location_type: territory
+      coordinates:
+        lat: 36.8796
+        long: 38.3498
+    confidence: 0.91
+    source: https://changemappers.org/initiatives/rojava
+
+  - from: Wikipedia
+    to: Internet
+    properties:
+      location_type: virtual
+      primary_location: true
+    confidence: 0.99
+    source: https://changemappers.org/initiatives/wikipedia
+
+metadata:
+  created_at: "2024-01-15T10:00:00Z"
+  updated_at: "2024-01-15T10:00:00Z"
+  author: changemappers.org

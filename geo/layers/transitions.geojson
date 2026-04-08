@@ -1,0 +1,279 @@
+{
+  "type": "FeatureCollection",
+  "name": "transitions",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "metadata": {
+    "source": "changemappers.org",
+    "license": "CC-BY-SA-4.0",
+    "created": "2026-04-08T13:24:51+02:00",
+    "description": "Geographic transitions and transformation zones showing systemic change"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "name": "Ruhr Region Industrial Transition",
+        "entity_type": "transition_zone",
+        "entity_id": "0f1e2d3c-4b5a-6987-7654-fedcba012345",
+        "description": "Post-industrial transformation from coal mining to green economy and culture",
+        "transition_type": "economic_restructuring",
+        "start_year": 1989,
+        "status": "ongoing",
+        "created_at": "2023-01-15T10:00:00Z",
+        "updated_at": "2026-03-01T14:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [6.5, 51.2],
+          [7.8, 51.6],
+          [8.0, 51.8],
+          [7.8, 51.9],
+          [7.5, 51.85],
+          [7.2, 51.75],
+          [6.8, 51.5],
+          [6.5, 51.2]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "name": "Cuba Organic Agriculture Transition",
+        "entity_type": "transition_zone",
+        "entity_id": "1e2d3c4b-5a69-8876-5432-edcba0123456",
+        "description": "Nationwide shift to organic farming following Soviet collapse",
+        "transition_type": "agricultural_transformation",
+        "start_year": 1991,
+        "status": "established",
+        "created_at": "2022-06-20T08:00:00Z",
+        "updated_at": "2026-02-15T09:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-84.9, 21.9],
+          [-81.0, 23.2],
+          [-77.0, 20.6],
+          [-82.0, 19.8],
+          [-84.9, 21.9]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "name": "Denmark Wind Energy Corridor",
+        "entity_type": "transition_zone",
+        "entity_id": "2d3c4b5a-6987-9765-4321-dcba01234567",
+        "description": "Geographic concentration of wind energy development and grid integration",
+        "transition_type": "energy_transition",
+        "start_year": 1976,
+        "status": "established",
+        "created_at": "2021-09-10T12:00:00Z",
+        "updated_at": "2026-04-01T16:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [8.0, 55.5],
+          [10.5, 57.5],
+          [12.5, 56.5],
+          [15.0, 55.0],
+          [12.0, 54.5],
+          [9.5, 55.0],
+          [8.0, 55.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "name": "Kerala Literacy & Land Reform Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "3c4b5a69-8790-8654-3210-cba012345678",
+        "description": "Social transformation through education and land redistribution",
+        "transition_type": "social_transformation",
+        "start_year": 1957,
+        "status": "established",
+        "created_at": "2020-11-05T07:00:00Z",
+        "updated_at": "2026-03-20T11:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [76.2, 9.5],
+          [77.5, 10.5],
+          [77.8, 11.0],
+          [77.2, 12.0],
+          [76.0, 12.5],
+          [75.2, 11.8],
+          [75.8, 10.0],
+          [76.2, 9.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "name": "Curitiba Sustainable Urban Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "4b5a6987-9098-7654-2109-ba0123456789",
+        "description": "Integrated urban planning for transit, green space, and waste management",
+        "transition_type": "urban_transformation",
+        "start_year": 1972,
+        "status": "established",
+        "created_at": "2021-04-18T14:00:00Z",
+        "updated_at": "2026-02-28T13:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-49.35, -25.35],
+          [-49.20, -25.25],
+          [-49.15, -25.35],
+          [-49.20, -25.50],
+          [-49.35, -25.55],
+          [-49.35, -25.35]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "name": "Costa Rica Reforestation Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "5a698790-9876-6543-1098-a01234567890",
+        "description": "National forest recovery from 21% to 54% forest cover",
+        "transition_type": "ecological_restoration",
+        "start_year": 1987,
+        "status": "established",
+        "created_at": "2022-03-22T09:00:00Z",
+        "updated_at": "2026-03-25T10:45:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-85.9, 11.1],
+          [-83.0, 11.0],
+          [-82.5, 10.0],
+          [-83.5, 8.5],
+          [-85.0, 9.0],
+          [-86.0, 10.0],
+          [-85.9, 11.1]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "name": "Freiburg Green City Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "69879098-7654-5432-0987-012345678901",
+        "description": "Solar city and sustainable urban development model",
+        "transition_type": "urban_transformation",
+        "start_year": 1986,
+        "status": "ongoing",
+        "created_at": "2021-08-15T11:00:00Z",
+        "updated_at": "2026-04-05T15:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [7.75, 47.90],
+          [7.95, 48.05],
+          [8.00, 48.05],
+          [7.95, 47.95],
+          [7.75, 47.90]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "name": "Totnes Transition Town Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "79098765-4321-0987-6543-123456789012",
+        "description": "First official Transition Town - community resilience model",
+        "transition_type": "community_resilience",
+        "start_year": 2006,
+        "status": "ongoing",
+        "created_at": "2020-05-30T08:00:00Z",
+        "updated_at": "2026-03-15T12:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-3.72, 50.40],
+          [-3.65, 50.45],
+          [-3.60, 50.43],
+          [-3.62, 50.38],
+          [-3.72, 50.40]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "name": "Bhutan GNH Development Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "89098765-4321-0123-5432-234567890123",
+        "description": "Gross National Happiness model integrating wellbeing with development",
+        "transition_type": "development_paradigm",
+        "start_year": 1972,
+        "status": "established",
+        "created_at": "2021-12-08T10:00:00Z",
+        "updated_at": "2026-02-20T09:00:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [88.8, 27.3],
+          [92.0, 28.0],
+          [92.1, 26.8],
+          [89.5, 26.5],
+          [88.8, 27.3]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "name": "Portland Urban Growth Boundary Zone",
+        "entity_type": "transition_zone",
+        "entity_id": "90987654-3210-9876-4321-345678901234",
+        "description": "Urban containment and farmland preservation through growth boundary",
+        "transition_type": "land_use_planning",
+        "start_year": 1979,
+        "status": "ongoing",
+        "created_at": "2022-02-14T13:00:00Z",
+        "updated_at": "2026-03-22T14:30:00Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.85, 45.65],
+          [-122.45, 45.65],
+          [-122.45, 45.40],
+          [-122.85, 45.40],
+          [-122.85, 45.65]
+        ]]
+      }
+    }
+  ]
+}
