@@ -18,7 +18,7 @@ This meta-framework holds multiple archetype systems simultaneously, allowing ch
 | 7 | **Resource Archetypes** | How does your work get fueled? |
 | 8 | **Knowledge Archetypes** | How do you generate and transmit understanding? |
 
-Plus two cross-cutting systems:
+Plus cross-cutting systems:
 
 | # | System | Core Question |
 |---|--------|---------------|
