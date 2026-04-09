@@ -4,7 +4,15 @@
   "title": "Framework",
   "description": "A structured approach or model that provides guidance for understanding and implementing change processes.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +42,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["planning", "evaluation", "implementation", "analysis", "diagnostic", "strategic"],
+      "enum": [
+        "conceptual",
+        "operational",
+        "evaluative",
+        "strategic",
+        "diagnostic",
+        "planning"
+      ],
       "description": "Type of framework",
       "example": "planning"
     },
@@ -57,13 +72,27 @@
       "description": "Framework components",
       "items": {
         "type": "object",
-        "required": ["name", "description"],
+        "required": [
+          "name",
+          "description"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "order": { "type": "integer" },
-          "sub_components": { "type": "array", "items": { "type": "string" } }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer"
+          },
+          "sub_components": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -72,76 +101,128 @@
       "description": "Implementation steps",
       "items": {
         "type": "object",
-        "required": ["order", "name"],
+        "required": [
+          "order",
+          "name"
+        ],
         "additionalProperties": false,
         "properties": {
-          "order": { "type": "integer", "minimum": 1 },
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "outputs": { "type": "array", "items": { "type": "string" } },
-          "tools": { "type": "array", "items": { "type": "string" } }
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
     "principles": {
       "type": "array",
       "description": "Guiding principles",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "assumptions": {
       "type": "array",
       "description": "Underlying assumptions",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "strengths": {
       "type": "array",
       "description": "Framework strengths",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "limitations": {
       "type": "array",
       "description": "Framework limitations",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "related_frameworks": {
       "type": "array",
       "description": "Related frameworks",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methodologies": {
       "type": "array",
       "description": "Methodologies based on this framework",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools that support this framework",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this framework",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "key_references": {
       "type": "array",
       "description": "Key references",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "resources": {
       "type": "array",
       "description": "Learning resources",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -156,6 +237,56 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "metamodel_id": {
+      "type": "string",
+      "description": "Parent metamodel"
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key elements of the framework"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains of application"
+    },
+    "methodology_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related methodologies"
+    },
+    "pattern_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Patterns within this framework"
+    },
+    "use_cases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Common use cases"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Prerequisites for use"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

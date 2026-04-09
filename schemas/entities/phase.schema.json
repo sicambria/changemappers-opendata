@@ -4,7 +4,16 @@
   "title": "Phase",
   "description": "A distinct stage in a change process, project lifecycle, or transition.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "sequence",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,7 +42,13 @@
     },
     "type": {
       "type": "string",
-      "enum": ["project", "initiative", "transition", "movement", "organizational", "policy"],
+      "enum": [
+        "project",
+        "initiative",
+        "movement",
+        "transition",
+        "organizational"
+      ],
       "description": "Type of process this phase belongs to",
       "example": "movement"
     },
@@ -56,82 +71,121 @@
     "characteristics": {
       "type": "array",
       "description": "Key characteristics",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "objectives": {
       "type": "array",
       "description": "Key objectives",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "activities": {
       "type": "array",
       "description": "Typical activities",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "deliverables": {
       "type": "array",
       "description": "Typical deliverables",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "milestones": {
       "type": "array",
       "description": "Key milestones",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "duration": {
       "type": "object",
       "description": "Typical duration",
       "additionalProperties": false,
       "properties": {
-        "min": { "type": "string" },
-        "max": { "type": "string" },
-        "typical": { "type": "string" }
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string"
+        },
+        "typical": {
+          "type": "string"
+        }
       }
     },
     "resources_needed": {
       "type": "array",
       "description": "Resources typically needed",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "skills_needed": {
       "type": "array",
       "description": "Skills typically needed",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "challenges": {
       "type": "array",
       "description": "Common challenges",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "success_criteria": {
       "type": "array",
       "description": "Success criteria",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "risks": {
       "type": "array",
       "description": "Common risks",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns applicable in this phase",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Methods applicable in this phase",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools for this phase",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "frameworks": {
       "type": "array",
       "description": "Frameworks that define this phase",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -149,7 +203,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -164,6 +221,26 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "sequence": {
+      "type": "integer",
+      "description": "Order in sequence"
+    },
+    "previous_phase_id": {
+      "type": "string",
+      "description": "Previous phase in sequence"
+    },
+    "next_phase_id": {
+      "type": "string",
+      "description": "Next phase in sequence"
+    },
+    "duration_guidance": {
+      "type": "string",
+      "description": "Guidance on typical duration"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

@@ -4,7 +4,16 @@
   "title": "Function",
   "description": "A specific role or purpose that an entity serves within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "category", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,34 +42,66 @@
     },
     "category": {
       "type": "string",
-      "enum": ["governance", "operations", "engagement", "learning", "communication", "mobilization", "support", "coordination", "monitoring", "financing"],
+      "enum": [
+        "governance",
+        "operations",
+        "engagement",
+        "learning",
+        "communication",
+        "mobilization",
+        "support",
+        "coordination",
+        "monitoring",
+        "financing"
+      ],
       "description": "Category of function",
       "example": "engagement"
     },
     "type": {
       "type": "string",
-      "enum": ["core", "support", "auxiliary"],
+      "enum": [
+        "leadership",
+        "coordination",
+        "support",
+        "advocacy",
+        "research",
+        "implementation",
+        "funding",
+        "communication",
+        "education",
+        "evaluation"
+      ],
       "description": "Type of function"
     },
     "responsibilities": {
       "type": "array",
       "description": "Key responsibilities",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "activities": {
       "type": "array",
       "description": "Typical activities",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "skills_required": {
       "type": "array",
       "description": "Skills required",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_functions": {
       "type": "array",
       "description": "Related functions",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "parent_function": {
       "type": "string",
@@ -70,37 +111,58 @@
     "child_functions": {
       "type": "array",
       "description": "Child functions",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns that fulfill this function",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Methods that fulfill this function",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools that support this function",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors_performing": {
       "type": "array",
       "description": "Actors performing this function",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations_performing": {
       "type": "array",
       "description": "Organizations performing this function",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -118,7 +180,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -133,6 +198,38 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actors serving this function"
+    },
+    "organization_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Organizations serving this function"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where this function applies"
+    },
+    "related_function_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related functions"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

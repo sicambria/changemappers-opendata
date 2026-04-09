@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/relationships/addresses.schema.json",
+  "title": "Addresses",
+  "description": "An Initiative, Project, or Intervention targets or seeks to solve a specific Cause, Problem, Issue, or Challenge. This relationship connects action to the problem space.",
+  "type": "object",
+  "required": [
+    "id",
+    "source_id",
+    "target_id",
+    "relationship_type"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the relationship"
+    },
+    "source_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the source entity"
+    },
+    "target_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the target entity"
+    },
+    "relationship_type": {
+      "type": "string",
+      "const": "addresses",
+      "description": "Type of relationship"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "Type of the source entity",
+      "enum": [
+        "Initiative",
+        "Project",
+        "Campaign",
+        "Policy",
+        "Intervention"
+      ]
+    },
+    "target_type": {
+      "type": "string",
+      "description": "Type of the target entity",
+      "enum": [
+        "Cause",
+        "Problem",
+        "Issue",
+        "Challenge",
+        "Need"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score for this relationship (0-1)"
+    },
+    "source_reference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "official",
+            "news",
+            "research",
+            "social",
+            "government",
+            "ngo",
+            "corporate",
+            "other"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "type",
+        "name"
+      ],
+      "description": "Source of the relationship information"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship became valid"
+    },
+    "valid_to": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship ceased to be valid"
+    },
+    "is_current": {
+      "type": "boolean",
+      "description": "Whether the relationship is currently active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was last updated"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes about the relationship"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing the relationship"
+    },
+    "primary_focus": {
+      "type": "boolean",
+      "description": "Whether this is the main problem being addressed"
+    },
+    "approach": {
+      "type": "string",
+      "description": "How the initiative addresses the problem (direct, indirect, systemic)"
+    },
+    "scope": {
+      "type": "string",
+      "description": "The scale of intervention (local, regional, national, global)"
+    },
+    "target_population": {
+      "type": "string",
+      "description": "Who is primarily affected by the problem"
+    }
+  },
+  "x-inverse": "addressed_by",
+  "x-cardinality": "many-to-many"
+}

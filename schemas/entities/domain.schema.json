@@ -4,7 +4,15 @@
   "title": "Domain",
   "description": "A broad field or area of activity within the changemakers ecosystem, such as environment, health, or education.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -39,62 +47,98 @@
     "subdomains": {
       "type": "array",
       "description": "Subdomains",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_domains": {
       "type": "array",
       "description": "Related domains",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "causes": {
       "type": "array",
       "description": "Causes in this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives in this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects in this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations working in this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Actors working in this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns applicable to this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Methodologies applicable to this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools for this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Indicators for this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "frameworks": {
       "type": "array",
       "description": "Frameworks for this domain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -117,7 +161,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -132,6 +179,74 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "thematic",
+        "sectoral",
+        "process",
+        "system",
+        "outcome"
+      ],
+      "description": "Classification of the domain"
+    },
+    "parent_domain_id": {
+      "type": "string",
+      "description": "Parent domain in hierarchy"
+    },
+    "subdomain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Subdomains within this domain"
+    },
+    "topic_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Topics within this domain"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives in this domain"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actors working in this domain"
+    },
+    "organization_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Organizations working in this domain"
+    },
+    "related_domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related domains"
+    },
+    "key_concepts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key concepts in this domain"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

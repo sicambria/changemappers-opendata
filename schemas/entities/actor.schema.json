@@ -4,7 +4,14 @@
   "title": "Actor",
   "description": "An individual or entity that initiates, participates in, or influences change processes within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -28,7 +35,13 @@
     },
     "type": {
       "type": "string",
-      "enum": ["individual", "collective", "organization", "network"],
+      "enum": [
+        "person",
+        "group",
+        "organization",
+        "community",
+        "network"
+      ],
       "description": "Type of actor",
       "example": "individual"
     },
@@ -62,10 +75,20 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "twitter": { "type": "string", "pattern": "^@?[a-zA-Z0-9_]+$" },
-            "linkedin": { "type": "string" },
-            "facebook": { "type": "string" },
-            "instagram": { "type": "string", "pattern": "^@?[a-zA-Z0-9_.]+$" }
+            "twitter": {
+              "type": "string",
+              "pattern": "^@?[a-zA-Z0-9_]+$"
+            },
+            "linkedin": {
+              "type": "string"
+            },
+            "facebook": {
+              "type": "string"
+            },
+            "instagram": {
+              "type": "string",
+              "pattern": "^@?[a-zA-Z0-9_.]+$"
+            }
           }
         }
       }
@@ -75,43 +98,84 @@
       "description": "Organizations the actor is affiliated with",
       "items": {
         "type": "object",
-        "required": ["organization_id"],
+        "required": [
+          "organization_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "organization_id": { "type": "string", "format": "uuid" },
-          "role": { "type": "string" },
-          "start_date": { "type": "string", "format": "date" },
-          "end_date": { "type": "string", "format": "date" }
+          "organization_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "role": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          }
         }
       }
     },
     "locations": {
       "type": "array",
       "description": "Geographic locations associated with the actor",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "expertise": {
       "type": "array",
       "description": "Areas of expertise",
       "items": {
         "type": "string",
-        "enum": ["community_organizing", "policy_advocacy", "research", "education", "technology", "finance", "communications", "legal", "health", "environment", "social_justice", "economics", "governance", "arts", "science"]
+        "enum": [
+          "community_organizing",
+          "policy_advocacy",
+          "research",
+          "education",
+          "technology",
+          "finance",
+          "communications",
+          "legal",
+          "health",
+          "environment",
+          "social_justice",
+          "economics",
+          "governance",
+          "arts",
+          "science"
+        ]
       }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives the actor is involved in",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects the actor is involved in",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -126,6 +190,50 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the actor"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative names or identifiers"
+    },
+    "contact_info": {
+      "type": "object",
+      "description": "Contact details for the actor"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Reference to primary location"
+    },
+    "sector_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sectors the actor operates in"
+    },
+    "skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills associated with this actor"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source of the actor information"
+    },
+    "external_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "External references and profiles"
     }
   }
 }

@@ -4,7 +4,17 @@
   "title": "Metric",
   "description": "A specific measurement or calculation derived from data to track performance or progress.",
   "type": "object",
-  "required": ["id", "slug", "name", "value_type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "value_type",
+    "created_at",
+    "description",
+    "type",
+    "unit",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,7 +43,15 @@
     },
     "value_type": {
       "type": "string",
-      "enum": ["number", "percentage", "ratio", "currency", "count", "score", "index"],
+      "enum": [
+        "number",
+        "percentage",
+        "ratio",
+        "currency",
+        "count",
+        "score",
+        "index"
+      ],
       "description": "Type of value",
       "example": "number"
     },
@@ -62,7 +80,10 @@
     "data_sources": {
       "type": "array",
       "description": "Data sources used",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicator": {
       "type": "string",
@@ -74,19 +95,35 @@
       "description": "Historical measurements",
       "items": {
         "type": "object",
-        "required": ["value", "date"],
+        "required": [
+          "value",
+          "date"
+        ],
         "additionalProperties": false,
         "properties": {
-          "value": { "type": "number" },
-          "date": { "type": "string", "format": "date" },
-          "source": { "type": "string" },
-          "notes": { "type": "string" }
+          "value": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "source": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
         }
       }
     },
     "trend": {
       "type": "string",
-      "enum": ["increasing", "decreasing", "stable", "volatile", "unknown"],
+      "enum": [
+        "improving",
+        "stable",
+        "declining"
+      ],
       "description": "Current trend"
     },
     "change_percentage": {
@@ -106,9 +143,16 @@
       "description": "Target information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "date": { "type": "string", "format": "date" },
-        "percentage_progress": { "type": "number" }
+        "value": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "percentage_progress": {
+          "type": "number"
+        }
       }
     },
     "benchmark": {
@@ -116,9 +160,17 @@
       "description": "Benchmark information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "source": { "type": "string" },
-        "percentile": { "type": "integer", "minimum": 0, "maximum": 100 }
+        "value": {
+          "type": "number"
+        },
+        "source": {
+          "type": "string"
+        },
+        "percentile": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
       }
     },
     "confidence_interval": {
@@ -126,25 +178,41 @@
       "description": "Confidence interval",
       "additionalProperties": false,
       "properties": {
-        "lower": { "type": "number" },
-        "upper": { "type": "number" },
-        "confidence_level": { "type": "number" }
+        "lower": {
+          "type": "number"
+        },
+        "upper": {
+          "type": "number"
+        },
+        "confidence_level": {
+          "type": "number"
+        }
       }
     },
     "quality": {
       "type": "string",
-      "enum": ["high", "medium", "low", "estimated"],
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "estimated"
+      ],
       "description": "Data quality"
     },
     "limitations": {
       "type": "array",
       "description": "Limitations",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "related_metrics": {
       "type": "array",
       "description": "Related metrics",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiative": {
       "type": "string",
@@ -171,14 +239,29 @@
       "description": "Visualization preferences",
       "additionalProperties": false,
       "properties": {
-        "type": { "type": "string", "enum": ["line", "bar", "gauge", "number", "pie"] },
-        "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+        "type": {
+          "type": "string",
+          "enum": [
+            "line",
+            "bar",
+            "gauge",
+            "number",
+            "pie"
+          ]
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        }
       }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -193,6 +276,61 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "performance",
+        "process",
+        "output",
+        "efficiency",
+        "quality",
+        "coverage"
+      ],
+      "description": "Classification of the metric"
+    },
+    "baseline": {
+      "type": "number",
+      "description": "Baseline value"
+    },
+    "data_source": {
+      "type": "string",
+      "description": "Source of metric data"
+    },
+    "collection_method": {
+      "type": "string",
+      "description": "How data is collected"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "realtime",
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annually"
+      ],
+      "description": "Collection frequency"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Related project"
+    },
+    "indicator_id": {
+      "type": "string",
+      "description": "Related indicator"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where metric applies"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

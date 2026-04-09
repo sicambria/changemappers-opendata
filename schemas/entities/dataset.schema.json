@@ -4,7 +4,16 @@
   "title": "Dataset",
   "description": "A structured collection of data relevant to understanding or measuring change processes.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "access_level",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +43,15 @@
     },
     "type": {
       "type": "string",
-      "enum": ["events", "surveys", "indicators", "geographic", "temporal", "network", "textual", "multimedia", "mixed"],
+      "enum": [
+        "operational",
+        "research",
+        "monitoring",
+        "evaluation",
+        "geographic",
+        "historical",
+        "reference"
+      ],
       "description": "Type of dataset",
       "example": "events"
     },
@@ -43,10 +60,20 @@
       "description": "Data source information",
       "additionalProperties": false,
       "properties": {
-        "name": { "type": "string" },
-        "url": { "type": "string", "format": "uri" },
-        "organization": { "type": "string", "format": "uuid" },
-        "collection_method": { "type": "string" }
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "organization": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "collection_method": {
+          "type": "string"
+        }
       }
     },
     "url": {
@@ -66,7 +93,14 @@
     },
     "format": {
       "type": "string",
-      "enum": ["csv", "json", "xml", "xlsx", "sql", "geojson", "shapefile", "rdf", "parquet"],
+      "enum": [
+        "csv",
+        "json",
+        "geojson",
+        "yaml",
+        "xml",
+        "database"
+      ],
       "description": "Data format",
       "example": "csv"
     },
@@ -82,7 +116,12 @@
     },
     "access": {
       "type": "string",
-      "enum": ["open", "restricted", "private", "request_access"],
+      "enum": [
+        "open",
+        "restricted",
+        "private",
+        "request_access"
+      ],
       "description": "Access level",
       "example": "open"
     },
@@ -91,29 +130,60 @@
       "description": "Time period covered",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" },
-        "frequency": { "type": "string", "enum": ["daily", "weekly", "monthly", "quarterly", "yearly", "irregular"] }
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "frequency": {
+          "type": "string",
+          "enum": [
+            "daily",
+            "weekly",
+            "monthly",
+            "quarterly",
+            "yearly",
+            "irregular"
+          ]
+        }
       }
     },
     "geographic_coverage": {
       "type": "array",
       "description": "Geographic areas covered",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "variables": {
       "type": "array",
       "description": "Variables in the dataset",
       "items": {
         "type": "object",
-        "required": ["name", "type"],
+        "required": [
+          "name",
+          "type"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "type": { "type": "string" },
-          "description": { "type": "string" },
-          "unit": { "type": "string" },
-          "required": { "type": "boolean" }
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          }
         }
       }
     },
@@ -127,8 +197,18 @@
       "description": "File size information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "unit": { "type": "string", "enum": ["bytes", "kb", "mb", "gb"] }
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "bytes",
+            "kb",
+            "mb",
+            "gb"
+          ]
+        }
       }
     },
     "quality": {
@@ -136,15 +216,37 @@
       "description": "Data quality information",
       "additionalProperties": false,
       "properties": {
-        "completeness": { "type": "number", "minimum": 0, "maximum": 100 },
-        "accuracy": { "type": "string" },
-        "last_verified": { "type": "string", "format": "date" },
-        "limitations": { "type": "array", "items": { "type": "string" } }
+        "completeness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "accuracy": {
+          "type": "string"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "update_frequency": {
       "type": "string",
-      "enum": ["real_time", "daily", "weekly", "monthly", "quarterly", "yearly", "static", "unknown"],
+      "enum": [
+        "realtime",
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annually",
+        "static"
+      ],
       "description": "How often the dataset is updated"
     },
     "last_updated": {
@@ -163,27 +265,42 @@
     "related_datasets": {
       "type": "array",
       "description": "Related datasets",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains covered",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Indicators derived from this dataset",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this dataset",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -198,6 +315,45 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "schema_url": {
+      "type": "string",
+      "description": "URL to dataset schema documentation"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "Actor or organization that owns the dataset"
+    },
+    "access_level": {
+      "type": "string",
+      "enum": [
+        "public",
+        "restricted",
+        "private"
+      ],
+      "description": "Access level"
+    },
+    "temporal_coverage": {
+      "type": "string",
+      "description": "Time period covered"
+    },
+    "entity_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Entity types included in dataset"
+    },
+    "quality_notes": {
+      "type": "string",
+      "description": "Notes on data quality"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains covered"
     }
   }
 }

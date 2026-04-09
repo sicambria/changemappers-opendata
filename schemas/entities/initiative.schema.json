@@ -4,7 +4,16 @@
   "title": "Initiative",
   "description": "A coordinated effort or campaign aimed at creating change, typically involving multiple actors, organizations, and projects.",
   "type": "object",
-  "required": ["id", "slug", "name", "status", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "status",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,68 +43,122 @@
     },
     "status": {
       "type": "string",
-      "enum": ["planning", "active", "paused", "completed", "archived"],
+      "enum": [
+        "planning",
+        "active",
+        "paused",
+        "completed",
+        "archived"
+      ],
       "description": "Current status of the initiative",
       "example": "active"
     },
     "type": {
       "type": "string",
-      "enum": ["campaign", "coalition", "movement", "program", "project_cluster", "network"],
+      "enum": [
+        "campaign",
+        "movement",
+        "program",
+        "coalition",
+        "collaborative"
+      ],
       "description": "Type of initiative",
       "example": "coalition"
     },
     "lead_organizations": {
       "type": "array",
       "description": "Organizations leading the initiative",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "partner_organizations": {
       "type": "array",
       "description": "Partner organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Key actors involved",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects under this initiative",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "causes": {
       "type": "array",
       "description": "Causes the initiative addresses",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains the initiative operates in",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "locations": {
       "type": "array",
       "description": "Geographic scope",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "timeline": {
       "type": "object",
       "description": "Timeline information",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
         "milestones": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["date", "description"],
+            "required": [
+              "date",
+              "description"
+            ],
             "additionalProperties": false,
             "properties": {
-              "date": { "type": "string", "format": "date" },
-              "description": { "type": "string" },
-              "status": { "type": "string", "enum": ["planned", "achieved", "missed"] }
+              "date": {
+                "type": "string",
+                "format": "date"
+              },
+              "description": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "planned",
+                  "achieved",
+                  "missed"
+                ]
+              }
             }
           }
         }
@@ -104,34 +167,56 @@
     "outcomes": {
       "type": "array",
       "description": "Expected or achieved outcomes",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Measured impacts",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "resources": {
       "type": "array",
       "description": "Resources available",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "budget": {
       "type": "object",
       "description": "Budget information",
       "additionalProperties": false,
       "properties": {
-        "total": { "type": "number", "minimum": 0 },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
+        "total": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
         "sources": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "name": { "type": "string" },
-              "amount": { "type": "number", "minimum": 0 },
-              "type": { "type": "string" }
+              "name": {
+                "type": "string"
+              },
+              "amount": {
+                "type": "number",
+                "minimum": 0
+              },
+              "type": {
+                "type": "string"
+              }
             }
           }
         }
@@ -140,7 +225,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -155,6 +243,74 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the initiative began"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the initiative ended or is planned to end"
+    },
+    "lead_actor_id": {
+      "type": "string",
+      "description": "Primary actor leading the initiative"
+    },
+    "lead_organization_id": {
+      "type": "string",
+      "description": "Primary organization leading the initiative"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actors involved in the initiative"
+    },
+    "project_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Projects under this initiative"
+    },
+    "cause_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Causes being addressed"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains of focus"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Geographic scope"
+    },
+    "scale_id": {
+      "type": "string",
+      "description": "Scale of impact"
+    },
+    "outcome_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Expected or achieved outcomes"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

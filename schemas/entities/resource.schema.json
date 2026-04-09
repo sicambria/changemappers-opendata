@@ -4,7 +4,16 @@
   "title": "Resource",
   "description": "A valuable asset, material, or source of information that supports change-making activities.",
   "type": "object",
-  "required": ["id", "slug", "title", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "type",
+    "created_at",
+    "name",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,13 +42,29 @@
     },
     "type": {
       "type": "string",
-      "enum": ["book", "article", "guide", "manual", "toolkit", "video", "audio", "course", "template", "report", "case_study", "white_paper", "blog_post", "presentation", "curriculum", "syllabus", "database", "directory"],
+      "enum": [
+        "financial",
+        "physical",
+        "human",
+        "informational",
+        "network",
+        "technical",
+        "political"
+      ],
       "description": "Type of resource",
       "example": "guide"
     },
     "format": {
       "type": "string",
-      "enum": ["pdf", "web", "video", "audio", "interactive", "print", "downloadable"],
+      "enum": [
+        "pdf",
+        "web",
+        "video",
+        "audio",
+        "interactive",
+        "print",
+        "downloadable"
+      ],
       "description": "Format of the resource"
     },
     "url": {
@@ -69,11 +94,20 @@
     "languages_available": {
       "type": "array",
       "description": "Languages available",
-      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      }
     },
     "access": {
       "type": "string",
-      "enum": ["free", "paid", "subscription", "restricted", "open_access"],
+      "enum": [
+        "free",
+        "paid",
+        "subscription",
+        "restricted",
+        "open_access"
+      ],
       "description": "Access type",
       "example": "open_access"
     },
@@ -82,8 +116,13 @@
       "description": "Cost information",
       "additionalProperties": false,
       "properties": {
-        "amount": { "type": "number" },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+        "amount": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
       }
     },
     "license": {
@@ -113,41 +152,65 @@
     "topics": {
       "type": "array",
       "description": "Topics covered",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains covered",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_resources": {
       "type": "array",
       "description": "Related resources",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_tools": {
       "type": "array",
       "description": "Related tools",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_patterns": {
       "type": "array",
       "description": "Related patterns",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_methods": {
       "type": "array",
       "description": "Related methodologies",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "target_audience": {
       "type": "array",
       "description": "Target audience",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "difficulty": {
       "type": "string",
-      "enum": ["beginner", "intermediate", "advanced", "all_levels"],
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced",
+        "all_levels"
+      ],
       "description": "Difficulty level"
     },
     "rating": {
@@ -169,7 +232,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -184,6 +250,74 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the resource"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "funding",
+        "space",
+        "equipment",
+        "expertise",
+        "data",
+        "relationships",
+        "tools"
+      ],
+      "description": "Resource category"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "Actor or organization that owns the resource"
+    },
+    "availability": {
+      "type": "string",
+      "enum": [
+        "available",
+        "limited",
+        "restricted",
+        "unavailable"
+      ],
+      "description": "Availability status"
+    },
+    "access_requirements": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Requirements to access this resource"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Quantity available"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Physical location"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where resource applies"
+    },
+    "project_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Projects using this resource"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

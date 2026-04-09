@@ -4,7 +4,16 @@
   "title": "Skill",
   "description": "A capability or competency that actors can develop and apply in change-making activities within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "category", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +43,18 @@
     },
     "category": {
       "type": "string",
-      "enum": ["communication", "leadership", "technical", "analytical", "interpersonal", "organizational", "creative", "strategic", "advocacy", "research"],
+      "enum": [
+        "communication",
+        "leadership",
+        "technical",
+        "analytical",
+        "interpersonal",
+        "organizational",
+        "creative",
+        "strategic",
+        "advocacy",
+        "research"
+      ],
       "description": "Category of the skill",
       "example": "interpersonal"
     },
@@ -47,70 +67,119 @@
       "description": "Definitions for skill levels",
       "additionalProperties": false,
       "properties": {
-        "beginner": { "type": "string" },
-        "intermediate": { "type": "string" },
-        "advanced": { "type": "string" },
-        "expert": { "type": "string" }
+        "beginner": {
+          "type": "string"
+        },
+        "intermediate": {
+          "type": "string"
+        },
+        "advanced": {
+          "type": "string"
+        },
+        "expert": {
+          "type": "string"
+        }
       }
     },
     "learning_resources": {
       "type": "array",
       "description": "Resources for developing this skill",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_skills": {
       "type": "array",
       "description": "Related skills",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "prerequisite_skills": {
       "type": "array",
       "description": "Skills that are prerequisites",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "applications": {
       "type": "array",
       "description": "How this skill can be applied",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "assessment_criteria": {
       "type": "array",
       "description": "Criteria for assessing skill level",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where this skill is relevant",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns that use this skill",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Methodologies that require this skill",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors_with_skill": {
       "type": "array",
       "description": "Actors who have this skill",
       "items": {
         "type": "object",
-        "required": ["actor_id", "level"],
+        "required": [
+          "actor_id",
+          "level"
+        ],
         "additionalProperties": false,
         "properties": {
-          "actor_id": { "type": "string", "format": "uuid" },
-          "level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
-          "verified": { "type": "boolean" }
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "beginner",
+              "intermediate",
+              "advanced",
+              "expert"
+            ]
+          },
+          "verified": {
+            "type": "boolean"
+          }
         }
       }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -125,6 +194,66 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "technical",
+        "organizing",
+        "leadership",
+        "communication",
+        "analytical",
+        "creative",
+        "facilitation",
+        "strategic"
+      ],
+      "description": "Classification of the skill"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where this skill applies"
+    },
+    "level_options": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Possible proficiency levels"
+    },
+    "related_skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related skills"
+    },
+    "learned_from": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "How this skill is typically acquired"
+    },
+    "program_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Programs that teach this skill"
+    },
+    "tool_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tools used with this skill"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

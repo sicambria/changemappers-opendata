@@ -4,7 +4,14 @@
   "title": "Organization",
   "description": "A structured entity that operates within the changemappers ecosystem, including NGOs, corporations, government bodies, and grassroots groups.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -28,7 +35,16 @@
     },
     "type": {
       "type": "string",
-      "enum": ["ngo", "nonprofit", "corporation", "government", "grassroots", "network", "foundation", "cooperative", "community_organization", "academic", "research_institute"],
+      "enum": [
+        "nonprofit",
+        "for_profit",
+        "cooperative",
+        "foundation",
+        "government",
+        "educational",
+        "network",
+        "community_org"
+      ],
       "description": "Type of organization",
       "example": "ngo"
     },
@@ -48,18 +64,37 @@
       "description": "Contact information",
       "additionalProperties": false,
       "properties": {
-        "email": { "type": "string", "format": "email" },
-        "phone": { "type": "string", "pattern": "^\\+?[0-9\\-\\s]+$" },
-        "website": { "type": "string", "format": "uri" },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "pattern": "^\\+?[0-9\\-\\s]+$"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri"
+        },
         "address": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "street": { "type": "string" },
-            "city": { "type": "string" },
-            "state": { "type": "string" },
-            "postal_code": { "type": "string" },
-            "country": { "type": "string" }
+            "street": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "postal_code": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
           }
         }
       }
@@ -67,30 +102,55 @@
     "locations": {
       "type": "array",
       "description": "Geographic locations where the organization operates",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "sectors": {
       "type": "array",
       "description": "Sectors the organization operates in",
       "items": {
         "type": "string",
-        "enum": ["environment", "education", "health", "social_justice", "economic_development", "governance", "arts_culture", "technology", "agriculture", "energy", "housing", "transportation"]
+        "enum": [
+          "environment",
+          "education",
+          "health",
+          "social_justice",
+          "economic_development",
+          "governance",
+          "arts_culture",
+          "technology",
+          "agriculture",
+          "energy",
+          "housing",
+          "transportation"
+        ]
       }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives the organization leads or participates in",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects the organization is involved in",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "members": {
       "type": "array",
       "description": "Actor members of the organization",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "parent_organization": {
       "type": "string",
@@ -100,12 +160,18 @@
     "child_organizations": {
       "type": "array",
       "description": "Child/subsidiary organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "partners": {
       "type": "array",
       "description": "Partner organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "funding_sources": {
       "type": "array",
@@ -114,16 +180,34 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "source": { "type": "string" },
-          "type": { "type": "string", "enum": ["grant", "donation", "investment", "government", "earned_income"] },
-          "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+          "source": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "grant",
+              "donation",
+              "investment",
+              "government",
+              "earned_income"
+            ]
+          },
+          "percentage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          }
         }
       }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -138,6 +222,70 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "founding_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date organization was founded"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Primary location/headquarters"
+    },
+    "sector_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sectors the organization operates in"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains of focus"
+    },
+    "member_count": {
+      "type": "integer",
+      "description": "Number of members or employees"
+    },
+    "budget_range": {
+      "type": "string",
+      "enum": [
+        "under_100k",
+        "100k_500k",
+        "500k_1m",
+        "1m_10m",
+        "over_10m"
+      ],
+      "description": "Annual budget range"
+    },
+    "website": {
+      "type": "string",
+      "description": "Official website URL"
+    },
+    "contact_email": {
+      "type": "string",
+      "description": "Primary contact email"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key actors associated with organization"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives led by organization"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

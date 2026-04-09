@@ -4,7 +4,15 @@
   "title": "Sector",
   "description": "A distinct part of the economy or society where change activities take place.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,7 +41,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["public", "private", "nonprofit", "informal", "social", "community", "cooperative"],
+      "enum": [
+        "economic",
+        "public",
+        "nonprofit",
+        "movement",
+        "cultural",
+        "environmental"
+      ],
       "description": "Type of sector",
       "example": "nonprofit"
     },
@@ -45,52 +60,79 @@
     "child_sectors": {
       "type": "array",
       "description": "Child sectors",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_sectors": {
       "type": "array",
       "description": "Related sectors",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations in this sector",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains associated with this sector",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives in this sector",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects in this sector",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "industries": {
       "type": "array",
       "description": "Industries within this sector",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "key_actors": {
       "type": "array",
       "description": "Key actors in this sector",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "funding_sources": {
       "type": "array",
       "description": "Typical funding sources",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "regulations": {
       "type": "array",
       "description": "Key regulations",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -113,7 +155,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -128,6 +173,49 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "parent_sector_id": {
+      "type": "string",
+      "description": "Parent sector in hierarchy"
+    },
+    "organization_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Organizations in this sector"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actors working in this sector"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives in this sector"
+    },
+    "related_sector_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related sectors"
+    },
+    "key_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key issues in this sector"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

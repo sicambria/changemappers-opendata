@@ -4,7 +4,18 @@
   "title": "Pattern",
   "description": "A reusable solution or approach that has been demonstrated to be effective in addressing specific challenges within change processes.",
   "type": "object",
-  "required": ["id", "slug", "name", "category", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "created_at",
+    "description",
+    "type",
+    "problem_statement",
+    "solution_statement",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +45,18 @@
     },
     "category": {
       "type": "string",
-      "enum": ["engagement", "governance", "communication", "resource_mobilization", "capacity_building", "advocacy", "monitoring", "collaboration", "decision_making", "implementation"],
+      "enum": [
+        "engagement",
+        "governance",
+        "communication",
+        "resource_mobilization",
+        "capacity_building",
+        "advocacy",
+        "monitoring",
+        "collaboration",
+        "decision_making",
+        "implementation"
+      ],
       "description": "Category of the pattern",
       "example": "engagement"
     },
@@ -61,61 +83,113 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": { "type": "string", "enum": ["case_study", "research", "testimonial", "data"] },
-          "description": { "type": "string" },
-          "source": { "type": "string" },
-          "url": { "type": "string", "format": "uri" }
+          "type": {
+            "type": "string",
+            "enum": [
+              "case_study",
+              "research",
+              "testimonial",
+              "data"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       }
     },
     "prerequisites": {
       "type": "array",
       "description": "Prerequisites for applying this pattern",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "steps": {
       "type": "array",
       "description": "Implementation steps",
       "items": {
         "type": "object",
-        "required": ["order", "description"],
+        "required": [
+          "order",
+          "description"
+        ],
         "additionalProperties": false,
         "properties": {
-          "order": { "type": "integer", "minimum": 1 },
-          "description": { "type": "string" },
-          "duration": { "type": "string" },
-          "resources_needed": { "type": "array", "items": { "type": "string" } }
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "resources_needed": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
     "related_patterns": {
       "type": "array",
       "description": "Related patterns",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_methods": {
       "type": "array",
       "description": "Related methodologies",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_tools": {
       "type": "array",
       "description": "Tools that support this pattern",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this pattern",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "difficulty": {
       "type": "string",
-      "enum": ["beginner", "intermediate", "advanced", "expert"],
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced",
+        "expert"
+      ],
       "description": "Difficulty level to implement",
       "example": "intermediate"
     },
@@ -127,7 +201,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -142,6 +219,54 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "organizational",
+        "process",
+        "structural",
+        "relational",
+        "economic",
+        "governance"
+      ],
+      "description": "Classification of the pattern"
+    },
+    "solution_statement": {
+      "type": "string",
+      "description": "The solution approach this pattern provides"
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Expected outcomes from applying this pattern"
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Potential risks or limitations"
+    },
+    "example_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Example implementations"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where pattern applies"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

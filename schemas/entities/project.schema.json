@@ -4,7 +4,17 @@
   "title": "Project",
   "description": "A specific, time-bound undertaking with defined objectives, deliverables, and resources within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "status", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "status",
+    "created_at",
+    "description",
+    "type",
+    "start_date",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,13 +44,27 @@
     },
     "status": {
       "type": "string",
-      "enum": ["planning", "active", "on_hold", "completed", "cancelled"],
+      "enum": [
+        "planning",
+        "active",
+        "on_hold",
+        "completed",
+        "cancelled"
+      ],
       "description": "Current status of the project",
       "example": "active"
     },
     "type": {
       "type": "string",
-      "enum": ["pilot", "demonstration", "scaling", "research", "capacity_building", "infrastructure", "advocacy", "education"],
+      "enum": [
+        "research",
+        "advocacy",
+        "capacity_building",
+        "direct_action",
+        "pilot",
+        "demonstration",
+        "infrastructure"
+      ],
       "description": "Type of project",
       "example": "demonstration"
     },
@@ -57,51 +81,97 @@
     "partner_organizations": {
       "type": "array",
       "description": "Partner organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "team": {
       "type": "array",
       "description": "Project team members",
       "items": {
         "type": "object",
-        "required": ["actor_id"],
+        "required": [
+          "actor_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "actor_id": { "type": "string", "format": "uuid" },
-          "role": { "type": "string" },
-          "start_date": { "type": "string", "format": "date" },
-          "end_date": { "type": "string", "format": "date" }
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "role": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          }
         }
       }
     },
     "locations": {
       "type": "array",
       "description": "Geographic locations of the project",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains the project addresses",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "timeline": {
       "type": "object",
       "description": "Project timeline",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
         "phases": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["name", "start_date"],
+            "required": [
+              "name",
+              "start_date"
+            ],
             "additionalProperties": false,
             "properties": {
-              "name": { "type": "string" },
-              "start_date": { "type": "string", "format": "date" },
-              "end_date": { "type": "string", "format": "date" },
-              "status": { "type": "string", "enum": ["planned", "in_progress", "completed"] }
+              "name": {
+                "type": "string"
+              },
+              "start_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "end_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "planned",
+                  "in_progress",
+                  "completed"
+                ]
+              }
             }
           }
         }
@@ -112,59 +182,104 @@
       "description": "Project deliverables",
       "items": {
         "type": "object",
-        "required": ["description"],
+        "required": [
+          "description"
+        ],
         "additionalProperties": false,
         "properties": {
-          "description": { "type": "string" },
-          "due_date": { "type": "string", "format": "date" },
-          "status": { "type": "string", "enum": ["pending", "in_progress", "completed", "delayed"] }
+          "description": {
+            "type": "string"
+          },
+          "due_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "in_progress",
+              "completed",
+              "delayed"
+            ]
+          }
         }
       }
     },
     "outcomes": {
       "type": "array",
       "description": "Expected or achieved outcomes",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Measured impacts",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "budget": {
       "type": "object",
       "description": "Project budget",
       "additionalProperties": false,
       "properties": {
-        "allocated": { "type": "number", "minimum": 0 },
-        "spent": { "type": "number", "minimum": 0 },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" }
+        "allocated": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spent": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
       }
     },
     "resources": {
       "type": "array",
       "description": "Resources used",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Methodologies applied",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools used",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns applied",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -179,6 +294,68 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Project start date"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Project end date or expected completion"
+    },
+    "initiative_id": {
+      "type": "string",
+      "description": "Parent initiative"
+    },
+    "lead_actor_id": {
+      "type": "string",
+      "description": "Primary actor responsible"
+    },
+    "lead_organization_id": {
+      "type": "string",
+      "description": "Primary organization responsible"
+    },
+    "actor_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Actors involved in project"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Project locations"
+    },
+    "budget_currency": {
+      "type": "string",
+      "description": "Currency code (ISO 4217)"
+    },
+    "outcome_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Expected outcomes"
+    },
+    "metric_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Metrics tracked"
+    },
+    "phase_id": {
+      "type": "string",
+      "description": "Current phase"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

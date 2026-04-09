@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/relationships/implements.schema.json",
+  "title": "Implements",
+  "description": "An Initiative or Project applies, uses, or puts into practice a specific Pattern, Methodology, Framework, or Approach. This relationship captures the translation of abstract solutions into concrete action.",
+  "type": "object",
+  "required": [
+    "id",
+    "source_id",
+    "target_id",
+    "relationship_type"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the relationship"
+    },
+    "source_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the source entity"
+    },
+    "target_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the target entity"
+    },
+    "relationship_type": {
+      "type": "string",
+      "const": "implements",
+      "description": "Type of relationship"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "Type of the source entity",
+      "enum": [
+        "Initiative",
+        "Project",
+        "Campaign",
+        "Program"
+      ]
+    },
+    "target_type": {
+      "type": "string",
+      "description": "Type of the target entity",
+      "enum": [
+        "Pattern",
+        "Methodology",
+        "Framework",
+        "Approach",
+        "BestPractice"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score for this relationship (0-1)"
+    },
+    "source_reference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "official",
+            "news",
+            "research",
+            "social",
+            "government",
+            "ngo",
+            "corporate",
+            "other"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "type",
+        "name"
+      ],
+      "description": "Source of the relationship information"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship became valid"
+    },
+    "valid_to": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship ceased to be valid"
+    },
+    "is_current": {
+      "type": "boolean",
+      "description": "Whether the relationship is currently active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was last updated"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes about the relationship"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing the relationship"
+    },
+    "adaptation_level": {
+      "type": "string",
+      "description": "How much the pattern was adapted (faithful, adapted, hybrid)"
+    },
+    "implementation_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When implementation began"
+    },
+    "fidelity": {
+      "type": "number",
+      "description": "Degree of fidelity to original pattern (0.0-1.0)"
+    },
+    "customizations": {
+      "type": "string",
+      "description": "Specific modifications made to the pattern"
+    }
+  },
+  "x-inverse": "implemented_by",
+  "x-cardinality": "many-to-many"
+}

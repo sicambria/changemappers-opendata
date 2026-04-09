@@ -4,7 +4,15 @@
   "title": "Metamodel",
   "description": "A conceptual framework that defines the structure, relationships, and constraints for modeling change processes.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +42,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["conceptual", "analytical", "operational", "descriptive", "prescriptive"],
+      "enum": [
+        "theoretical",
+        "analytical",
+        "process",
+        "evaluative",
+        "strategic",
+        "systems"
+      ],
       "description": "Type of metamodel",
       "example": "analytical"
     },
@@ -53,12 +68,24 @@
       "description": "Core concepts defined by the metamodel",
       "items": {
         "type": "object",
-        "required": ["name", "definition"],
+        "required": [
+          "name",
+          "definition"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "definition": { "type": "string" },
-          "examples": { "type": "array", "items": { "type": "string" } }
+          "name": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
@@ -67,13 +94,25 @@
       "description": "Relationships between concepts",
       "items": {
         "type": "object",
-        "required": ["from", "to", "type"],
+        "required": [
+          "from",
+          "to",
+          "type"
+        ],
         "additionalProperties": false,
         "properties": {
-          "from": { "type": "string" },
-          "to": { "type": "string" },
-          "type": { "type": "string" },
-          "description": { "type": "string" }
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
         }
       }
     },
@@ -84,9 +123,15 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "rule": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "string"
+          }
         }
       }
     },
@@ -95,51 +140,86 @@
       "description": "Variables defined by the metamodel",
       "items": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "type": { "type": "string" },
-          "description": { "type": "string" },
-          "unit": { "type": "string" },
-          "possible_values": { "type": "array", "items": { "type": "string" } }
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "possible_values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
     "related_metamodels": {
       "type": "array",
       "description": "Related metamodels",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "frameworks": {
       "type": "array",
       "description": "Frameworks implementing this metamodel",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methodologies": {
       "type": "array",
       "description": "Methodologies based on this metamodel",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "applications": {
       "type": "array",
       "description": "Applications and use cases",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "key_references": {
       "type": "array",
       "description": "Key references",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -154,6 +234,56 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key components of the metamodel"
+    },
+    "principles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Core principles"
+    },
+    "framework_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Frameworks derived from this metamodel"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains of application"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Origin or creator"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Known limitations"
+    },
+    "related_metamodel_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related metamodels"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

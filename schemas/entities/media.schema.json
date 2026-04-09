@@ -4,7 +4,14 @@
   "title": "Media",
   "description": "A digital media file (image, video, audio, document) associated with entities in the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "type", "url", "created_at"],
+  "required": [
+    "id",
+    "type",
+    "url",
+    "created_at",
+    "name",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -31,7 +38,16 @@
     },
     "type": {
       "type": "string",
-      "enum": ["image", "video", "audio", "document", "presentation", "spreadsheet", "infographic", "map", "interactive"],
+      "enum": [
+        "image",
+        "video",
+        "audio",
+        "document",
+        "presentation",
+        "infographic",
+        "map",
+        "interactive"
+      ],
       "description": "Type of media",
       "example": "image"
     },
@@ -72,8 +88,13 @@
       "description": "File size",
       "additionalProperties": false,
       "properties": {
-        "bytes": { "type": "integer", "minimum": 0 },
-        "human_readable": { "type": "string" }
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "human_readable": {
+          "type": "string"
+        }
       }
     },
     "dimensions": {
@@ -81,8 +102,14 @@
       "description": "Dimensions for images/videos",
       "additionalProperties": false,
       "properties": {
-        "width": { "type": "integer", "minimum": 1 },
-        "height": { "type": "integer", "minimum": 1 }
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
       }
     },
     "duration": {
@@ -112,8 +139,14 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "language": { "type": "string", "pattern": "^[a-z]{2}$" },
-          "url": { "type": "string", "format": "uri" }
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2}$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       }
     },
@@ -164,14 +197,25 @@
       "description": "GPS coordinates",
       "additionalProperties": false,
       "properties": {
-        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
-        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
       }
     },
     "people_shown": {
       "type": "array",
       "description": "People shown in the media",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "event": {
       "type": "string",
@@ -201,11 +245,19 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "visibility": {
       "type": "string",
-      "enum": ["public", "private", "restricted", "unlisted"],
+      "enum": [
+        "public",
+        "private",
+        "restricted",
+        "unlisted"
+      ],
       "description": "Visibility level",
       "example": "public"
     },
@@ -226,6 +278,56 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name or title of the media"
+    },
+    "creator_id": {
+      "type": "string",
+      "description": "Creator or photographer"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "Event documented"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Related project"
+    },
+    "initiative_id": {
+      "type": "string",
+      "description": "Related initiative"
+    },
+    "story_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Stories using this media"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Location depicted"
+    },
+    "people_featured": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "People featured in media"
+    },
+    "rights": {
+      "type": "string",
+      "description": "Usage rights and credits"
+    },
+    "caption": {
+      "type": "string",
+      "description": "Caption or alt text"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

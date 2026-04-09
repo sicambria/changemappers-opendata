@@ -4,7 +4,16 @@
   "title": "Subdomain",
   "description": "A specialized area within a broader domain in the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "domain_id", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "domain_id",
+    "created_at",
+    "description",
+    "parent_domain_id",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -44,47 +53,74 @@
     "child_subdomains": {
       "type": "array",
       "description": "Child subdomains",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_subdomains": {
       "type": "array",
       "description": "Related subdomains",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "causes": {
       "type": "array",
       "description": "Causes in this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives in this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects in this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations working in this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Actors working in this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "topics": {
       "type": "array",
       "description": "Topics within this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Indicators for this subdomain",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -107,7 +143,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -122,6 +161,42 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "parent_domain_id": {
+      "type": "string",
+      "description": "Parent domain"
+    },
+    "topic_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Topics within this subdomain"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives in this subdomain"
+    },
+    "key_concepts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key concepts in this subdomain"
+    },
+    "related_subdomain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related subdomains"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

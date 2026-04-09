@@ -4,7 +4,15 @@
   "title": "Cause",
   "description": "A social, environmental, or economic issue that drives change efforts within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +42,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["environmental", "social", "economic", "political", "cultural", "health", "educational", "technological"],
+      "enum": [
+        "environmental",
+        "social",
+        "economic",
+        "political",
+        "cultural",
+        "systemic"
+      ],
       "description": "Primary type of cause",
       "example": "environmental"
     },
@@ -51,59 +66,97 @@
     "sub_causes": {
       "type": "array",
       "description": "Sub-causes or specific aspects",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_causes": {
       "type": "array",
       "description": "Related causes",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains affected by this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives addressing this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects addressing this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Key actors working on this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations working on this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Indicators measuring this cause",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "urgency": {
       "type": "string",
-      "enum": ["low", "medium", "high", "critical"],
+      "enum": [
+        "immediate",
+        "urgent",
+        "moderate",
+        "long_term"
+      ],
       "description": "Urgency level",
       "example": "critical"
     },
     "scope": {
       "type": "string",
-      "enum": ["local", "regional", "national", "international", "global"],
+      "enum": [
+        "local",
+        "regional",
+        "national",
+        "international",
+        "global"
+      ],
       "description": "Geographic scope of the cause",
       "example": "global"
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -118,6 +171,59 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "description": "Severity level of the cause"
+    },
+    "root_causes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Underlying causes that contribute to this issue"
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Effects or symptoms resulting from this cause"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains related to this cause"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives addressing this cause"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Geographic areas affected"
+    },
+    "population_affected": {
+      "type": "string",
+      "description": "Description of populations affected"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

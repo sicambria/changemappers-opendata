@@ -4,7 +4,16 @@
   "title": "Scale",
   "description": "The geographic or organizational scope at which change activities operate.",
   "type": "object",
-  "required": ["id", "slug", "name", "level", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "level",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -39,7 +48,12 @@
     },
     "type": {
       "type": "string",
-      "enum": ["geographic", "organizational", "temporal", "population"],
+      "enum": [
+        "geographic",
+        "organizational",
+        "impact",
+        "temporal"
+      ],
       "description": "Type of scale",
       "example": "geographic"
     },
@@ -51,15 +65,24 @@
     "child_scales": {
       "type": "array",
       "description": "Child scales (narrower)",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "population_range": {
       "type": "object",
       "description": "Population range if geographic",
       "additionalProperties": false,
       "properties": {
-        "min": { "type": "integer", "minimum": 0 },
-        "max": { "type": "integer", "minimum": 0 }
+        "min": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 0
+        }
       }
     },
     "geographic_scope": {
@@ -69,47 +92,68 @@
     "examples": {
       "type": "array",
       "description": "Examples at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "typical_actors": {
       "type": "array",
       "description": "Typical actors at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "typical_organizations": {
       "type": "array",
       "description": "Typical organizations at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives at this scale",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects at this scale",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "strategies": {
       "type": "array",
       "description": "Typical strategies at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "challenges": {
       "type": "array",
       "description": "Typical challenges at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "opportunities": {
       "type": "array",
       "description": "Typical opportunities at this scale",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Patterns applicable at this scale",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -127,7 +171,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -142,6 +189,25 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "parent_scale_id": {
+      "type": "string",
+      "description": "Parent scale level"
+    },
+    "child_scale_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Child scale levels"
+    },
+    "typical_scope": {
+      "type": "string",
+      "description": "Typical scope at this scale"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

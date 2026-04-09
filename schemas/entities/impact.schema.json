@@ -4,7 +4,15 @@
   "title": "Impact",
   "description": "A significant and lasting effect resulting from change activities, representing higher-level transformation.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,25 +41,51 @@
     },
     "type": {
       "type": "string",
-      "enum": ["environmental", "social", "economic", "political", "cultural", "institutional", "individual", "community", "systemic"],
+      "enum": [
+        "environmental",
+        "social",
+        "economic",
+        "political",
+        "cultural",
+        "systemic"
+      ],
       "description": "Type of impact",
       "example": "environmental"
     },
     "level": {
       "type": "string",
-      "enum": ["individual", "household", "community", "organizational", "sectoral", "societal", "systemic"],
+      "enum": [
+        "individual",
+        "household",
+        "community",
+        "organizational",
+        "sectoral",
+        "societal",
+        "systemic"
+      ],
       "description": "Level of impact",
       "example": "community"
     },
     "magnitude": {
       "type": "string",
-      "enum": ["minimal", "moderate", "significant", "transformative"],
+      "enum": [
+        "transformative",
+        "significant",
+        "moderate",
+        "incremental"
+      ],
       "description": "Magnitude of impact",
       "example": "significant"
     },
     "duration": {
       "type": "string",
-      "enum": ["temporary", "short_term", "medium_term", "long_term", "permanent"],
+      "enum": [
+        "temporary",
+        "short_term",
+        "medium_term",
+        "long_term",
+        "permanent"
+      ],
       "description": "Duration of impact"
     },
     "reach": {
@@ -59,14 +93,29 @@
       "description": "Reach of the impact",
       "additionalProperties": false,
       "properties": {
-        "people_affected": { "type": "integer", "minimum": 0 },
-        "geographic_scope": { "type": "string" },
-        "sectors_affected": { "type": "array", "items": { "type": "string" } }
+        "people_affected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "geographic_scope": {
+          "type": "string"
+        },
+        "sectors_affected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "attribution": {
       "type": "string",
-      "enum": ["fully_attributable", "partially_attributable", "contributory", "uncertain"],
+      "enum": [
+        "fully_attributable",
+        "partially_attributable",
+        "contributory",
+        "uncertain"
+      ],
       "description": "Attribution confidence",
       "example": "partially_attributable"
     },
@@ -79,15 +128,29 @@
       "description": "Quantified impact data",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "unit": { "type": "string" },
-        "baseline": { "type": "number" },
-        "percentage_change": { "type": "number" }
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "baseline": {
+          "type": "number"
+        },
+        "percentage_change": {
+          "type": "number"
+        }
       }
     },
     "evidence_strength": {
       "type": "string",
-      "enum": ["anecdotal", "preliminary", "moderate", "strong", "conclusive"],
+      "enum": [
+        "anecdotal",
+        "preliminary",
+        "moderate",
+        "strong",
+        "conclusive"
+      ],
       "description": "Strength of evidence"
     },
     "evidence": {
@@ -97,11 +160,23 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "type": { "type": "string" },
-          "description": { "type": "string" },
-          "source": { "type": "string" },
-          "url": { "type": "string", "format": "uri" },
-          "date": { "type": "string", "format": "date" }
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
         }
       }
     },
@@ -118,12 +193,18 @@
     "outcomes": {
       "type": "array",
       "description": "Outcomes contributing to this impact",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Indicators measuring this impact",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "beneficiaries": {
       "type": "array",
@@ -132,31 +213,48 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "group": { "type": "string" },
-          "count": { "type": "integer" },
-          "description": { "type": "string" }
+          "group": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
         }
       }
     },
     "locations": {
       "type": "array",
       "description": "Geographic areas affected",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains affected",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "sdg_targets": {
       "type": "array",
       "description": "SDG targets addressed",
-      "items": { "type": "string", "pattern": "^\\d+\\.\\d+$" }
+      "items": {
+        "type": "string",
+        "pattern": "^\\d+\\.\\d+$"
+      }
     },
     "unintended_consequences": {
       "type": "array",
       "description": "Unintended consequences",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "sustainability": {
       "type": "string",
@@ -165,12 +263,18 @@
     "stories": {
       "type": "array",
       "description": "Stories documenting this impact",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "media": {
       "type": "array",
       "description": "Media documenting this impact",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "verified_by": {
       "type": "string",
@@ -185,7 +289,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -200,6 +307,59 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "outcome_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Outcomes contributing to this impact"
+    },
+    "initiative_id": {
+      "type": "string",
+      "description": "Primary initiative"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains affected"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Geographic areas affected"
+    },
+    "affected_population": {
+      "type": "string",
+      "description": "Population affected by this impact"
+    },
+    "evidence_summary": {
+      "type": "string",
+      "description": "Summary of evidence for this impact"
+    },
+    "metric_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Metrics measuring this impact"
+    },
+    "attribution_confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "description": "Confidence in attribution"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

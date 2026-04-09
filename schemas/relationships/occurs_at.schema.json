@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://changemappers.org/schemas/relationships/occurs_at.schema.json",
+  "title": "Occurs At",
+  "description": "An Event, Activity, or Occurrence happens at a specific Location and/or Time. This captures spatiotemporal context.",
+  "type": "object",
+  "required": [
+    "id",
+    "source_id",
+    "target_id",
+    "relationship_type"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the relationship"
+    },
+    "source_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the source entity"
+    },
+    "target_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "ID of the target entity"
+    },
+    "relationship_type": {
+      "type": "string",
+      "const": "occurs_at",
+      "description": "Type of relationship"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "Type of the source entity",
+      "enum": [
+        "Event",
+        "Activity",
+        "Occurrence",
+        "Incident",
+        "Meeting"
+      ]
+    },
+    "target_type": {
+      "type": "string",
+      "description": "Type of the target entity",
+      "enum": [
+        "Location",
+        "Time",
+        "Venue",
+        "Platform"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score for this relationship (0-1)"
+    },
+    "source_reference": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "official",
+            "news",
+            "research",
+            "social",
+            "government",
+            "ngo",
+            "corporate",
+            "other"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "type",
+        "name"
+      ],
+      "description": "Source of the relationship information"
+    },
+    "valid_from": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship became valid"
+    },
+    "valid_to": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the relationship ceased to be valid"
+    },
+    "is_current": {
+      "type": "boolean",
+      "description": "Whether the relationship is currently active"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this record was last updated"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes about the relationship"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for categorizing the relationship"
+    },
+    "start_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event begins"
+    },
+    "end_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event ends"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Length of the event"
+    },
+    "recurring": {
+      "type": "boolean",
+      "description": "Whether the event recurs"
+    },
+    "recurrence_pattern": {
+      "type": "string",
+      "description": "How often it recurs (daily, weekly, monthly, annually)"
+    },
+    "participants_count": {
+      "type": "number",
+      "description": "Number of participants"
+    }
+  },
+  "x-inverse": "hosts",
+  "x-cardinality": "many-to-one"
+}

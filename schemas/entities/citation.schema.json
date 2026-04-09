@@ -4,7 +4,13 @@
   "title": "Citation",
   "description": "A reference to a source of information, evidence, or authority supporting claims in the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "type", "title", "created_at"],
+  "required": [
+    "id",
+    "type",
+    "title",
+    "created_at",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -20,7 +26,17 @@
     },
     "type": {
       "type": "string",
-      "enum": ["academic", "report", "news", "government", "organization", "interview", "personal_communication", "website", "book", "dataset", "legal", "media"],
+      "enum": [
+        "academic",
+        "report",
+        "news",
+        "government",
+        "website",
+        "book",
+        "interview",
+        "documentary",
+        "data"
+      ],
       "description": "Type of citation",
       "example": "academic"
     },
@@ -38,8 +54,13 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "orcid": { "type": "string", "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$" }
+          "name": {
+            "type": "string"
+          },
+          "orcid": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[0-9X]$"
+          }
         }
       }
     },
@@ -117,7 +138,9 @@
     "keywords": {
       "type": "array",
       "description": "Keywords",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "language": {
       "type": "string",
@@ -127,7 +150,12 @@
     },
     "access": {
       "type": "string",
-      "enum": ["open_access", "subscription", "free", "restricted"],
+      "enum": [
+        "open_access",
+        "subscription",
+        "free",
+        "restricted"
+      ],
       "description": "Access type"
     },
     "peer_reviewed": {
@@ -141,7 +169,12 @@
     },
     "quality": {
       "type": "string",
-      "enum": ["high", "medium", "low", "unverified"],
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "unverified"
+      ],
       "description": "Quality assessment"
     },
     "relevance": {
@@ -166,18 +199,29 @@
       "description": "Entities citing this source",
       "items": {
         "type": "object",
-        "required": ["entity_type", "entity_id"],
+        "required": [
+          "entity_type",
+          "entity_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "entity_type": { "type": "string" },
-          "entity_id": { "type": "string", "format": "uuid" }
+          "entity_type": {
+            "type": "string"
+          },
+          "entity_id": {
+            "type": "string",
+            "format": "uuid"
+          }
         }
       }
     },
     "related_citations": {
       "type": "array",
       "description": "Related citations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "bibtex": {
       "type": "string",
@@ -198,7 +242,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -213,6 +260,49 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "publication": {
+      "type": "string",
+      "description": "Publication or publisher"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication date"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the source"
+    },
+    "story_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Stories citing this source"
+    },
+    "dataset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Datasets citing this source"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains covered"
+    },
+    "access_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date accessed (for websites)"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

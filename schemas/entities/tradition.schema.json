@@ -4,7 +4,15 @@
   "title": "Tradition",
   "description": "A body of knowledge, practice, or methodology passed down through generations that informs change-making approaches.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +42,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["pedagogical", "philosophical", "cultural", "spiritual", "political", "organizational", "artistic", "healing"],
+      "enum": [
+        "indigenous",
+        "cultural",
+        "spiritual",
+        "ecological",
+        "community",
+        "historical"
+      ],
       "description": "Type of tradition",
       "example": "pedagogical"
     },
@@ -43,76 +58,121 @@
       "description": "Origins and history",
       "additionalProperties": false,
       "properties": {
-        "founder": { "type": "string" },
-        "time_period": { "type": "string" },
-        "geographic_origin": { "type": "string" },
-        "historical_context": { "type": "string" }
+        "founder": {
+          "type": "string"
+        },
+        "time_period": {
+          "type": "string"
+        },
+        "geographic_origin": {
+          "type": "string"
+        },
+        "historical_context": {
+          "type": "string"
+        }
       }
     },
     "core_principles": {
       "type": "array",
       "description": "Core principles of the tradition",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "key_concepts": {
       "type": "array",
       "description": "Key concepts",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "practices": {
       "type": "array",
       "description": "Associated practices",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "methods": {
       "type": "array",
       "description": "Associated methodologies",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "patterns": {
       "type": "array",
       "description": "Associated patterns",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "influenced_traditions": {
       "type": "array",
       "description": "Traditions influenced by this one",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "influenced_by": {
       "type": "array",
       "description": "Traditions that influenced this one",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_traditions": {
       "type": "array",
       "description": "Related traditions",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "key_texts": {
       "type": "array",
       "description": "Key texts and resources",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations practicing this tradition",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Key actors associated with this tradition",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects applying this tradition",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "contemporary_relevance": {
       "type": "string",
@@ -122,12 +182,17 @@
     "critiques": {
       "type": "array",
       "description": "Critiques and limitations",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -142,6 +207,50 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "origin": {
+      "type": "string",
+      "description": "Geographic or cultural origin"
+    },
+    "people": {
+      "type": "string",
+      "description": "Indigenous nation or cultural group"
+    },
+    "values": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Core values embedded in this tradition"
+    },
+    "knowledge_system": {
+      "type": "string",
+      "description": "Associated knowledge system"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where tradition applies"
+    },
+    "modern_applications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Modern applications of this tradition"
+    },
+    "related_tradition_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related traditions"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

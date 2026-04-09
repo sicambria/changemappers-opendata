@@ -4,7 +4,16 @@
   "title": "Program",
   "description": "A structured, ongoing set of activities and services designed to achieve specific change outcomes over an extended period.",
   "type": "object",
-  "required": ["id", "slug", "name", "status", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "status",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,13 +43,27 @@
     },
     "status": {
       "type": "string",
-      "enum": ["planning", "active", "paused", "completed", "archived"],
+      "enum": [
+        "planning",
+        "active",
+        "paused",
+        "completed",
+        "archived"
+      ],
       "description": "Current status of the program",
       "example": "active"
     },
     "type": {
       "type": "string",
-      "enum": ["training", "fellowship", "grant", "service", "advocacy", "research", "capacity_building", "network"],
+      "enum": [
+        "training",
+        "fellowship",
+        "apprenticeship",
+        "certification",
+        "workshop_series",
+        "mentorship",
+        "educational"
+      ],
       "description": "Type of program",
       "example": "training"
     },
@@ -52,30 +75,52 @@
     "partner_organizations": {
       "type": "array",
       "description": "Partner organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "funders": {
       "type": "array",
       "description": "Funding organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "timeline": {
       "type": "object",
       "description": "Program timeline",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" },
-        "duration": { "type": "string" },
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "duration": {
+          "type": "string"
+        },
         "cohorts": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "name": { "type": "string" },
-              "start_date": { "type": "string", "format": "date" },
-              "end_date": { "type": "string", "format": "date" }
+              "name": {
+                "type": "string"
+              },
+              "start_date": {
+                "type": "string",
+                "format": "date"
+              },
+              "end_date": {
+                "type": "string",
+                "format": "date"
+              }
             }
           }
         }
@@ -90,12 +135,23 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "min": { "type": "integer" },
-            "max": { "type": "integer" }
+            "min": {
+              "type": "integer"
+            },
+            "max": {
+              "type": "integer"
+            }
           }
         },
-        "geographic_scope": { "type": "string" },
-        "other_criteria": { "type": "array", "items": { "type": "string" } }
+        "geographic_scope": {
+          "type": "string"
+        },
+        "other_criteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "application_process": {
@@ -103,9 +159,22 @@
       "description": "Application process details",
       "additionalProperties": false,
       "properties": {
-        "deadline": { "type": "string", "format": "date" },
-        "requirements": { "type": "array", "items": { "type": "string" } },
-        "selection_criteria": { "type": "array", "items": { "type": "string" } }
+        "deadline": {
+          "type": "string",
+          "format": "date"
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "selection_criteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "curriculum": {
@@ -115,29 +184,59 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "duration": { "type": "string" },
-          "topics": { "type": "array", "items": { "type": "string" } }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
       }
     },
     "projects": {
       "type": "array",
       "description": "Projects under this program",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "participants": {
       "type": "array",
       "description": "Program participants",
       "items": {
         "type": "object",
-        "required": ["actor_id"],
+        "required": [
+          "actor_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "actor_id": { "type": "string", "format": "uuid" },
-          "cohort": { "type": "string" },
-          "status": { "type": "string", "enum": ["applicant", "selected", "active", "completed", "alumni"] }
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "cohort": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "applicant",
+              "selected",
+              "active",
+              "completed",
+              "alumni"
+            ]
+          }
         }
       }
     },
@@ -146,53 +245,87 @@
       "description": "Program staff",
       "items": {
         "type": "object",
-        "required": ["actor_id"],
+        "required": [
+          "actor_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "actor_id": { "type": "string", "format": "uuid" },
-          "role": { "type": "string" }
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "role": {
+            "type": "string"
+          }
         }
       }
     },
     "locations": {
       "type": "array",
       "description": "Program locations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains addressed",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "outcomes": {
       "type": "array",
       "description": "Expected outcomes",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Measured impacts",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "budget": {
       "type": "object",
       "description": "Program budget",
       "additionalProperties": false,
       "properties": {
-        "total": { "type": "number", "minimum": 0 },
-        "currency": { "type": "string", "pattern": "^[A-Z]{3}$" },
-        "per_participant": { "type": "number", "minimum": 0 }
+        "total": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "per_participant": {
+          "type": "number",
+          "minimum": 0
+        }
       }
     },
     "resources": {
       "type": "array",
       "description": "Program resources",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -207,6 +340,78 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "organization_id": {
+      "type": "string",
+      "description": "Organization offering the program"
+    },
+    "skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills taught in the program"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains covered"
+    },
+    "duration": {
+      "type": "string",
+      "description": "Duration of the program"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "in_person",
+        "online",
+        "hybrid",
+        "self_paced"
+      ],
+      "description": "Delivery format"
+    },
+    "cost": {
+      "type": "string",
+      "enum": [
+        "free",
+        "sliding_scale",
+        "fixed_fee",
+        "stipend"
+      ],
+      "description": "Cost structure"
+    },
+    "cohort_based": {
+      "type": "boolean",
+      "description": "Whether program has cohorts"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Program locations"
+    },
+    "prerequisite_skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Required prerequisite skills"
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Target audience for the program"
+    },
+    "alumni_network": {
+      "type": "boolean",
+      "description": "Whether program has alumni network"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

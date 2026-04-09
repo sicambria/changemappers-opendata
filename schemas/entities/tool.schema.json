@@ -4,7 +4,15 @@
   "title": "Tool",
   "description": "A tangible or digital instrument, platform, or resource used to support change-making activities within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,13 +42,29 @@
     },
     "type": {
       "type": "string",
-      "enum": ["software", "platform", "framework", "methodology", "physical", "template", "guide", "database"],
+      "enum": [
+        "software",
+        "platform",
+        "methodology",
+        "framework",
+        "template",
+        "hardware",
+        "resource"
+      ],
       "description": "Type of tool",
       "example": "platform"
     },
     "category": {
       "type": "string",
-      "enum": ["data_collection", "analysis", "communication", "collaboration", "visualization", "mapping", "monitoring", "evaluation", "training", "advocacy", "organizing"],
+      "enum": [
+        "communication",
+        "data_management",
+        "organizing",
+        "analysis",
+        "visualization",
+        "collaboration",
+        "documentation"
+      ],
       "description": "Category of the tool",
       "example": "data_collection"
     },
@@ -69,64 +93,117 @@
       "description": "Cost information",
       "additionalProperties": false,
       "properties": {
-        "type": { "type": "string", "enum": ["free", "freemium", "paid", "open_source"] },
-        "pricing_url": { "type": "string", "format": "uri" }
-      }
+        "type": {
+          "type": "string",
+          "enum": [
+            "free",
+            "freemium",
+            "paid",
+            "open_source"
+          ]
+        },
+        "pricing_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "enum": [
+        "free",
+        "freemium",
+        "paid",
+        "open_source"
+      ]
     },
     "platforms": {
       "type": "array",
       "description": "Supported platforms",
-      "items": { "type": "string", "enum": ["web", "windows", "macos", "linux", "ios", "android"] }
+      "items": {
+        "type": "string",
+        "enum": [
+          "web",
+          "windows",
+          "macos",
+          "linux",
+          "ios",
+          "android"
+        ]
+      }
     },
     "features": {
       "type": "array",
       "description": "Key features",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "limitations": {
       "type": "array",
       "description": "Known limitations",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "integration_capabilities": {
       "type": "array",
       "description": "Integration capabilities",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "use_cases": {
       "type": "array",
       "description": "Common use cases",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "related_tools": {
       "type": "array",
       "description": "Related tools",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_patterns": {
       "type": "array",
       "description": "Patterns that use this tool",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_methods": {
       "type": "array",
       "description": "Methodologies that use this tool",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this tool",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "skills_required": {
       "type": "array",
       "description": "Skills required to use this tool",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "maintainer": {
       "type": "string",
@@ -136,7 +213,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -151,6 +231,35 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to access or learn about the tool"
+    },
+    "skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills required or related"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where tool is useful"
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative tools"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

@@ -4,7 +4,15 @@
   "title": "Story",
   "description": "A narrative account of change experiences, lessons learned, or impact documentation within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "title", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "type",
+    "created_at",
+    "content",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -28,7 +36,13 @@
     },
     "type": {
       "type": "string",
-      "enum": ["case_study", "testimonial", "lesson_learned", "impact_story", "personal_narrative", "organizational_profile", "project_documentation"],
+      "enum": [
+        "personal",
+        "community",
+        "organizational",
+        "movement",
+        "case_study"
+      ],
       "description": "Type of story",
       "example": "case_study"
     },
@@ -72,58 +86,91 @@
       "description": "Time period covered by the story",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" }
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "themes": {
       "type": "array",
       "description": "Themes covered",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "key_lessons": {
       "type": "array",
       "description": "Key lessons learned",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "challenges": {
       "type": "array",
       "description": "Challenges encountered",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "successes": {
       "type": "array",
       "description": "Successes achieved",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "patterns_used": {
       "type": "array",
       "description": "Patterns mentioned or used",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "media": {
       "type": "array",
       "description": "Associated media files",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "citations": {
       "type": "array",
       "description": "References and citations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "outcomes": {
       "type": "array",
       "description": "Outcomes documented",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Impacts documented",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "visibility": {
       "type": "string",
-      "enum": ["public", "private", "restricted"],
+      "enum": [
+        "public",
+        "private",
+        "restricted"
+      ],
       "description": "Visibility level",
       "example": "public"
     },
@@ -136,7 +183,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -156,6 +206,76 @@
       "type": "string",
       "format": "date-time",
       "description": "Publication timestamp"
+    },
+    "author_id": {
+      "type": "string",
+      "description": "ID of the storyteller/author"
+    },
+    "organization_id": {
+      "type": "string",
+      "description": "Organization associated with the story"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives related to the story"
+    },
+    "project_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Projects related to the story"
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Geographic setting of the story"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains addressed in the story"
+    },
+    "date_occurred": {
+      "type": "string",
+      "format": "date",
+      "description": "When the events occurred"
+    },
+    "key_actors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key actors mentioned in the story"
+    },
+    "lessons_learned": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key lessons from the story"
+    },
+    "media_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Associated media assets"
+    },
+    "citation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related citations"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

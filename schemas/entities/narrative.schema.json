@@ -4,7 +4,16 @@
   "title": "Narrative",
   "description": "A structured account or interpretation of change processes, used to communicate meaning and inspire action.",
   "type": "object",
-  "required": ["id", "slug", "title", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "title",
+    "type",
+    "created_at",
+    "name",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -28,7 +37,14 @@
     },
     "type": {
       "type": "string",
-      "enum": ["vision", "change_story", "challenge", "victory", "learning", "transformation", "movement", "personal", "organizational", "community"],
+      "enum": [
+        "movement",
+        "organizational",
+        "campaign",
+        "personal",
+        "historical",
+        "visionary"
+      ],
       "description": "Type of narrative",
       "example": "change_story"
     },
@@ -44,48 +60,80 @@
     },
     "format": {
       "type": "string",
-      "enum": ["text", "video", "audio", "interactive", "multimedia"],
+      "enum": [
+        "text",
+        "video",
+        "audio",
+        "interactive",
+        "multimedia"
+      ],
       "description": "Format of the narrative",
       "example": "text"
     },
     "perspective": {
       "type": "string",
-      "enum": ["first_person", "third_person", "collective", "organizational"],
+      "enum": [
+        "first_person",
+        "third_person",
+        "collective",
+        "organizational"
+      ],
       "description": "Narrative perspective",
       "example": "collective"
     },
     "tone": {
       "type": "string",
-      "enum": ["inspirational", "informative", "analytical", "critical", "celebratory", "cautionary"],
+      "enum": [
+        "inspirational",
+        "informative",
+        "analytical",
+        "critical",
+        "celebratory",
+        "cautionary"
+      ],
       "description": "Tone of the narrative"
     },
     "themes": {
       "type": "array",
       "description": "Main themes",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "key_messages": {
       "type": "array",
       "description": "Key messages",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "characters": {
       "type": "array",
       "description": "Key characters/actors",
       "items": {
         "type": "object",
-        "required": ["actor_id"],
+        "required": [
+          "actor_id"
+        ],
         "additionalProperties": false,
         "properties": {
-          "actor_id": { "type": "string", "format": "uuid" },
-          "role": { "type": "string" }
+          "actor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "role": {
+            "type": "string"
+          }
         }
       }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations featured",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiative": {
       "type": "string",
@@ -102,34 +150,53 @@
       "description": "Time period covered",
       "additionalProperties": false,
       "properties": {
-        "start_date": { "type": "string", "format": "date" },
-        "end_date": { "type": "string", "format": "date" }
+        "start_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "locations": {
       "type": "array",
       "description": "Geographic settings",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "outcomes": {
       "type": "array",
       "description": "Outcomes described",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Impacts described",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "lessons": {
       "type": "array",
       "description": "Lessons learned",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "challenges": {
       "type": "array",
       "description": "Challenges described",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "call_to_action": {
       "type": "string",
@@ -138,26 +205,45 @@
     "media": {
       "type": "array",
       "description": "Associated media",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "citations": {
       "type": "array",
       "description": "References and citations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_narratives": {
       "type": "array",
       "description": "Related narratives",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "audience": {
       "type": "array",
       "description": "Target audience",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "purpose": {
       "type": "string",
-      "enum": ["awareness", "mobilization", "education", "advocacy", "documentation", "inspiration", "reflection"],
+      "enum": [
+        "awareness",
+        "mobilization",
+        "education",
+        "advocacy",
+        "documentation",
+        "inspiration",
+        "reflection"
+      ],
       "description": "Purpose of the narrative"
     },
     "language": {
@@ -169,11 +255,18 @@
     "translations": {
       "type": "array",
       "description": "Available translations",
-      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      }
     },
     "visibility": {
       "type": "string",
-      "enum": ["public", "private", "restricted"],
+      "enum": [
+        "public",
+        "private",
+        "restricted"
+      ],
       "description": "Visibility level",
       "example": "public"
     },
@@ -189,7 +282,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -209,6 +305,52 @@
       "type": "string",
       "format": "date-time",
       "description": "Publication timestamp"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the narrative"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the narrative"
+    },
+    "protagonist": {
+      "type": "string",
+      "description": "Who is the protagonist"
+    },
+    "antagonist": {
+      "type": "string",
+      "description": "Who or what is the antagonist"
+    },
+    "conflict": {
+      "type": "string",
+      "description": "Central conflict or challenge"
+    },
+    "resolution": {
+      "type": "string",
+      "description": "Resolution or goal"
+    },
+    "story_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Stories using this narrative"
+    },
+    "initiative_id": {
+      "type": "string",
+      "description": "Related initiative"
+    },
+    "media_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Media using this narrative"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

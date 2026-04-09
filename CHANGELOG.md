@@ -9,37 +9,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.1.0] - 2026-04-08
+## [1.1.0] - 2026-04-09
 
 ### Added
 
-#### Bulk Import/Export Tools
-- Python CLI tool (`scripts/bulk_io.py`) for format conversion
-- Support for JSON, CSV, GraphML, and Neo4j formats
-- Export entities and relationships to multiple formats simultaneously
-- Import from CSV and JSON formats
-- Format conversion between all supported formats
-- Graph statistics and information commands
+#### Schema Completion
+- Reconciled all 35 entity JSON schemas with ontology YAML definitions
+- Generated 20 relationship type schemas from ontology definitions
+- Created schema validation and fix scripts (`scripts/validate_schemas.py`, `scripts/fix_schemas.py`)
+- Enum values now align with ontology definitions
 
-#### Advanced WebGL Visualizer
-- Three.js-based visualization for 10,000+ nodes
-- WebGL rendering with octree-optimized force simulation
-- Interactive controls for force strength, link distance, node size, and repulsion
-- Mouse drag rotation and zoom navigation
-- Color-coded nodes by entity type
-- Real-time FPS counter and node/edge statistics
-- Load custom JSON graphs or sample data
-- Dynamic legend showing node type distribution
+#### Data Import
+- Transformed 434 legacy records to canonical format
+- 8 legacy files transformed: tools, causes, patterns, stories, frameworks, traditions, programs, skills
 
-#### Simple D3.js Visualizer
-- Force-directed graph visualization with D3.js v7
-- Drag-and-drop JSON file loading
-- Instant load with no server required
-- Interactive node dragging and zoom/pan controls
-- Adjustable link distance, charge strength, and node size
-- Tooltip showing node details on hover
-- Color-coded nodes by type with legend
-- Sample data loading for testing
+#### API Implementation
+- FastAPI-based REST API with read-only GET endpoints
+- Entity endpoints: `/v1/{entity_type}`, `/v1/{entity_type}/{id}`
+- Search endpoint: `/v1/search` with full-text search
+- Graph traversal endpoint: `/v1/graph/{entity_id}`
+- Taxonomies endpoint: `/v1/taxonomies`
+- Health check: `/v1/health`
+- Automatic OpenAPI documentation at `/v1/docs`
+
+#### Geographic Data
+- 8 GeoJSON layers available in `geo/layers/`
+
+#### Scripts
+- `scripts/validate_schemas.py` - Audit schema-ontology alignment
+- `scripts/fix_schemas.py` - Apply ontology-based fixes
+- `scripts/generate_relationship_schemas.py` - Generate relationship schemas
+- `scripts/transform_legacy.py` - Transform legacy data
 
 ---
 
@@ -106,7 +106,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 | Version | Date | Description |
 |---------|------|-------------|
-| 1.1.0 | 2026-04-08 | Bulk import/export tools, WebGL and D3.js visualizers |
+| 1.1.0 | 2026-04-09 | MVP: Schema completion, data import, FastAPI implementation |
 | 1.0.0 | 2024-01-15 | Initial release with ontology, documentation, and archetype frameworks |
 
 ---
@@ -115,14 +115,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 The following are planned for future releases:
 
-### [1.1.0] - Planned
-- Complete entity schema definitions for all 35 entity types
-- Complete relationship schema definitions for all 20 relationship types
-- Initial data import from legacy systems
-- API endpoint implementations
-- Geographic data for key regions
-
 ### [1.2.0] - Planned
+- Search and query API enhancements
+- Data quality dashboard
+- Automated data validation CI/CD
+- Bulk import tools
+- Write operations (POST/PUT/DELETE)
 
 ### [2.0.0] - Planned
 - Graph database integration

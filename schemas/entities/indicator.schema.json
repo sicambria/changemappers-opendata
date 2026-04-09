@@ -4,7 +4,15 @@
   "title": "Indicator",
   "description": "A measurable variable used to assess progress, performance, or change over time.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,13 +41,26 @@
     },
     "type": {
       "type": "string",
-      "enum": ["quantitative", "qualitative", "composite", "binary", "ordinal", "index"],
+      "enum": [
+        "quantitative",
+        "qualitative",
+        "process",
+        "outcome",
+        "impact"
+      ],
       "description": "Type of indicator",
       "example": "quantitative"
     },
     "category": {
       "type": "string",
-      "enum": ["output", "outcome", "impact", "process", "input", "contextual"],
+      "enum": [
+        "output",
+        "outcome",
+        "impact",
+        "process",
+        "input",
+        "contextual"
+      ],
       "description": "Category of indicator",
       "example": "outcome"
     },
@@ -58,7 +79,14 @@
     },
     "frequency": {
       "type": "string",
-      "enum": ["real_time", "daily", "weekly", "monthly", "quarterly", "annually", "ad_hoc"],
+      "enum": [
+        "continuous",
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annually"
+      ],
       "description": "Measurement frequency",
       "example": "quarterly"
     },
@@ -67,9 +95,16 @@
       "description": "Baseline information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "date": { "type": "string", "format": "date" },
-        "source": { "type": "string" }
+        "value": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "source": {
+          "type": "string"
+        }
       }
     },
     "target": {
@@ -77,8 +112,13 @@
       "description": "Target information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "date": { "type": "string", "format": "date" }
+        "value": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "thresholds": {
@@ -86,9 +126,15 @@
       "description": "Performance thresholds",
       "additionalProperties": false,
       "properties": {
-        "red": { "type": "number" },
-        "yellow": { "type": "number" },
-        "green": { "type": "number" }
+        "red": {
+          "type": "number"
+        },
+        "yellow": {
+          "type": "number"
+        },
+        "green": {
+          "type": "number"
+        }
       }
     },
     "validity": {
@@ -96,30 +142,50 @@
       "description": "Validity information",
       "additionalProperties": false,
       "properties": {
-        "reliability": { "type": "string" },
-        "validity_type": { "type": "string" },
-        "limitations": { "type": "array", "items": { "type": "string" } }
+        "reliability": {
+          "type": "string"
+        },
+        "validity_type": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "disaggregation": {
       "type": "array",
       "description": "Disaggregation categories",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "related_outcomes": {
       "type": "array",
       "description": "Outcomes this indicator measures",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_impacts": {
       "type": "array",
       "description": "Impacts this indicator measures",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_indicators": {
       "type": "array",
       "description": "Related indicators",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "parent_indicator": {
       "type": "string",
@@ -129,22 +195,34 @@
     "child_indicators": {
       "type": "array",
       "description": "Child indicators if composite",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives_using": {
       "type": "array",
       "description": "Initiatives using this indicator",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this indicator",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains this indicator applies to",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "sdg_indicator": {
       "type": "string",
@@ -168,7 +246,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -183,6 +264,50 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "target_value": {
+      "type": "number",
+      "description": "Target value for the indicator"
+    },
+    "baseline_value": {
+      "type": "number",
+      "description": "Baseline value at start"
+    },
+    "current_value": {
+      "type": "number",
+      "description": "Most recent measured value"
+    },
+    "outcome_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Outcomes this indicator measures"
+    },
+    "impact_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Impacts this indicator measures"
+    },
+    "dataset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Datasets providing indicator data"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where this indicator applies"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

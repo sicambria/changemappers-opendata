@@ -4,7 +4,18 @@
   "title": "Transition",
   "description": "A significant shift or transformation in a system, organization, or process within the changemakers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "description",
+    "from_state",
+    "to_state",
+    "status",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,13 +44,27 @@
     },
     "type": {
       "type": "string",
-      "enum": ["energy", "economic", "social", "political", "technological", "environmental", "organizational", "cultural", "demographic"],
+      "enum": [
+        "energy",
+        "economic",
+        "ecological",
+        "social",
+        "governance",
+        "technological"
+      ],
       "description": "Type of transition",
       "example": "energy"
     },
     "status": {
       "type": "string",
-      "enum": ["emerging", "ongoing", "accelerating", "stabilizing", "completed", "reversed"],
+      "enum": [
+        "proposed",
+        "early_stage",
+        "emerging",
+        "accelerating",
+        "mainstream",
+        "completed"
+      ],
       "description": "Status of the transition",
       "example": "ongoing"
     },
@@ -55,7 +80,14 @@
     },
     "scale": {
       "type": "string",
-      "enum": ["individual", "organizational", "community", "regional", "national", "global"],
+      "enum": [
+        "individual",
+        "organizational",
+        "community",
+        "regional",
+        "national",
+        "global"
+      ],
       "description": "Scale of the transition",
       "example": "national"
     },
@@ -78,14 +110,34 @@
       "description": "Transition phases",
       "items": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "start_date": { "type": "string", "format": "date" },
-          "end_date": { "type": "string", "format": "date" },
-          "status": { "type": "string", "enum": ["planned", "ongoing", "completed", "delayed"] }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "ongoing",
+              "completed",
+              "delayed"
+            ]
+          }
         }
       }
     },
@@ -94,44 +146,75 @@
       "description": "Key drivers of the transition",
       "items": {
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "type": { "type": "string", "enum": ["technological", "economic", "political", "social", "environmental"] },
-          "description": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "technological",
+              "economic",
+              "political",
+              "social",
+              "environmental"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
         }
       }
     },
     "barriers": {
       "type": "array",
       "description": "Key barriers",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "enablers": {
       "type": "array",
       "description": "Key enablers",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Key actors involved",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Key organizations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Related initiatives",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Related projects",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "location": {
       "type": "string",
@@ -141,47 +224,73 @@
     "domains": {
       "type": "array",
       "description": "Domains affected",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "outcomes": {
       "type": "array",
       "description": "Expected outcomes",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "impacts": {
       "type": "array",
       "description": "Measured impacts",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "indicators": {
       "type": "array",
       "description": "Transition indicators",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "frameworks": {
       "type": "array",
       "description": "Frameworks applied",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_transitions": {
       "type": "array",
       "description": "Related transitions",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "lessons_learned": {
       "type": "array",
       "description": "Lessons learned",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "references": {
       "type": "array",
       "description": "References",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -196,6 +305,46 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "phase_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Phases of the transition"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives supporting transition"
+    },
+    "framework_id": {
+      "type": "string",
+      "description": "Framework guiding transition"
+    },
+    "location_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Geographic scope"
+    },
+    "stakeholder_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key stakeholders"
+    },
+    "timeline_id": {
+      "type": "string",
+      "description": "Timeline of transition"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

@@ -1,124 +1,25 @@
 {
-  "dataset_info": {
-    "name": "Skills",
-    "description": "Regenerative skills and competencies for systemic transformation, organized by quadrant and horizon level.",
-    "version": "1.0.0",
-    "created_at": "2026-04-08T12:00:00Z",
-    "record_count": 8,
-    "schema": "https://changemappers.org/schemas/entities/skill.schema.json"
-  },
   "records": [
     {
-      "id": "sk1i2l3l4-s5k6-7890-abcd-ef1234567890",
-      "slug": "somatic-regulation-stress",
-      "name": "Somatic Regulation During Climate Anxiety",
-      "description": "Can regulate personal nervous system responses during high-stress climate anxiety or ecological grief episodes.",
-      "quadrant": "UL - Intentional",
-      "horizon": "H1_Hospicing",
-      "domain": "Psychological Resilience",
-      "level": "Micro",
-      "related_skills": ["sk2i3l4l5-s6k7-8901-bcde-f12345678901"],
-      "tags": ["somatic", "resilience", "climate-anxiety", "grief"],
-      "created_at": "2026-01-10T08:00:00Z",
-      "updated_at": "2026-04-01T14:00:00Z"
-    },
-    {
-      "id": "sk2i3l4l5-s6k7-8901-bcde-f12345678901",
-      "slug": "holding-tragic-gap",
-      "name": "Holding the Tragic Gap",
-      "description": "Can hold the 'tragic gap' between the reality of climate collapse and the vision of a regenerative future without burning out.",
-      "quadrant": "UL - Intentional",
-      "horizon": "H2_Bridging",
-      "domain": "Emotional Stamina",
-      "level": "Micro",
-      "related_skills": ["sk1i2l3l4-s5k6-7890-abcd-ef1234567890"],
-      "tags": ["emotional-stamina", "active-hope", "tragic-gap", "resilience"],
-      "created_at": "2026-01-12T09:00:00Z",
-      "updated_at": "2026-04-02T10:30:00Z"
-    },
-    {
-      "id": "sk3i4l5l6-s7k8-8901-bcde-f12345678901",
-      "slug": "deep-time-awareness",
-      "name": "Deep Time Awareness",
-      "description": "Can practice deep time awareness, holding the perspective of ancestors 7 generations past and descendants 7 generations future.",
-      "quadrant": "UL - Intentional",
-      "horizon": "H3_Radical",
-      "domain": "Deep Time Navigation",
-      "level": "Micro",
-      "related_skills": ["sk2i3l4l5-s6k7-8901-bcde-f12345678901"],
-      "tags": ["deep-time", "intergenerational", "ancestors", "future-generations"],
-      "created_at": "2026-01-15T10:00:00Z",
-      "updated_at": "2026-04-03T11:00:00Z"
-    },
-    {
-      "id": "sk4i5l6l7-s8k9-9012-cdef-123456789012",
-      "slug": "greywater-filtration-install",
-      "name": "Greywater Filtration Installation",
-      "description": "Can install, calibrate, and maintain a residential-scale greywater filtration and irrigation system.",
-      "quadrant": "UR - Behavioral",
-      "horizon": "H2_Bridging",
-      "domain": "Applied Ecology",
-      "level": "Micro",
-      "related_skills": ["sk5i6l7l8-s9k0-0123-def0-123456789012"],
-      "tags": ["greywater", "water-systems", "applied-ecology", "resilience"],
-      "created_at": "2026-01-18T11:00:00Z",
-      "updated_at": "2026-04-04T12:00:00Z"
-    },
-    {
-      "id": "sk5i6l7l8-s9k0-0123-def0-123456789012",
-      "slug": "biochar-production",
-      "name": "Biochar Production and Inoculation",
-      "description": "Can construct a simple, low-cost biochar retort and properly inoculate the resulting char.",
-      "quadrant": "UR - Behavioral",
-      "horizon": "H2_Bridging",
-      "domain": "Soil Science",
-      "level": "Micro",
-      "related_skills": ["sk4i5l6l7-s8k9-9012-cdef-123456789012"],
-      "tags": ["biochar", "soil-carbon", "carbon-sequestration", "regenerative"],
-      "created_at": "2026-01-20T12:00:00Z",
-      "updated_at": "2026-04-05T13:00:00Z"
-    },
-    {
-      "id": "sk6i7l8l9-s0k1-1234-ef01-234567890123",
-      "slug": "seed-saving-heirloom",
-      "name": "Seed Saving for Heirloom Varieties",
-      "description": "Can extract, save, and properly store seeds from open-pollinated heirloom tomato varieties.",
-      "quadrant": "UR - Behavioral",
-      "horizon": "H3_Radical",
-      "domain": "Seed Saving",
-      "level": "Micro",
-      "related_skills": ["sk5i6l7l8-s9k0-0123-def0-123456789012"],
-      "tags": ["seed-saving", "biodiversity", "food-sovereignty", "heirloom"],
-      "created_at": "2026-01-22T13:00:00Z",
-      "updated_at": "2026-04-06T14:00:00Z"
-    },
-    {
-      "id": "sk7i8l9l0-s1k2-2345-f012-345678901234",
-      "slug": "restorative-circle-facilitation",
-      "name": "Restorative Circle Facilitation",
-      "description": "Can facilitate a grief circle to help a community process the loss of local ecosystems or species.",
-      "quadrant": "LL - Cultural",
-      "horizon": "H1_Hospicing",
-      "domain": "Communal Healing",
-      "level": "Meso",
-      "related_skills": ["sk8i9l0l1-s2k3-3456-0123-456789012345"],
-      "tags": ["restorative-justice", "facilitation", "grief-circle", "community-healing"],
-      "created_at": "2026-01-25T14:00:00Z",
-      "updated_at": "2026-04-07T10:00:00Z"
-    },
-    {
-      "id": "sk8i9l0l1-s2k3-3456-0123-456789012345",
-      "slug": "mediating-land-use-conflicts",
-      "name": "Mediating Land-Use Transition Conflicts",
-      "description": "Can mediate intergenerational conflicts regarding land-use transitions using restorative justice circle practices.",
-      "quadrant": "LL - Cultural",
-      "horizon": "H2_Bridging",
-      "domain": "Conflict Transformation",
-      "level": "Meso",
-      "related_skills": ["sk7i8l9l0-s1k2-2345-f012-345678901234"],
-      "tags": ["mediation", "conflict-transformation", "land-use", "intergenerational"],
-      "created_at": "2026-01-28T15:00:00Z",
-      "updated_at": "2026-04-08T11:00:00Z"
+      "id": "3c5b7e92-9bd2-5c8a-9940-c3834c01310d",
+      "slug": "unnamed-skill",
+      "name": "Unnamed Skill",
+      "description": "",
+      "type": "competency",
+      "category": "",
+      "level_options": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ],
+      "created_at": "2026-04-08T23:16:07.533913Z",
+      "updated_at": "2026-04-08T23:16:07.533929Z",
+      "source": "legacy:regenerative-skills"
     }
-  ]
+  ],
+  "metadata": {
+    "source": "legacy:regenerative-skills.json",
+    "transformed_at": "2026-04-08T23:16:07.533990Z",
+    "count": 1
+  }
 }

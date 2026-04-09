@@ -4,7 +4,16 @@
   "title": "Practice",
   "description": "A specific, repeatable activity or technique applied in change-making work within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "category", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "category",
+    "created_at",
+    "description",
+    "type",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -34,7 +43,19 @@
     },
     "category": {
       "type": "string",
-      "enum": ["facilitation", "communication", "decision_making", "reflection", "learning", "engagement", "assessment", "planning", "documentation", "celebration", "conflict_resolution"],
+      "enum": [
+        "facilitation",
+        "communication",
+        "decision_making",
+        "reflection",
+        "learning",
+        "engagement",
+        "assessment",
+        "planning",
+        "documentation",
+        "celebration",
+        "conflict_resolution"
+      ],
       "description": "Category of the practice",
       "example": "facilitation"
     },
@@ -63,9 +84,18 @@
       "description": "Participant requirements",
       "additionalProperties": false,
       "properties": {
-        "min": { "type": "integer" },
-        "max": { "type": "integer" },
-        "roles": { "type": "array", "items": { "type": "string" } }
+        "min": {
+          "type": "integer"
+        },
+        "max": {
+          "type": "integer"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "duration": {
@@ -73,15 +103,23 @@
       "description": "Typical duration",
       "additionalProperties": false,
       "properties": {
-        "min": { "type": "string" },
-        "max": { "type": "string" },
-        "typical": { "type": "string" }
+        "min": {
+          "type": "string"
+        },
+        "max": {
+          "type": "string"
+        },
+        "typical": {
+          "type": "string"
+        }
       }
     },
     "materials": {
       "type": "array",
       "description": "Materials needed",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "space_requirements": {
       "type": "string",
@@ -92,13 +130,25 @@
       "description": "Implementation steps",
       "items": {
         "type": "object",
-        "required": ["order", "description"],
+        "required": [
+          "order",
+          "description"
+        ],
         "additionalProperties": false,
         "properties": {
-          "order": { "type": "integer", "minimum": 1 },
-          "description": { "type": "string" },
-          "duration": { "type": "string" },
-          "tips": { "type": "string" }
+          "order": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "duration": {
+            "type": "string"
+          },
+          "tips": {
+            "type": "string"
+          }
         }
       }
     },
@@ -109,60 +159,91 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
         }
       }
     },
     "skills_required": {
       "type": "array",
       "description": "Skills required to facilitate",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tools": {
       "type": "array",
       "description": "Tools that support this practice",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "outcomes": {
       "type": "array",
       "description": "Expected outcomes",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "challenges": {
       "type": "array",
       "description": "Common challenges",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "tips": {
       "type": "array",
       "description": "Tips for facilitators",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "related_practices": {
       "type": "array",
       "description": "Related practices",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_patterns": {
       "type": "array",
       "description": "Related patterns",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "domains": {
       "type": "array",
       "description": "Domains where applicable",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects_using": {
       "type": "array",
       "description": "Projects using this practice",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -177,6 +258,68 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "organizing",
+        "facilitation",
+        "communication",
+        "governance",
+        "stewardship",
+        "economic",
+        "educational"
+      ],
+      "description": "Classification of the practice"
+    },
+    "methodology_id": {
+      "type": "string",
+      "description": "Parent methodology"
+    },
+    "tradition_id": {
+      "type": "string",
+      "description": "Related tradition"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "quarterly",
+        "annually",
+        "as_needed"
+      ],
+      "description": "How often this practice occurs"
+    },
+    "time_required": {
+      "type": "string",
+      "description": "Typical time required"
+    },
+    "resources_required": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Resources needed"
+    },
+    "skill_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Skills required"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains where practice applies"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

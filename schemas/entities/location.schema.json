@@ -4,7 +4,14 @@
   "title": "Location",
   "description": "A geographic place or area relevant to change-making activities within the changemappers ecosystem.",
   "type": "object",
-  "required": ["id", "slug", "name", "type", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "type",
+    "created_at",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -28,7 +35,17 @@
     },
     "type": {
       "type": "string",
-      "enum": ["city", "region", "country", "neighborhood", "district", "province", "state", "continent", "community", "indigenous_territory", "ecosystem", "watershed"],
+      "enum": [
+        "city",
+        "region",
+        "watershed",
+        "bioregion",
+        "nation",
+        "neighborhood",
+        "site",
+        "territory",
+        "indigenous_land"
+      ],
       "description": "Type of location",
       "example": "city"
     },
@@ -42,8 +59,16 @@
       "description": "Geographic coordinates",
       "additionalProperties": false,
       "properties": {
-        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
-        "longitude": { "type": "number", "minimum": -180, "maximum": 180 }
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        }
       }
     },
     "geometry": {
@@ -74,7 +99,10 @@
     "child_locations": {
       "type": "array",
       "description": "Child locations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "population": {
       "type": "integer",
@@ -86,8 +114,18 @@
       "description": "Area information",
       "additionalProperties": false,
       "properties": {
-        "value": { "type": "number" },
-        "unit": { "type": "string", "enum": ["km2", "mi2", "ha", "acres"] }
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "km2",
+            "mi2",
+            "ha",
+            "acres"
+          ]
+        }
       }
     },
     "timezone": {
@@ -98,12 +136,17 @@
     "languages_spoken": {
       "type": "array",
       "description": "Languages spoken",
-      "items": { "type": "string", "pattern": "^[a-z]{2}$" }
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2}$"
+      }
     },
     "indigenous_peoples": {
       "type": "array",
       "description": "Indigenous peoples/territories",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "climate": {
       "type": "string",
@@ -112,42 +155,65 @@
     "industries": {
       "type": "array",
       "description": "Major industries",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "actors": {
       "type": "array",
       "description": "Actors based in this location",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "organizations": {
       "type": "array",
       "description": "Organizations based in this location",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects in this location",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives in this location",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "events": {
       "type": "array",
       "description": "Events in this location",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_locations": {
       "type": "array",
       "description": "Related locations",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -162,6 +228,47 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "parent_location_id": {
+      "type": "string",
+      "description": "Parent location in hierarchy"
+    },
+    "indigenous_territory": {
+      "type": "boolean",
+      "description": "Whether this is Indigenous territory"
+    },
+    "indigenous_nations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Indigenous nations associated with this location"
+    },
+    "boundaries": {
+      "type": "object",
+      "description": "Geographic boundaries"
+    },
+    "climate_zone": {
+      "type": "string",
+      "description": "Climate zone classification"
+    },
+    "domain_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Relevant domains for this location"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives in this location"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

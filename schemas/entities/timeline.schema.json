@@ -4,7 +4,15 @@
   "title": "Timeline",
   "description": "A chronological sequence of events and milestones related to a change process.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "type",
+    "start_date",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -33,7 +41,13 @@
     },
     "type": {
       "type": "string",
-      "enum": ["historical", "project", "initiative", "movement", "organization", "policy", "personal"],
+      "enum": [
+        "project",
+        "initiative",
+        "movement",
+        "organization",
+        "historical"
+      ],
       "description": "Type of timeline",
       "example": "movement"
     },
@@ -52,20 +66,70 @@
       "description": "Events in the timeline",
       "items": {
         "type": "object",
-        "required": ["date", "title"],
+        "required": [
+          "date",
+          "title"
+        ],
         "additionalProperties": false,
         "properties": {
-          "id": { "type": "string", "format": "uuid" },
-          "date": { "type": "string", "format": "date" },
-          "end_date": { "type": "string", "format": "date" },
-          "title": { "type": "string" },
-          "description": { "type": "string" },
-          "type": { "type": "string" },
-          "significance": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
-          "actors": { "type": "array", "items": { "type": "string", "format": "uuid" } },
-          "locations": { "type": "array", "items": { "type": "string", "format": "uuid" } },
-          "media": { "type": "array", "items": { "type": "string", "format": "uuid" } },
-          "sources": { "type": "array", "items": { "type": "string", "format": "uuid" } }
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "significance": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          },
+          "actors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
         }
       }
     },
@@ -74,14 +138,30 @@
       "description": "Timeline phases",
       "items": {
         "type": "object",
-        "required": ["name", "start_date"],
+        "required": [
+          "name",
+          "start_date"
+        ],
         "additionalProperties": false,
         "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "start_date": { "type": "string", "format": "date" },
-          "end_date": { "type": "string", "format": "date" },
-          "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
         }
       }
     },
@@ -90,19 +170,30 @@
       "description": "Related entity (project, initiative, etc.)",
       "additionalProperties": false,
       "properties": {
-        "type": { "type": "string" },
-        "id": { "type": "string", "format": "uuid" }
+        "type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        }
       }
     },
     "sources": {
       "type": "array",
       "description": "Sources",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -117,6 +208,43 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Events included in timeline"
+    },
+    "phase_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Phases included in timeline"
+    },
+    "milestone_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key milestones"
+    },
+    "initiative_id": {
+      "type": "string",
+      "description": "Related initiative"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Related project"
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "Actor or organization that owns this timeline"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }

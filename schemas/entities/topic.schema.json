@@ -4,7 +4,14 @@
   "title": "Topic",
   "description": "A specific subject or theme within a subdomain that can be addressed by change initiatives.",
   "type": "object",
-  "required": ["id", "slug", "name", "created_at"],
+  "required": [
+    "id",
+    "slug",
+    "name",
+    "created_at",
+    "description",
+    "updated_at"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -49,42 +56,65 @@
     "child_topics": {
       "type": "array",
       "description": "Child topics",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "related_topics": {
       "type": "array",
       "description": "Related topics",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "causes": {
       "type": "array",
       "description": "Causes related to this topic",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "initiatives": {
       "type": "array",
       "description": "Initiatives addressing this topic",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "projects": {
       "type": "array",
       "description": "Projects addressing this topic",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "resources": {
       "type": "array",
       "description": "Resources about this topic",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "stories": {
       "type": "array",
       "description": "Stories about this topic",
-      "items": { "type": "string", "format": "uuid" }
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
     },
     "keywords": {
       "type": "array",
       "description": "Keywords for search",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "taxonomy_code": {
       "type": "string",
@@ -107,7 +137,10 @@
     "tags": {
       "type": "array",
       "description": "Freeform tags",
-      "items": { "type": "string", "maxLength": 50 }
+      "items": {
+        "type": "string",
+        "maxLength": 50
+      }
     },
     "metadata": {
       "type": "object",
@@ -122,6 +155,42 @@
       "type": "string",
       "format": "date-time",
       "description": "Last update timestamp"
+    },
+    "parent_subdomain_id": {
+      "type": "string",
+      "description": "Parent subdomain"
+    },
+    "initiative_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Initiatives addressing this topic"
+    },
+    "project_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Projects addressing this topic"
+    },
+    "key_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key questions related to this topic"
+    },
+    "related_topic_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related topics"
+    },
+    "source": {
+      "type": "string",
+      "description": "Data source"
     }
   }
 }
