@@ -1,9 +1,9 @@
 # Changemappers Open Data
 
 [![License: CC-BY-SA 4.0](https://img.shields.io/badge/Data-CC--BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![License: AGPL v3](https://img.shields.io/badge/Code-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![License: AGPL v3](https://img.shields.io/badge/Code-AGPL%20v3-blue.svg)]https://www.gnu.org/licenses/agpl-3.0)
 [![Data Quality](https://img.shields.io/badge/Data%20Quality-Validated-green.svg)](docs/data-quality.md)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://changemappers.org/opendata/)
+[![Website](https://img.shields.io/badge/Changemappers-Open_Data_Hub-blue)](https://changemappers.org/opendata/)
 
 **Part of [changemappers.org](https://changemappers.org/) — Mapping pathways to regenerative futures**
 
@@ -114,30 +114,39 @@ See `ontology/relationships/` for detailed definitions.
 
 ## API Documentation
 
-### Endpoints
+### Current Status
 
-All API endpoints are documented in the `api/endpoints/` directory. Base URL:
+> **Note:** The API implementation is available in this repository (`api/` directory) but is not yet deployed to a public endpoint. You can run the API locally using the instructions below.
 
-```
-https://api.changemappers.org/opendata/v1/
+### Running the API Locally
+
+```bash
+# Install dependencies
+pip install -r api/requirements.txt
+
+# Run the server
+uvicorn api.main:app --host 0.0.0.0 --port 8000
+
+# Access the API documentation
+open http://localhost:8000/v1/docs
 ```
 
 ### Available Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/entities` | GET | List all entities with optional filtering |
-| `/entities/{id}` | GET | Get single entity by ID |
-| `/entities/{id}/relationships` | GET | Get entity relationships |
-| `/relationships` | GET | List all relationships |
-| `/search` | GET | Full-text search across entities |
-| `/graph/{id}/neighbors` | GET | Get entity neighbors in knowledge graph |
+| `/v1/health` | GET | Health check with entity counts |
+| `/v1/{entity_type}` | GET | List entities with pagination and filtering |
+| `/v1/{entity_type}/{id}` | GET | Get single entity by ID or slug |
+| `/v1/search` | GET | Full-text search across entities |
+| `/v1/graph/{id}` | GET | Graph traversal with configurable depth |
+| `/v1/taxonomies` | GET | List all entity types with counts |
 
-### Authentication
+### API Specifications
 
-Public read access requires no authentication. Write operations require API key authentication. See `docs/api-auth.md` for details.
+Detailed API endpoint specifications are available in `api/endpoints/` directory.
 
-### Rate Limits
+### Rate Limits (when deployed)
 
 - Anonymous: 100 requests/hour
 - Authenticated: 1000 requests/hour
