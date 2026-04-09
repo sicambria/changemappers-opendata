@@ -1,7 +1,7 @@
 # Changemappers Open Data
 
 [![License: CC-BY-SA 4.0](https://img.shields.io/badge/Data-CC--BY--SA%204.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![License: AGPL v3](https://img.shields.io/badge/Code-AGPL%20v3-blue.svg)]https://www.gnu.org/licenses/agpl-3.0)
+[![License: AGPL v3](https://img.shields.io/badge/Code-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Data Quality](https://img.shields.io/badge/Data%20Quality-Validated-green.svg)](docs/data-quality.md)
 [![Website](https://img.shields.io/badge/Changemappers-Open_Data_Hub-blue)](https://changemappers.org/opendata/)
 
